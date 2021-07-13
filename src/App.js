@@ -1,14 +1,17 @@
 import styled, { createGlobalStyle } from "styled-components";
 import Clock from "./layout/Clock";
 import Content from "./layout/Content";
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (
-    <MainContainer>
-      <GlobalStyle />
-      <Clock />
-      <Content />
-    </MainContainer>
+    <Router>
+      <MainContainer>
+        <GlobalStyle />
+        <Clock />
+        <Content />
+      </MainContainer>
+    </Router>
   );
 }
 
@@ -21,7 +24,7 @@ html {
 --shadow-main-border-dark: hsla(180, 2%, 10%, 1);
 --shadow-main-border-light: hsla(180, 2%, 15%, 1);
 --highlight-main: hsla(180, 2%, 23%, 1);
---highlight-main-border-dark: hsla(180, 2%, 21%, 1);
+--highlight-main-border-dark: hsla(180, 2%, 19%, 1);
 --highlight-main-border-light: hsla(180, 2%, 25%, 1);
 
 --color-secondary: hsla(41, 94%, 59%, 1);

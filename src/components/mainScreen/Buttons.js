@@ -1,22 +1,35 @@
 import React from "react";
 import styled from "styled-components";
 import CoolButton from "../CoolButton";
+import { NavLink } from "react-router-dom";
 
 const Buttons = () => {
   return (
     <Wrapper>
       <ButtonList>
         <ButtonContainer>
-          <CoolButton padding={"30px"}></CoolButton>
+          <NavLink exact to="/">
+            <CoolButton padding={"30px"}></CoolButton>
+          </NavLink>
+          <LinkLabel>Home</LinkLabel>
         </ButtonContainer>
         <ButtonContainer>
-          <CoolButton padding={"30px"}></CoolButton>
+          <NavLink to="/snippets">
+            <CoolButton padding={"30px"}></CoolButton>
+          </NavLink>
+          <LinkLabel>Snippets</LinkLabel>
         </ButtonContainer>
         <ButtonContainer>
-          <CoolButton padding={"30px"}></CoolButton>
+          <NavLink to="/math">
+            <CoolButton padding={"30px"}></CoolButton>
+          </NavLink>
+          <LinkLabel>Math</LinkLabel>
         </ButtonContainer>
         <ButtonContainer>
-          <CoolButton padding={"30px"}></CoolButton>
+          <NavLink to="/potd">
+            <CoolButton padding={"30px"}></CoolButton>
+          </NavLink>
+          <LinkLabel>POTD</LinkLabel>
         </ButtonContainer>
       </ButtonList>
     </Wrapper>
@@ -43,9 +56,15 @@ const ButtonList = styled.ul`
 `;
 const ButtonContainer = styled.li`
   padding: 10px;
+  /* border: 2px solid red; */
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
-// const CoolButton = styled.button`
-//   background-color: red;
-// `;
-
+const LinkLabel = styled.p`
+  /* border: 2px solid blue; */
+  margin-top: 10px;
+`;
 export default Buttons;

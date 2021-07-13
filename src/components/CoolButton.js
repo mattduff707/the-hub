@@ -24,12 +24,13 @@ const Shadow = styled.span`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 105%;
+  height: 105%;
   border-radius: 50%;
   background: hsl(0deg 0% 0% / 0.35);
+  box-shadow: 2px 2px 8px hsl(0deg 0% 0% / 0.35);
   will-change: transform;
-  transform: translateY(6px);
+  transform: translate(3px, 3px);
   transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
 `;
 
@@ -83,6 +84,10 @@ const Btn = styled.button`
   }
   &:active ${Front} {
     transform: translateY(-2px);
+    transition: transform 34ms;
+  }
+  &:hover ${Shadow} {
+    transform: translate(4px, 4px);
     transition: transform 34ms;
   }
 
