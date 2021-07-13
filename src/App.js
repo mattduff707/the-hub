@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import styled, { createGlobalStyle } from "styled-components";
+import Clock from "./layout/Clock";
+import Content from "./layout/Content";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MainContainer>
+      <GlobalStyle />
+      <Clock />
+      <Content />
+    </MainContainer>
   );
 }
+
+const GlobalStyle = createGlobalStyle`
+
+html {
+
+--color-main: hsla(180, 2%, 19%, 1);
+--shadow-main: hsla(180, 2%, 13%, 1);
+--shadow-main-border-dark: hsla(180, 2%, 10%, 1);
+--shadow-main-border-light: hsla(180, 2%, 15%, 1);
+--highlight-main: hsla(180, 2%, 23%, 1);
+--highlight-main-border-dark: hsla(180, 2%, 21%, 1);
+--highlight-main-border-light: hsla(180, 2%, 25%, 1);
+
+--color-secondary: hsla(41, 94%, 59%, 1);
+--shadow-secondary: hsla(41, 94%, 42%, 1);
+--color-alternative: hsla(201, 34%, 39%, 1);
+
+--color-text: hsla(38, 58%, 94%, 1);
+--inset-shadow: inset 2px 2px 4px hsla(180, 2%, 6%, 1);
+
+--font-family-main: 'Gruppo', cursive;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+`;
+
+const MainContainer = styled.div`
+  /* border: 3px solid red; */
+  height: 100vh;
+  background-color: var(--color-main);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+`;
 
 export default App;
