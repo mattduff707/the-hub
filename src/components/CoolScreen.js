@@ -1,17 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 
-const List = ({ children }) => {
+const CoolScreen = ({ children }) => {
   return <Wrapper>{children}</Wrapper>;
 };
 
 const Wrapper = styled.ul`
-  width: calc(100% + 8px);
-  transform: translate(-6px, -7px);
-  height: calc(100% + 9px);
+  width: calc(99%);
+  /* transform: translate(-6px, -7px); */
+  height: calc(99%);
   /* border: 2px solid red; */
   list-style: none;
-  isolation: isolate;
+  /* isolation: isolate; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,6 +22,7 @@ const Wrapper = styled.ul`
   border-bottom: 2px solid var(--highlight-alternative-border-light);
   border-radius: 22px;
   box-shadow: 0px 0px 60px var(--color-alternative);
+  opacity: 1;
 `;
 
-export default List;
+export default CoolScreen;
