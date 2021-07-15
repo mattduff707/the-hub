@@ -1,10 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import TodoItem from "./TodoItem";
+import List from "./List";
 
-const Done = () => {
+const Done = ({ doneArr }) => {
   return (
     <Wrapper>
-      <h3>Done</h3>
+      <List>
+        {doneArr.map((e) => {
+          return <TodoItem key={e} value={e} done={true} />;
+        })}
+      </List>
     </Wrapper>
   );
 };
@@ -18,7 +24,7 @@ const Wrapper = styled.article`
   border-radius: 20px;
   box-shadow: var(--inset-shadow);
   background-color: var(--shadow-main);
-  margin-bottom: 20px;
+  margin-top: 20px;
 `;
 
 export default Done;

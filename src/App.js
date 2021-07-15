@@ -29,7 +29,22 @@ html {
 
 --color-secondary: hsla(41, 94%, 59%, 1);
 --shadow-secondary: hsla(41, 94%, 42%, 1);
---color-alternative: hsla(201, 34%, 39%, 1);
+
+--color-alternative: hsla(220, 90%, 49%, 0.35);
+--highlight-alternative: hsla(220, 90%, 56%, 0.55);
+--highlight-alternative-border-light: hsla(220, 90%, 59%, 0.5);
+--highlight-alternative-border-dark: hsla(220, 90%, 39%, 0.5);
+
+--color-todo-done: hsla(0, 0%, 99%, 0.20);
+--highlight-todo-done: hsla(0, 0%, 56%, 0.55);
+--highlight-todo-done-border-light: hsla(0, 0%, 59%, 0.5);
+--highlight-todo-done-border-dark: hsla(0, 0%, 39%, 0.5);
+
+--color-todo-delete: hsla(0, 90%, 49%, 0.45);
+--highlight-todo-delete: hsla(0, 90%, 56%, 0.55);
+--highlight-todo-delete-border-light: hsla(0, 90%, 59%, 0.5);
+--highlight-todo-delete-border-dark: hsla(0, 90%, 39%, 0.5);
+
 
 --color-text: hsla(38, 58%, 94%, 1);
 --inset-shadow: inset 2px 2px 4px hsla(180, 2%, 6%, 1);
