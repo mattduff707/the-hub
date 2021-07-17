@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Done from "../components/todo/Done";
-import NotDone from "../components/todo/NotDone";
+import TodoList from "../components/todo/TodoList";
 
-const ToDo = () => {
+const LeftScreen = () => {
   const [notDoneArr, setNotDoneArr] = useState(["Second Todo", "Third Todo"]);
   const [doneArr, setDoneArr] = useState(["First Todo"]);
 
@@ -22,8 +21,7 @@ const ToDo = () => {
 
   return (
     <Wrapper>
-      <NotDone notDoneArr={notDoneArr} />
-      <Done doneArr={doneArr} />
+      <TodoList notDoneArr={notDoneArr} />
     </Wrapper>
   );
 };
@@ -31,10 +29,8 @@ const ToDo = () => {
 const Wrapper = styled.div`
   /* border: 4px solid green; */
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  height: 100%;
   padding: 40px 0px 30px 40px;
 `;
 
-export default ToDo;
+export default LeftScreen;

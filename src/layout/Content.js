@@ -1,15 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import ToDo from "./ToDo";
+import LeftScreen from "./LeftScreen";
 import MainScreen from "./MainScreen";
-import Bookmarks from "./Bookmarks";
+import RightScreen from "./RightScreen";
 
 const Content = () => {
   return (
     <Wrapper>
-      <ToDo />
+      <LeftScreen />
       <MainScreen />
-      <Bookmarks />
+      <RightScreen />
     </Wrapper>
   );
 };

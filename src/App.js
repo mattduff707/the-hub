@@ -23,9 +23,9 @@ html {
 --shadow-main: hsla(180, 2%, 13%, 1);
 --shadow-main-border-dark: hsla(180, 2%, 10%, 1);
 --shadow-main-border-light: hsla(180, 2%, 15%, 1);
---highlight-main: hsla(180, 2%, 23%, 1);
---highlight-main-border-dark: hsla(180, 2%, 19%, 1);
---highlight-main-border-light: hsla(180, 2%, 25%, 1);
+--highlight-main: hsla(180, 2%, 28%, 1);
+--highlight-main-border-dark: hsla(180, 2%, 24%, 1);
+--highlight-main-border-light: hsla(180, 2%, 29%, 1);
 
 --color-secondary: hsla(41, 94%, 59%, 1);
 --shadow-secondary: hsla(41, 94%, 42%, 1);

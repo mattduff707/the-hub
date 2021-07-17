@@ -1,8 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import Projector from "./Projector";
+import LongProjector from "./LongProjector";
 
-const ScreenIndent = ({ children }) => {
+const ScreenIndent = ({ children, long }) => {
+  if (long) {
+    return (
+      <ScreenContainer>
+        <LongProjector top />
+        <LongProjector bottom />
+        {children}
+      </ScreenContainer>
+    );
+  }
   return (
     <ScreenContainer>
       <Projector
@@ -51,7 +61,7 @@ const ScreenIndent = ({ children }) => {
 };
 
 const ScreenContainer = styled.div`
-  border: 12px solid var(--shadow-main-border-dark);
+  border: 8px solid var(--shadow-main-border-dark);
   border-right: 8px solid var(--shadow-main-border-light);
   border-bottom: 8px solid var(--shadow-main-border-light);
   border-radius: 30px;

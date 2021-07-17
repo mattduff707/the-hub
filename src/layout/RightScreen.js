@@ -11,6 +11,7 @@ const Bookmarks = () => {
 };
 const Wrapper = styled.div`
   /* border: 4px solid green; */
+  height: 100%;
   flex: 1;
   padding: 40px 40px 30px 0px;
 `;

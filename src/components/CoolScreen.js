@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-const CoolScreen = ({ children }) => {
+const CoolScreen = ({ children, sideScreen }) => {
+  if (sideScreen) {
+    return <SideScreenWrapper>{children}</SideScreenWrapper>;
+  }
   return <Wrapper>{children}</Wrapper>;
 };
 
@@ -15,7 +18,10 @@ const Wrapper = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: var(--color-alternative);
+  background: radial-gradient(
+    var(--color-alternative),
+    var(--highlight-alternative-border-light)
+  );
   border-right: 2px solid var(--highlight-alternative-border-light);
   border-left: 2px solid var(--highlight-alternative-border-light);
   border-top: 2px solid var(--highlight-alternative-border-light);
@@ -23,6 +29,14 @@ const Wrapper = styled.ul`
   border-radius: 22px;
   box-shadow: 0px 0px 60px var(--color-alternative);
   opacity: 1;
+`;
+const SideScreenWrapper = styled(Wrapper)`
+  background: linear-gradient(
+    to bottom,
+    var(--highlight-alternative-border-light),
+    var(--color-alternative),
+    var(--highlight-alternative-border-light)
+  );
 `;
 
 export default CoolScreen;
