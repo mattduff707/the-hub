@@ -4,15 +4,22 @@ import TodoItem from "./TodoItem";
 // import List from "./List";
 import ScreenIndent from "../ScreenIndent";
 import CoolScreen from "../CoolScreen";
+import TodoForm from "./TodoForm";
 
-const NotDone = ({ notDoneArr }) => {
+const TodoList = ({ notDoneArr }) => {
   return (
     <Wrapper>
       <ScreenIndent long>
         <CoolScreen sideScreen>
-          {notDoneArr.map((e) => {
+          <TodoForm />
+          <ListWrapper>
+            <TodoItem value="Finish project wireframe" />
+            <TodoItem />
+            <TodoItem />
+            {/* {notDoneArr.map((e) => {
             return <TodoItem key={e} value={e} />;
-          })}
+          })} */}
+          </ListWrapper>
         </CoolScreen>
       </ScreenIndent>
     </Wrapper>
@@ -32,5 +39,10 @@ const Wrapper = styled.article`
   /* margin-bottom: 20px; */
   position: relative;
 `;
+const ListWrapper = styled.ul`
+  width: 100%;
+  list-style: none;
+  padding: 0px 10px;
+`;
 
-export default NotDone;
+export default TodoList;

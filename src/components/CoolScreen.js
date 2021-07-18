@@ -29,6 +29,7 @@ const Wrapper = styled.ul`
   border-radius: 22px;
   box-shadow: 0px 0px 60px var(--color-alternative);
   opacity: 1;
+  padding: 50px 0px;
 `;
 const SideScreenWrapper = styled(Wrapper)`
   background: linear-gradient(
