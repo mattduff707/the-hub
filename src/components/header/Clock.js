@@ -72,6 +72,8 @@ const AM = styled.p`
   font-weight: 700;
   color: ${(props) =>
     props.active ? "var(--color-text-highlight)" : "var(--color-text)"};
+  text-shadow: ${(props) =>
+    props.active ? "var(--shadow-text-highlight)" : "var(--shadow-text)"};
 `;
 const PM = styled.p`
   font-size: 16px;
