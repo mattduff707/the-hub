@@ -50,9 +50,10 @@ const ButtonList = styled.ul`
   height: 100%;
   border-radius: 20px;
   border: 4px solid var(--highlight-main-border-light);
+  border-left: 8px solid var(--highlight-main-border-light);
   border-right: 8px solid var(--highlight-main-border-dark);
   border-bottom: 8px solid var(--highlight-main-border-dark);
-  box-shadow: 3px 3px 3px var(--shadow-main);
+  box-shadow: 5px 5px 8px var(--shadow-main);
 `;
 const ButtonContainer = styled.li`
   padding: 10px;

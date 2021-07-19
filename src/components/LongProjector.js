@@ -55,7 +55,7 @@ const Wrapper = styled.div`
 `;
 const Light = styled.div`
   background: var(--highlight-alternative);
-  border: 1px solid var(--highlight-alternative-border-light);
+  border: 2px solid var(--highlight-alternative-border-light);
   width: 80%;
   height: 12px;
   border-radius: 10px;
@@ -65,16 +65,16 @@ const Light = styled.div`
 const TopWrapper = styled(Wrapper)`
   border-bottom: 5px solid var(--highlight-main-border-dark);
   border-right: 5px solid var(--highlight-main-border-dark);
-  border-left: 3px solid var(--highlight-main-border-light);
+  border-left: 5px solid var(--highlight-main-border-light);
   border-top: 3px solid var(--highlight-main-border-light);
   box-shadow: 0px 0px 5px var(--shadow-main);
 `;
 const BottomWrapper = styled(Wrapper)`
   /* transform: rotate(180deg); */
-  border-bottom: 5px solid var(--highlight-main-border-light);
+  border-bottom: 3px solid var(--highlight-main-border-light);
   border-right: 5px solid var(--highlight-main-border-light);
-  border-left: 3px solid var(--highlight-main-border-dark);
-  border-top: 3px solid var(--highlight-main-border-dark);
+  border-left: 5px solid var(--highlight-main-border-dark);
+  border-top: 5px solid var(--highlight-main-border-dark);
   box-shadow: 0px 0px 5px var(--shadow-main);
 `;
 

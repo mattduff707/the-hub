@@ -19,6 +19,7 @@ const Wrapper = styled.form`
   display: flex;
   border-bottom: 2px solid var(--highlight-screen);
   margin-bottom: 15px;
+  padding-top: 50px;
   /* box-shadow: 0px 0px 10px 0px var(--highlight-alternative-border-light); */
 `;
 

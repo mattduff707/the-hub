@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import Clock from "./layout/Clock";
+import Header from "./layout/Header";
 import Content from "./layout/Content";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -8,7 +8,7 @@ function App() {
     <Router>
       <MainContainer>
         <GlobalStyle />
-        <Clock />
+        <Header />
         <Content />
       </MainContainer>
     </Router>
@@ -23,9 +23,9 @@ html {
 --shadow-main: hsla(180, 2%, 13%, 1);
 --shadow-main-border-dark: hsla(180, 2%, 10%, 1);
 --shadow-main-border-light: hsla(180, 2%, 15%, 1);
---highlight-main: hsla(180, 2%, 28%, 1);
---highlight-main-border-dark: hsla(180, 2%, 24%, 1);
---highlight-main-border-light: hsla(180, 2%, 29%, 1);
+--highlight-main: hsla(180, 2%, 31%, 1);
+--highlight-main-border-dark: hsla(180, 2%, 27%, 1);
+--highlight-main-border-light: hsla(180, 2%, 34%, 1);
 
 --color-secondary: hsla(41, 94%, 59%, 1);
 --shadow-secondary: hsla(41, 94%, 42%, 1);

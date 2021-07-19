@@ -2,11 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import Projector from "./Projector";
 import LongProjector from "./LongProjector";
+import CircleProjector from "./CircleProjector";
 
-const ScreenIndent = ({ children, long }) => {
+const ScreenIndent = ({ children, long, clock, className }) => {
+  if (clock) {
+    return (
+      <ScreenContainer className={className}>
+        <CircleProjector />
+        {children}
+      </ScreenContainer>
+    );
+  }
   if (long) {
     return (
-      <ScreenContainer>
+      <ScreenContainer className={className}>
         <LongProjector top />
         <LongProjector bottom />
         {children}
@@ -14,7 +23,7 @@ const ScreenIndent = ({ children, long }) => {
     );
   }
   return (
-    <ScreenContainer>
+    <ScreenContainer className={className}>
       <Projector
         left="-20px"
         top="-10px"
@@ -40,19 +49,19 @@ const ScreenIndent = ({ children, long }) => {
         bottom="-10px"
         rotation="-135deg"
         borderTop="5px solid var(--highlight-main-border-dark)"
-        borderRight="5px solid var(--highlight-main-border-light)"
+        borderRight="3px solid var(--highlight-main-border-light)"
         borderBottom="3px solid var(--highlight-main-border-light)"
-        borderLeft="3px solid var(--highlight-main-border-dark)"
+        borderLeft="5px solid var(--highlight-main-border-dark)"
         shadow="-3px 0px 3px var(--shadow-main)"
       />
       <Projector
         left="-25px"
         bottom="-10px"
         rotation="-45deg"
-        borderTop="5px solid var(--highlight-main-border-light)"
-        borderRight="5px solid var(--highlight-main-border-light)"
-        borderBottom="3px solid var(--highlight-main-border-dark)"
-        borderLeft="3px solid var(--highlight-main-border-dark)"
+        borderTop="3px solid var(--highlight-main-border-light)"
+        borderRight="3px solid var(--highlight-main-border-light)"
+        borderBottom="5px solid var(--highlight-main-border-dark)"
+        borderLeft="5px solid var(--highlight-main-border-dark)"
         shadow="-3px 3px 3px var(--shadow-main)"
       />
       {children}

@@ -74,7 +74,7 @@ const Wrapper = styled.div`
 
 const Light = styled.div`
   background: var(--highlight-alternative);
-  border: 1px solid var(--highlight-alternative-border-light);
+  border: 2px solid var(--highlight-alternative-border-light);
   width: 70%;
   height: 10px;
   border-radius: 10px;

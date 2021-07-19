@@ -7,14 +7,14 @@ const TodoItem = ({ value, done }) => {
       <Content>{value}</Content>
       <ButtonWrapper>
         <IconButton>
-          <i className="far fa-edit"></i>
+          <Icon className="far fa-edit"></Icon>
         </IconButton>
         <InnerWrapper>
           <IconButton style={{ fontWeight: "bolder" }}>
             <i className="far fa-check-circle"></i>
           </IconButton>
           <IconButton style={{ fontWeight: "bolder" }}>
-            <Icon className="fas fa-plus"></Icon>
+            <i className="far fa-times-circle"></i>
           </IconButton>
         </InnerWrapper>
       </ButtonWrapper>
@@ -69,7 +69,7 @@ const IconButton = styled.button`
 `;
 
 const Icon = styled.i`
-  transform: rotate(45deg);
+  transform: translateY(-3px);
 `;
 
 export default TodoItem;

@@ -1,11 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 
-const CoolScreen = ({ children, sideScreen }) => {
-  if (sideScreen) {
-    return <SideScreenWrapper>{children}</SideScreenWrapper>;
+const CoolScreen = ({
+  children,
+  sideScreen,
+  className,
+  clockScreenWrapper,
+}) => {
+  if (clockScreenWrapper) {
+    return (
+      <ClockScreenWrapper className={className}>{children}</ClockScreenWrapper>
+    );
   }
-  return <Wrapper>{children}</Wrapper>;
+  if (sideScreen) {
+    return (
+      <SideScreenWrapper className={className}>{children}</SideScreenWrapper>
+    );
+  }
+  return <Wrapper className={className}>{children}</Wrapper>;
 };
 
 const Wrapper = styled.ul`
@@ -29,7 +41,6 @@ const Wrapper = styled.ul`
   border-radius: 22px;
   box-shadow: 0px 0px 60px var(--color-alternative);
   opacity: 1;
-  padding: 50px 0px;
 `;
 const SideScreenWrapper = styled(Wrapper)`
   background: linear-gradient(
@@ -37,6 +48,13 @@ const SideScreenWrapper = styled(Wrapper)`
     var(--highlight-alternative-border-light),
     var(--color-alternative),
     var(--highlight-alternative-border-light)
+  );
+`;
+const ClockScreenWrapper = styled(Wrapper)`
+  background: linear-gradient(
+    to top,
+    var(--highlight-alternative-border-light) 30%,
+    var(--color-alternative)
   );
 `;
 
