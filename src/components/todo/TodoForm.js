@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const TodoForm = () => {
+const TodoForm = ({ handleSubmit }) => {
   return (
-    <Wrapper>
-      <TextInput />
-      <Submit>Add</Submit>
+    <Wrapper onSubmit={handleSubmit}>
+      <TextInput autoComplete="off" type="text" name="addTodo" />
+      <Submit type="submit">Add</Submit>
     </Wrapper>
   );
 };
@@ -24,13 +24,14 @@ const Wrapper = styled.form`
 `;
 
 const TextInput = styled.input`
+  color: var(--color-text);
   background-color: var(--color-screen);
   width: 100%;
   height: 30px;
   border: none;
   border-radius: 8px;
   font-family: var(--font-family-main);
-  letter-spacing: 2px;
+  /* letter-spacing: 2px; */
   font-weight: 600;
   padding: 20px 10px;
   outline: none;
@@ -41,6 +42,7 @@ const TextInput = styled.input`
   font-size: 18px;
 `;
 const Submit = styled.button`
+  color: var(--color-text);
   border: 2px solid var(--highlight-screen);
   flex: 1;
   background-color: var(--color-screen);
@@ -52,6 +54,20 @@ const Submit = styled.button`
   letter-spacing: 2px;
   font-size: 18px;
   font-weight: 600;
+  transition: border-color, box-shadow, background-color;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+
+  &:hover {
+    /* text-shadow: var(--hover-main-shadow); */
+    border-color: var(--hover-main);
+    background-color: var(--hover-main-bg);
+    box-shadow: 0px 0px 10px 1px var(--hover-main);
+
+    transition: border-color, box-shadow, background-color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+  }
 `;
 
 export default TodoForm;

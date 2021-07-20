@@ -35,19 +35,19 @@ const Projector = ({
     </>
   );
 };
-const UnderLight = styled.div`
-  width: 25px;
-  height: 35px;
-  /* border: 2px solid blue; */
-  position: absolute;
-  right: -5px;
-  z-index: -2;
-  box-shadow: 0px 0px 20px var(--highlight-alternative);
-  /* top: var(--position-top);
-  right: var(--position-right);
-  bottom: var(--position-bottom);
-  left: var(--position-left); */
-`;
+// const UnderLight = styled.div`
+//   width: 25px;
+//   height: 35px;
+//   /* border: 2px solid blue; */
+//   position: absolute;
+//   right: -5px;
+//   z-index: -2;
+//   box-shadow: 0px 0px 20px var(--highlight-alternative);
+//   /* top: var(--position-top);
+//   right: var(--position-right);
+//   bottom: var(--position-bottom);
+//   left: var(--position-left); */
+// `;
 
 const Wrapper = styled.div`
   position: absolute;

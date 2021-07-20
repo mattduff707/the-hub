@@ -1,22 +1,54 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import TodoContent from "./TodoContent";
 
-const TodoItem = ({ value, done }) => {
+const TodoItem = ({ value, itemId, deleteItem, editing, startEdit, confirmEdit }) => {
+  const iconCheck = "far fa-check-circle";
+  const iconDelete = "far fa-times-circle";
+  const iconEdit = "far fa-edit";
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    deleteItem(itemId);
+  };
+
+  const handleEdit = (e) => {
+    e.preventDefault();
+    startEdit(itemId);
+    setTextContent(value);
+  };
+
+  const [textContent, setTextContent] = useState("");
+
+  useEffect(() => {
+    setTextContent(value);
+  }, [value]);
+
+  const handleEditChange = (e) => {
+    setTextContent(e.currentTarget.value);
+  };
+  const handleEditSubmit = (e) => {
+    confirmEdit(itemId, textContent);
+  };
+
   return (
     <Wrapper>
-      <Content>{value}</Content>
+      <Content>
+        <TodoContent value={value} handleChange={handleEditChange} textContent={textContent} editing={editing} />
+      </Content>
       <ButtonWrapper>
-        <IconButton>
-          <Icon className="far fa-edit"></Icon>
-        </IconButton>
-        <InnerWrapper>
-          <IconButton style={{ fontWeight: "bolder" }}>
-            <i className="far fa-check-circle"></i>
-          </IconButton>
-          <IconButton style={{ fontWeight: "bolder" }}>
-            <i className="far fa-times-circle"></i>
-          </IconButton>
-        </InnerWrapper>
+        <EditBtn onClick={handleEdit}>
+          <Icon className={editing ? iconDelete : iconEdit}></Icon>
+        </EditBtn>
+        <EditConfirmBtn editing={editing} onClick={handleEditSubmit}>
+          <i className={iconCheck}></i>
+        </EditConfirmBtn>
+        <DeleteBtn editing={editing} onClick={handleDelete}>
+          <i className={iconDelete}></i>
+        </DeleteBtn>
+        <CompleteBtn editing={editing}>
+          <i className={iconCheck}></i>
+        </CompleteBtn>
       </ButtonWrapper>
     </Wrapper>
   );
@@ -25,51 +57,83 @@ const TodoItem = ({ value, done }) => {
 const Wrapper = styled.li`
   width: 100%;
   /* background: ; */
-  min-height: 50px;
+  /* min-height: 100px; */
   border: 2px solid var(--highlight-screen);
   background-color: var(--color-screen);
-  padding: 10px 10px;
+  padding: 10px 10px 5px 10px;
   border-radius: 8px;
   box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
   margin-bottom: 10px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: center; */
 `;
 const Content = styled.article`
   text-shadow: var(--shadow-text);
-  flex: 4;
   /* width: 75%; */
   font-size: 18px;
+  padding-bottom: 5px;
 `;
 const ButtonWrapper = styled.div`
-  flex: 1;
   display: flex;
-  /* flex-direction: column; */
-  justify-content: center;
-  border-left: 2px solid var(--highlight-screen);
-  /* width: 25%; */
-  /* height: 50px; */
-  /* border: 2px solid black; */
-  /* background-color: red; */
+  align-items: center;
+  border-top: 2px solid var(--highlight-screen);
+  padding-top: 5px;
 `;
-const InnerWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  /* border: 2px solid black; */
-`;
+
 const IconButton = styled.button`
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: 26px;
+  color: var(--color-text);
   text-shadow: var(--shadow-text);
   padding: 0px 5px;
+  cursor: pointer;
   /* margin: 0px 5px; */
   /* border: 2px solid black; */
+  transition: color, text-shadow, transform;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  &:hover {
+    transition: color, text-shadow, transform;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+  }
+`;
+
+const EditBtn = styled(IconButton)`
+  &:hover {
+    color: var(--hover-main-text);
+    text-shadow: var(--hover-main-text-shadow);
+    transform: translate(-1px, -1px);
+  }
+`;
+
+const EditConfirmBtn = styled(IconButton)`
+  display: ${(props) => (props.editing ? "visible" : "none")};
+`;
+const CompleteBtn = styled(IconButton)`
+  display: ${(props) => (props.editing ? "none" : "visible")};
+  &:hover {
+    color: var(--hover-confirm);
+    text-shadow: var(--hover-confirm-text-shadow);
+    transform: translate(-1px, -1px);
+  }
+`;
+const DeleteBtn = styled(IconButton)`
+  margin-left: auto;
+  display: ${(props) => (props.editing ? "none" : "visible")};
+
+  &:hover {
+    color: var(--hover-danger);
+    text-shadow: var(--hover-danger-text-shadow);
+    transform: translate(-1px, -1px);
+  }
 `;
 
 const Icon = styled.i`
-  transform: translateY(-3px);
+  transform: translateY(-1px);
 `;
 
 export default TodoItem;
