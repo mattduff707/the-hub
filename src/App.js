@@ -59,13 +59,14 @@ html {
 --hover-main-bg: hsla(30, 100%, 50%) ;
 --hover-main-shadow: 0px 0px 4px 2px hsl(30, 88%, 60%);
 --hover-main-text: hsl(35, 100%, 55%);
---hover-main-text-shadow: 3px 3px 5px hsl(35, 100%, 55%);
+--hover-main-text-shadow: 0px 0px 5px hsl(35, 100%, 55%);
+--hover-main-text-shadow-offset: 3px 3px 5px hsl(35, 100%, 55%);
 
 --hover-danger: hsl(340, 95%, 65%);
---hover-danger-text-shadow: 3px 3px 4px hsl(340, 95%, 65%);
+--hover-danger-text-shadow-offset: 3px 3px 4px hsl(340, 95%, 65%);
 
 --hover-confirm: hsl(120, 95%, 65%);
---hover-confirm-text-shadow: 3px 3px 4px hsl(120, 95%, 65%);
+--hover-confirm-text-shadow-offset: 3px 3px 4px hsl(120, 95%, 65%);
 
 --font-family-main: 'Offside', cursive;
 

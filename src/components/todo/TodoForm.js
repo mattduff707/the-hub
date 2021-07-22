@@ -15,11 +15,11 @@ const Wrapper = styled.form`
   /* border-top: 2px solid var(--color-screen); */
   /* border-bottom: 2px solid var(--color-screen); */
   background-color: transparent;
-  padding: 15px 10px 15px 10px;
+  padding: 0px 10px 15px 10px;
   display: flex;
   border-bottom: 2px solid var(--highlight-screen);
   margin-bottom: 15px;
-  padding-top: 50px;
+
   /* box-shadow: 0px 0px 10px 0px var(--highlight-alternative-border-light); */
 `;
 
@@ -42,6 +42,7 @@ const TextInput = styled.input`
   font-size: 18px;
 `;
 const Submit = styled.button`
+  cursor: pointer;
   color: var(--color-text);
   border: 2px solid var(--highlight-screen);
   flex: 1;

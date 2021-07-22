@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
-// import List from "./List";
-import ScreenIndent from "../ScreenIndent";
-import CoolScreen from "../CoolScreen";
 import TodoForm from "./TodoForm";
 
 const TodoList = () => {
   const todoTag = "todoList";
-  const [loading, setLoading] = useState(false);
+
   const [list, setList] = useState([]);
 
   useEffect(() => {
@@ -25,7 +22,7 @@ const TodoList = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(e.target[0].value);
+    console.log(e);
     const todoVal = e.target[0].value;
     if (!todoVal) {
       return;
@@ -70,13 +67,13 @@ const TodoList = () => {
     // console.log(window.localStorage);
   }, [list]);
 
-  if (loading) {
-    return (
-      <Wrapper>
-        <Loading>Loading...</Loading>
-      </Wrapper>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <Wrapper>
+  //       <Loading>Loading...</Loading>
+  //     </Wrapper>
+  //   );
+  // }
   return (
     <Wrapper>
       <TodoForm handleSubmit={handleSubmit} />
@@ -104,29 +101,22 @@ const TodoList = () => {
 
 const Wrapper = styled.section`
   width: 100%;
-  flex: 1;
   height: 100%;
-  /* border: 10px solid var(--shadow-main-border-dark);
-  border-right: 6px solid var(--shadow-main-border-light);
-  border-bottom: 6px solid var(--shadow-main-border-light);
-  border-radius: 20px;
-  box-shadow: var(--inset-shadow);
-  background-color: var(--shadow-main); */
-  /* margin-bottom: 20px; */
   position: relative;
+  padding-top: 50px;
   /* display: flex;
   align-items: center;
   justify-content: center; */
 `;
-const Loading = styled.p`
-  color: var(--color-text);
-  text-shadow: var(--shadow-text);
-  font-size: 24px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
+// const Loading = styled.p`
+//   color: var(--color-text);
+//   text-shadow: var(--shadow-text);
+//   font-size: 24px;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// `;
 const ListWrapper = styled.ul`
   width: 100%;
   list-style: none;

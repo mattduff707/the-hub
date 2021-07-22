@@ -1,35 +1,25 @@
 import React from "react";
 import styled from "styled-components";
-import CoolScreen from "../CoolScreen";
-import ScreenIndent from "../ScreenIndent";
+import Bookmark from "./Bookmark";
+import bookmarksData from "../../data/bookmarksData";
 
 const BookmarksList = () => {
   return (
     <Wrapper>
-      <ScreenIndent long>
-        <CoolScreen sideScreen>
-          {/* <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae magni
-            sint illum excepturi cupiditate consectetur nisi odio accusantium
-            vero optio eum consequatur exercitationem, eligendi esse tempora
-            beatae fugit voluptate ex.
-          </p> */}
-        </CoolScreen>
-      </ScreenIndent>
+      {bookmarksData.map((i) => {
+        return <Bookmark key={i.title} title={i.title} baseURL={i.baseURL} extensions={i.extensions} />;
+      })}
+      {/* <Bookmark baseURL={"#"} extensions={["Arrays", "Objects", "Promises"]} title="MDN Web Docs: JS" />
+      <Bookmark baseURL={"#"} extensions={false} title="W3 Icon Reference" /> */}
     </Wrapper>
   );
 };
 
 const Wrapper = styled.ul`
-  /* border: 10px solid var(--shadow-main-border-dark);
-  border-right: 6px solid var(--shadow-main-border-light);
-  border-bottom: 6px solid var(--shadow-main-border-light);
-  border-radius: 20px;
-  background-color: var(--shadow-main);
-  box-shadow: var(--inset-shadow);
-  height: 100%; */
-  /* margin: 30px 0px; */
+  width: 100%;
   height: 100%;
+  position: relative;
+  padding: 50px 10px;
 `;
 
 export default BookmarksList;

@@ -1,11 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import ScreenIndent from "../components/ScreenIndent";
+import CoolScreen from "../components/CoolScreen";
 import BookmarksList from "../components/bookmarks/BookmarksList";
 
 const Bookmarks = () => {
   return (
     <Wrapper>
-      <BookmarksList />
+      <ScreenIndent long>
+        <CoolScreen sideScreen>
+          <BookmarksList />
+        </CoolScreen>
+      </ScreenIndent>
     </Wrapper>
   );
 };

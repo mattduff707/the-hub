@@ -24,23 +24,28 @@ const TodoItem = ({ value, itemId, deleteItem, editing, startEdit, confirmEdit }
     setTextContent(value);
   }, [value]);
 
-  const handleEditChange = (e) => {
-    setTextContent(e.currentTarget.value);
-  };
-  const handleEditSubmit = (e) => {
-    confirmEdit(itemId, textContent);
-  };
+  // const handleEditChange = (e) => {
+  //   setTextContent(e.currentTarget.value);
+  // };
+  // const handleEditSubmit = (e) => {
+  //   confirmEdit(itemId, textContent);
+  // };
 
   return (
     <Wrapper>
       <Content>
-        <TodoContent value={value} handleChange={handleEditChange} textContent={textContent} editing={editing} />
+        <TodoContent
+          value={value}
+          handleChange={(e) => setTextContent(e.target.value)}
+          textContent={textContent}
+          editing={editing}
+        />
       </Content>
       <ButtonWrapper>
         <EditBtn onClick={handleEdit}>
           <Icon className={editing ? iconDelete : iconEdit}></Icon>
         </EditBtn>
-        <EditConfirmBtn editing={editing} onClick={handleEditSubmit}>
+        <EditConfirmBtn editing={editing} onClick={() => confirmEdit(itemId, textContent)}>
           <i className={iconCheck}></i>
         </EditConfirmBtn>
         <DeleteBtn editing={editing} onClick={handleDelete}>
@@ -56,8 +61,6 @@ const TodoItem = ({ value, itemId, deleteItem, editing, startEdit, confirmEdit }
 
 const Wrapper = styled.li`
   width: 100%;
-  /* background: ; */
-  /* min-height: 100px; */
   border: 2px solid var(--highlight-screen);
   background-color: var(--color-screen);
   padding: 10px 10px 5px 10px;
@@ -67,7 +70,6 @@ const Wrapper = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* align-items: center; */
 `;
 const Content = styled.article`
   text-shadow: var(--shadow-text);
@@ -105,7 +107,7 @@ const IconButton = styled.button`
 const EditBtn = styled(IconButton)`
   &:hover {
     color: var(--hover-main-text);
-    text-shadow: var(--hover-main-text-shadow);
+    text-shadow: var(--hover-main-text-shadow-offset);
     transform: translate(-1px, -1px);
   }
 `;
@@ -117,7 +119,7 @@ const CompleteBtn = styled(IconButton)`
   display: ${(props) => (props.editing ? "none" : "visible")};
   &:hover {
     color: var(--hover-confirm);
-    text-shadow: var(--hover-confirm-text-shadow);
+    text-shadow: var(--hover-confirm-text-shadow-offset);
     transform: translate(-1px, -1px);
   }
 `;
@@ -127,7 +129,7 @@ const DeleteBtn = styled(IconButton)`
 
   &:hover {
     color: var(--hover-danger);
-    text-shadow: var(--hover-danger-text-shadow);
+    text-shadow: var(--hover-danger-text-shadow-offset);
     transform: translate(-1px, -1px);
   }
 `;

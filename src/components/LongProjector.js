@@ -70,7 +70,6 @@ const TopWrapper = styled(Wrapper)`
   box-shadow: 0px 0px 5px var(--shadow-main);
 `;
 const BottomWrapper = styled(Wrapper)`
-  /* transform: rotate(180deg); */
   border-bottom: 3px solid var(--highlight-main-border-light);
   border-right: 5px solid var(--highlight-main-border-light);
   border-left: 5px solid var(--highlight-main-border-dark);
