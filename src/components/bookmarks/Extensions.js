@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Extensions = ({ extensions, baseURL }) => {
+  const [isExtended, setIsExtended] = useState(false);
+
+  const handleClick = () => {
+    setIsExtended(() => !isExtended);
+  };
+
   return (
     <ExtensionsWrapper>
-      <ExtensionsList>
+      <ExtensionsList isExtended={isExtended}>
         {extensions.map((i) => {
           return (
             <ExtensionAnchor key={i.title} href={baseURL + i.url} target="_blank">
@@ -13,8 +19,8 @@ const Extensions = ({ extensions, baseURL }) => {
           );
         })}
       </ExtensionsList>
-      <ExtendBtn>
-        <ExtendIcon className="fas fa-caret-down"></ExtendIcon>
+      <ExtendBtn onClick={handleClick}>
+        <ExtendIcon className={isExtended ? "fas fa-caret-up" : "fas fa-caret-down"}></ExtendIcon>
       </ExtendBtn>
     </ExtensionsWrapper>
   );
@@ -25,14 +31,16 @@ const ExtensionsWrapper = styled.div`
   flex-direction: column;
 `;
 const ExtensionsList = styled.div`
-  height: auto;
+  height: ${(props) => (props.isExtended ? "auto" : "0px")};
+  transition: height 1s ease;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 5px 0px;
+  padding: ${(props) => (props.isExtended ? "5px 0px" : "0px")};
   border-top: 2px solid var(--highlight-screen);
   border-bottom: 2px solid var(--highlight-screen);
+  overflow: hidden;
 `;
 const Anchor = styled.a`
   text-decoration: none;
