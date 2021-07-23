@@ -14,10 +14,18 @@ const Content = () => {
   );
 };
 
-const Wrapper = styled.div`
-  /* border: 4px solid blue; */
+const Wrapper = styled.main`
+  border: 4px solid blue;
   height: 100%;
-  display: flex;
+  width: 100%;
+  display: grid;
+  overflow: hidden;
+  grid-template-areas: "left middle right";
+  grid-template-columns: 2fr 5fr 2fr;
+  grid-template-rows: 1fr;
+  padding-top: 30px;
+  /* overflow: hidden; */
+  /* overflow-y: auto; */
 `;
 
 export default Content;

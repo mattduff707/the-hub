@@ -36,7 +36,7 @@ const Wrapper = styled.div`
   /* border: 4px solid green; */
   flex: 1;
   height: 100%;
-  padding: 40px 0px 30px 40px;
+  padding: 0px 0px 30px 40px;
 `;
 
 export default LeftScreen;

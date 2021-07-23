@@ -36,10 +36,11 @@ const Buttons = () => {
   );
 };
 
-const Wrapper = styled.section`
-  flex: 1;
+const Wrapper = styled.nav`
+  /* flex: 1; */
   /* border: 2px solid orange; */
-  padding: 0px 40px 30px 40px;
+  /* padding: 0px 40px 30px 40px; */
+  /* height: 200px; */
 `;
 const ButtonList = styled.ul`
   list-style: none;
@@ -47,7 +48,6 @@ const ButtonList = styled.ul`
   justify-content: space-around;
   background-color: var(--highlight-main);
   /* padding: 20px 0px 50px 0px; */
-  height: 100%;
   border-radius: 20px;
   border: 4px solid var(--highlight-main-border-light);
   border-left: 8px solid var(--highlight-main-border-light);

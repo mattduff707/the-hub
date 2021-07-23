@@ -1,36 +1,55 @@
 import React from "react";
+import { Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import CoolScreen from "../CoolScreen";
 import ScreenIndent from "../ScreenIndent";
+import Home from "./home/Home";
+import Snippets from "./snippets/Snippets";
+import Math from "./math/Math";
 
 const Screen = () => {
   return (
     <Wrapper>
       <ScreenIndent>
-        <CoolScreen></CoolScreen>
+        <CoolScreen>
+          <Container>
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/snippets">
+                <Snippets />
+              </Route>
+              <Route path="/math">
+                <Math />
+              </Route>
+            </Switch>
+          </Container>
+        </CoolScreen>
       </ScreenIndent>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.section`
-  flex: 5;
+  /* flex: 2; */
   /* border: 2px solid yellow; */
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 40px;
+  justify-content: center; */
+  /* height: 100%; */
+  padding: 0px 30px 40px 30px;
+  /* overflow: auto; */
+  overflow: hidden;
 `;
-// const ScreenContainer = styled.div`
-//   border: 12px solid var(--shadow-main-border-dark);
-//   border-right: 8px solid var(--shadow-main-border-light);
-//   border-bottom: 8px solid var(--shadow-main-border-light);
-//   border-radius: 20px;
-//   background-color: var(--shadow-main);
-//   box-shadow: var(--inset-shadow);
 
-//   width: 100%;
-//   height: 100%;
-// `;
+const Container = styled.div`
+  padding: 25px;
+  /* border: 2px solid red; */
+  width: 100%;
+  /* height: 100%; */
+
+  overflow-y: auto;
+`;
 
 export default Screen;

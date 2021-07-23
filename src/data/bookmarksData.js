@@ -10,6 +10,7 @@ const data = [
     ],
   },
   { title: "Icon Reference", baseURL: "https://www.w3schools.com/icons/icons_reference.asp", extensions: false },
+  { title: "Google Fonts", baseURL: "https://fonts.google.com/", extensions: false },
   //   { baseURL: "", extensions: [] },
 ];
 

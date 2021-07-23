@@ -6,10 +6,10 @@ import { BrowserRouter as Router } from "react-router-dom";
 function App() {
   return (
     <Router>
+      <GlobalStyle />
       <MainContainer>
-        <GlobalStyle />
-        <Header />
-        <Content />
+        <Header style={{ gridArea: "header" }} />
+        <Content style={{ gridArea: "content" }} />
       </MainContainer>
     </Router>
   );
@@ -68,7 +68,7 @@ html {
 --hover-confirm: hsl(120, 95%, 65%);
 --hover-confirm-text-shadow-offset: 3px 3px 4px hsl(120, 95%, 65%);
 
---font-family-main: 'Offside', cursive;
+--font-family-main: 'Orbitron', sans-serif;
 
 
 }
@@ -82,17 +82,28 @@ html {
   }
   body {
     font-family: var(--font-family-main);
+    /* height: 100%; */
+    /* border: 2px solid red; */
   }
+  html {
+  /* max-height: 100%; */
+  /* border: 2px solid red; */
+}
 
 `;
 
 const MainContainer = styled.div`
+  /* isolation: isolate; */
   /* border: 3px solid red; */
   height: 100vh;
   background-color: var(--color-main);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 140px 1fr;
+  grid-template-areas:
+    "header"
+    "content";
+  /* overflow: hidden; */
 `;
 
 export default App;
