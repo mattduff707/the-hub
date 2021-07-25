@@ -13,10 +13,10 @@ const APOD = ({ data, loading, error }) => {
       <Title>{data.title}</Title>
       <Subtitle>{data.copyright}</Subtitle>
       <Image src={data.url} />
-      <ExtensionWrapper>
-        <ExtensionBtn onClick={handleClick}>
-          Description<ExtensionIcon className={isExtended ? "fas fa-caret-up" : "fas fa-caret-down"}></ExtensionIcon>
-        </ExtensionBtn>
+      <ExtensionBtn onClick={handleClick}>
+        Description<ExtensionIcon className={isExtended ? "fas fa-caret-up" : "fas fa-caret-down"}></ExtensionIcon>
+      </ExtensionBtn>
+      <ExtensionWrapper isExtended={isExtended}>
         <Description>{data.explanation}</Description>
       </ExtensionWrapper>
     </Wrapper>
@@ -31,6 +31,9 @@ const Wrapper = styled.div`
   background-color: var(--color-screen);
   border: 2px solid var(--highlight-screen);
   box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   /* max-height: 800px; */
   /* overflow-y: auto; */
 `;
@@ -70,11 +73,12 @@ const Description = styled.div`
 `;
 const ExtensionWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: ${(props) => (props.isExtended ? "auto" : "0px")};
   /* border: 2px solid red; */
   padding-top: 5px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 `;
 const ExtensionBtn = styled.button`
   border: none;
