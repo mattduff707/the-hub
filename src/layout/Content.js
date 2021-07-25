@@ -15,7 +15,7 @@ const Content = () => {
 };
 
 const Wrapper = styled.main`
-  border: 4px solid blue;
+  /* border: 4px solid blue; */
   height: 100%;
   width: 100%;
   display: grid;
@@ -23,7 +23,7 @@ const Wrapper = styled.main`
   grid-template-areas: "left middle right";
   grid-template-columns: 2fr 5fr 2fr;
   grid-template-rows: 1fr;
-  padding-top: 30px;
+  /* padding-top: 30px; */
   /* overflow: hidden; */
   /* overflow-y: auto; */
 `;

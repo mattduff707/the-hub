@@ -99,7 +99,7 @@ const MainContainer = styled.div`
   background-color: var(--color-main);
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 140px 1fr;
+  grid-template-rows: 100px 1fr;
   grid-template-areas:
     "header"
     "content";

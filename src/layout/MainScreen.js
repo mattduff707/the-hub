@@ -12,9 +12,9 @@ const MainScreen = () => {
   );
 };
 const Wrapper = styled.div`
-  border: 4px solid green;
+  /* border: 4px solid green; */
   display: grid;
-  /* height: 100%; */
+  height: 100%;
   width: 100%;
   grid-template-columns: 1fr;
   grid-template-rows: 5fr 1fr;

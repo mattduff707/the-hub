@@ -12,8 +12,8 @@ const Header = () => {
 };
 
 const Wrapper = styled.header`
-  margin-bottom: 40px;
-  max-height: 10%;
+  /* margin-bottom: 40px; */
+
   /* z-index: 1; */
 `;
 export default Header;

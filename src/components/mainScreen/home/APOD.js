@@ -52,6 +52,7 @@ const Subtitle = styled.h3`
 `;
 const Image = styled.img`
   max-width: 100%;
+  margin: 0px auto;
   height: auto;
   display: block;
   border-radius: 8px;
