@@ -11,6 +11,11 @@ const data = [
   },
   { title: "Icon Reference", baseURL: "https://www.w3schools.com/icons/icons_reference.asp", extensions: false },
   { title: "Google Fonts", baseURL: "https://fonts.google.com/", extensions: false },
+  {
+    title: "WAI-ARIA",
+    baseURL: "https://www.w3.org/TR/wai-aria-practices/",
+    extensions: false,
+  },
   //   { baseURL: "", extensions: [] },
 ];
 
