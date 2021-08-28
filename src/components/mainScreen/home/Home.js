@@ -13,7 +13,7 @@ const Home = () => {
   if (data) {
     return (
       <Wrapper>
-        <Title>Welcome, Matthew</Title>
+        <Title>Welcome, Matthew!</Title>
         <APOD data={data} loading={loading} error={error} />
       </Wrapper>
     );

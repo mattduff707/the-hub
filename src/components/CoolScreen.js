@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-const CoolScreen = ({ children, sideScreen, className, clockScreenWrapper }) => {
+const CoolScreen = ({ children, sideScreen, className, clockScreenWrapper, linkScreen }) => {
   if (clockScreenWrapper) {
     return <ClockScreenWrapper className={className}>{children}</ClockScreenWrapper>;
   }
