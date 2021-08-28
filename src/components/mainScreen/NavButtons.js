@@ -7,7 +7,7 @@ import CoolScreen from '../CoolScreen';
 const homePath = '/';
 const snippetsPath = '/snippets';
 const mathPath = '/math';
-const potdPath = '/potd';
+const bugsPath = '/bugs';
 const NavButtons = () => {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const handleNav = (e) => {
@@ -49,11 +49,11 @@ const NavButtons = () => {
           </CoolLink>
         </ButtonContainer>
         <ButtonContainer>
-          <CoolLink onClick={handleNav} path={potdPath} to={potdPath}>
+          <CoolLink onClick={handleNav} path={bugsPath} to={bugsPath}>
             <CoolButton padding={'28px'}></CoolButton>
             <LinkLabelContainer>
               <LinkScreen>
-                <LinkLabel isActive={potdPath === currentPath}>POTD</LinkLabel>
+                <LinkLabel isActive={bugsPath === currentPath}>Bugs</LinkLabel>
               </LinkScreen>
             </LinkLabelContainer>
           </CoolLink>

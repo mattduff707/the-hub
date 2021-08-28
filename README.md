@@ -1,6 +1,36 @@
-# Getting Started with Create React App
+## Process I followed
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Sketched a rough design
+- Created a basic outline on Figma
+- Broke it down into manageable tasks
+- Began using seperate branches and pull requests to mimic professional development mid project
+
+---
+
+## Key Features
+
+- Task Management [Code Snippet](https://github.com/mattduff707/the-hub/blob/5ec67eb33884b50714bedb76973f259eec24e746/src/components/todo/TodoList.js#L7-L67)
+- Bookmark Search Feature [Code Snippet](https://github.com/mattduff707/the-hub/blob/5ec67eb33884b50714bedb76973f259eec24e746/src/components/bookmarks/Search.js#L4-L35)
+- API Call and data manipulation using a custom hook (hook credit to Cory House) [Hook](https://github.com/mattduff707/the-hub/blob/5ec67eb33884b50714bedb76973f259eec24e746/src/services/useFetch.js#L1-L41) and [Data](https://github.com/mattduff707/the-hub/blob/main/src/components/mainScreen/home/APOD.js)
+
+---
+
+## Why I built it this way
+
+- As a personal desktop app, I put minimal consideration into accessibility and responsiveness.
+- I made this app with increased productivity in mind.
+- Until I am proficient in a back-end language the usage of localStorage as a database is necessary to prevent the loss of tasks between sessions.
+- Styled components are my go-to styling solution. The css-in-js features of it are literally magic! It allows me to dynamically style with ease.
+- I love the look of SPA with only a viewport sized screen. It is always a bit of a headache but it fit this app perfectly. Grid and flexbox always save the day
+
+---
+
+## Potential Changes
+
+- Lots of refactoring is necessary still. especially here [Code Snippet](https://github.com/mattduff707/the-hub/blob/5ec67eb33884b50714bedb76973f259eec24e746/src/components/mainScreen/NavButtons.js#L18-L64)
+- Several new features planned for the future: Snippets library, mental math game, and a bug report library just to name a few.
+
+---
 
 ## Available Scripts
 

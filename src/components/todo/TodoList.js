@@ -13,11 +13,6 @@ const TodoList = () => {
     if (windowStorage) {
       setList(windowStorage);
     }
-    // async function init() {
-    //   try {
-    //     const response = await JSON.parse(window.localStorage.getItem(todoTag));
-    //   }
-    // }
   }, []);
 
   const handleSubmit = (e) => {
