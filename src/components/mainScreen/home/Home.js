@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import styled from "styled-components";
-import useFetch from "../../../services/useFetch";
-import APOD from "./APOD";
+import React from 'react';
+import styled from 'styled-components';
+import useFetch from '../../../services/useFetch';
+import APOD from './APOD';
 
 const Home = () => {
   const { data, loading, error } = useFetch(
-    "https://api.nasa.gov/planetary/apod?api_key=kXzpTPi9EJQUUhl0fZVNK2S8owEeuPVogzGowgOR"
+    'https://api.nasa.gov/planetary/apod?api_key=kXzpTPi9EJQUUhl0fZVNK2S8owEeuPVogzGowgOR'
   );
 
   console.log(data);
