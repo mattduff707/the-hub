@@ -1,15 +1,15 @@
-import styled, { createGlobalStyle } from "styled-components";
-import Header from "./layout/Header";
-import Content from "./layout/Content";
-import { BrowserRouter as Router } from "react-router-dom";
+import styled, { createGlobalStyle } from 'styled-components';
+import Header from './layout/Header';
+import Content from './layout/Content';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
   return (
     <Router>
       <GlobalStyle />
       <MainContainer>
-        <Header style={{ gridArea: "header" }} />
-        <Content style={{ gridArea: "content" }} />
+        <Header style={{ gridArea: 'header' }} />
+        <Content style={{ gridArea: 'content' }} />
       </MainContainer>
     </Router>
   );
@@ -51,6 +51,7 @@ html {
 
 --color-text: hsla(38, 58%, 94%, 1);
 --shadow-text: 0px 0px 4px hsl(38, 58%, 94%);
+--shadow-icon: 0px 0px 3px hsl(38, 58%, 94%);
 --color-text-highlight: hsla(20, 88%, 60%, 1);
 --shadow-text-highlight: 0px 0px 4px hsl(20, 88%, 60%);
 --inset-shadow: inset 2px 2px 4px hsla(180, 2%, 6%, 1);
@@ -61,12 +62,15 @@ html {
 --hover-main-text: hsl(35, 100%, 55%);
 --hover-main-text-shadow: 0px 0px 5px hsl(35, 100%, 55%);
 --hover-main-text-shadow-offset: 3px 3px 5px hsl(35, 100%, 55%);
+--hover-main-icon: hsl(35, 100%, 55%);
+--hover-main-icon-shadow: 0px 0px 3px hsl(35, 100%, 55%);
+--hover-main-icon-shadow-offset: 3px 3px 0px hsla(35, 100%, 55%, 0.65);
 
 --hover-danger: hsl(340, 95%, 65%);
---hover-danger-text-shadow-offset: 3px 3px 4px hsl(340, 95%, 65%);
+--hover-danger-icon-shadow-offset: 3px 3px 0px hsla(340, 95%, 65%, 0.85);
 
 --hover-confirm: hsl(120, 95%, 65%);
---hover-confirm-text-shadow-offset: 3px 3px 4px hsl(120, 95%, 65%);
+--hover-confirm-icon-shadow-offset: 3px 3px 0px hsla(120, 95%, 65%, 0.45);
 
 --font-family-main: 'Orbitron', sans-serif;
 
@@ -101,8 +105,8 @@ const MainContainer = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: 100px 1fr;
   grid-template-areas:
-    "header"
-    "content";
+    'header'
+    'content';
   /* overflow: hidden; */
 `;
 

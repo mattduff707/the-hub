@@ -1,5 +1,7 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import DownArrow from '../../icons/DownArrow';
+import UpArrow from '../../icons/upArrow';
 
 const Extensions = ({ extensions, baseURL }) => {
   const [isExtended, setIsExtended] = useState(false);
@@ -19,9 +21,7 @@ const Extensions = ({ extensions, baseURL }) => {
           );
         })}
       </ExtensionsList>
-      <ExtendBtn onClick={handleClick}>
-        <ExtendIcon className={isExtended ? "fas fa-caret-up" : "fas fa-caret-down"}></ExtendIcon>
-      </ExtendBtn>
+      <ExtendBtn onClick={handleClick}>{isExtended ? <StyledUpArrow /> : <StyledDownArrow />}</ExtendBtn>
     </ExtensionsWrapper>
   );
 };
@@ -31,13 +31,13 @@ const ExtensionsWrapper = styled.div`
   flex-direction: column;
 `;
 const ExtensionsList = styled.div`
-  height: ${(props) => (props.isExtended ? "auto" : "0px")};
+  height: ${(props) => (props.isExtended ? 'auto' : '0px')};
   transition: height 1s ease;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: ${(props) => (props.isExtended ? "5px 0px" : "0px")};
+  padding: ${(props) => (props.isExtended ? '5px 0px' : '0px')};
   border-top: 2px solid var(--highlight-screen);
   border-bottom: 2px solid var(--highlight-screen);
   overflow: hidden;
@@ -81,24 +81,60 @@ const ExtendBtn = styled.button`
 
   cursor: pointer;
 `;
-const Icon = styled.i`
-  /* border: 2px solid red; */
-  font-size: 26px;
-  color: var(--color-text);
-  text-shadow: var(--shadow-text);
-  transition: color, text-shadow;
+// const Icon = styled.i`
+//   /* border: 2px solid red; */
+//   font-size: 26px;
+//   color: var(--color-text);
+//   text-shadow: var(--shadow-text);
+//   transition: color, text-shadow;
+//   transition-duration: 0.3s;
+//   transition-timing-function: ease;
+//   cursor: pointer;
+// `;
+// const ExtendIcon = styled(Icon)`
+//   ${ExtendBtn}:hover & {
+//     transition: color, text-shadow;
+//     transition-duration: 0.3s;
+//     transition-timing-function: ease;
+//     color: var(--hover-main-text);
+//     text-shadow: var(--hover-main-text-shadow);
+//   }
+// `;
+const StyledUpArrow = styled(UpArrow)`
+  transition: fill, filter;
   transition-duration: 0.3s;
   transition-timing-function: ease;
-  cursor: pointer;
-`;
-const ExtendIcon = styled(Icon)`
   ${ExtendBtn}:hover & {
-    transition: color, text-shadow;
+    fill: var(--hover-main-icon);
+    filter: drop-shadow(var(--hover-main-icon-shadow));
+    transition: fill, filter;
     transition-duration: 0.3s;
     transition-timing-function: ease;
-    color: var(--hover-main-text);
-    text-shadow: var(--hover-main-text-shadow);
   }
 `;
+const StyledDownArrow = styled(DownArrow)`
+  transition: fill, filter;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  ${ExtendBtn}:hover & {
+    fill: var(--hover-main-icon);
+    filter: drop-shadow(var(--hover-main-icon-shadow));
+    transition: fill, filter;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+  }
+`;
+// const StyledArrowDown = styled(ArrowDown)`
+//   fill: var(--color-text);
+//   height: 24px;
+//   width: 24px;
+//   filter: drop-shadow(var(--shadow-icon));
+// `;
+// const StyledArrowUp = styled(ArrowUp)`
+//   fill: var(--color-text);
+//   height: 24px;
+//   width: 24px;
+//   filter: drop-shadow(var(--shadow-icon));
+// `;
 
 export default Extensions;
