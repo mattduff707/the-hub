@@ -1,49 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import CoolButton from '../CoolButton';
 import { NavLink } from 'react-router-dom';
 import CoolScreen from '../CoolScreen';
 
+const homePath = '/';
+const snippetsPath = '/snippets';
+const mathPath = '/math';
+const potdPath = '/potd';
 const NavButtons = () => {
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  const handleNav = (e) => {
+    const path = e.currentTarget.attributes.path.value;
+
+    setCurrentPath(() => path);
+  };
   return (
     <Wrapper>
       <ButtonList>
         <ButtonContainer>
-          <CoolLink exact to="/">
+          <CoolLink onClick={handleNav} path={homePath} exact to={homePath}>
             <CoolButton padding={'28px'}></CoolButton>
             <LinkLabelContainer>
               <LinkScreen>
-                <LinkLabel>Home</LinkLabel>
+                <LinkLabel isActive={homePath === currentPath}>Home</LinkLabel>
               </LinkScreen>
             </LinkLabelContainer>
           </CoolLink>
         </ButtonContainer>
         <ButtonContainer>
-          <CoolLink to="/snippets">
+          <CoolLink onClick={handleNav} path={snippetsPath} to={snippetsPath}>
             <CoolButton padding={'28px'}></CoolButton>
             <LinkLabelContainer>
               <LinkScreen>
-                <LinkLabel>Snippets</LinkLabel>
+                <LinkLabel isActive={snippetsPath === currentPath}>Snippets</LinkLabel>
               </LinkScreen>
             </LinkLabelContainer>
           </CoolLink>
         </ButtonContainer>
         <ButtonContainer>
-          <CoolLink to="/math">
+          <CoolLink onClick={handleNav} path={mathPath} to={mathPath}>
             <CoolButton padding={'28px'}></CoolButton>
             <LinkLabelContainer>
               <LinkScreen>
-                <LinkLabel>Math</LinkLabel>
+                <LinkLabel isActive={mathPath === currentPath}>Math</LinkLabel>
               </LinkScreen>
             </LinkLabelContainer>
           </CoolLink>
         </ButtonContainer>
         <ButtonContainer>
-          <CoolLink to="/potd">
+          <CoolLink onClick={handleNav} path={potdPath} to={potdPath}>
             <CoolButton padding={'28px'}></CoolButton>
             <LinkLabelContainer>
               <LinkScreen>
-                <LinkLabel>POTD</LinkLabel>
+                <LinkLabel isActive={potdPath === currentPath}>POTD</LinkLabel>
               </LinkScreen>
             </LinkLabelContainer>
           </CoolLink>
@@ -114,16 +124,16 @@ const LinkScreen = styled(CoolScreen)`
 `;
 const LinkLabel = styled.p`
   font-weight: 600;
-  color: var(--color-text);
-  text-shadow: 1px 1px 0px var();
+  color: ${(props) => (props.isActive ? 'var(--hover-confirm)' : 'var(--color-text)')};
+  text-shadow: ${(props) => (props.isActive ? 'var(--hover-confirm-shadow)' : 'var(--shadow-text)')};
   border: 2px solid var(--highlight-screen);
-  background-color: var(--color-screen);
   padding: 5px;
   border-radius: 8px;
   box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
   transition: border-color, box-shadow, background-color;
   transition-duration: 0.4s;
   transition-timing-function: ease;
+  background: var(--color-screen);
 
   ${CoolLink}:hover & {
     border-color: var(--hover-main);
