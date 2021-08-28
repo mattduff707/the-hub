@@ -21,7 +21,7 @@ const Wrapper = styled.ul`
   width: 100%;
   height: 100%;
   position: relative;
-  padding: 50px 10px;
+  padding: 0px 10px;
 `;
 
 export default BookmarksList;

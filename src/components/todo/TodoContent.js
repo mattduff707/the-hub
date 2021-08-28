@@ -1,26 +1,12 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const TodoContent = ({ value, textContent, editing, handleChange }) => {
-  //   const [textContent, setTextContent] = useState();
-
-  //   useEffect(() => {
-  //     setTextContent(value);
-  //   }, [value]);
-
-  //   const handleChange = (e) => {
-  //     setTextContent(e.currentTarget.value);
-  //   };
-
   if (editing) {
     return <EditContent value={textContent} onChange={handleChange} />;
   }
   return <TextContent>{value}</TextContent>;
 };
-
-// const EditForm = styled.form`
-//   height: 200px;
-// `;
 
 const TextContent = styled.p`
   text-shadow: var(--shadow-text);

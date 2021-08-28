@@ -1,16 +1,18 @@
-import React from "react";
-import styled from "styled-components";
-import ScreenIndent from "../components/ScreenIndent";
-import CoolScreen from "../components/CoolScreen";
-import BookmarksList from "../components/bookmarks/BookmarksList";
+import React from 'react';
+import styled from 'styled-components';
+import ScreenIndent from '../components/ScreenIndent';
+import CoolScreen from '../components/CoolScreen';
+import BookmarksList from '../components/bookmarks/BookmarksList';
+import Heading from '../components/Heading';
 
 const Bookmarks = () => {
   return (
     <Wrapper>
       <ScreenIndent long>
-        <CoolScreen sideScreen>
+        <StyledScreen sideScreen>
+          <Heading>Bookmarks</Heading>
           <BookmarksList />
-        </CoolScreen>
+        </StyledScreen>
       </ScreenIndent>
     </Wrapper>
   );
@@ -20,6 +22,9 @@ const Wrapper = styled.div`
   height: 100%;
   flex: 1;
   padding: 0px 40px 30px 0px;
+`;
+const StyledScreen = styled(CoolScreen)`
+  padding-top: 40px;
 `;
 
 export default Bookmarks;

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import TodoItem from "./TodoItem";
-import TodoForm from "./TodoForm";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import TodoItem from './TodoItem';
+import TodoForm from './TodoForm';
 
 const TodoList = () => {
-  const todoTag = "todoList";
+  const todoTag = 'todoList';
 
   const [list, setList] = useState([]);
 
@@ -28,7 +28,7 @@ const TodoList = () => {
       return;
     }
 
-    e.target[0].value = "";
+    e.target[0].value = '';
     setList(() => {
       return [...list, { id: list.length, value: todoVal, editing: false }];
     });
@@ -64,23 +64,12 @@ const TodoList = () => {
 
   useEffect(() => {
     window.localStorage.setItem(todoTag, JSON.stringify(list));
-    // console.log(window.localStorage);
   }, [list]);
 
-  // if (loading) {
-  //   return (
-  //     <Wrapper>
-  //       <Loading>Loading...</Loading>
-  //     </Wrapper>
-  //   );
-  // }
   return (
     <Wrapper>
       <TodoForm handleSubmit={handleSubmit} />
       <ListWrapper>
-        {/* <TodoItem value="Finish project wireframe" />
-            <TodoItem />
-            <TodoItem /> */}
         {list.map((e) => {
           return (
             <TodoItem
@@ -103,20 +92,8 @@ const Wrapper = styled.section`
   width: 100%;
   height: 100%;
   position: relative;
-  padding-top: 50px;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
 `;
-// const Loading = styled.p`
-//   color: var(--color-text);
-//   text-shadow: var(--shadow-text);
-//   font-size: 24px;
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-// `;
+
 const ListWrapper = styled.ul`
   width: 100%;
   list-style: none;

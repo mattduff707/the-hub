@@ -1,8 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import TodoList from "../components/todo/TodoList";
-import CoolScreen from "../components/CoolScreen";
-import ScreenIndent from "../components/ScreenIndent";
+import React from 'react';
+import styled from 'styled-components';
+import TodoList from '../components/todo/TodoList';
+import CoolScreen from '../components/CoolScreen';
+import ScreenIndent from '../components/ScreenIndent';
+import Heading from '../components/Heading';
 
 const LeftScreen = () => {
   // const [notDoneArr, setNotDoneArr] = useState(["Second Todo", "Third Todo"]);
@@ -24,9 +25,10 @@ const LeftScreen = () => {
   return (
     <Wrapper>
       <ScreenIndent long>
-        <CoolScreen sideScreen>
+        <StyledScreen sideScreen>
+          <Heading>Tasks</Heading>
           <TodoList />
-        </CoolScreen>
+        </StyledScreen>
       </ScreenIndent>
     </Wrapper>
   );
@@ -37,6 +39,9 @@ const Wrapper = styled.div`
   flex: 1;
   height: 100%;
   padding: 0px 0px 30px 40px;
+`;
+const StyledScreen = styled(CoolScreen)`
+  padding-top: 40px;
 `;
 
 export default LeftScreen;
