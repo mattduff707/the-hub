@@ -2,14 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import useFetch from '../../../services/useFetch';
 import APOD from './APOD';
+import Heading from '../../Heading';
 
 const Home = () => {
   const { data, loading, error } = useFetch(
     'https://api.nasa.gov/planetary/apod?api_key=kXzpTPi9EJQUUhl0fZVNK2S8owEeuPVogzGowgOR'
   );
 
-  console.log(data);
-
+  if (error) {
+    return <Heading>Error!</Heading>;
+  }
   if (data) {
     return (
       <Wrapper>
@@ -18,7 +20,7 @@ const Home = () => {
       </Wrapper>
     );
   }
-  return <div>Error</div>;
+  return <Heading>Loading...</Heading>;
 };
 
 const Wrapper = styled.article`
