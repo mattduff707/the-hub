@@ -1,28 +1,17 @@
-import React, {useState} from "react";
-import styled from "styled-components";
-import Extensions from "./Extensions";
+import React from 'react';
+import styled from 'styled-components';
+import Extensions from './Extensions';
+import Search from './Search';
 
-const Bookmark = ({ title, baseURL, extensions }) => {
-
- 
-
-  if (extensions) {
-    return (
-      <Wrapper>
-        <BaseAnchor href={baseURL} target="_blank">
-          <Title>{title}</Title>
-          <AnchorIcon className="far fa-arrow-alt-circle-right"></AnchorIcon>
-        </BaseAnchor>
-        <Extensions extensions={extensions} baseURL={baseURL} />
-      </Wrapper>
-    );
-  }
+const Bookmark = ({ title, baseURL, extensions, search }) => {
   return (
     <Wrapper>
       <BaseAnchor href={baseURL} target="_blank">
         <Title>{title}</Title>
         <AnchorIcon className="far fa-arrow-alt-circle-right"></AnchorIcon>
       </BaseAnchor>
+      {search ? <Search extensions={extensions} search={search} /> : <></>}
+      {extensions ? <Extensions extensions={extensions} baseURL={baseURL} /> : <></>}
     </Wrapper>
   );
 };
