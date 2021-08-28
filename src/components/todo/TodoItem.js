@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import TodoContent from "./TodoContent";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import TodoContent from './TodoContent';
+import CheckIcon from '../../icons/Check';
+import DeleteIcon from '../../icons/Delete';
+import EditIcon from '../../icons/Edit';
 
 const TodoItem = ({ value, itemId, deleteItem, editing, startEdit, confirmEdit }) => {
-  const iconCheck = "far fa-check-circle";
-  const iconDelete = "far fa-times-circle";
-  const iconEdit = "far fa-edit";
-
   const handleDelete = (e) => {
     e.preventDefault();
     deleteItem(itemId);
@@ -18,7 +17,7 @@ const TodoItem = ({ value, itemId, deleteItem, editing, startEdit, confirmEdit }
     setTextContent(value);
   };
 
-  const [textContent, setTextContent] = useState("");
+  const [textContent, setTextContent] = useState('');
 
   useEffect(() => {
     setTextContent(value);
@@ -42,17 +41,24 @@ const TodoItem = ({ value, itemId, deleteItem, editing, startEdit, confirmEdit }
         />
       </Content>
       <ButtonWrapper>
-        <EditBtn onClick={handleEdit}>
-          <Icon className={editing ? iconDelete : iconEdit}></Icon>
-        </EditBtn>
+        {editing ? (
+          <EditDeleteBtn editing={editing} onClick={handleEdit}>
+            <StyledDeleteIcon />
+          </EditDeleteBtn>
+        ) : (
+          <EditBtn onClick={handleEdit}>
+            <StyledEditIcon />
+          </EditBtn>
+        )}
+
         <EditConfirmBtn editing={editing} onClick={() => confirmEdit(itemId, textContent)}>
-          <i className={iconCheck}></i>
+          <StyledCheckIcon />
         </EditConfirmBtn>
         <DeleteBtn editing={editing} onClick={handleDelete}>
-          <i className={iconDelete}></i>
+          <StyledDeleteIcon />
         </DeleteBtn>
-        <CompleteBtn editing={editing}>
-          <i className={iconCheck}></i>
+        <CompleteBtn onClick={handleDelete} editing={editing}>
+          <StyledCheckIcon />
         </CompleteBtn>
       </ButtonWrapper>
     </Wrapper>
@@ -94,11 +100,11 @@ const IconButton = styled.button`
   cursor: pointer;
   /* margin: 0px 5px; */
   /* border: 2px solid black; */
-  transition: color, text-shadow, transform;
+  transition: color, filter, transform;
   transition-duration: 0.5s;
   transition-timing-function: ease;
   &:hover {
-    transition: color, text-shadow, transform;
+    transition: color, filter, transform;
     transition-duration: 0.3s;
     transition-timing-function: ease;
   }
@@ -107,35 +113,56 @@ const IconButton = styled.button`
 const EditBtn = styled(IconButton)`
   &:hover {
     color: var(--hover-main-text);
-    text-shadow: var(--hover-main-text-shadow-offset);
+    filter: drop-shadow(var(--hover-main-icon-shadow-offset));
     transform: translate(-1px, -1px);
   }
 `;
 
 const EditConfirmBtn = styled(IconButton)`
-  display: ${(props) => (props.editing ? "visible" : "none")};
-`;
-const CompleteBtn = styled(IconButton)`
-  display: ${(props) => (props.editing ? "none" : "visible")};
+  display: ${(props) => (props.editing ? 'visible' : 'none')};
   &:hover {
     color: var(--hover-confirm);
-    text-shadow: var(--hover-confirm-text-shadow-offset);
+    filter: drop-shadow(var(--hover-confirm-icon-shadow-offset));
+    transform: translate(-1px, -1px);
+  }
+`;
+const EditDeleteBtn = styled(IconButton)`
+  display: ${(props) => (props.editing ? 'visible' : 'none')};
+  &:hover {
+    color: var(--hover-danger);
+    filter: drop-shadow(var(--hover-danger-icon-shadow-offset));
+    transform: translate(-1px, -1px);
+  }
+`;
+const CompleteBtn = styled(IconButton)`
+  display: ${(props) => (props.editing ? 'none' : 'visible')};
+  &:hover {
+    color: var(--hover-confirm);
+    filter: drop-shadow(var(--hover-confirm-icon-shadow-offset));
     transform: translate(-1px, -1px);
   }
 `;
 const DeleteBtn = styled(IconButton)`
   margin-left: auto;
-  display: ${(props) => (props.editing ? "none" : "visible")};
+  display: ${(props) => (props.editing ? 'none' : 'visible')};
 
   &:hover {
     color: var(--hover-danger);
-    text-shadow: var(--hover-danger-text-shadow-offset);
+    filter: drop-shadow(var(--hover-danger-icon-shadow-offset));
     transform: translate(-1px, -1px);
   }
 `;
-
-const Icon = styled.i`
-  transform: translateY(-1px);
+const StyledCheckIcon = styled(CheckIcon)`
+  width: 30px;
+  height: 30px;
+`;
+const StyledDeleteIcon = styled(DeleteIcon)`
+  width: 30px;
+  height: 30px;
+`;
+const StyledEditIcon = styled(EditIcon)`
+  width: 30px;
+  height: 30px;
 `;
 
 export default TodoItem;

@@ -2,13 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import Extensions from './Extensions';
 import Search from './Search';
+import CircleArrow from '../../icons/CircleArrow';
 
 const Bookmark = ({ title, baseURL, extensions, search }) => {
   return (
     <Wrapper>
       <BaseAnchor href={baseURL} target="_blank">
         <Title>{title}</Title>
-        <AnchorIcon className="far fa-arrow-alt-circle-right"></AnchorIcon>
+        <StyledCircleArrow />
       </BaseAnchor>
       {search ? <Search extensions={extensions} search={search} /> : <></>}
       {extensions ? <Extensions extensions={extensions} baseURL={baseURL} /> : <></>}
@@ -34,11 +35,10 @@ const BaseAnchor = styled(Anchor)`
   padding: 10px 5px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const Title = styled.h2`
-  /* border: 2px solid red; */
-  transform: translateY(2px);
   width: 100%;
   font-size: 18px;
   text-shadow: var(--shadow-text);
@@ -53,24 +53,16 @@ const Title = styled.h2`
     text-shadow: var(--hover-main-text-shadow);
   }
 `;
-
-const Icon = styled.i`
-  /* border: 2px solid red; */
-  font-size: 26px;
+const StyledCircleArrow = styled(CircleArrow)`
+  width: 30px;
+  height: 30px;
   color: var(--color-text);
-  text-shadow: var(--shadow-text);
-  transition: color, text-shadow;
-  transition-duration: 0.3s;
-  transition-timing-function: ease;
-  cursor: pointer;
-`;
-const AnchorIcon = styled(Icon)`
   ${Anchor}:hover & {
-    transition: color, text-shadow;
+    transition: color, filter;
     transition-duration: 0.3s;
     transition-timing-function: ease;
     color: var(--hover-main-text);
-    text-shadow: var(--hover-main-text-shadow);
+    filter: drop-shadow(var(--hover-main-icon-shadow));
   }
 `;
 

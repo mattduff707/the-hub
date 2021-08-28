@@ -1,5 +1,7 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import DownArrow from '../../../icons/DownArrow';
+import UpArrow from '../../../icons/upArrow';
 
 const APOD = ({ data, loading, error }) => {
   const [isExtended, setIsExtended] = useState(false);
@@ -14,7 +16,7 @@ const APOD = ({ data, loading, error }) => {
       <Subtitle>{data.copyright}</Subtitle>
       <Image src={data.url} />
       <ExtensionBtn onClick={handleClick}>
-        Description<ExtensionIcon className={isExtended ? "fas fa-caret-up" : "fas fa-caret-down"}></ExtensionIcon>
+        Description{isExtended ? <StyledUpArrow /> : <StyledDownArrow />}
       </ExtensionBtn>
       <ExtensionWrapper isExtended={isExtended}>
         <Description>{data.explanation}</Description>
@@ -73,10 +75,11 @@ const Description = styled.div`
 `;
 const ExtensionWrapper = styled.div`
   width: 100%;
-  height: ${(props) => (props.isExtended ? "auto" : "0px")};
+  height: auto;
+  display: ${(props) => (props.isExtended ? 'flex' : 'none')};
   /* border: 2px solid red; */
-  padding-top: 5px;
-  display: flex;
+  padding: 5px 0px 10px;
+  /* display: flex; */
   flex-direction: column;
   overflow: hidden;
 `;
@@ -91,9 +94,50 @@ const ExtensionBtn = styled.button`
   color: var(--color-text);
   font-family: var(--font-family-main);
   font-size: 16px;
+  transition: color, text-shadow;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  &:hover {
+    transition: color, text-shadow;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    color: var(--hover-main-text);
+    text-shadow: var(--hover-main-text-shadow);
+  }
 `;
-const ExtensionIcon = styled.i`
-  font-size: 30px;
+const StyledUpArrow = styled(UpArrow)`
+  transition: fill, filter;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  ${ExtensionBtn}:hover & {
+    fill: var(--hover-main-icon);
+    filter: drop-shadow(var(--hover-main-icon-shadow));
+    transition: fill, filter;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+  }
 `;
+const StyledDownArrow = styled(DownArrow)`
+  transition: fill, filter;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  ${ExtensionBtn}:hover & {
+    fill: var(--hover-main-icon);
+    filter: drop-shadow(var(--hover-main-icon-shadow));
+    transition: fill, filter;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+  }
+`;
+// const StyledArrowDown = styled(ArrowDown)`
+//   height: 24px;
+//   width: 24px;
+//   filter: drop-shadow(var(--shadow-icon));
+// `;
+// const StyledArrowUp = styled(ArrowUp)`
+//   height: 24px;
+//   width: 24px;
+//   filter: drop-shadow(var(--shadow-icon));
+// `;
 
 export default APOD;
