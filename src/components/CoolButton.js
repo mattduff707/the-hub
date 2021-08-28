@@ -1,14 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-const CoolButton = ({
-  children,
-  className,
-  handleClick,
-  margin,
-  padding,
-  fontSize,
-}) => {
+const CoolButton = ({ children, className, handleClick, margin, padding, fontSize }) => {
   return (
     <Btn margin={margin} padding={padding} onClick={handleClick}>
       <Shadow></Shadow>
@@ -53,7 +46,7 @@ const Edge = styled.span`
 const Front = styled.span`
   display: block;
   position: relative;
-  border: 4px solid var(--shadow-secondary);
+  border: 6px solid var(--shadow-secondary);
   /* box-shadow: inset 2px 4px 8px var(--shadow-secondary); */
   border-radius: 50%;
   padding: ${(props) => props.padding};
@@ -62,8 +55,7 @@ const Front = styled.span`
   background-color: var(--color-secondary);
   will-change: transform;
   transform: translateY(-6px);
-  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1),
-    color 500ms cubic-bezier(0.3, 0.7, 0.4, 1.5),
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1), color 500ms cubic-bezier(0.3, 0.7, 0.4, 1.5),
     border 500ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
 `;
 const Btn = styled.button`
@@ -78,9 +70,7 @@ const Btn = styled.button`
   &:hover ${Front} {
     transform: translateY(-8px);
     color: var(--color-text-primary);
-    border-color: var(--color-alternative);
-    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5),
-      border-color 500ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
   }
   &:active ${Front} {
     transform: translateY(-2px);

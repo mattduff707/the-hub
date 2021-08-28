@@ -1,13 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import Screen from "../components/mainScreen/Screen";
-import Buttons from "../components/mainScreen/Buttons";
+import React from 'react';
+import styled from 'styled-components';
+import Screen from '../components/mainScreen/Screen';
+import NavButtons from '../components/mainScreen/NavButtons';
 
 const MainScreen = () => {
   return (
     <Wrapper>
-      <Screen style={{ gridArea: "screen" }} />
-      <Buttons style={{ gridArea: "buttons" }} />
+      <Screen style={{ gridArea: 'screen' }} />
+      <NavButtons style={{ gridArea: 'buttons' }} />
     </Wrapper>
   );
 };
@@ -17,10 +17,10 @@ const Wrapper = styled.div`
   height: 100%;
   width: 100%;
   grid-template-columns: 1fr;
-  grid-template-rows: 5fr 1fr;
+  grid-template-rows: 4fr 1fr;
   grid-template-areas:
-    "screen"
-    "buttons";
+    'screen'
+    'buttons';
   /* max-height: 100%; */
   overflow-y: hidden;
 `;
