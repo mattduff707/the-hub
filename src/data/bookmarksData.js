@@ -12,7 +12,14 @@ const data = [
       searchURL: 'https://developer.mozilla.org/en-US/search?q=',
     },
   },
-  { title: 'Icon Reference', baseURL: 'https://www.w3schools.com/icons/icons_reference.asp', extensions: false },
+  {
+    title: 'Iconify',
+    baseURL: 'https://iconify.design/',
+    extensions: false,
+    search: {
+      searchURL: 'https://icon-sets.iconify.design/?query=',
+    },
+  },
   { title: 'Google Fonts', baseURL: 'https://fonts.google.com/', extensions: false },
   {
     title: 'WAI-ARIA',
