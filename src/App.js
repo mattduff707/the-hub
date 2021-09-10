@@ -1,5 +1,4 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import Header from './layout/Header';
 import Content from './layout/Content';
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -8,7 +7,6 @@ function App() {
     <Router>
       <GlobalStyle />
       <MainContainer>
-        <Header style={{ gridArea: 'header' }} />
         <Content style={{ gridArea: 'content' }} />
       </MainContainer>
     </Router>
@@ -47,6 +45,7 @@ html {
 
 --color-screen: hsla(220, 90%, 66%, 0.55);
 --highlight-screen: hsla(220, 90%, 71%, 0.55);
+--highlight-screen-shadow: 0px 0px 10px 4px hsla(220, 90%, 59%, 0.5);
 
 
 --color-text: hsla(38, 58%, 94%, 1);
@@ -58,7 +57,7 @@ html {
 
 --hover-main: hsla(30, 88%, 60%);
 --hover-main-bg: hsla(30, 100%, 50%) ;
---hover-main-shadow: 0px 0px 4px 2px hsl(30, 88%, 60%);
+--hover-main-shadow: 0px 0px 10px 4px hsl(30, 88%, 60%);
 --hover-main-text: hsl(35, 100%, 55%);
 --hover-main-text-shadow: 0px 0px 5px hsl(35, 100%, 55%);
 --hover-main-text-shadow-offset: 3px 3px 5px hsl(35, 100%, 55%);
@@ -71,7 +70,7 @@ html {
 
 --hover-confirm: hsl(120, 95%, 65%);
 --hover-confirm-icon-shadow-offset: 3px 3px 0px hsla(120, 95%, 65%, 0.45);
---hover-confirm-shadow: 0px 0px 4px hsla(120, 95%, 65%, 0.45);
+--hover-confirm-shadow: 0px 0px 4px hsla(120, 95%, 65%, 1);
 --hover-confirm-border: 2px solid hsl(120, 95%, 75%);
 
 --font-family-main: 'Orbitron', sans-serif;
@@ -105,10 +104,8 @@ const MainContainer = styled.div`
   background-color: var(--color-main);
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 100px 1fr;
-  grid-template-areas:
-    'header'
-    'content';
+  grid-template-rows: 1fr;
+  grid-template-areas: 'content';
   /* overflow: hidden; */
 `;
 

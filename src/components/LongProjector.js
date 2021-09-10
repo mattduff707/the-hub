@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const LongProjector = ({ bottom, top }) => {
   if (bottom) {
@@ -30,7 +30,7 @@ const LongProjector = ({ bottom, top }) => {
 
 const Illuminate = styled.div`
   width: 80%;
-
+  z-index: 20;
   position: absolute;
 `;
 const BottomIlluminate = styled(Illuminate)`
@@ -46,7 +46,7 @@ const TopIlluminate = styled(Illuminate)`
 `;
 const Wrapper = styled.div`
   height: 40px;
-  border-radius: 15px 15px 50px 50px;
+  border-radius: 30px 30px 30px 30px;
 
   background-color: var(--highlight-main);
   display: flex;

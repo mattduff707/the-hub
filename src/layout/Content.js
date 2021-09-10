@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import LeftScreen from "./LeftScreen";
-import MainScreen from "./MainScreen";
-import RightScreen from "./RightScreen";
+import React from 'react';
+import styled from 'styled-components';
+import LeftScreen from './LeftScreen';
+import MainScreen from './MainScreen';
+import RightScreen from './RightScreen';
 
 const Content = () => {
   return (
@@ -20,7 +20,7 @@ const Wrapper = styled.main`
   width: 100%;
   display: grid;
   overflow: hidden;
-  grid-template-areas: "left middle right";
+  grid-template-areas: 'left middle right';
   grid-template-columns: 2fr 5fr 2fr;
   grid-template-rows: 1fr;
   /* padding-top: 30px; */

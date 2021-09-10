@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Projector = ({
   top,
@@ -17,16 +17,16 @@ const Projector = ({
     <>
       <Wrapper
         style={{
-          "--position-top": top,
-          "--position-right": right,
-          "--position-bottom": bottom,
-          "--position-left": left,
-          "--rotation": rotation,
-          "--shadow": shadow,
-          "--border-top": borderTop,
-          "--border-right": borderRight,
-          "--border-bottom": borderBottom,
-          "--border-left": borderLeft,
+          '--position-top': top,
+          '--position-right': right,
+          '--position-bottom': bottom,
+          '--position-left': left,
+          '--rotation': rotation,
+          '--shadow': shadow,
+          '--border-top': borderTop,
+          '--border-right': borderRight,
+          '--border-bottom': borderBottom,
+          '--border-left': borderLeft,
         }}
       >
         {/* <UnderLight /> */}
@@ -59,7 +59,7 @@ const Wrapper = styled.div`
   transform: rotate(var(--rotation));
   width: 60px;
   height: 35px;
-  border-radius: 15px 50px 50px 15px;
+  border-radius: 30px 30px 30px 30px;
   background-color: var(--highlight-main);
   border-top: var(--border-top);
   border-left: var(--border-left);
