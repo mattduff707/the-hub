@@ -39,9 +39,13 @@ const Wrapper = styled.div`
   flex: 1;
   height: 100%;
   padding: 0px 0px 30px 40px;
+  /* overflow: auto; */
+  overflow: hidden;
+  padding-top: 30px;
 `;
 const StyledScreen = styled(CoolScreen)`
   padding-top: 40px;
+  overflow: hidden;
 `;
 
 export default LeftScreen;

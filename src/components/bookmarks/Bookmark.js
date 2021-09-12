@@ -54,8 +54,8 @@ const Title = styled.h2`
   }
 `;
 const StyledCircleArrow = styled(CircleArrow)`
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   color: var(--color-text);
   ${Anchor}:hover & {
     transition: color, filter;

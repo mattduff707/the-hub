@@ -38,9 +38,8 @@ const Wrapper = styled.section`
   align-items: center;
   justify-content: center; */
   /* height: 100%; */
-  padding: 0px 30px 40px 30px;
-  /* overflow: auto; */
-  overflow: hidden;
+  padding: 30px 30px 20px 30px;
+  overflow: auto;
 `;
 
 const Container = styled.div`

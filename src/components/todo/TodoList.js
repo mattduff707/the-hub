@@ -69,7 +69,7 @@ const TodoList = () => {
           return (
             <TodoItem
               itemId={e.id}
-              key={e + e.id}
+              key={e.value + e.id}
               value={e.value}
               deleteItem={deleteItem}
               startEdit={startEdit}
@@ -87,12 +87,15 @@ const Wrapper = styled.section`
   width: 100%;
   height: 100%;
   position: relative;
+  overflow: visible;
 `;
 
 const ListWrapper = styled.ul`
   width: 100%;
+  height: 100%;
   list-style: none;
-  padding: 0px 10px;
+  padding: 0px 10px 160px;
+  overflow: auto;
 `;
 
 export default TodoList;

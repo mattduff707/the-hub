@@ -72,7 +72,7 @@ const Wrapper = styled.li`
   padding: 10px 10px 5px 10px;
   border-radius: 8px;
   box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
-  margin-bottom: 10px;
+  margin: 10px 0px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
