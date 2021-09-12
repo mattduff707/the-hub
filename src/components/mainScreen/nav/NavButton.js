@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const NavButton = ({ children, path, isActive, handleClick }) => {
   return (
     <Wrapper isActive={isActive}>
-      <CoolLink onClick={handleClick} testActive={isActive} to={path} path={path}>
+      <CoolLink onClick={handleClick} to={path} path={path}>
         {children}
       </CoolLink>
     </Wrapper>
@@ -14,8 +14,10 @@ const NavButton = ({ children, path, isActive, handleClick }) => {
 
 const Wrapper = styled.li`
   width: 100px;
-  color: ${(props) => (props.isActive ? 'var(--hover-confirm)' : 'var(--color-text)')};
-  text-shadow: ${(props) => (props.isActive ? 'var(--hover-confirm-shadow)' : 'var(--shadow-text)')};
+  color: ${(props) =>
+    props.isActive ? "var(--hover-confirm)" : "var(--color-text)"};
+  text-shadow: ${(props) =>
+    props.isActive ? "var(--hover-confirm-shadow)" : "var(--shadow-text)"};
   border: 4px solid var(--highlight-screen);
   border-radius: 8px;
   box-shadow: var(--highlight-screen-shadow);
@@ -43,7 +45,6 @@ const CoolLink = styled(NavLink)`
   width: 100%;
   height: 100%;
   padding: 5px;
-  ${(props) => props.testActive && `filter: drop-shadow(var(--hover-confirm-shadow))`}
 `;
 
 export default NavButton;

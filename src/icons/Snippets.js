@@ -1,5 +1,5 @@
-import React from 'react';
-import StyledIcon from '../components/StyledIconHOC';
+import React from "react";
+import StyledIcon from "../components/StyledIconHOC";
 
 const Snippets = ({ className }) => {
   return (
@@ -14,7 +14,7 @@ const Snippets = ({ className }) => {
     >
       <g fill="currentColor">
         <path
-          fill-rule="evenodd"
+          fillRule="evenodd"
           d="M8.646 5.646a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L10.293 8L8.646 6.354a.5.5 0 0 1 0-.708zm-1.292 0a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0 0 .708l2 2a.5.5 0 0 0 .708-.708L5.707 8l1.647-1.646a.5.5 0 0 0 0-.708z"
         />
         <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />

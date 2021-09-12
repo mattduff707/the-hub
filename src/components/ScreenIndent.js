@@ -1,22 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
-import Projector from './Projector';
-import LongProjector from './LongProjector';
-import CircleProjector from './CircleProjector';
+import React from "react";
+import styled from "styled-components";
+import Projector from "./Projector";
+import LongProjector from "./LongProjector";
+import CircleProjector from "./CircleProjector";
 
 const ScreenIndent = ({ children, long, clock, className, nav }) => {
-  if (clock) {
-    return (
-      <ScreenContainer className={className}>
-        <CircleProjector />
-        {children}
-      </ScreenContainer>
-    );
-  }
   if (nav) {
     return (
       <ScreenContainer className={className}>
-        <LongProjector bottom />
+        <CircleProjector />
         {children}
       </ScreenContainer>
     );
