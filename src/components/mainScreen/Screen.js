@@ -38,6 +38,7 @@ const Wrapper = styled.section`
   align-items: center;
   justify-content: center; */
   /* height: 100%; */
+  min-height: 100%;
   padding: 30px 30px 20px 30px;
   overflow: auto;
 `;
@@ -47,6 +48,7 @@ const Container = styled.div`
   /* border: 2px solid red; */
   width: 100%;
   /* height: 100%; */
+  min-height: 100%;
 
   overflow-y: auto;
 `;

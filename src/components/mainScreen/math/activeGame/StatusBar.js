@@ -14,6 +14,7 @@ const StatusBar = () => {
 
 const Wrapper = styled.div`
   border: 2px solid red;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,6 +23,7 @@ const Wrapper = styled.div`
   border: 2px solid var(--highlight-screen);
   border-radius: 8px;
   box-shadow: var(--highlight-screen-shadow);
+  z-index: 20;
 `;
 const Container = styled.div`
   font-size: 1.4rem;

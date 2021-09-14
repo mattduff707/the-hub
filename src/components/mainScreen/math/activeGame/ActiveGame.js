@@ -23,16 +23,27 @@ const ActiveGame = () => {
         <Question />
         <Question />
         <Question />
+        <Question />
+        <Question />
+        <Question />
+        <Question />
+        <Question />
+        <Question />
+        <Question />
+        <Question />
+        <Question />
+        <Question />
+        <Question />
+        <Question />
       </QuestionWrapper>
     </>
   );
 };
-
-const QuestionWrapper = styled.section`
+const QuestionWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-top: 20px;
+  padding-top: 80px;
 `;
 
 export default ActiveGame;

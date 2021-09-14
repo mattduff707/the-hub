@@ -2,13 +2,14 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import InactiveGame from './inactiveGame/InactiveGame';
 import ActiveGame from './activeGame/ActiveGame';
+import CompletedGame from './completedGame/CompletedGame';
 
 const Math = () => {
   const inactiveGame = 'inactive';
   const activeGame = 'active';
-  // const completedGame = 'completedGame';
+  const completedGame = 'completedGame';
 
-  const [gameState, setGameState] = useState(inactiveGame);
+  const [gameState, setGameState] = useState(completedGame);
 
   const handleGameStart = () => {
     setGameState(() => activeGame);
@@ -26,11 +27,18 @@ const Math = () => {
         <ActiveGame />
       </Wrapper>
     );
+  } else if (gameState === completedGame) {
+    return (
+      <Wrapper style={{ justifyContent: 'center' }}>
+        <CompletedGame />
+      </Wrapper>
+    );
   }
 };
 
 const Wrapper = styled.section`
   width: 100%;
+  height: 100%;
   /* border: 2px solid red; */
   display: flex;
   flex-direction: column;
