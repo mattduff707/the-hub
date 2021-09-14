@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Btn from '../Btn';
 
 const TodoForm = ({ handleSubmit }) => {
   return (
@@ -41,34 +42,10 @@ const TextInput = styled.input`
   text-shadow: var(--shadow-text);
   font-size: 18px;
 `;
-const Submit = styled.button`
-  cursor: pointer;
-  color: var(--color-text);
-  border: 2px solid var(--highlight-screen);
+const Submit = styled(Btn)`
   flex: 1;
-  background-color: var(--color-screen);
   margin-left: 10px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
-  text-shadow: var(--shadow-text);
-  font-family: var(--font-family-main);
-  letter-spacing: 2px;
-  font-size: 18px;
-  font-weight: 600;
-  transition: border-color, box-shadow, background-color;
-  transition-duration: 0.5s;
-  transition-timing-function: ease;
-
-  &:hover {
-    /* text-shadow: var(--hover-main-shadow); */
-    border-color: var(--hover-main);
-    background-color: var(--hover-main-bg);
-    box-shadow: 0px 0px 10px 1px var(--hover-main);
-
-    transition: border-color, box-shadow, background-color;
-    transition-duration: 0.2s;
-    transition-timing-function: ease;
-  }
+  font-size: 1.1rem;
 `;
 
 export default TodoForm;

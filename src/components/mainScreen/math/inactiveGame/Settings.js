@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Btn from '../../../Btn';
 
 const Settings = ({ handleGameStart }) => {
   return (
@@ -119,6 +120,9 @@ const BtnWrapper = styled.div`
   justify-content: center;
   padding-top: 5px;
 `;
-const StartBtn = styled.button``;
+const StartBtn = styled(Btn)`
+  padding: 5px 10px;
+  font-size: 1.2rem;
+`;
 
 export default Settings;

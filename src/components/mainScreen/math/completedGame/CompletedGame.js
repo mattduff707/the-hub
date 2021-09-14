@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Btn from '../../../Btn';
 
 const CompletedGame = () => {
   return (
@@ -11,8 +12,8 @@ const CompletedGame = () => {
       <Score>Addition: 6 / 7</Score>
       <Score>Subtraction: 7 / 7</Score>
       <BtnWrapper>
-        <button>Replay</button>
-        <button>Exit</button>
+        <StyledBtn>Replay</StyledBtn>
+        <StyledBtn>Exit</StyledBtn>
       </BtnWrapper>
     </Wrapper>
   );
@@ -47,6 +48,12 @@ const BtnWrapper = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
+  padding-top: 10px;
+`;
+const StyledBtn = styled(Btn)`
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  margin: 0px 5px;
 `;
 
 export default CompletedGame;

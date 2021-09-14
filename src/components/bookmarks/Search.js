@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Btn from '../Btn';
 
 const Search = ({ search }) => {
   /* 
@@ -54,36 +55,14 @@ const TextInput = styled.input`
   border: 2px solid var(--highlight-screen);
   box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
   text-shadow: var(--shadow-text);
-  font-size: 14px;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
 `;
-const SubmitBtn = styled.button`
-  cursor: pointer;
-  color: var(--color-text);
-  border: 2px solid var(--highlight-screen);
+const SubmitBtn = styled(Btn)`
   flex: 1;
-  background-color: var(--color-screen);
+  font-size: 1rem;
   margin-left: 10px;
   padding: 0px 5px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
-  text-shadow: var(--shadow-text);
-  font-family: var(--font-family-main);
-  letter-spacing: 2px;
-  font-size: 14px;
-  font-weight: 600;
-  transition: border-color, box-shadow, background-color;
-  transition-duration: 0.5s;
-  transition-timing-function: ease;
-  &:hover {
-    /* text-shadow: var(--hover-main-shadow); */
-    border-color: var(--hover-main);
-    background-color: var(--hover-main-bg);
-    box-shadow: 0px 0px 10px 1px var(--hover-main);
-
-    transition: border-color, box-shadow, background-color;
-    transition-duration: 0.2s;
-    transition-timing-function: ease;
-  }
 `;
 
 export default Search;
