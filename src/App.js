@@ -43,7 +43,7 @@ html {
 --highlight-todo-delete-border-light: hsla(0, 90%, 59%, 0.5);
 --highlight-todo-delete-border-dark: hsla(0, 90%, 39%, 0.5);
 
---color-screen: hsla(220, 90%, 66%, 0.55);
+--color-screen: hsla(220, 50%, 46%);
 --highlight-screen: hsla(220, 90%, 71%, 0.55);
 --highlight-screen-shadow: 0px 0px 10px 4px hsla(220, 90%, 59%, 0.5);
 
