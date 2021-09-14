@@ -66,6 +66,7 @@ html {
 --hover-main-icon-shadow-offset: 3px 3px 0px hsla(35, 100%, 55%, 0.65);
 
 --hover-danger: hsl(340, 95%, 65%);
+--hover-danger-text-shadow: 0px 0px 8px hsla(340, 95%, 65%, 0.85);
 --hover-danger-icon-shadow-offset: 3px 3px 0px hsla(340, 95%, 65%, 0.85);
 
 --hover-confirm: hsl(120, 95%, 65%);
