@@ -1,49 +1,14 @@
 import React from 'react';
 import StatusBar from './StatusBar';
-import Question from './Question';
-import styled from 'styled-components';
+import QuestionList from './QuestionList';
 
 const ActiveGame = () => {
   return (
     <>
       <StatusBar />
-      <QuestionWrapper>
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-      </QuestionWrapper>
+      <QuestionList />
     </>
   );
 };
-const QuestionWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-top: 80px;
-`;
 
 export default ActiveGame;

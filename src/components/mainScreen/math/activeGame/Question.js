@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import SubtractionIcon from '../../../../icons/Subtraction';
 import EqualsIcon from '../../../../icons/Equals';
+import Btn from '../../../Btn';
 
 const Question = () => {
   return (
@@ -14,7 +15,7 @@ const Question = () => {
   );
 };
 
-const Wrapper = styled.article`
+const Wrapper = styled.form`
   font-size: 1.2rem;
   background-color: var(--color-screen);
   border: 2px solid var(--highlight-screen);
@@ -62,6 +63,9 @@ const Container = styled.div`
   align-items: center;
   margin-bottom: 10px;
 `;
-const SubmitBtn = styled.button``;
+const SubmitBtn = styled(Btn)`
+  padding: 5px 10px;
+  font-size: 1rem;
+`;
 
 export default Question;

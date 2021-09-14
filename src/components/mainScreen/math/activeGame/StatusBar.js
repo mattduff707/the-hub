@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Btn from '../../../Btn';
 
 const StatusBar = () => {
   return (
@@ -8,6 +9,7 @@ const StatusBar = () => {
         Time Remaining: <Timer>4:32</Timer>
       </Container>
       <Container>Answered: 7 / 10</Container>
+      <StyledBtn>End</StyledBtn>
     </Wrapper>
   );
 };
@@ -18,7 +20,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 0px;
+  padding: 20px;
   background-color: var(--color-screen);
   border: 2px solid var(--highlight-screen);
   border-radius: 8px;
@@ -32,6 +34,10 @@ const Container = styled.div`
 const Timer = styled.span`
   color: var(--hover-main-text);
   text-shadow: var(--hover-main-text-shadow);
+`;
+const StyledBtn = styled(Btn)`
+  padding: 5px 10px;
+  font-size: 1.2rem;
 `;
 
 export default StatusBar;

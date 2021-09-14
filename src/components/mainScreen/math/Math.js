@@ -9,7 +9,7 @@ const Math = () => {
   const activeGame = 'active';
   const completedGame = 'completedGame';
 
-  const [gameState, setGameState] = useState(completedGame);
+  const [gameState, setGameState] = useState(inactiveGame);
 
   const handleGameStart = () => {
     setGameState(() => activeGame);
