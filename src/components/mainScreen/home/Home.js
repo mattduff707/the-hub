@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import useFetch from '../../../services/useFetch';
 import APOD from './APOD';
 import Heading from '../../Heading';
+import PageTitle from '../PageTitle';
 
 const Home = () => {
   const { data, loading, error } = useFetch(
@@ -34,17 +35,7 @@ const Wrapper = styled.article`
   /* overflow-y: auto; */
 `;
 
-const Title = styled.h1`
-  font-size: 40px;
-  text-shadow: var(--shadow-text);
-  font-weight: 400;
-  letter-spacing: 2px;
-  color: var(--color-text);
-  background-color: var(--color-screen);
-  border: 2px solid var(--highlight-screen);
-  box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
-  border-radius: 8px;
-  padding: 20px 40px;
+const Title = styled(PageTitle)`
   margin-bottom: 40px;
 `;
 
