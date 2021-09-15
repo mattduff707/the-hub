@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 const NavButton = ({ children, path, isActive, handleClick }) => {
   return (
@@ -14,10 +14,8 @@ const NavButton = ({ children, path, isActive, handleClick }) => {
 
 const Wrapper = styled.li`
   width: 100px;
-  color: ${(props) =>
-    props.isActive ? "var(--hover-confirm)" : "var(--color-text)"};
-  text-shadow: ${(props) =>
-    props.isActive ? "var(--hover-confirm-shadow)" : "var(--shadow-text)"};
+  color: ${(props) => (props.isActive ? 'var(--hover-confirm)' : 'var(--color-text)')};
+  text-shadow: ${(props) => (props.isActive ? 'var(--hover-confirm-shadow)' : 'var(--shadow-text)')};
   border: 4px solid var(--highlight-screen);
   border-radius: 8px;
   box-shadow: var(--highlight-screen-shadow);
