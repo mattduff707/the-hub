@@ -11,7 +11,8 @@ const Math = () => {
 
   const [gameState, setGameState] = useState(inactiveGame);
 
-  const handleGameStart = () => {
+  const handleGameStart = (e) => {
+    console.log(e);
     setGameState(() => activeGame);
   };
 
