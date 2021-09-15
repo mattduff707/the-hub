@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import Btn from '../../../Btn';
+import Timer from './Timer';
 
 const StatusBar = () => {
   return (
     <Wrapper>
       <Container>
-        Time Remaining: <Timer>4:32</Timer>
+        Time Remaining: <Timer />
       </Container>
       <Container>Answered: 7 / 10</Container>
       <StyledBtn>End</StyledBtn>
@@ -31,10 +32,7 @@ const Container = styled.div`
   font-size: 1.4rem;
   padding: 0px 20px;
 `;
-const Timer = styled.span`
-  color: var(--hover-main-text);
-  text-shadow: var(--hover-main-text-shadow);
-`;
+
 const StyledBtn = styled(Btn)`
   padding: 5px 10px;
   font-size: 1.2rem;

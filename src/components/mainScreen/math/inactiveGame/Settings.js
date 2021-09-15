@@ -6,7 +6,7 @@ const Settings = ({ handleGameStart }) => {
   return (
     <SettingsWrapper>
       <SettingsTitle>Settings</SettingsTitle>
-      <SettingsForm>
+      <SettingsForm onSubmit={handleGameStart}>
         <SettingContainer>
           <SettingsLabel htmlFor="time">Time (Minutes):</SettingsLabel>
           <TimeSetting id="time" name="time">
@@ -44,7 +44,7 @@ const Settings = ({ handleGameStart }) => {
           </DifficultySetting>
         </SettingContainer>
         <BtnWrapper>
-          <StartBtn onClick={handleGameStart}>Start</StartBtn>
+          <StartBtn type="submit">Start</StartBtn>
         </BtnWrapper>
       </SettingsForm>
     </SettingsWrapper>
