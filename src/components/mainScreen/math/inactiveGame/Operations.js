@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import { operationsArr } from '../generateQuestions';
 
 const Operations = ({ gameOperations, handleOperationsChange }) => {
-  const operationOptions = ['addition', 'subtraction', 'multiplication'];
-
   return (
     <Wrapper>
       <OperationsTitle>Operations:</OperationsTitle>
 
-      {operationOptions.map((operation) => {
+      {operationsArr.map((operation) => {
         return (
           <Container key={operation}>
             <OperationsLabel htmlFor={operation}>{operation}:</OperationsLabel>

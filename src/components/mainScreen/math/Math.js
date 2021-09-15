@@ -3,16 +3,19 @@ import styled from 'styled-components';
 import InactiveGame from './inactiveGame/InactiveGame';
 import ActiveGame from './activeGame/ActiveGame';
 import CompletedGame from './completedGame/CompletedGame';
+import generateQuestions, { operationsArr, difficultiesArr } from './generateQuestions';
 
 const Math = () => {
   const inactiveGame = 'inactive';
   const activeGame = 'active';
   const completedGame = 'completedGame';
+  const questionTotal = 60;
 
   const [gameState, setGameState] = useState(inactiveGame);
   const [gameLength, setGameLength] = useState(5);
-  const [gameOperations, setGameOperations] = useState([]);
-  const [gameDifficulty, setGameDifficulty] = useState('medium');
+  const [gameOperations, setGameOperations] = useState([...operationsArr]);
+  const [gameDifficulty, setGameDifficulty] = useState(difficultiesArr[1]);
+  const [gameQuestions, setGameQuestions] = useState([]);
 
   const handleLengthChange = (e) => {
     e.preventDefault();
@@ -34,7 +37,7 @@ const Math = () => {
   };
 
   const handleGameStart = (e) => {
-    console.log(e);
+    setGameQuestions(generateQuestions(gameDifficulty, gameOperations, questionTotal));
     setGameState(() => activeGame);
   };
 
@@ -55,7 +58,7 @@ const Math = () => {
   } else if (gameState === activeGame) {
     return (
       <Wrapper>
-        <ActiveGame />
+        <ActiveGame gameQuestions={gameQuestions} />
       </Wrapper>
     );
   } else if (gameState === completedGame) {

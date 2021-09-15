@@ -1,16 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
+import { difficultiesArr } from '../generateQuestions';
 
 const Difficulty = ({ gameDifficulty, handleDifficultyChange }) => {
   return (
     <>
       <StyledLabel htmlFor="difficulty">Difficulty:</StyledLabel>
       <DifficultySetting value={gameDifficulty} onChange={handleDifficultyChange} id="difficulty" name="difficulty">
-        <option value="easy">Easy</option>
-        <option defaultValue value="medium">
-          Medium
-        </option>
-        <option value="hard">Hard</option>
+        {difficultiesArr.map((difficultyVal) => {
+          return (
+            <option key={difficultyVal} value={difficultyVal}>
+              {difficultyVal}
+            </option>
+          );
+        })}
       </DifficultySetting>
     </>
   );
@@ -27,9 +30,10 @@ const DifficultySetting = styled.select`
   font-size: 1rem;
   padding: 5px;
   text-shadow: inherit;
-
+  text-transform: capitalize;
   & > option {
     background-color: var(--color-screen);
+    text-transform: capitalize;
   }
 `;
 
