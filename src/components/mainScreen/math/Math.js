@@ -10,6 +10,28 @@ const Math = () => {
   const completedGame = 'completedGame';
 
   const [gameState, setGameState] = useState(inactiveGame);
+  const [gameLength, setGameLength] = useState(5);
+  const [gameOperations, setGameOperations] = useState([]);
+  const [gameDifficulty, setGameDifficulty] = useState('medium');
+
+  const handleLengthChange = (e) => {
+    e.preventDefault();
+    setGameLength(() => e.target.value);
+  };
+
+  const handleOperationsChange = (e) => {
+    const operation = e.target.value;
+    if (gameOperations.includes(operation)) {
+      const filteredOperations = gameOperations.filter((val) => val !== operation);
+      setGameOperations(() => filteredOperations);
+    } else {
+      setGameOperations(() => [...gameOperations, operation]);
+    }
+  };
+  const handleDifficultyChange = (e) => {
+    e.preventDefault();
+    setGameDifficulty(() => e.target.value);
+  };
 
   const handleGameStart = (e) => {
     console.log(e);
@@ -19,7 +41,15 @@ const Math = () => {
   if (gameState === inactiveGame) {
     return (
       <Wrapper>
-        <InactiveGame handleGameStart={handleGameStart} />
+        <InactiveGame
+          handleGameStart={handleGameStart}
+          gameLength={gameLength}
+          handleLengthChange={handleLengthChange}
+          gameOperations={gameOperations}
+          handleOperationsChange={handleOperationsChange}
+          gameDifficulty={gameDifficulty}
+          handleDifficultyChange={handleDifficultyChange}
+        />
       </Wrapper>
     );
   } else if (gameState === activeGame) {

@@ -1,47 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 import Btn from '../../../Btn';
+import Operations from './Operations';
+import Time from './Time';
+import Difficulty from './Difficulty';
 
-const Settings = ({ handleGameStart }) => {
+const Settings = ({
+  handleGameStart,
+  handleLengthChange,
+  gameLength,
+  gameOperations,
+  handleOperationsChange,
+  gameDifficulty,
+  handleDifficultyChange,
+}) => {
   return (
     <SettingsWrapper>
       <SettingsTitle>Settings</SettingsTitle>
       <SettingsForm onSubmit={handleGameStart}>
         <SettingContainer>
-          <SettingsLabel htmlFor="time">Time (Minutes):</SettingsLabel>
-          <TimeSetting id="time" name="time">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5" defaultValue>
-              5
-            </option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </TimeSetting>
+          <Time gameLength={gameLength} handleLengthChange={handleLengthChange} />
         </SettingContainer>
         <SettingContainer>
-          <OperationsTitle>Operations:</OperationsTitle>
-          <OperationsLabel htmlFor="addition">+</OperationsLabel>
-          <OperationsSetting type="checkbox" id="addition" name="operations" value="addition" />
-          <OperationsLabel htmlFor="subtraction">-</OperationsLabel>
-          <OperationsSetting type="checkbox" id="subtraction" name="operations" value="subtraction" />
-          <OperationsLabel htmlFor="multiplication">x</OperationsLabel>
-          <OperationsSetting type="checkbox" id="multiplication" name="operations" value="multiplication" />
+          <Operations gameOperations={gameOperations} handleOperationsChange={handleOperationsChange} />
         </SettingContainer>
         <SettingContainer>
-          <SettingsLabel htmlFor="difficulty">Difficulty:</SettingsLabel>
-          <DifficultySetting id="difficulty" name="difficulty">
-            <option value="easy">Easy</option>
-            <option defaultValue value="medium">
-              Medium
-            </option>
-            <option value="hard">Hard</option>
-          </DifficultySetting>
+          <Difficulty gameDifficulty={gameDifficulty} handleDifficultyChange={handleDifficultyChange} />
         </SettingContainer>
         <BtnWrapper>
           <StartBtn type="submit">Start</StartBtn>
@@ -80,41 +64,7 @@ const SettingContainer = styled.div`
   align-items: center;
   padding-bottom: 5px;
 `;
-const SettingsLabel = styled.label`
-  padding-right: 5px;
-`;
-const OperationsLabel = styled(SettingsLabel)`
-  padding-right: 0px;
-`;
-const TimeSetting = styled.select`
-  background: var(--color-screen);
-  border: 2px solid var(--highlight-screen);
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
-  color: var(--color-text);
-  font-size: 1rem;
-  padding: 5px;
-`;
-const OperationsTitle = styled.p`
-  padding-right: 5px;
-`;
-const OperationsSetting = styled.input`
-  margin-right: 5px;
-`;
-const DifficultySetting = styled.select`
-  background: var(--color-screen);
-  border: 2px solid var(--highlight-screen);
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
-  color: var(--color-text);
-  font-size: 1rem;
-  padding: 5px;
-  text-shadow: inherit;
 
-  & > option {
-    background-color: var(--color-screen);
-  }
-`;
 const BtnWrapper = styled.div`
   display: flex;
   justify-content: center;
