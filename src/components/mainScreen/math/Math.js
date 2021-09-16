@@ -58,7 +58,7 @@ const Math = () => {
   } else if (gameState === activeGame) {
     return (
       <Wrapper>
-        <ActiveGame gameQuestions={gameQuestions} />
+        <ActiveGame gameQuestions={gameQuestions} gameLength={gameLength} />
       </Wrapper>
     );
   } else if (gameState === completedGame) {
