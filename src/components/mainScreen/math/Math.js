@@ -59,6 +59,7 @@ const Math = () => {
   const endGame = useCallback(() => {
     setGameState(() => completedGame);
   }, [setGameState, completedGame]);
+  const exitGame = () => setGameState(() => inactiveGame);
 
   /******/
 
@@ -92,7 +93,13 @@ const Math = () => {
   } else if (gameState === completedGame) {
     return (
       <Wrapper style={{ justifyContent: 'center' }}>
-        <CompletedGame />
+        <CompletedGame
+          correctQuestions={correctQuestions}
+          incorrectQuestions={incorrectQuestions}
+          gameOperations={gameOperations}
+          handleGameStart={handleGameStart}
+          exitGame={exitGame}
+        />
       </Wrapper>
     );
   }
