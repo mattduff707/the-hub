@@ -4,7 +4,7 @@ import OperationIcon from './OperationIcon';
 import EqualsIcon from '../../../../icons/Equals';
 import Btn from '../../../Btn';
 
-const Question = ({ valOne, valTwo, operation }) => {
+const Question = ({ valOne, valTwo, operation, question, handleIsCorrect, index }) => {
   const [answer, setAnswer] = useState('');
   const [correctAnswer, setCorrectAnswer] = useState();
   const [isAnswered, setIsAnswered] = useState(false);
@@ -33,14 +33,16 @@ const Question = ({ valOne, valTwo, operation }) => {
   }, [operation, valOne, valTwo]);
 
   const handleChange = (e) => {
-    setAnswer(() => parseInt(e.target.value));
+    setAnswer(() => {
+      return !NaN && parseInt(e.target.value);
+    });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    const isAnswerCorrect = answer === correctAnswer;
     setIsAnswered(() => true);
-    setisCorrect(() => {
-      return answer === correctAnswer;
-    });
+    setisCorrect(() => isAnswerCorrect);
+    handleIsCorrect(isAnswerCorrect, question);
   };
   if (!isAnswered) {
     return (
@@ -86,6 +88,7 @@ const Wrapper = styled.form`
   align-items: center;
   justify-content: center;
   min-width: 300px;
+  height: 125px;
   padding: 20px;
   margin: 10px;
 `;

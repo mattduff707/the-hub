@@ -1,15 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import Btn from '../../../Btn';
-import Timer from './Timer';
+import { MemoizedTimer } from './Timer';
 
-const StatusBar = ({ gameLength }) => {
+const StatusBar = ({ gameLength, correctQuestions, incorrectQuestions, endGame }) => {
   return (
     <Wrapper>
       <TimerContainer>
-        Time Remaining: <Timer gameLength={gameLength} />
+        Time Remaining: <MemoizedTimer endGame={endGame} gameLength={gameLength} />
       </TimerContainer>
-      <Container>Answered: 7 / 10</Container>
+      <Container>
+        Answered: {correctQuestions.length} / {correctQuestions.length + incorrectQuestions.length}
+      </Container>
       <StyledBtn>End</StyledBtn>
     </Wrapper>
   );
@@ -64,4 +66,4 @@ const StyledBtn = styled(Btn)`
   }
 `;
 
-export default StatusBar;
+export const MemoizedStatusBar = React.memo(StatusBar);

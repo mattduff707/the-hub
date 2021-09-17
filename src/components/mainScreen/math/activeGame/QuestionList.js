@@ -1,12 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 import Question from './Question';
-const QuestionList = ({ gameQuestions }) => {
+const QuestionList = ({ gameQuestions, handleIsCorrect }) => {
   return (
     <QuestionWrapper>
-      {gameQuestions.map((question) => {
+      {gameQuestions.map((question, index) => {
         const { operation, valOne, valTwo } = question;
-        return <Question key={operation + valOne + valTwo} valOne={valOne} valTwo={valTwo} operation={operation} />;
+        return (
+          <Question
+            question={question}
+            key={operation + valOne + valTwo}
+            valOne={valOne}
+            valTwo={valTwo}
+            operation={operation}
+            handleIsCorrect={handleIsCorrect}
+            index={index}
+          />
+        );
       })}
     </QuestionWrapper>
   );
@@ -18,4 +28,4 @@ const QuestionWrapper = styled.div`
   padding-top: 10px;
 `;
 
-export default QuestionList;
+export const MemoizedQuestionList = React.memo(QuestionList);

@@ -9,13 +9,18 @@ const renderer = ({ minutes, seconds }) => {
     </StyledTimer>
   );
 };
-const Timer = ({ className, gameLength }) => {
+const Timer = ({ className, gameLength, endGame }) => {
   const getTime = (minutes) => {
     return minutes * 60000;
   };
   return (
     <>
-      <Countdown className={className} date={Date.now() + getTime(gameLength)} renderer={renderer} />
+      <Countdown
+        onComplete={endGame}
+        className={className}
+        date={Date.now() + getTime(gameLength)}
+        renderer={renderer}
+      />
     </>
   );
 };
@@ -26,4 +31,4 @@ const StyledTimer = styled.span`
   padding-left: 5px;
 `;
 
-export default Timer;
+export const MemoizedTimer = React.memo(Timer);
