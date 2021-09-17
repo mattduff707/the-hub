@@ -5,7 +5,7 @@ import EqualsIcon from '../../../../icons/Equals';
 import QuestionInput from './QuestionInput';
 import Btn from '../../../Btn';
 
-const Question = ({ valOne, valTwo, operation, question, handleIsCorrect }) => {
+const Question = ({ valOne, valTwo, operation, question, handleIsCorrect, index }) => {
   const [correctAnswer, setCorrectAnswer] = useState();
   const [isAnswered, setIsAnswered] = useState(false);
   const [isCorrect, setisCorrect] = useState();
@@ -34,6 +34,15 @@ const Question = ({ valOne, valTwo, operation, question, handleIsCorrect }) => {
     });
   }, [operation, valOne, valTwo]);
 
+  const changeFocus = (currentIndex) => {
+    const allQuestionsArr = [...currentQuestionRef.current.parentElement.children];
+    const nextQuestionsArr = allQuestionsArr.slice(currentIndex + 1, allQuestionsArr.length - 1);
+    const nextAvailableQuestion = nextQuestionsArr.find((element) => element.dataset.isunanswered === 'true');
+    console.log(nextAvailableQuestion);
+    if (nextAvailableQuestion) {
+      nextAvailableQuestion.answer.focus();
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     const inputVal = e.target.answer.value;
@@ -42,12 +51,12 @@ const Question = ({ valOne, valTwo, operation, question, handleIsCorrect }) => {
       setIsAnswered(() => true);
       setisCorrect(() => isAnswerCorrect);
       handleIsCorrect(isAnswerCorrect, question);
-      currentQuestionRef.current.nextSibling[0].focus();
+      changeFocus(index);
     }
   };
 
   return (
-    <Wrapper onSubmit={handleSubmit} ref={currentQuestionRef}>
+    <Wrapper onSubmit={handleSubmit} ref={currentQuestionRef} data-isunanswered={!isAnswered}>
       <Container>
         {valOne} <OperationIcon operation={operation} /> {valTwo} <StyledEqualsIcon />{' '}
         <QuestionInput isCorrect={isCorrect} isAnswered={isAnswered} />
