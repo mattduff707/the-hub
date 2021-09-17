@@ -27,7 +27,7 @@ const createOperation = (difficulty, operation) => {
     } else if (difficulty === 'medium') {
       return { valOne: random(ten, hundred), valTwo: random(ten, hundred), operation };
     } else {
-      return { valOne: random(one, thousand), valTwo: random(one, thousand), operation };
+      return { valOne: random(one, hundred), valTwo: random(one, thousand), operation };
     }
   }
 };
