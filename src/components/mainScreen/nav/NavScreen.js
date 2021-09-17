@@ -36,6 +36,10 @@ const NavScreen = () => {
               <HomeIcon />
               Home
             </NavButton>
+            <NavButton isActive={mathPath === currentPath} handleClick={handleNav} path={mathPath}>
+              <MathIcon />
+              Math
+            </NavButton>
             <NavButton isActive={snippetsPath === currentPath} handleClick={handleNav} path={snippetsPath}>
               <SnippetsIcon />
               Snippets
@@ -43,10 +47,6 @@ const NavScreen = () => {
             <NavButton isActive={bugsPath === currentPath} handleClick={handleNav} path={bugsPath}>
               <BugIcon />
               Bugs
-            </NavButton>
-            <NavButton isActive={mathPath === currentPath} handleClick={handleNav} path={mathPath}>
-              <MathIcon />
-              Math
             </NavButton>
           </NavList>
         </CoolScreen>

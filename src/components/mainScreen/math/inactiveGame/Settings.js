@@ -28,7 +28,9 @@ const Settings = ({
           <Difficulty gameDifficulty={gameDifficulty} handleDifficultyChange={handleDifficultyChange} />
         </SettingContainer>
         <BtnWrapper>
-          <StartBtn type="submit">Start</StartBtn>
+          <StartBtn disabled={gameOperations.length > 0} isPlayable={gameOperations.length > 0} type="submit">
+            Start
+          </StartBtn>
         </BtnWrapper>
       </SettingsForm>
     </SettingsWrapper>
@@ -73,6 +75,15 @@ const BtnWrapper = styled.div`
 const StartBtn = styled(Btn)`
   padding: 5px 10px;
   font-size: 1.2rem;
+  background-color: ${(props) => !props.isPlayable && `var(--hover-danger)`};
+  box-shadow: ${(props) => !props.isPlayable && `var(--hover-danger-shadow)`};
+  border-color: ${(props) => !props.isPlayable && `var(--hover-danger-border-color)`};
+  cursor: ${(props) => !props.isPlayable && `not-allowed`};
+  &:hover {
+    background-color: ${(props) => !props.isPlayable && `var(--hover-danger)`};
+    box-shadow: ${(props) => !props.isPlayable && `var(--hover-danger-shadow)`};
+    border-color: ${(props) => !props.isPlayable && `var(--hover-danger-border-color)`};
+  }
 `;
 
 export default Settings;

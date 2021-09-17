@@ -38,9 +38,14 @@ const Math = () => {
     setGameDifficulty(() => e.target.value);
   };
 
-  const handleGameStart = () => {
-    setGameQuestions(generateQuestions(gameDifficulty, gameOperations, questionTotal));
-    setGameState(() => activeGame);
+  const handleGameStart = (e) => {
+    e.preventDefault();
+    if (gameOperations.length > 0) {
+      setGameQuestions(generateQuestions(gameDifficulty, gameOperations, questionTotal));
+      setCorrectQuestions(() => []);
+      setIncorrectQuestions(() => []);
+      setGameState(() => activeGame);
+    }
   };
   /********/
 
