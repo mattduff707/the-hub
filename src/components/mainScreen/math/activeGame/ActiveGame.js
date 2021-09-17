@@ -1,14 +1,27 @@
 import React from 'react';
-import StatusBar from './StatusBar';
-import QuestionList from './QuestionList';
+import { MemoizedStatusBar } from './StatusBar';
+import { MemoizedQuestionList } from './QuestionList';
+import styled from 'styled-components';
 
-const ActiveGame = () => {
+const ActiveGame = ({ gameQuestions, gameLength, handleIsCorrect, correctQuestions, incorrectQuestions, endGame }) => {
   return (
-    <>
-      <StatusBar />
-      <QuestionList />
-    </>
+    <Wrapper>
+      <MemoizedStatusBar
+        gameLength={gameLength}
+        correctQuestions={correctQuestions}
+        incorrectQuestions={incorrectQuestions}
+        endGame={endGame}
+      />
+      <MemoizedQuestionList gameQuestions={gameQuestions} handleIsCorrect={handleIsCorrect} />
+    </Wrapper>
   );
 };
 
-export default ActiveGame;
+const Wrapper = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const MemoizedActiveGame = React.memo(ActiveGame);
