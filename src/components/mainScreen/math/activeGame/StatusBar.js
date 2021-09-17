@@ -66,4 +66,4 @@ const StyledBtn = styled(Btn)`
   }
 `;
 
-export const MemoizedStatusBar = React.memo(StatusBar);
+export default StatusBar;

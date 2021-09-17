@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import InactiveGame from './inactiveGame/InactiveGame';
-import { MemoizedActiveGame } from './activeGame/ActiveGame';
+import ActiveGame from './activeGame/ActiveGame';
 import CompletedGame from './completedGame/CompletedGame';
 import generateQuestions, { operationsArr, difficultiesArr } from './generateQuestions';
 
@@ -79,7 +79,7 @@ const Math = () => {
   } else if (gameState === activeGame) {
     return (
       <Wrapper>
-        <MemoizedActiveGame
+        <ActiveGame
           gameQuestions={gameQuestions}
           gameLength={gameLength}
           handleIsCorrect={handleIsCorrect}
