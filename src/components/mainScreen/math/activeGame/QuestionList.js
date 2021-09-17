@@ -27,4 +27,4 @@ const QuestionWrapper = styled.div`
   padding-top: 10px;
 `;
 
-export const MemoizedQuestionList = React.memo(QuestionList);
+export default QuestionList;

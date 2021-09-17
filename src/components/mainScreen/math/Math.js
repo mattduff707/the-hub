@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import InactiveGame from './inactiveGame/InactiveGame';
-import { MemoizedActiveGame } from './activeGame/ActiveGame';
+import ActiveGame from './activeGame/ActiveGame';
 import CompletedGame from './completedGame/CompletedGame';
 import generateQuestions, { operationsArr, difficultiesArr } from './generateQuestions';
 
@@ -59,6 +59,7 @@ const Math = () => {
   const endGame = useCallback(() => {
     setGameState(() => completedGame);
   }, [setGameState, completedGame]);
+  const exitGame = () => setGameState(() => inactiveGame);
 
   /******/
 
@@ -79,7 +80,7 @@ const Math = () => {
   } else if (gameState === activeGame) {
     return (
       <Wrapper>
-        <MemoizedActiveGame
+        <ActiveGame
           gameQuestions={gameQuestions}
           gameLength={gameLength}
           handleIsCorrect={handleIsCorrect}
@@ -92,7 +93,13 @@ const Math = () => {
   } else if (gameState === completedGame) {
     return (
       <Wrapper style={{ justifyContent: 'center' }}>
-        <CompletedGame />
+        <CompletedGame
+          correctQuestions={correctQuestions}
+          incorrectQuestions={incorrectQuestions}
+          gameOperations={gameOperations}
+          handleGameStart={handleGameStart}
+          exitGame={exitGame}
+        />
       </Wrapper>
     );
   }

@@ -1,19 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
 import Btn from '../../../Btn';
+import Score from './Score';
 
-const CompletedGame = () => {
+const CompletedGame = ({ correctQuestions, incorrectQuestions, gameOperations, handleGameStart, exitGame }) => {
+  const totalArr = [...correctQuestions, ...incorrectQuestions];
+
+  const getOperationTotal = (arr, operation) => {
+    const operationArr = arr.filter((q) => q.operation === operation);
+    return operationArr.length;
+  };
+
   return (
     <Wrapper>
       <Title>Game Over</Title>
       <Subtitle>Score</Subtitle>
-      <Score>Total: 19 / 20</Score>
-      <Score>Multiplication: 6 / 6</Score>
-      <Score>Addition: 6 / 7</Score>
-      <Score>Subtraction: 7 / 7</Score>
+      <Score valOne={correctQuestions.length} valTwo={totalArr.length} operation="Total" />
+      {gameOperations.map((operationStr) => {
+        return (
+          <Score
+            key={operationStr}
+            valOne={getOperationTotal(correctQuestions, operationStr)}
+            valTwo={getOperationTotal(totalArr, operationStr)}
+            operation={operationStr}
+          />
+        );
+      })}
       <BtnWrapper>
-        <StyledBtn>Replay</StyledBtn>
-        <StyledBtn>Exit</StyledBtn>
+        <StyledBtn handleClick={handleGameStart}>Replay</StyledBtn>
+        <StyledBtn handleClick={exitGame}>Exit</StyledBtn>
       </BtnWrapper>
     </Wrapper>
   );
@@ -40,10 +55,7 @@ const Subtitle = styled.h2`
   font-size: 2rem;
   text-decoration: underline;
 `;
-const Score = styled.p`
-  font-size: 1.5rem;
-  padding: 5px 0px;
-`;
+
 const BtnWrapper = styled.div`
   display: flex;
   width: 100%;

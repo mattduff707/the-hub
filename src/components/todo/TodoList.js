@@ -17,7 +17,6 @@ const TodoList = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
     const todoVal = e.target[0].value;
     if (!todoVal) {
       return;
