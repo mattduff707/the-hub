@@ -10,19 +10,38 @@ const APOD = ({ data, loading, error }) => {
     setIsExtended(() => !isExtended);
   };
 
-  return (
-    <Wrapper>
-      <Title>{data.title}</Title>
-      <Subtitle>{data.copyright}</Subtitle>
-      <Image src={data.url} />
-      <ExtensionBtn onClick={handleClick}>
-        Description{isExtended ? <StyledUpArrow /> : <StyledDownArrow />}
-      </ExtensionBtn>
-      <ExtensionWrapper isExtended={isExtended}>
-        <Description>{data.explanation}</Description>
-      </ExtensionWrapper>
-    </Wrapper>
-  );
+  const image = 'image';
+  const video = 'video';
+  if (data.media_type === image) {
+    return (
+      <Wrapper>
+        <Title>{data.title}</Title>
+        <Subtitle>{data.copyright}</Subtitle>
+        <Image src={data.url} />
+        <ExtensionBtn onClick={handleClick}>
+          Description{isExtended ? <StyledUpArrow /> : <StyledDownArrow />}
+        </ExtensionBtn>
+        <ExtensionWrapper isExtended={isExtended}>
+          <Description>{data.explanation}</Description>
+        </ExtensionWrapper>
+      </Wrapper>
+    );
+  }
+  if (data.media_type === video) {
+    return (
+      <Wrapper>
+        <Title>{data.title}</Title>
+        <Subtitle>{data.copyright}</Subtitle>
+        <StyledFrame src={data.url}></StyledFrame>
+        <ExtensionBtn onClick={handleClick}>
+          Description{isExtended ? <StyledUpArrow /> : <StyledDownArrow />}
+        </ExtensionBtn>
+        <ExtensionWrapper isExtended={isExtended}>
+          <Description>{data.explanation}</Description>
+        </ExtensionWrapper>
+      </Wrapper>
+    );
+  }
 };
 
 const Wrapper = styled.div`
@@ -59,6 +78,15 @@ const Image = styled.img`
   max-width: 100%;
   margin: 0px auto;
   height: auto;
+  display: block;
+  border-radius: 8px;
+  border: 2px solid var(--highlight-screen);
+  box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
+`;
+const StyledFrame = styled.iframe`
+  width: 100%;
+  margin: 0px auto;
+  height: 500px;
   display: block;
   border-radius: 8px;
   border: 2px solid var(--highlight-screen);

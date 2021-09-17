@@ -11,7 +11,11 @@ const Home = () => {
   );
 
   if (error) {
-    return <Heading>Error!</Heading>;
+    return (
+      <AlertWrapper>
+        <Error>Error!</Error>;
+      </AlertWrapper>
+    );
   }
   if (data) {
     return (
@@ -21,22 +25,37 @@ const Home = () => {
       </Wrapper>
     );
   }
-  return <Heading>Loading...</Heading>;
+  return (
+    <AlertWrapper>
+      <Loading>Loading...</Loading>;
+    </AlertWrapper>
+  );
 };
 
 const Wrapper = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-between; */
-  /* height: 100%; */
+
   width: 100%;
+  min-height: 100%;
   /* border: 2px solid green; */
-  /* overflow-y: auto; */
+`;
+const AlertWrapper = styled(Wrapper)`
+  justify-content: center;
+  min-height: 100%;
 `;
 
 const Title = styled(PageTitle)`
   margin-bottom: 40px;
+`;
+const Error = styled(Heading)`
+  color: var(--hover-danger);
+  text-shadow: var(--hover-danger-text-shadow);
+`;
+const Loading = styled(Heading)`
+  color: var(--hover-main);
+  text-shadow: var(--hover-main-text-shadow);
 `;
 
 export default Home;
