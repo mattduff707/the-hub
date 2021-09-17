@@ -34,11 +34,11 @@ const Question = ({ valOne, valTwo, operation, question, handleIsCorrect, index 
     });
   }, [operation, valOne, valTwo]);
 
-  const changeFocus = (currentIndex) => {
-    const allQuestionsArr = [...currentQuestionRef.current.parentElement.children];
+  const changeFocus = (currentIndex, ref) => {
+    const allQuestionsArr = [...ref.current.parentElement.children];
     const nextQuestionsArr = allQuestionsArr.slice(currentIndex + 1, allQuestionsArr.length - 1);
     const nextAvailableQuestion = nextQuestionsArr.find((element) => element.dataset.isunanswered === 'true');
-    console.log(nextAvailableQuestion);
+
     if (nextAvailableQuestion) {
       nextAvailableQuestion.answer.focus();
     }
@@ -51,7 +51,7 @@ const Question = ({ valOne, valTwo, operation, question, handleIsCorrect, index 
       setIsAnswered(() => true);
       setisCorrect(() => isAnswerCorrect);
       handleIsCorrect(isAnswerCorrect, question);
-      changeFocus(index);
+      changeFocus(index, currentQuestionRef);
     }
   };
 
