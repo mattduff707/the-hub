@@ -1,14 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import OperationIcon from './OperationIcon';
 import EqualsIcon from '../../../../icons/Equals';
 import QuestionInput from './QuestionInput';
 import Btn from '../../../Btn';
 
-const Question = ({ valOne, valTwo, operation, question, handleIsCorrect, index }) => {
+const Question = ({ valOne, valTwo, operation, question, handleIsCorrect }) => {
   const [correctAnswer, setCorrectAnswer] = useState();
   const [isAnswered, setIsAnswered] = useState(false);
   const [isCorrect, setisCorrect] = useState();
+
+  const currentQuestionRef = useRef(null);
 
   const getAddition = (a, b) => {
     return a + b;
@@ -40,11 +42,12 @@ const Question = ({ valOne, valTwo, operation, question, handleIsCorrect, index 
       setIsAnswered(() => true);
       setisCorrect(() => isAnswerCorrect);
       handleIsCorrect(isAnswerCorrect, question);
+      currentQuestionRef.current.nextSibling[0].focus();
     }
   };
 
   return (
-    <Wrapper onSubmit={handleSubmit}>
+    <Wrapper onSubmit={handleSubmit} ref={currentQuestionRef}>
       <Container>
         {valOne} <OperationIcon operation={operation} /> {valTwo} <StyledEqualsIcon />{' '}
         <QuestionInput isCorrect={isCorrect} isAnswered={isAnswered} />

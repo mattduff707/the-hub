@@ -4,7 +4,7 @@ import Question from './Question';
 const QuestionList = ({ gameQuestions, handleIsCorrect }) => {
   return (
     <QuestionWrapper>
-      {gameQuestions.map((question, index) => {
+      {gameQuestions.map((question) => {
         const { operation, valOne, valTwo } = question;
         return (
           <Question
@@ -14,7 +14,6 @@ const QuestionList = ({ gameQuestions, handleIsCorrect }) => {
             valTwo={valTwo}
             operation={operation}
             handleIsCorrect={handleIsCorrect}
-            index={index}
           />
         );
       })}
