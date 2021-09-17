@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import OperationIcon from './OperationIcon';
 import EqualsIcon from '../../../../icons/Equals';
+import QuestionInput from './QuestionInput';
 import Btn from '../../../Btn';
 
 const Question = ({ valOne, valTwo, operation, question, handleIsCorrect, index }) => {
-  const [answer, setAnswer] = useState('');
   const [correctAnswer, setCorrectAnswer] = useState();
   const [isAnswered, setIsAnswered] = useState(false);
   const [isCorrect, setisCorrect] = useState();
@@ -32,49 +32,30 @@ const Question = ({ valOne, valTwo, operation, question, handleIsCorrect, index 
     });
   }, [operation, valOne, valTwo]);
 
-  const handleChange = (e) => {
-    setAnswer(() => {
-      return !NaN && parseInt(e.target.value);
-    });
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isAnswerCorrect = answer === correctAnswer;
-    setIsAnswered(() => true);
-    setisCorrect(() => isAnswerCorrect);
-    handleIsCorrect(isAnswerCorrect, question);
+    const inputVal = e.target.answer.value;
+    const isAnswerCorrect = correctAnswer === parseInt(inputVal);
+    if (inputVal.length > 0) {
+      setIsAnswered(() => true);
+      setisCorrect(() => isAnswerCorrect);
+      handleIsCorrect(isAnswerCorrect, question);
+    }
   };
-  if (!isAnswered) {
-    return (
-      <Wrapper onSubmit={handleSubmit}>
-        <Container>
-          {valOne} <OperationIcon operation={operation} /> {valTwo} <StyledEqualsIcon />
-          <AnswerInput type="number" value={answer} onChange={handleChange} />
-        </Container>
+
+  return (
+    <Wrapper onSubmit={handleSubmit}>
+      <Container>
+        {valOne} <OperationIcon operation={operation} /> {valTwo} <StyledEqualsIcon />{' '}
+        <QuestionInput isCorrect={isCorrect} isAnswered={isAnswered} />
+      </Container>
+      {!isAnswered ? (
         <SubmitBtn type="submit">Submit</SubmitBtn>
-      </Wrapper>
-    );
-  } else if (isCorrect) {
-    return (
-      <Wrapper onSubmit={handleSubmit}>
-        <Container>
-          {valOne} <OperationIcon operation={operation} /> {valTwo} <StyledEqualsIcon />
-          <StyledAnswer isCorrect={isCorrect}>{answer}</StyledAnswer>
-        </Container>
+      ) : (
         <StyledAnswer isCorrect={isCorrect}>{correctAnswer}</StyledAnswer>
-      </Wrapper>
-    );
-  } else {
-    return (
-      <Wrapper onSubmit={handleSubmit}>
-        <Container>
-          {valOne} <OperationIcon operation={operation} /> {valTwo} <StyledEqualsIcon />
-          <StyledAnswer isCorrect={isCorrect}>{answer}</StyledAnswer>
-        </Container>
-        <StyledAnswer isCorrect={isCorrect}>{correctAnswer}</StyledAnswer>
-      </Wrapper>
-    );
-  }
+      )}
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.form`
@@ -98,25 +79,7 @@ const StyledEqualsIcon = styled(EqualsIcon)`
   width: 16px;
   margin: 0px 4px;
 `;
-const AnswerInput = styled.input`
-  font-size: inherit;
-  font-family: inherit;
-  background-color: var(--color-screen);
-  border: 2px solid var(--highlight-screen);
-  box-shadow: var(--highlight-screen-shadow);
-  border-radius: 8px;
-  width: 100px;
-  padding: 5px;
-  margin: 0;
-  color: var(--color-text);
-  text-shadow: var(--shadow-text);
-  -moz-appearance: none;
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-`;
+
 const Container = styled.div`
   display: flex;
   align-items: center;

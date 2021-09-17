@@ -12,7 +12,7 @@ const StatusBar = ({ gameLength, correctQuestions, incorrectQuestions, endGame }
       <Container>
         Answered: {correctQuestions.length} / {correctQuestions.length + incorrectQuestions.length}
       </Container>
-      <StyledBtn>End</StyledBtn>
+      <StyledBtn handleClick={endGame}>End</StyledBtn>
     </Wrapper>
   );
 };
