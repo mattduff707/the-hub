@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "heroku-postbuild": "cd client && npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "Matthew Duffy",
   "license": "MIT",
