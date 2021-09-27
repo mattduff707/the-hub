@@ -32,7 +32,11 @@ const Question = ({ valOne, valTwo, operation, question, handleIsCorrect, index 
         return getMultiplication(parseInt(valOne), parseInt(valTwo));
       }
     });
-  }, [operation, valOne, valTwo]);
+    if (index === 0) {
+      // Set cursor to first question
+      changeFocus(index - 1, currentQuestionRef);
+    }
+  }, [operation, valOne, valTwo, index]);
 
   const changeFocus = (currentIndex, ref) => {
     const allQuestionsArr = [...ref.current.parentElement.children];

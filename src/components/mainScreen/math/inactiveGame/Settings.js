@@ -28,7 +28,7 @@ const Settings = ({
           <Difficulty gameDifficulty={gameDifficulty} handleDifficultyChange={handleDifficultyChange} />
         </SettingContainer>
         <BtnWrapper>
-          <StartBtn disabled={gameOperations.length > 0} isPlayable={gameOperations.length > 0} type="submit">
+          <StartBtn isPlayable={gameOperations.length > 0} type="submit">
             Start
           </StartBtn>
         </BtnWrapper>

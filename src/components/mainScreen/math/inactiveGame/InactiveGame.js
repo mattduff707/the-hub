@@ -15,7 +15,7 @@ const InactiveGame = ({
   return (
     <>
       <PageTitle>Math Blitz</PageTitle>
-      <Rules />
+      <Rules isDisabled={gameOperations.length < 1} />
       <Settings
         handleGameStart={handleGameStart}
         gameLength={gameLength}
