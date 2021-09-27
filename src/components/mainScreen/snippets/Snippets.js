@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 const Snippets = () => {
   const api = '/api/snippets';
-  const [snippets, setSnippets] = useState();
+  const [snippets, setSnippets] = useState([]);
 
   const postData = async (url, data) => {
     fetch(url, {
@@ -19,6 +19,7 @@ const Snippets = () => {
   };
 
   const { data, loading, error } = useFetch(api);
+  console.log(error, data);
   useEffect(() => {
     setSnippets(() => data);
   }, [data]);
