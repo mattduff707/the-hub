@@ -5,18 +5,8 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 const Snippets = () => {
-  const api = '/api/snippets';
+  const api = 'https://fierce-falls-10148.herokuapp.com/api/snippets';
   const [snippets, setSnippets] = useState([]);
-
-  const postData = async (url, data) => {
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-  };
 
   const { data, loading, error } = useFetch(api);
   console.log(error, data);
@@ -30,11 +20,6 @@ const Snippets = () => {
   if (error) {
     return <h2>Error!!!</h2>;
   }
-
-  const handleSubmit = (e) => {
-    // e.preventDefault();
-    postData(api, { test: e.target.test.value });
-  };
 
   return (
     <div>
@@ -56,10 +41,6 @@ const Snippets = () => {
           );
         })}
       </Switch>
-      <form onSubmit={handleSubmit}>
-        <input name="test" type="text" />
-        <button type="submit">Submit</button>
-      </form>
     </div>
   );
 };
