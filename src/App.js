@@ -62,18 +62,20 @@ html {
 --hover-main-text-shadow: 0px 0px 5px hsl(35, 100%, 55%);
 --hover-main-text-shadow-offset: 3px 3px 5px hsl(35, 100%, 55%);
 --hover-main-icon: hsl(35, 100%, 55%);
---hover-main-icon-shadow: 0px 0px 3px hsl(35, 100%, 55%);
---hover-main-icon-shadow-offset: 3px 3px 0px hsla(35, 100%, 55%, 0.65);
+--hover-main-icon-shadow: 0px 0px 2px hsl(35, 100%, 45%);
+
 
 --hover-danger: hsl(340, 95%, 65%);
 --hover-danger-border-color: hsl(340, 95%, 60%);
 --hover-danger-shadow: 0px 0px 10px 2px hsl(340, 95%, 65%);
+--hover-danger-icon-shadow: 0px 0px 2px hsl(340, 95%, 45%);
 --hover-danger-text-shadow: 0px 0px 8px hsla(340, 95%, 65%, 0.85);
---hover-danger-icon-shadow-offset: 3px 3px 0px hsla(340, 95%, 65%, 0.85);
+
 
 --hover-confirm: hsl(120, 95%, 65%);
---hover-confirm-icon-shadow-offset: 3px 3px 0px hsla(120, 95%, 65%, 0.45);
---hover-confirm-shadow: 0px 0px 4px hsla(120, 95%, 65%, 1);
+
+--hover-confirm-shadow: 0px 0px 4px hsl(120, 95%, 65%);
+--hover-confirm-icon-shadow: 0px 0px 2px hsl(120, 95%, 65%);
 --hover-confirm-border: 2px solid hsl(120, 95%, 75%);
 
 --font-family-main: 'Orbitron', sans-serif;

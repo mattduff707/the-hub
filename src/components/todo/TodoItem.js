@@ -113,8 +113,7 @@ const IconButton = styled.button`
 const EditBtn = styled(IconButton)`
   &:hover {
     color: var(--hover-main-text);
-    filter: drop-shadow(var(--hover-main-icon-shadow-offset));
-    transform: translate(-1px, -1px);
+    filter: drop-shadow(var(--hover-main-icon-shadow));
   }
 `;
 
@@ -122,24 +121,21 @@ const EditConfirmBtn = styled(IconButton)`
   display: ${(props) => (props.editing ? 'visible' : 'none')};
   &:hover {
     color: var(--hover-confirm);
-    filter: drop-shadow(var(--hover-confirm-icon-shadow-offset));
-    transform: translate(-1px, -1px);
+    filter: drop-shadow(var(--hover-confirm-icon-shadow));
   }
 `;
 const EditDeleteBtn = styled(IconButton)`
   display: ${(props) => (props.editing ? 'visible' : 'none')};
   &:hover {
     color: var(--hover-danger);
-    filter: drop-shadow(var(--hover-danger-icon-shadow-offset));
-    transform: translate(-1px, -1px);
+    filter: drop-shadow(var(--hover-danger-icon-shadow));
   }
 `;
 const CompleteBtn = styled(IconButton)`
   display: ${(props) => (props.editing ? 'none' : 'visible')};
   &:hover {
     color: var(--hover-confirm);
-    filter: drop-shadow(var(--hover-confirm-icon-shadow-offset));
-    transform: translate(-1px, -1px);
+    filter: drop-shadow(var(--hover-confirm-icon-shadow));
   }
 `;
 const DeleteBtn = styled(IconButton)`
@@ -148,8 +144,7 @@ const DeleteBtn = styled(IconButton)`
 
   &:hover {
     color: var(--hover-danger);
-    filter: drop-shadow(var(--hover-danger-icon-shadow-offset));
-    transform: translate(-1px, -1px);
+    filter: drop-shadow(var(--hover-danger-icon-shadow));
   }
 `;
 const StyledCheckIcon = styled(CheckIcon)`
