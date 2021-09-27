@@ -40,11 +40,11 @@ const NavScreen = () => {
               <MathIcon />
               Math
             </NavButton>
-            <NavButton isActive={snippetsPath === currentPath} handleClick={handleNav} path={snippetsPath}>
+            <NavButton inactive isActive={snippetsPath === currentPath} handleClick={handleNav} path={snippetsPath}>
               <SnippetsIcon />
               Snippets
             </NavButton>
-            <NavButton isActive={bugsPath === currentPath} handleClick={handleNav} path={bugsPath}>
+            <NavButton inactive isActive={bugsPath === currentPath} handleClick={handleNav} path={bugsPath}>
               <BugIcon />
               Bugs
             </NavButton>

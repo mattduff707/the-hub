@@ -2,7 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-const NavButton = ({ children, path, isActive, handleClick }) => {
+const NavButton = ({ inactive, children, path, isActive, handleClick }) => {
+  if (inactive) {
+    return <InactiveLink style={{ padding: '5px' }}>{children}</InactiveLink>;
+  }
   return (
     <Wrapper isActive={isActive}>
       <CoolLink onClick={handleClick} to={path} path={path}>
@@ -24,6 +27,7 @@ const Wrapper = styled.li`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   &:hover {
     background: var(--hover-main-bg);
     border: 4px solid var(--hover-main);
@@ -31,6 +35,19 @@ const Wrapper = styled.li`
     transition: background, border, box-shadow;
     transition-duration: 0.4s;
     transition-timing-function: ease;
+  }
+`;
+const InactiveLink = styled(Wrapper)`
+  text-shadow: var(--hover-danger-text-shadow);
+  background: var(--hover-danger);
+  border-color: var(--hover-danger-border-color);
+  box-shadow: var(--hover-danger-shadow);
+  cursor: not-allowed;
+  &:hover {
+    text-shadow: var(--hover-danger-text-shadow);
+    background: var(--hover-danger);
+    border-color: var(--hover-danger-border-color);
+    box-shadow: var(--hover-danger-shadow);
   }
 `;
 const CoolLink = styled(NavLink)`
