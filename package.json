@@ -6,10 +6,10 @@
     "npm": "6.x"
   },
   "description": "Back-end for the hub",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js"
+    "start": "node app.js",
+    "server": "nodemon app.js"
   },
   "author": "Matthew Duffy",
   "license": "MIT",
