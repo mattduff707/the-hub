@@ -9,7 +9,7 @@ const Math = () => {
   const inactiveGame = 'inactive';
   const activeGame = 'active';
   const completedGame = 'completedGame';
-  const questionTotal = 60;
+  const questionTotal = 90;
 
   const [gameState, setGameState] = useState(inactiveGame);
   const [gameLength, setGameLength] = useState(5);
