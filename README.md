@@ -10,7 +10,7 @@
 
 ## Key Features
 
-- Math game: [Game Setup in root](), [Cursor Control](), [Questions]()
+- Math game: [Game Setup in root](https://github.com/mattduff707/the-hub/blob/main/src/components/mainScreen/math/Math.js) and [Cursor Control](https://github.com/mattduff707/the-hub/blob/cd56b7c3de75313780e1d600ee9f16314ec8904a/src/components/mainScreen/math/activeGame/Question.js#L35-L61)
 - Task Management: [Code Snippet](https://github.com/mattduff707/the-hub/blob/5ec67eb33884b50714bedb76973f259eec24e746/src/components/todo/TodoList.js#L7-L67)
 - Bookmark Search Feature: [Code Snippet](https://github.com/mattduff707/the-hub/blob/5ec67eb33884b50714bedb76973f259eec24e746/src/components/bookmarks/Search.js#L4-L35)
 - API Call and data manipulation using a custom hook: [Hook](https://github.com/mattduff707/the-hub/blob/5ec67eb33884b50714bedb76973f259eec24e746/src/services/useFetch.js#L1-L41) and [Data](https://github.com/mattduff707/the-hub/blob/main/src/components/mainScreen/home/APOD.js)
