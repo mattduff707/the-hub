@@ -38,6 +38,7 @@ const Question = ({ valOne, valTwo, operation, question, handleIsCorrect, index 
     }
   }, [operation, valOne, valTwo, index]);
 
+  // Check for upcoming questions, If an upcoming question is unanswered, move the cursor into that questions input
   const changeFocus = (currentIndex, ref) => {
     const allQuestionsArr = [...ref.current.parentElement.children];
     const nextQuestionsArr = allQuestionsArr.slice(currentIndex + 1, allQuestionsArr.length - 1);

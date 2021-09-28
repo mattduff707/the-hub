@@ -8,6 +8,7 @@ export const operationsArr = ['addition', 'subtraction', 'multiplication'];
 
 const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
+// Generate a random number based on difficulty. Used for addition and subtraction
 const generateNumber = (difficulty) => {
   return difficulty === 'easy'
     ? random(one, hundred)
@@ -16,12 +17,13 @@ const generateNumber = (difficulty) => {
     : random(one, tenThousand);
 };
 
+// Create operation object. Used to generate questions
 const createOperation = (difficulty, operation) => {
   if (operation === 'addition' || operation === 'subtraction') {
     const valOne = generateNumber(difficulty);
     const valTwo = generateNumber(difficulty);
-    return { valOne, valTwo, operation };
-  } else {
+    return { valOne, valTwo, operation }; 
+  } else { // Generate Multiplication object. Numbers have to be a little lower in multiplication
     if (difficulty === 'easy') {
       return { valOne: random(one, ten), valTwo: random(ten, hundred), operation };
     } else if (difficulty === 'medium') {
@@ -32,6 +34,8 @@ const createOperation = (difficulty, operation) => {
   }
 };
 
+
+// Function used to generate an array of questions with a randomized order. 
 const generateQuestions = (difficulty, operationsArr, quantity) => {
   let questions = [];
   const questionQuantity = quantity / operationsArr.length;

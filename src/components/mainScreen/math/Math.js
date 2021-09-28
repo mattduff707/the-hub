@@ -11,6 +11,7 @@ const Math = () => {
   const completedGame = 'completedGame';
   const questionTotal = 90;
 
+  /*State*/
   const [gameState, setGameState] = useState(inactiveGame);
   const [gameLength, setGameLength] = useState(5);
   const [gameOperations, setGameOperations] = useState([...operationsArr]);
@@ -18,12 +19,17 @@ const Math = () => {
   const [gameQuestions, setGameQuestions] = useState([]);
   const [correctQuestions, setCorrectQuestions] = useState([]);
   const [incorrectQuestions, setIncorrectQuestions] = useState([]);
+  /**********/
 
   /*Settings handlers*/
+
+  // Set game time
   const handleLengthChange = (e) => {
     e.preventDefault();
     setGameLength(() => e.target.value);
   };
+
+  // Set operations array
   const handleOperationsChange = (e) => {
     const operation = e.target.value;
     if (gameOperations.includes(operation)) {
@@ -33,11 +39,14 @@ const Math = () => {
       setGameOperations(() => [...gameOperations, operation]);
     }
   };
+
+  // Set difficulty
   const handleDifficultyChange = (e) => {
     e.preventDefault();
     setGameDifficulty(() => e.target.value);
   };
 
+  // Initialize game
   const handleGameStart = (e) => {
     e.preventDefault();
     if (gameOperations.length > 0) {
@@ -50,16 +59,14 @@ const Math = () => {
   /********/
 
   /*Question Handlers*/
-  const handleIsCorrect = useCallback(
-    (isCorrect, questionObj) => {
-      if (isCorrect) {
-        setCorrectQuestions(() => [...correctQuestions, questionObj]);
-      } else {
-        setIncorrectQuestions(() => [...incorrectQuestions, questionObj]);
-      }
-    },
-    [correctQuestions, incorrectQuestions]
-  );
+  const handleIsCorrect = (isCorrect, questionObj) => {
+    if (isCorrect) {
+      setCorrectQuestions(() => [...correctQuestions, questionObj]);
+    } else {
+      setIncorrectQuestions(() => [...incorrectQuestions, questionObj]);
+    }
+  };
+
   /*Game over Handlers*/
   const endGame = useCallback(() => {
     setGameState(() => completedGame);
