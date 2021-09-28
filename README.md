@@ -3,7 +3,7 @@
 - Sketched a rough design.
 - Created a basic outline on Figma.
 - Whiteboarded a state diagram to help conceptualize data flow in the math game.
-- Broke it down into manageable tasks.
+- Utilized Kanban board for tasks [Kanban](https://github.com/mattduff707/the-hub/blob/main/public/images/hubKanban.PNG)
 - Used feature branches and pull requests.
 
 ---
