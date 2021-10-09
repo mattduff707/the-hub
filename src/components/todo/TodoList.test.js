@@ -6,7 +6,9 @@ import userEvent from '@testing-library/user-event';
 describe('Todo list core functionality works', () => {
   test('if Add todo, edit todo, and remove todo works', () => {
     render(<TodoList />);
+
     const testText = 'This is a test todo';
+
     const todoInput = screen.getByPlaceholderText(/type task/i);
     const submitBtn = screen.getByRole('button', { name: /add/i });
 
@@ -30,6 +32,6 @@ describe('Todo list core functionality works', () => {
     const completeTaskBtn = screen.getByRole('button', { name: /complete todo/i });
     userEvent.click(completeTaskBtn);
 
-    expect(screen.queryByRole(testText + editText)).toBeNull();
+    expect(screen.queryByText(testText + editText)).toBeNull();
   });
 });
