@@ -42,22 +42,22 @@ const TodoItem = ({ value, itemId, deleteItem, editing, startEdit, confirmEdit }
       </Content>
       <ButtonWrapper>
         {editing ? (
-          <EditDeleteBtn editing={editing} onClick={handleEdit}>
+          <EditDeleteBtn aria-label="cancel edit" editing={editing} onClick={handleEdit}>
             <StyledDeleteIcon />
           </EditDeleteBtn>
         ) : (
-          <EditBtn onClick={handleEdit}>
+          <EditBtn aria-label="edit todo" onClick={handleEdit}>
             <StyledEditIcon />
           </EditBtn>
         )}
 
-        <EditConfirmBtn editing={editing} onClick={() => confirmEdit(itemId, textContent)}>
+        <EditConfirmBtn aria-label="confirm edit" editing={editing} onClick={() => confirmEdit(itemId, textContent)}>
           <StyledCheckIcon />
         </EditConfirmBtn>
-        <DeleteBtn editing={editing} onClick={handleDelete}>
+        <DeleteBtn aria-label="delete todo" editing={editing} onClick={handleDelete}>
           <StyledDeleteIcon />
         </DeleteBtn>
-        <CompleteBtn onClick={handleDelete} editing={editing}>
+        <CompleteBtn aria-label="complete todo" onClick={handleDelete} editing={editing}>
           <StyledCheckIcon />
         </CompleteBtn>
       </ButtonWrapper>
