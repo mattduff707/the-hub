@@ -1,20 +1,12 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router';
-import App from '../../App';
+import { render, screen } from '@testing-library/react';
+// import App from '../../App';
+import TodoList from './TodoList';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
-function setup() {
-  return render(
-    <MemoryRouter>
-      <App />
-    </MemoryRouter>
-  );
-}
-
 describe('Todo list core functionality works', () => {
   test('if Add todo, edit todo, and remove todo works', () => {
-    setup();
+    render(<TodoList />);
     const testText = 'This is a test todo';
     const todoInput = screen.getByPlaceholderText(/type task/i);
     const submitBtn = screen.getByRole('button', { name: /add/i });
@@ -34,7 +26,6 @@ describe('Todo list core functionality works', () => {
 
     const confirmEditBtn = screen.getByRole('button', { name: /confirm edit/i });
     userEvent.click(confirmEditBtn);
-
     expect(screen.getByText(testText + editText)).toBeInTheDocument();
 
     const completeTaskBtn = screen.getByRole('button', { name: /complete todo/i });
