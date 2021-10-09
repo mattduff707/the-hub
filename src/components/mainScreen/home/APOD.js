@@ -5,7 +5,6 @@ import UpArrow from '../../../icons/upArrow';
 
 const APOD = ({ data, loading, error }) => {
   const [isExtended, setIsExtended] = useState(false);
-  console.log(data);
   const handleClick = () => {
     setIsExtended(() => !isExtended);
   };

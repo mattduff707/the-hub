@@ -9,7 +9,7 @@ const Snippets = () => {
   const [snippets, setSnippets] = useState([]);
 
   const { data, loading, error } = useFetch(api);
-  console.log(error, data);
+
   useEffect(() => {
     setSnippets(() => data);
   }, [data]);
