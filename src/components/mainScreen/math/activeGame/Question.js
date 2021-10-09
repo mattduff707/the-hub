@@ -9,6 +9,7 @@ const Question = ({ valOne, valTwo, operation, question, handleIsCorrect, index 
   const [correctAnswer, setCorrectAnswer] = useState();
   const [isAnswered, setIsAnswered] = useState(false);
   const [isCorrect, setisCorrect] = useState();
+  const [inputVal, setInputVal] = useState('');
 
   const currentQuestionRef = useRef(null);
 
@@ -32,10 +33,10 @@ const Question = ({ valOne, valTwo, operation, question, handleIsCorrect, index 
         return getMultiplication(parseInt(valOne), parseInt(valTwo));
       }
     });
-    if (index === 0) {
-      // Set cursor to first question
-      changeFocus(index - 1, currentQuestionRef);
-    }
+    // if (index === 0) {
+    //   // Set cursor to first question
+    //   changeFocus(index - 1, currentQuestionRef);
+    // }
   }, [operation, valOne, valTwo, index]);
 
   // Check for upcoming questions, If an upcoming question is unanswered, move the cursor into that questions input
@@ -43,14 +44,12 @@ const Question = ({ valOne, valTwo, operation, question, handleIsCorrect, index 
     const allQuestionsArr = [...ref.current.parentElement.children];
     const nextQuestionsArr = allQuestionsArr.slice(currentIndex + 1, allQuestionsArr.length - 1);
     const nextAvailableQuestion = nextQuestionsArr.find((element) => element.dataset.isunanswered === 'true');
-
     if (nextAvailableQuestion) {
       nextAvailableQuestion.answer.focus();
     }
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const inputVal = e.target.answer.value;
     const isAnswerCorrect = correctAnswer === parseInt(inputVal);
     if (inputVal.length > 0) {
       setIsAnswered(() => true);
@@ -64,7 +63,7 @@ const Question = ({ valOne, valTwo, operation, question, handleIsCorrect, index 
     <Wrapper onSubmit={handleSubmit} ref={currentQuestionRef} data-isunanswered={!isAnswered}>
       <Container>
         {valOne} <OperationIcon operation={operation} /> {valTwo} <StyledEqualsIcon />{' '}
-        <QuestionInput isCorrect={isCorrect} isAnswered={isAnswered} />
+        <QuestionInput isCorrect={isCorrect} isAnswered={isAnswered} setInputVal={setInputVal} inputVal={inputVal} />
       </Container>
       {!isAnswered ? (
         <SubmitBtn type="submit">Submit</SubmitBtn>

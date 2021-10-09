@@ -17,7 +17,7 @@ const Settings = ({
   return (
     <SettingsWrapper>
       <SettingsTitle>Settings</SettingsTitle>
-      <SettingsForm onSubmit={handleGameStart}>
+      <SettingsForm aria-label="Settings form" onSubmit={handleGameStart}>
         <SettingContainer>
           <Time gameLength={gameLength} handleLengthChange={handleLengthChange} />
         </SettingContainer>
