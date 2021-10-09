@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 
-const QuestionInput = ({ isCorrect, isAnswered }) => {
-  const [answer, setAnswer] = useState('');
-
+const QuestionInput = ({ isCorrect, isAnswered, inputVal, setInputVal }) => {
   /*Input Conditions*/
   const isNumber = (val) => {
     return !isNaN(parseFloat(val)) && !isNaN(val - 0);
@@ -30,14 +27,14 @@ const QuestionInput = ({ isCorrect, isAnswered }) => {
   const handleChange = (e) => {
     const inputVal = e.target.value;
     if (isValid(inputVal, [isNotSpace], [isEmptyStr, isNumber, isNegativeSymbol])) {
-      setAnswer(() => inputVal);
+      setInputVal(inputVal);
     }
   };
 
   return !isAnswered ? (
-    <AnswerInput autoComplete="off" name="answer" type="text" value={answer} onChange={handleChange} />
+    <AnswerInput autoComplete="off" name="answer" type="text" value={inputVal} onChange={handleChange} />
   ) : (
-    <StyledAnswer isCorrect={isCorrect}>{answer}</StyledAnswer>
+    <StyledAnswer isCorrect={isCorrect}>{inputVal}</StyledAnswer>
   );
 };
 

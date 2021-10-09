@@ -13,7 +13,7 @@ const Home = () => {
   if (error) {
     return (
       <AlertWrapper>
-        <Error>Error!</Error>;
+        <Error>Error!</Error>
       </AlertWrapper>
     );
   }
@@ -27,7 +27,7 @@ const Home = () => {
   }
   return (
     <AlertWrapper>
-      <Loading>Loading...</Loading>;
+      <Loading>Loading...</Loading>
     </AlertWrapper>
   );
 };

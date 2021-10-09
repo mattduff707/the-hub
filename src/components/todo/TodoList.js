@@ -7,6 +7,11 @@ const TodoList = () => {
   const todoTag = 'todoList';
 
   const [list, setList] = useState([]);
+  const [inputVal, setInputVal] = useState('');
+
+  const handleChange = (e) => {
+    setInputVal(() => e.target.value);
+  };
 
   useEffect(() => {
     const windowStorage = JSON.parse(window.localStorage.getItem(todoTag));
@@ -17,15 +22,15 @@ const TodoList = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const todoVal = e.target[0].value;
-    if (!todoVal) {
+
+    if (!inputVal) {
       return;
     }
 
-    e.target[0].value = '';
     setList(() => {
-      return [...list, { id: list.length, value: todoVal, editing: false }];
+      return [...list, { id: list.length, value: inputVal, editing: false }];
     });
+    setInputVal('');
   };
 
   const deleteItem = (id) => {
@@ -62,7 +67,7 @@ const TodoList = () => {
 
   return (
     <Wrapper>
-      <TodoForm handleSubmit={handleSubmit} />
+      <TodoForm handleSubmit={handleSubmit} handleChange={handleChange} inputVal={inputVal} />
       <ListWrapper>
         {list.map((e) => {
           return (

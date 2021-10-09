@@ -2,10 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import Btn from '../Btn';
 
-const TodoForm = ({ handleSubmit }) => {
+const TodoForm = ({ handleSubmit, inputVal, handleChange }) => {
   return (
-    <Wrapper onSubmit={handleSubmit}>
-      <TextInput autoComplete="off" type="text" name="addTodo" />
+    <Wrapper name="taskForm" onSubmit={handleSubmit}>
+      <TextInput
+        placeholder="Type task..."
+        value={inputVal}
+        onChange={handleChange}
+        autoComplete="off"
+        type="text"
+        name="addTodo"
+      />
       <Submit type="submit">Add</Submit>
     </Wrapper>
   );
@@ -41,6 +48,10 @@ const TextInput = styled.input`
   box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
   text-shadow: var(--shadow-text);
   font-size: 18px;
+  &::placeholder {
+    color: var(--color-text);
+    opacity: 0.5;
+  }
 `;
 const Submit = styled(Btn)`
   flex: 1;
