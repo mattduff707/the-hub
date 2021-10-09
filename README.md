@@ -14,6 +14,7 @@
 - Task Management: [Code Snippet](https://github.com/mattduff707/the-hub/blob/5ec67eb33884b50714bedb76973f259eec24e746/src/components/todo/TodoList.js#L7-L67)
 - Bookmark Search Feature: [Code Snippet](https://github.com/mattduff707/the-hub/blob/5ec67eb33884b50714bedb76973f259eec24e746/src/components/bookmarks/Search.js#L4-L35)
 - API Call and data manipulation using a custom hook: [Hook](https://github.com/mattduff707/the-hub/blob/5ec67eb33884b50714bedb76973f259eec24e746/src/services/useFetch.js#L1-L41) and [Data](https://github.com/mattduff707/the-hub/blob/main/src/components/mainScreen/home/APOD.js)
+- Integration tests using React Testing Library [Example Test](https://github.com/mattduff707/the-hub/blob/main/src/components/todo/TodoList.test.js)
 
 ---
 
