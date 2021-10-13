@@ -13,7 +13,10 @@ const QuestionInput = ({ isCorrect, isAnswered, inputVal, setInputVal }) => {
   const isNegativeSymbol = (val) => {
     return val === '-' && val.length === 1;
   };
-
+  const isLength = (val) => {
+    const maxValLength = 6;
+    return val.length <= maxValLength;
+  };
   /************/
 
   /*Check if Input value is valid*/
@@ -26,7 +29,7 @@ const QuestionInput = ({ isCorrect, isAnswered, inputVal, setInputVal }) => {
 
   const handleChange = (e) => {
     const inputVal = e.target.value;
-    if (isValid(inputVal, [isNotSpace], [isEmptyStr, isNumber, isNegativeSymbol])) {
+    if (isValid(inputVal, [isNotSpace, isLength], [isEmptyStr, isNumber, isNegativeSymbol])) {
       setInputVal(inputVal);
     }
   };
