@@ -2,8 +2,18 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import TodoItem from './TodoItem';
 import TodoForm from './TodoForm';
+import { useSelector, useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../../state/actionCreators';
 
 const TodoList = () => {
+  const state = useSelector((state) => state.tasks);
+
+  const dispatch = useDispatch();
+
+  const { addTask } = bindActionCreators(actionCreators, dispatch);
+  console.log(state);
+
   const todoTag = 'todoList';
 
   const [list, setList] = useState([]);
@@ -22,7 +32,7 @@ const TodoList = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    addTask('test task');
     if (!inputVal) {
       return;
     }
