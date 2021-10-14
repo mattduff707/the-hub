@@ -10,7 +10,7 @@ import axios from 'axios';
 
 const TodoList = () => {
   // const api = 'http://localhost:3000/tasklist/';
-  const api = 'https://git.heroku.com/the-hub-server.git';
+  const api = 'https://git.heroku.com/the-hub-server.git/tasklist/';
   const { data, loading, error } = useFetch(api);
 
   const state = useSelector((state) => state.tasks);
