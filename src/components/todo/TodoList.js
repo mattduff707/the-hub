@@ -9,8 +9,8 @@ import useFetch from '../../services/useFetch';
 import axios from 'axios';
 
 const TodoList = () => {
-  // const api = 'http://localhost:3000/tasklist/';
-  const api = 'https://git.heroku.com/the-hub-server.git/tasklist/';
+  const api = 'http://localhost:3000/tasklist/';
+  // const api = 'https://git.heroku.com/the-hub-server.git/tasklist/';
   const { data, loading, error } = useFetch(api);
 
   const state = useSelector((state) => state.tasks);
@@ -41,7 +41,7 @@ const TodoList = () => {
       return;
     }
     axios
-      .post(api + 'qwe', { value: inputVal, date_added: 'now' })
+      .post(api, { value: inputVal, date_added: 'now' })
       .then((res) => setList(() => [...list, { value: inputVal, date_added: 'now', _id: res.data }]));
 
     setInputVal('');
