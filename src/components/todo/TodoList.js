@@ -9,9 +9,9 @@ import useFetch from '../../services/useFetch';
 import axios from 'axios';
 
 const TodoList = () => {
-  const api = 'http://localhost:3000/tasklist/';
+  // const api = 'http://localhost:3000/tasklist/';
+  const api = 'https://git.heroku.com/the-hub-server.git';
   const { data, loading, error } = useFetch(api);
-  console.log(data, loading, error);
 
   const state = useSelector((state) => state.tasks);
   console.log(state);
