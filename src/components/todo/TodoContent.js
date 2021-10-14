@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const TodoContent = ({ value, textContent, editing, handleChange }) => {
-  if (editing) {
+const TodoContent = ({ value, textContent, isEditing, handleChange }) => {
+  if (isEditing) {
     return <EditContent value={textContent} onChange={handleChange} />;
   }
   return <TextContent>{value}</TextContent>;

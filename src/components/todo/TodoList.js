@@ -28,20 +28,20 @@ const TodoList = () => {
   };
 
   useEffect(() => {
+    console.log(data);
     if (data) {
       setList(data);
     }
   }, [data]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     addTask('test task');
     if (!inputVal) {
       return;
     }
-
     axios
-      .post(api, { value: inputVal, date_added: 'now' })
+      .post(api + 'qwe', { value: inputVal, date_added: 'now' })
       .then((res) => setList(() => [...list, { value: inputVal, date_added: 'now', _id: res.data }]));
 
     setInputVal('');
@@ -55,26 +55,16 @@ const TodoList = () => {
     setList(() => filteredList);
   };
 
-  const startEdit = (id) => {
-    const newList = list.map((e) => {
-      if (e.id === id) {
-        e.editing = !e.editing;
-        return e;
-      }
-      return e;
-    });
-    setList(() => newList);
-  };
-
   const confirmEdit = (id, newText) => {
-    const newList = list.map((e) => {
-      if (e.id === id) {
-        e.value = newText;
-        e.editing = !e.editing;
-        return e;
+    const newList = list.map((item) => {
+      if (item._id === id) {
+        item.value = newText;
+        return item;
       }
-      return e;
+      return item;
     });
+    axios.patch(api + id, { value: newText });
+
     setList(() => newList);
   };
 
@@ -91,15 +81,7 @@ const TodoList = () => {
         <ListWrapper>
           {list.map((e, index) => {
             return (
-              <TodoItem
-                itemId={e._id}
-                key={index}
-                value={e.value}
-                deleteItem={deleteItem}
-                startEdit={startEdit}
-                confirmEdit={confirmEdit}
-                editing={e.editing}
-              />
+              <TodoItem itemId={e._id} key={index} value={e.value} deleteItem={deleteItem} confirmEdit={confirmEdit} />
             );
           })}
         </ListWrapper>
