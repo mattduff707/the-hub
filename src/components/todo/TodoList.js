@@ -5,16 +5,20 @@ import TodoForm from './TodoForm';
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../state/actionCreators';
+import useFetch from '../../services/useFetch';
+import axios from 'axios';
 
 const TodoList = () => {
+  const api = 'http://localhost:3000/tasklist/';
+  const { data, loading, error } = useFetch(api);
+  console.log(data, loading, error);
+
   const state = useSelector((state) => state.tasks);
+  console.log(state);
 
   const dispatch = useDispatch();
 
   const { addTask } = bindActionCreators(actionCreators, dispatch);
-  console.log(state);
-
-  const todoTag = 'todoList';
 
   const [list, setList] = useState([]);
   const [inputVal, setInputVal] = useState('');
@@ -24,27 +28,30 @@ const TodoList = () => {
   };
 
   useEffect(() => {
-    const windowStorage = JSON.parse(window.localStorage.getItem(todoTag));
-    if (windowStorage) {
-      setList(windowStorage);
+    if (data) {
+      setList(data);
     }
-  }, []);
+  }, [data]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     addTask('test task');
     if (!inputVal) {
       return;
     }
 
-    setList(() => {
-      return [...list, { id: list.length, value: inputVal, editing: false }];
-    });
+    axios
+      .post(api, { value: inputVal, date_added: 'now' })
+      .then((res) => setList(() => [...list, { value: inputVal, date_added: 'now', _id: res.data }]));
+
     setInputVal('');
   };
 
   const deleteItem = (id) => {
-    const filteredList = list.filter((e) => e.id !== id);
+    axios.delete(api + id).then((response) => {
+      console.log(response.data);
+    });
+    const filteredList = list.filter((e) => e._id !== id);
     setList(() => filteredList);
   };
 
@@ -71,32 +78,35 @@ const TodoList = () => {
     setList(() => newList);
   };
 
-  useEffect(() => {
-    window.localStorage.setItem(todoTag, JSON.stringify(list));
-  }, [list]);
-
-  return (
-    <Wrapper>
-      <TodoForm handleSubmit={handleSubmit} handleChange={handleChange} inputVal={inputVal} />
-      <ListWrapper>
-        {list.map((e) => {
-          return (
-            <TodoItem
-              itemId={e.id}
-              key={e.value + e.id}
-              value={e.value}
-              deleteItem={deleteItem}
-              startEdit={startEdit}
-              confirmEdit={confirmEdit}
-              editing={e.editing}
-            />
-          );
-        })}
-      </ListWrapper>
-    </Wrapper>
-  );
+  if (loading) {
+    return <p>Loading</p>;
+  }
+  if (error) {
+    return <p>Error</p>;
+  }
+  if (data) {
+    return (
+      <Wrapper>
+        <TodoForm handleSubmit={handleSubmit} handleChange={handleChange} inputVal={inputVal} />
+        <ListWrapper>
+          {list.map((e, index) => {
+            return (
+              <TodoItem
+                itemId={e._id}
+                key={index}
+                value={e.value}
+                deleteItem={deleteItem}
+                startEdit={startEdit}
+                confirmEdit={confirmEdit}
+                editing={e.editing}
+              />
+            );
+          })}
+        </ListWrapper>
+      </Wrapper>
+    );
+  }
 };
-
 const Wrapper = styled.section`
   width: 100%;
   height: 100%;
