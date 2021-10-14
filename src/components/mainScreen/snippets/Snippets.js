@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 const Snippets = () => {
   const api = 'https://fierce-falls-10148.herokuapp.com/api/snippets';
+
   const [snippets, setSnippets] = useState([]);
 
   const { data, loading, error } = useFetch(api);
