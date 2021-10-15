@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Heading from '../Heading';
 import TodoItem from './TodoItem';
 import TodoForm from './TodoForm';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../state/actionCreators';
 import useFetch from '../../services/useFetch';
 import axios from 'axios';
+import Loading from '../Loading';
 
 const TodoList = () => {
   // const api = 'http://localhost:3000/tasklist/';
@@ -69,7 +72,11 @@ const TodoList = () => {
   };
 
   if (loading) {
-    return <p>Loading</p>;
+    return (
+      <LoadWrap>
+        <Loading />;
+      </LoadWrap>
+    );
   }
   if (error) {
     return <p>Error</p>;
@@ -77,6 +84,7 @@ const TodoList = () => {
   if (data) {
     return (
       <Wrapper>
+        <Heading>Tasks</Heading>
         <TodoForm handleSubmit={handleSubmit} handleChange={handleChange} inputVal={inputVal} />
         <ListWrapper>
           {list.map((e, index) => {
@@ -92,8 +100,17 @@ const TodoList = () => {
 const Wrapper = styled.section`
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
   overflow: visible;
+`;
+const LoadWrap = styled(Wrapper)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -20px;
 `;
 
 const ListWrapper = styled.ul`
