@@ -17,7 +17,7 @@ const TodoList = () => {
 
   const listState = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
-  const { addTask, removeTask } = bindActionCreators(actionCreators, dispatch);
+  const { addTask, removeTask, editTask } = bindActionCreators(actionCreators, dispatch);
 
   const [inputVal, setInputVal] = useState('');
 
@@ -34,30 +34,22 @@ const TodoList = () => {
 
     axios
       .post(api, { value: inputVal, date_added: 'now' })
-      .then((res) => addTask({ value: inputVal, date_added: 'now', _id: res.data })); // Task added here because MongoDb is creating my ID values
-
+      .then((res) => addTask({ value: inputVal, date_added: 'now', _id: res.data }));
+    // Task added here because MongoDb is creating my ID values
     setInputVal('');
   };
 
-  const deleteItem = (id) => {
-    axios.delete(api + id).then((response) => {
+  const deleteItem = (_id) => {
+    axios.delete(api + _id).then((response) => {
       console.log(response.data);
     });
-    removeTask(id);
+    removeTask(_id);
   };
 
-  // const confirmEdit = (id, newText) => {
-  //   const newList = list.map((item) => {
-  //     if (item._id === id) {
-  //       item.value = newText;
-  //       return item;
-  //     }
-  //     return item;
-  //   });
-  //   axios.patch(api + id, { value: newText });
-
-  //   setList(() => newList);
-  // };
+  const confirmEdit = (_id, newText) => {
+    axios.patch(api + _id, { value: newText });
+    editTask({ _id, newText });
+  };
 
   if (listState.loading) {
     return (
@@ -75,9 +67,15 @@ const TodoList = () => {
       <Heading>Tasks</Heading>
       <TodoForm handleSubmit={handleSubmit} handleChange={handleChange} inputVal={inputVal} />
       <ListWrapper>
-        {listState.tasklist.map((e, index) => {
+        {listState.tasklist.map((task, index) => {
           return (
-            <TodoItem itemId={e._id} key={index} value={e.value} deleteItem={deleteItem} confirmEdit={'confirmEdidt'} />
+            <TodoItem
+              itemId={task._id}
+              key={index}
+              value={task.value}
+              deleteItem={deleteItem}
+              confirmEdit={confirmEdit}
+            />
           );
         })}
       </ListWrapper>

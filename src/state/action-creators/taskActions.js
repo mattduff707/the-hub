@@ -15,3 +15,12 @@ export const removeTask = (id) => {
     });
   };
 };
+
+export const editTask = (task) => {
+  return (dispatch) => {
+    dispatch({
+      type: 'EDIT_TASK',
+      payload: task,
+    });
+  };
+};
