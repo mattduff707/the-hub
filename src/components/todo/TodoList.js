@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Heading from '../Heading';
 import TodoItem from './TodoItem';
@@ -7,10 +7,9 @@ import TodoForm from './TodoForm';
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../state/actionCreators';
-import useFetch from '../../services/useFetch';
+
 import axios from 'axios';
 import Loading from '../Loading';
-// import { fetchTodos } from '../../state/reducers/tasksReducer';
 
 const TodoList = () => {
   // const api = 'http://localhost:3000/tasklist/';
@@ -18,7 +17,7 @@ const TodoList = () => {
 
   const listState = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
-  const { addTask } = bindActionCreators(actionCreators, dispatch);
+  const { addTask, removeTask } = bindActionCreators(actionCreators, dispatch);
 
   const [inputVal, setInputVal] = useState('');
 
@@ -35,18 +34,17 @@ const TodoList = () => {
 
     axios
       .post(api, { value: inputVal, date_added: 'now' })
-      .then((res) => addTask({ value: inputVal, date_added: 'now', _id: res.data }));
+      .then((res) => addTask({ value: inputVal, date_added: 'now', _id: res.data })); // Task added here because MongoDb is creating my ID values
 
     setInputVal('');
   };
 
-  // const deleteItem = (id) => {
-  //   axios.delete(api + id).then((response) => {
-  //     console.log(response.data);
-  //   });
-  //   const filteredList = list.filter((e) => e._id !== id);
-  //   setList(() => filteredList);
-  // };
+  const deleteItem = (id) => {
+    axios.delete(api + id).then((response) => {
+      console.log(response.data);
+    });
+    removeTask(id);
+  };
 
   // const confirmEdit = (id, newText) => {
   //   const newList = list.map((item) => {
@@ -78,7 +76,9 @@ const TodoList = () => {
       <TodoForm handleSubmit={handleSubmit} handleChange={handleChange} inputVal={inputVal} />
       <ListWrapper>
         {listState.tasklist.map((e, index) => {
-          return <TodoItem itemId={e._id} key={index} value={e.value} deleteItem={'d'} confirmEdit={'confirmEdidt'} />;
+          return (
+            <TodoItem itemId={e._id} key={index} value={e.value} deleteItem={deleteItem} confirmEdit={'confirmEdidt'} />
+          );
         })}
       </ListWrapper>
     </Wrapper>

@@ -6,6 +6,9 @@ const reducer = (state = { loading: true, error: false, tasklist: [] }, action) 
       return { loading: false, tasklist: action.payload };
     case 'ADD_TASK':
       return { loading: false, error: false, tasklist: [...state.tasklist, action.payload] };
+    case 'REMOVE_TASK':
+      const newList = state.tasklist.filter((task) => task._id !== action.payload);
+      return { ...state, tasklist: newList };
     case 'ERROR':
       return { loading: false, error: action.payload, tasklist: [...state.tasklist] };
     // case 'REMOVE_TASK':
