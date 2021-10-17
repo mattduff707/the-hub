@@ -1,3 +1,12 @@
+export const initTaskList = (arr) => {
+  return (dispatch) => {
+    dispatch({
+      type: 'INIT_TASKLIST',
+      payload: arr,
+    });
+  };
+};
+
 export const addTask = (text) => {
   return (dispatch) => {
     dispatch({
