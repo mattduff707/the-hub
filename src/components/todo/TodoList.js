@@ -8,13 +8,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../state/actionCreators';
 
-import axios from 'axios';
 import Loading from '../Loading';
 
 const TodoList = () => {
-  // const api = 'http://localhost:3000/tasklist/';
-  const api = 'https://the-hub-server.herokuapp.com/tasklist/';
-
   const listState = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
   const { addTask, removeTask, editTask } = bindActionCreators(actionCreators, dispatch);
@@ -31,23 +27,16 @@ const TodoList = () => {
     if (!inputVal) {
       return;
     }
-
-    axios
-      .post(api, { value: inputVal, date_added: 'now' })
-      .then((res) => addTask({ value: inputVal, date_added: 'now', _id: res.data }));
-    // Task added here because MongoDb is creating my ID values
+    addTask(inputVal);
     setInputVal('');
   };
 
   const deleteItem = (_id) => {
-    axios.delete(api + _id).then((response) => {
-      console.log(response.data);
-    });
     removeTask(_id);
+    // axios.delete(api + _id);
   };
 
   const confirmEdit = (_id, newText) => {
-    axios.patch(api + _id, { value: newText });
     editTask({ _id, newText });
   };
 
