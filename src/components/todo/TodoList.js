@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Heading from '../Heading';
 import TodoItem from './TodoItem';
@@ -7,96 +7,71 @@ import TodoForm from './TodoForm';
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../state/actionCreators';
-import useFetch from '../../services/useFetch';
-import axios from 'axios';
+
 import Loading from '../Loading';
 
 const TodoList = () => {
-  // const api = 'http://localhost:3000/tasklist/';
-  const api = 'https://the-hub-server.herokuapp.com/tasklist/';
-  const { data, loading, error } = useFetch(api);
-
-  const state = useSelector((state) => state.tasks);
-  console.log(state);
-
+  const listState = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
+  const { addTask, removeTask, editTask } = bindActionCreators(actionCreators, dispatch);
 
-  const { addTask } = bindActionCreators(actionCreators, dispatch);
-
-  const [list, setList] = useState([]);
   const [inputVal, setInputVal] = useState('');
 
   const handleChange = (e) => {
     setInputVal(() => e.target.value);
   };
 
-  useEffect(() => {
-    console.log(data);
-    if (data) {
-      setList(data);
-    }
-  }, [data]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTask('test task');
+
     if (!inputVal) {
       return;
     }
-    axios
-      .post(api, { value: inputVal, date_added: 'now' })
-      .then((res) => setList(() => [...list, { value: inputVal, date_added: 'now', _id: res.data }]));
-
+    addTask(inputVal);
     setInputVal('');
   };
 
-  const deleteItem = (id) => {
-    axios.delete(api + id).then((response) => {
-      console.log(response.data);
-    });
-    const filteredList = list.filter((e) => e._id !== id);
-    setList(() => filteredList);
+  const deleteItem = (_id) => {
+    removeTask(_id);
+    // axios.delete(api + _id);
   };
 
-  const confirmEdit = (id, newText) => {
-    const newList = list.map((item) => {
-      if (item._id === id) {
-        item.value = newText;
-        return item;
-      }
-      return item;
-    });
-    axios.patch(api + id, { value: newText });
-
-    setList(() => newList);
+  const confirmEdit = (_id, newText) => {
+    editTask({ _id, newText });
   };
 
-  if (loading) {
+  if (listState.loading) {
     return (
       <LoadWrap>
         <Loading />;
       </LoadWrap>
     );
   }
-  if (error) {
-    return <p>Error</p>;
+  if (listState.error) {
+    <p>Error</p>;
   }
-  if (data) {
-    return (
-      <Wrapper>
-        <Heading>Tasks</Heading>
-        <TodoForm handleSubmit={handleSubmit} handleChange={handleChange} inputVal={inputVal} />
-        <ListWrapper>
-          {list.map((e, index) => {
-            return (
-              <TodoItem itemId={e._id} key={index} value={e.value} deleteItem={deleteItem} confirmEdit={confirmEdit} />
-            );
-          })}
-        </ListWrapper>
-      </Wrapper>
-    );
-  }
+
+  return (
+    <Wrapper>
+      <Heading>Tasks</Heading>
+      <TodoForm handleSubmit={handleSubmit} handleChange={handleChange} inputVal={inputVal} />
+      <ListWrapper>
+        {listState.tasklist.map((task, index) => {
+          return (
+            <TodoItem
+              itemId={task._id}
+              key={index}
+              value={task.value}
+              deleteItem={deleteItem}
+              confirmEdit={confirmEdit}
+            />
+          );
+        })}
+      </ListWrapper>
+    </Wrapper>
+  );
 };
+
 const Wrapper = styled.section`
   width: 100%;
   height: 100%;
