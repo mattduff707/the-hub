@@ -1,14 +1,17 @@
-import { useState, useCallback } from 'react';
-import styled from 'styled-components';
-import InactiveGame from './inactiveGame/InactiveGame';
-import ActiveGame from './activeGame/ActiveGame';
-import CompletedGame from './completedGame/CompletedGame';
-import generateQuestions, { operationsArr, difficultiesArr } from './generateQuestions';
+import { useState, useCallback } from "react";
+import styled from "styled-components";
+import InactiveGame from "./inactiveGame/InactiveGame";
+import ActiveGame from "./activeGame/ActiveGame";
+import CompletedGame from "./completedGame/CompletedGame";
+import generateQuestions, {
+  operationsArr,
+  difficultiesArr,
+} from "./generateQuestions";
 
 const Math = () => {
-  const inactiveGame = 'inactive';
-  const activeGame = 'active';
-  const completedGame = 'completedGame';
+  const inactiveGame = "inactive";
+  const activeGame = "active";
+  const completedGame = "completedGame";
   const questionTotal = 90;
 
   /*State*/
@@ -33,7 +36,9 @@ const Math = () => {
   const handleOperationsChange = (e) => {
     const operation = e.target.value;
     if (gameOperations.includes(operation)) {
-      const filteredOperations = gameOperations.filter((val) => val !== operation);
+      const filteredOperations = gameOperations.filter(
+        (val) => val !== operation
+      );
       setGameOperations(() => filteredOperations);
     } else {
       setGameOperations(() => [...gameOperations, operation]);
@@ -50,7 +55,9 @@ const Math = () => {
   const handleGameStart = (e) => {
     e.preventDefault();
     if (gameOperations.length > 0) {
-      setGameQuestions(generateQuestions(gameDifficulty, gameOperations, questionTotal));
+      setGameQuestions(
+        generateQuestions(gameDifficulty, gameOperations, questionTotal)
+      );
       setCorrectQuestions(() => []);
       setIncorrectQuestions(() => []);
       setGameState(() => activeGame);
@@ -104,7 +111,7 @@ const Math = () => {
     );
   } else if (gameState === completedGame) {
     return (
-      <Wrapper style={{ justifyContent: 'center' }}>
+      <Wrapper style={{ justifyContent: "center" }}>
         <CompletedGame
           correctQuestions={correctQuestions}
           incorrectQuestions={incorrectQuestions}

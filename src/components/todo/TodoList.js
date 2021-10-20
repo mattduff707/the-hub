@@ -1,21 +1,27 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import Heading from '../Heading';
-import TodoItem from './TodoItem';
-import TodoForm from './TodoForm';
+import React, { useState } from "react";
+import styled from "styled-components";
+import Heading from "../Heading";
+import TodoForm from "./TodoForm";
+import List from "./List";
 
-import { useSelector, useDispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { actionCreators } from '../../state/actionCreators';
+import { useSelector, useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../../state/actionCreators";
 
-import Loading from '../Loading';
+import Loading from "../Loading";
 
 const TodoList = () => {
   const listState = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
-  const { addTask, removeTask, editTask } = bindActionCreators(actionCreators, dispatch);
+  const { addTask, removeTask, editTask } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
 
-  const [inputVal, setInputVal] = useState('');
+  const tasklistTag = "tasklist";
+  const donelistTag = "donelist";
+  const [inputVal, setInputVal] = useState("");
+  const [activeTag, setActiveTag] = useState(tasklistTag);
 
   const handleChange = (e) => {
     setInputVal(() => e.target.value);
@@ -28,7 +34,7 @@ const TodoList = () => {
       return;
     }
     addTask(inputVal);
-    setInputVal('');
+    setInputVal("");
   };
 
   const deleteItem = (_id) => {
@@ -54,20 +60,27 @@ const TodoList = () => {
   return (
     <Wrapper>
       <Heading>Tasks</Heading>
-      <TodoForm handleSubmit={handleSubmit} handleChange={handleChange} inputVal={inputVal} />
-      <ListWrapper>
-        {listState.tasklist.map((task, index) => {
-          return (
-            <TodoItem
-              itemId={task._id}
-              key={index}
-              value={task.value}
-              deleteItem={deleteItem}
-              confirmEdit={confirmEdit}
-            />
-          );
-        })}
-      </ListWrapper>
+      {activeTag === tasklistTag && (
+        <>
+          <TodoForm
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            inputVal={inputVal}
+          />
+          <List
+            activeList={listState.tasklist}
+            deleteItem={deleteItem}
+            confirmEdit={confirmEdit}
+          />
+        </>
+      )}
+      {activeTag === donelistTag && (
+        <List
+          activeList={listState.donelist}
+          deleteItem={deleteItem}
+          confirmEdit={confirmEdit}
+        />
+      )}
     </Wrapper>
   );
 };
@@ -86,14 +99,6 @@ const LoadWrap = styled(Wrapper)`
   align-items: center;
   justify-content: center;
   margin-top: -20px;
-`;
-
-const ListWrapper = styled.ul`
-  width: 100%;
-  height: 100%;
-  list-style: none;
-  padding: 0px 10px 160px;
-  overflow: auto;
 `;
 
 export default TodoList;
