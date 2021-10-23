@@ -1,26 +1,24 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import Heading from "../Heading";
-import TodoForm from "./TodoForm";
-import List from "./List";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Heading from '../Heading';
+import TodoForm from './TodoForm';
+import List from './List';
 
-import { useSelector, useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
-import { actionCreators } from "../../state/actionCreators";
+import { useSelector, useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../../state/actionCreators';
 
-import Loading from "../Loading";
+import Loading from '../Loading';
+import TodoNav from './TodoNav';
 
 const TodoList = () => {
   const listState = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
-  const { addTask, removeTask, editTask } = bindActionCreators(
-    actionCreators,
-    dispatch
-  );
+  const { addTask, removeTask, editTask } = bindActionCreators(actionCreators, dispatch);
 
-  const tasklistTag = "tasklist";
-  const donelistTag = "donelist";
-  const [inputVal, setInputVal] = useState("");
+  const tasklistTag = 'tasklist';
+  const donelistTag = 'donelist';
+  const [inputVal, setInputVal] = useState('');
   const [activeTag, setActiveTag] = useState(tasklistTag);
 
   const handleChange = (e) => {
@@ -34,7 +32,7 @@ const TodoList = () => {
       return;
     }
     addTask(inputVal);
-    setInputVal("");
+    setInputVal('');
   };
 
   const deleteItem = (_id) => {
@@ -60,26 +58,15 @@ const TodoList = () => {
   return (
     <Wrapper>
       <Heading>Tasks</Heading>
+      <TodoNav activeTag={activeTag} />
       {activeTag === tasklistTag && (
         <>
-          <TodoForm
-            handleSubmit={handleSubmit}
-            handleChange={handleChange}
-            inputVal={inputVal}
-          />
-          <List
-            activeList={listState.tasklist}
-            deleteItem={deleteItem}
-            confirmEdit={confirmEdit}
-          />
+          <TodoForm handleSubmit={handleSubmit} handleChange={handleChange} inputVal={inputVal} />
+          <List activeList={listState.tasklist} deleteItem={deleteItem} confirmEdit={confirmEdit} />
         </>
       )}
       {activeTag === donelistTag && (
-        <List
-          activeList={listState.donelist}
-          deleteItem={deleteItem}
-          confirmEdit={confirmEdit}
-        />
+        <List activeList={listState.donelist} deleteItem={deleteItem} confirmEdit={confirmEdit} />
       )}
     </Wrapper>
   );
