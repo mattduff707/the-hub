@@ -1,13 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
-import useFetch from '../../../services/useFetch';
-import APOD from './APOD';
-import Heading from '../../Heading';
-import PageTitle from '../PageTitle';
+import React from "react";
+import styled from "styled-components";
+import useFetch from "../../../services/useFetch";
+import APOD from "./APOD";
+import Heading from "../../Heading";
+import PageTitle from "../PageTitle";
+import Loading from "../../Loading";
 
 const Home = () => {
   const { data, loading, error } = useFetch(
-    'https://api.nasa.gov/planetary/apod?api_key=kXzpTPi9EJQUUhl0fZVNK2S8owEeuPVogzGowgOR'
+    "https://api.nasa.gov/planetary/apod?api_key=kXzpTPi9EJQUUhl0fZVNK2S8owEeuPVogzGowgOR"
   );
 
   if (error) {
@@ -27,7 +28,7 @@ const Home = () => {
   }
   return (
     <AlertWrapper>
-      <Loading>Loading...</Loading>
+      <Loading />
     </AlertWrapper>
   );
 };
@@ -52,10 +53,6 @@ const Title = styled(PageTitle)`
 const Error = styled(Heading)`
   color: var(--hover-danger);
   text-shadow: var(--hover-danger-text-shadow);
-`;
-const Loading = styled(Heading)`
-  color: var(--hover-main);
-  text-shadow: var(--hover-main-text-shadow);
 `;
 
 export default Home;
