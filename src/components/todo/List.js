@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
 
-const List = ({ activeList, deleteItem, confirmEdit }) => {
+const List = ({ activeList, deleteItem, confirmEdit, completeTask }) => {
   return (
     <Wrapper>
       {activeList.map((task, index) => {
@@ -11,8 +11,10 @@ const List = ({ activeList, deleteItem, confirmEdit }) => {
             itemId={task._id}
             key={index}
             value={task.value}
+            date_added={task.date_added}
             deleteItem={deleteItem}
             confirmEdit={confirmEdit}
+            completeTask={completeTask}
           />
         );
       })}

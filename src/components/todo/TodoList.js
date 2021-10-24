@@ -14,7 +14,7 @@ import TodoNav from "./TodoNav";
 const TodoList = () => {
   const listState = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
-  const { addTask, removeTask, editTask } = bindActionCreators(
+  const { addTask, removeTask, editTask, finishTask } = bindActionCreators(
     actionCreators,
     dispatch
   );
@@ -44,6 +44,9 @@ const TodoList = () => {
 
   const confirmEdit = (_id, newText) => {
     editTask({ _id, newText });
+  };
+  const completeTask = (task) => {
+    finishTask(task);
   };
 
   if (listState.loading) {
@@ -77,6 +80,7 @@ const TodoList = () => {
             activeList={listState.tasklist}
             deleteItem={deleteItem}
             confirmEdit={confirmEdit}
+            completeTask={completeTask}
           />
         </>
       )}

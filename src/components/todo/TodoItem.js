@@ -1,12 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import TodoContent from './TodoContent';
-import CheckIcon from '../../icons/Check';
-import DeleteIcon from '../../icons/Delete';
-import EditIcon from '../../icons/Edit';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import TodoContent from "./TodoContent";
+import CheckIcon from "../../icons/Check";
+import DeleteIcon from "../../icons/Delete";
+import EditIcon from "../../icons/Edit";
 
-const TodoItem = ({ value, itemId, deleteItem, confirmEdit }) => {
-  const [textContent, setTextContent] = useState('');
+const TodoItem = ({
+  value,
+  date_added,
+  itemId,
+  deleteItem,
+  confirmEdit,
+  completeTask,
+}) => {
+  const [textContent, setTextContent] = useState("");
   const [isEditing, setIsEditing] = useState(false);
 
   const handleDelete = (e) => {
@@ -18,6 +25,11 @@ const TodoItem = ({ value, itemId, deleteItem, confirmEdit }) => {
     e.preventDefault();
     setIsEditing(() => !isEditing);
     setTextContent(value);
+  };
+  const handleComplete = (e) => {
+    e.preventDefault();
+    deleteItem(itemId);
+    completeTask({ value, date_added });
   };
 
   useEffect(() => {
@@ -43,7 +55,11 @@ const TodoItem = ({ value, itemId, deleteItem, confirmEdit }) => {
       </Content>
       <ButtonWrapper>
         {isEditing ? (
-          <EditDeleteBtn aria-label="cancel edit" isEditing={isEditing} onClick={handleEdit}>
+          <EditDeleteBtn
+            aria-label="cancel edit"
+            isEditing={isEditing}
+            onClick={handleEdit}
+          >
             <StyledDeleteIcon />
           </EditDeleteBtn>
         ) : (
@@ -62,10 +78,18 @@ const TodoItem = ({ value, itemId, deleteItem, confirmEdit }) => {
         >
           <StyledCheckIcon />
         </EditConfirmBtn>
-        <DeleteBtn aria-label="delete todo" isEditing={isEditing} onClick={handleDelete}>
+        <DeleteBtn
+          aria-label="delete todo"
+          isEditing={isEditing}
+          onClick={handleDelete}
+        >
           <StyledDeleteIcon />
         </DeleteBtn>
-        <CompleteBtn aria-label="complete todo" onClick={handleDelete} isEditing={isEditing}>
+        <CompleteBtn
+          aria-label="complete todo"
+          onClick={handleComplete}
+          isEditing={isEditing}
+        >
           <StyledCheckIcon />
         </CompleteBtn>
       </ButtonWrapper>
@@ -126,21 +150,21 @@ const EditBtn = styled(IconButton)`
 `;
 
 const EditConfirmBtn = styled(IconButton)`
-  display: ${(props) => (props.isEditing ? 'visible' : 'none')};
+  display: ${(props) => (props.isEditing ? "visible" : "none")};
   &:hover {
     color: var(--hover-confirm);
     filter: drop-shadow(var(--hover-confirm-icon-shadow));
   }
 `;
 const EditDeleteBtn = styled(IconButton)`
-  display: ${(props) => (props.isEditing ? 'visible' : 'none')};
+  display: ${(props) => (props.isEditing ? "visible" : "none")};
   &:hover {
     color: var(--hover-danger);
     filter: drop-shadow(var(--hover-danger-icon-shadow));
   }
 `;
 const CompleteBtn = styled(IconButton)`
-  display: ${(props) => (props.isEditing ? 'none' : 'visible')};
+  display: ${(props) => (props.isEditing ? "none" : "visible")};
   &:hover {
     color: var(--hover-confirm);
     filter: drop-shadow(var(--hover-confirm-icon-shadow));
@@ -148,7 +172,7 @@ const CompleteBtn = styled(IconButton)`
 `;
 const DeleteBtn = styled(IconButton)`
   margin-left: auto;
-  display: ${(props) => (props.isEditing ? 'none' : 'visible')};
+  display: ${(props) => (props.isEditing ? "none" : "visible")};
 
   &:hover {
     color: var(--hover-danger);

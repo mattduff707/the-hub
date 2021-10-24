@@ -16,8 +16,7 @@ const reducer = (
       };
     case "ADD_TASK":
       return {
-        loading: false,
-        error: false,
+        ...state,
         tasklist: [...state.tasklist, action.payload],
       };
     case "REMOVE_TASK":
@@ -34,6 +33,11 @@ const reducer = (
         return task;
       });
       return { ...state, tasklist: editedList };
+    case "FINISH_TASK":
+      return {
+        ...state,
+        donelist: [...state.donelist, action.payload],
+      };
     case "ERROR":
       return {
         loading: false,
