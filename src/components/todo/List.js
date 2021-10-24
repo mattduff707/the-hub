@@ -1,25 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import TodoItem from "./TodoItem";
 
-const List = ({ activeList, deleteItem, confirmEdit, completeTask }) => {
-  return (
-    <Wrapper>
-      {activeList.map((task, index) => {
-        return (
-          <TodoItem
-            itemId={task._id}
-            key={index}
-            value={task.value}
-            date_added={task.date_added}
-            deleteItem={deleteItem}
-            confirmEdit={confirmEdit}
-            completeTask={completeTask}
-          />
-        );
-      })}
-    </Wrapper>
-  );
+const List = ({ children }) => {
+  return <Wrapper>{children}</Wrapper>;
 };
 const Wrapper = styled.ul`
   width: 100%;
@@ -27,6 +10,7 @@ const Wrapper = styled.ul`
   list-style: none;
   padding: 0px 10px 160px;
   overflow: auto;
+  border-top: 2px solid var(--highlight-screen);
 `;
 
 export default List;

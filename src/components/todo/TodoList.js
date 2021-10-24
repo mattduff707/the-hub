@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Heading from "../Heading";
 import TodoForm from "./TodoForm";
 import List from "./List";
+import TodoItem from "./TodoItem";
 
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -12,7 +13,7 @@ import Loading from "../Loading";
 import TodoNav from "./TodoNav";
 
 const TodoList = () => {
-  const listState = useSelector((state) => state.tasks);
+  const { tasklist, error, loading } = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
   const { addTask, removeTask, editTask, finishTask } = bindActionCreators(
     actionCreators,
@@ -21,6 +22,8 @@ const TodoList = () => {
 
   const tasklistTag = "tasklist";
   const donelistTag = "donelist";
+  const doneList = tasklist.filter((task) => task.completed);
+  const todoList = tasklist.filter((task) => !task.completed);
   const [inputVal, setInputVal] = useState("");
   const [activeTag, setActiveTag] = useState(tasklistTag);
 
@@ -49,14 +52,32 @@ const TodoList = () => {
     finishTask(task);
   };
 
-  if (listState.loading) {
+  const createList = (taskArr) => {
+    return taskArr.map((task, index) => {
+      return (
+        <TodoItem
+          itemId={task._id}
+          key={index + task.value}
+          value={task.value}
+          date_added={task.date_added}
+          date_completed={task.date_completed}
+          completed={task.completed}
+          deleteItem={deleteItem}
+          confirmEdit={confirmEdit}
+          completeTask={completeTask}
+        />
+      );
+    });
+  };
+
+  if (loading) {
     return (
       <LoadWrap>
         <Loading />;
       </LoadWrap>
     );
   }
-  if (listState.error) {
+  if (error) {
     <p>Error</p>;
   }
 
@@ -76,21 +97,10 @@ const TodoList = () => {
             handleChange={handleChange}
             inputVal={inputVal}
           />
-          <List
-            activeList={listState.tasklist}
-            deleteItem={deleteItem}
-            confirmEdit={confirmEdit}
-            completeTask={completeTask}
-          />
+          <List>{createList(todoList)}</List>
         </>
       )}
-      {activeTag === donelistTag && (
-        <List
-          activeList={listState.donelist}
-          deleteItem={deleteItem}
-          confirmEdit={confirmEdit}
-        />
-      )}
+      {activeTag === donelistTag && <List>{createList(doneList)}</List>}
     </Wrapper>
   );
 };

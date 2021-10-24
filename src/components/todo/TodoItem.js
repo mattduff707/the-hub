@@ -8,6 +8,7 @@ import EditIcon from "../../icons/Edit";
 const TodoItem = ({
   value,
   date_added,
+  completed,
   itemId,
   deleteItem,
   confirmEdit,
@@ -28,20 +29,12 @@ const TodoItem = ({
   };
   const handleComplete = (e) => {
     e.preventDefault();
-    deleteItem(itemId);
-    completeTask({ value, date_added });
+    completeTask({ _id: itemId, completed: completed });
   };
 
   useEffect(() => {
     setTextContent(value);
   }, [value]);
-
-  // const handleEditChange = (e) => {
-  //   setTextContent(e.currentTarget.value);
-  // };
-  // const handleEditSubmit = (e) => {
-  //   confirmEdit(itemId, textContent);
-  // };
 
   return (
     <Wrapper>

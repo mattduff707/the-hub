@@ -4,7 +4,13 @@ export const addTask = (text) => {
   return (dispatch) => {
     let newTask = {
       value: text,
-      date_added: new Date(),
+      date_added: new Date().toLocaleString([], {
+        hour12: true,
+        dateStyle: "short",
+        timeStyle: "short",
+      }),
+      completed: false,
+      date_completed: false,
     };
     return axios
       .post(api, newTask)
@@ -16,10 +22,6 @@ export const addTask = (text) => {
         });
       })
       .catch((err) => console.log(err.message));
-    // dispatch({
-    //   type: 'ADD_TASK',
-    //   payload: { value: text, date_added: 'now', _id: taskId },
-    // });
   };
 };
 
@@ -47,17 +49,16 @@ export const editTask = (task) => {
 
 export const finishTask = (task) => {
   return (dispatch) => {
-    let doneTask = {
-      value: task.value,
-      date_added: task.date_added,
-      date_completed: new Date(),
+    const taskObj = {
+      _id: task._id,
+      completed: !task.completed,
+      date_completed: new Date().toLocaleString([], {
+        hour12: true,
+        dateStyle: "short",
+        timeStyle: "short",
+      }),
     };
-    return axios
-      .post(api + "donelist/", doneTask)
-      .then((res) => {
-        doneTask._id = res.data;
-        return dispatch({ type: "FINISH_TASK", payload: doneTask });
-      })
-      .catch((err) => console.log(err.message));
+    dispatch({ type: "TOGGLE_COMPLETE", payload: taskObj });
+    return axios.patch(api + `done/${task._id}`, taskObj);
   };
 };

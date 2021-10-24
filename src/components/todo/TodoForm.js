@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import Btn from '../Btn';
+import React from "react";
+import styled from "styled-components";
+import Btn from "../Btn";
 
 const TodoForm = ({ handleSubmit, inputVal, handleChange }) => {
   return (
@@ -25,7 +25,7 @@ const Wrapper = styled.form`
   background-color: transparent;
   padding: 0px 10px 15px 10px;
   display: flex;
-  border-bottom: 2px solid var(--highlight-screen);
+  /* border-bottom: 2px solid var(--highlight-screen); */
   margin-bottom: 5px;
 
   /* box-shadow: 0px 0px 10px 0px var(--highlight-alternative-border-light); */

@@ -33,16 +33,23 @@ const reducer = (
         return task;
       });
       return { ...state, tasklist: editedList };
-    case "FINISH_TASK":
-      return {
-        ...state,
-        donelist: [...state.donelist, action.payload],
-      };
+    case "TOGGLE_COMPLETE":
+      const editedListComplete = state.tasklist.map((task) => {
+        if (task._id === action.payload._id) {
+          if (task.date_completed) {
+            task.date_completed = false;
+          }
+          task.completed = !task.completed;
+          task.date_completed = action.payload.date_completed;
+          return task;
+        }
+        return task;
+      });
+      return { ...state, tasklist: editedListComplete };
     case "ERROR":
       return {
-        loading: false,
+        ...state,
         error: action.payload,
-        tasklist: [...state.tasklist],
       };
     default:
       return state;
@@ -51,10 +58,8 @@ const reducer = (
 
 export async function fetchTodos(dispatch) {
   const tasksResponse = await axios.get(api).then((res) => res.data);
-  const doneResponse = await axios
-    .get(api + "donelist/")
-    .then((res) => res.data);
-  dispatch({ type: "INIT_TASKLIST", payload: { tasksResponse, doneResponse } });
+
+  dispatch({ type: "INIT_TASKLIST", payload: { tasksResponse } });
 }
 
 export default reducer;
