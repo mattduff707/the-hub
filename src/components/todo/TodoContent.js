@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const TodoContent = ({ value, textContent, isEditing, handleChange }) => {
+  console.log('render: TodoContent');
   if (isEditing) {
     return <EditContent value={textContent} onChange={handleChange} />;
   }

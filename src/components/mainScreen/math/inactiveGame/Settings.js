@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import Btn from '../../../Btn';
-import Operations from './Operations';
-import Time from './Time';
-import Difficulty from './Difficulty';
+import React from "react";
+import styled from "styled-components";
+import Btn from "../../../Btn";
+import Operations from "./Operations";
+import Time from "./Time";
+import Difficulty from "./Difficulty";
 
 const Settings = ({
   handleGameStart,
@@ -19,13 +19,22 @@ const Settings = ({
       <SettingsTitle>Settings</SettingsTitle>
       <SettingsForm aria-label="Settings form" onSubmit={handleGameStart}>
         <SettingContainer>
-          <Time gameLength={gameLength} handleLengthChange={handleLengthChange} />
+          <Time
+            gameLength={gameLength}
+            handleLengthChange={handleLengthChange}
+          />
         </SettingContainer>
         <SettingContainer>
-          <Operations gameOperations={gameOperations} handleOperationsChange={handleOperationsChange} />
+          <Operations
+            gameOperations={gameOperations}
+            handleOperationsChange={handleOperationsChange}
+          />
         </SettingContainer>
         <SettingContainer>
-          <Difficulty gameDifficulty={gameDifficulty} handleDifficultyChange={handleDifficultyChange} />
+          <Difficulty
+            gameDifficulty={gameDifficulty}
+            handleDifficultyChange={handleDifficultyChange}
+          />
         </SettingContainer>
         <BtnWrapper>
           <StartBtn isPlayable={gameOperations.length > 0} type="submit">
@@ -77,12 +86,14 @@ const StartBtn = styled(Btn)`
   font-size: 1.2rem;
   background-color: ${(props) => !props.isPlayable && `var(--hover-danger)`};
   box-shadow: ${(props) => !props.isPlayable && `var(--hover-danger-shadow)`};
-  border-color: ${(props) => !props.isPlayable && `var(--hover-danger-border-color)`};
+  border-color: ${(props) =>
+    !props.isPlayable && `var(--hover-danger-border-color)`};
   cursor: ${(props) => !props.isPlayable && `not-allowed`};
   &:hover {
     background-color: ${(props) => !props.isPlayable && `var(--hover-danger)`};
     box-shadow: ${(props) => !props.isPlayable && `var(--hover-danger-shadow)`};
-    border-color: ${(props) => !props.isPlayable && `var(--hover-danger-border-color)`};
+    border-color: ${(props) =>
+      !props.isPlayable && `var(--hover-danger-border-color)`};
   }
 `;
 

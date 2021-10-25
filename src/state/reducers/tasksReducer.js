@@ -1,11 +1,21 @@
 import axios from 'axios';
+import { api } from '../../constants';
 
-const reducer = (state = { loading: true, error: false, tasklist: [] }, action) => {
+const reducer = (state = { loading: true, error: false, tasklist: [], donelist: [] }, action) => {
   switch (action.type) {
     case 'INIT_TASKLIST':
-      return { loading: false, tasklist: action.payload };
+      console.log(action.payload);
+      return {
+        loading: false,
+        error: false,
+        tasklist: action.payload.tasksResponse,
+        donelist: action.payload.doneResponse,
+      };
     case 'ADD_TASK':
-      return { loading: false, error: false, tasklist: [...state.tasklist, action.payload] };
+      return {
+        ...state,
+        tasklist: [...state.tasklist, action.payload],
+      };
     case 'REMOVE_TASK':
       const filteredList = state.tasklist.filter((task) => task._id !== action.payload);
       return { ...state, tasklist: filteredList };
@@ -18,19 +28,35 @@ const reducer = (state = { loading: true, error: false, tasklist: [] }, action) 
         return task;
       });
       return { ...state, tasklist: editedList };
+    case 'TOGGLE_COMPLETE':
+      const editedListComplete = state.tasklist.map((task) => {
+        if (task._id === action.payload._id) {
+          if (task.date_completed) {
+            task.date_completed = false;
+            task.completed = !task.completed;
+            return task;
+          }
+          task.completed = !task.completed;
+          task.date_completed = action.payload.date_completed;
+          return task;
+        }
+        return task;
+      });
+      return { ...state, tasklist: editedListComplete };
     case 'ERROR':
-      return { loading: false, error: action.payload, tasklist: [...state.tasklist] };
-    // case 'REMOVE_TASK':
-    //   return state.filter((task) => task.id !== action.payload);
+      return {
+        ...state,
+        error: action.payload,
+      };
     default:
       return state;
   }
 };
 
 export async function fetchTodos(dispatch) {
-  const response = await axios.get('https://the-hub-server.herokuapp.com/tasklist/').then((res) => res.data);
+  const tasksResponse = await axios.get(api).then((res) => res.data);
 
-  dispatch({ type: 'INIT_TASKLIST', payload: response });
+  dispatch({ type: 'INIT_TASKLIST', payload: { tasksResponse } });
 }
 
 export default reducer;

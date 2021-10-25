@@ -2,14 +2,22 @@ import axios from 'axios';
 import { api } from '../../constants';
 export const addTask = (text) => {
   return (dispatch) => {
+    let newTask = {
+      value: text,
+      date_added: new Date(),
+      completed: false,
+      date_completed: false,
+    };
     return axios
-      .post(api, { value: text, date_added: 'now' })
-      .then((res) => dispatch({ type: 'ADD_TASK', payload: { value: text, date_added: 'now', _id: res.data } }))
+      .post(api, newTask)
+      .then((res) => {
+        newTask._id = res.data;
+        return dispatch({
+          type: 'ADD_TASK',
+          payload: newTask,
+        });
+      })
       .catch((err) => console.log(err.message));
-    // dispatch({
-    //   type: 'ADD_TASK',
-    //   payload: { value: text, date_added: 'now', _id: taskId },
-    // });
   };
 };
 
@@ -32,5 +40,17 @@ export const editTask = (task) => {
       payload: task,
     });
     return axios.patch(api + task._id, { value: task.newText });
+  };
+};
+
+export const finishTask = (task) => {
+  return (dispatch) => {
+    const taskObj = {
+      _id: task._id,
+      completed: !task.completed,
+      date_completed: new Date(),
+    };
+    dispatch({ type: 'TOGGLE_COMPLETE', payload: taskObj });
+    return axios.patch(api + `done/${task._id}`, taskObj);
   };
 };
