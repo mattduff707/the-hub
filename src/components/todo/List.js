@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const List = ({ children }) => {
+  console.log("render: List")
   return <Wrapper>{children}</Wrapper>;
 };
 const Wrapper = styled.ul`

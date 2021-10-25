@@ -1,12 +1,9 @@
-import axios from "axios";
-import { api } from "../../constants";
+import axios from 'axios';
+import { api } from '../../constants';
 
-const reducer = (
-  state = { loading: true, error: false, tasklist: [], donelist: [] },
-  action
-) => {
+const reducer = (state = { loading: true, error: false, tasklist: [], donelist: [] }, action) => {
   switch (action.type) {
-    case "INIT_TASKLIST":
+    case 'INIT_TASKLIST':
       console.log(action.payload);
       return {
         loading: false,
@@ -14,17 +11,15 @@ const reducer = (
         tasklist: action.payload.tasksResponse,
         donelist: action.payload.doneResponse,
       };
-    case "ADD_TASK":
+    case 'ADD_TASK':
       return {
         ...state,
         tasklist: [...state.tasklist, action.payload],
       };
-    case "REMOVE_TASK":
-      const filteredList = state.tasklist.filter(
-        (task) => task._id !== action.payload
-      );
+    case 'REMOVE_TASK':
+      const filteredList = state.tasklist.filter((task) => task._id !== action.payload);
       return { ...state, tasklist: filteredList };
-    case "EDIT_TASK":
+    case 'EDIT_TASK':
       const editedList = state.tasklist.map((task) => {
         if (task._id === action.payload._id) {
           task.value = action.payload.newText;
@@ -33,11 +28,13 @@ const reducer = (
         return task;
       });
       return { ...state, tasklist: editedList };
-    case "TOGGLE_COMPLETE":
+    case 'TOGGLE_COMPLETE':
       const editedListComplete = state.tasklist.map((task) => {
         if (task._id === action.payload._id) {
           if (task.date_completed) {
             task.date_completed = false;
+            task.completed = !task.completed;
+            return task;
           }
           task.completed = !task.completed;
           task.date_completed = action.payload.date_completed;
@@ -46,7 +43,7 @@ const reducer = (
         return task;
       });
       return { ...state, tasklist: editedListComplete };
-    case "ERROR":
+    case 'ERROR':
       return {
         ...state,
         error: action.payload,
@@ -59,7 +56,7 @@ const reducer = (
 export async function fetchTodos(dispatch) {
   const tasksResponse = await axios.get(api).then((res) => res.data);
 
-  dispatch({ type: "INIT_TASKLIST", payload: { tasksResponse } });
+  dispatch({ type: 'INIT_TASKLIST', payload: { tasksResponse } });
 }
 
 export default reducer;

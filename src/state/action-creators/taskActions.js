@@ -1,14 +1,10 @@
-import axios from "axios";
-import { api } from "../../constants";
+import axios from 'axios';
+import { api } from '../../constants';
 export const addTask = (text) => {
   return (dispatch) => {
     let newTask = {
       value: text,
-      date_added: new Date().toLocaleString([], {
-        hour12: true,
-        dateStyle: "short",
-        timeStyle: "short",
-      }),
+      date_added: new Date(),
       completed: false,
       date_completed: false,
     };
@@ -17,7 +13,7 @@ export const addTask = (text) => {
       .then((res) => {
         newTask._id = res.data;
         return dispatch({
-          type: "ADD_TASK",
+          type: 'ADD_TASK',
           payload: newTask,
         });
       })
@@ -28,7 +24,7 @@ export const addTask = (text) => {
 export const removeTask = (_id) => {
   return (dispatch) => {
     dispatch({
-      type: "REMOVE_TASK",
+      type: 'REMOVE_TASK',
       payload: _id,
     });
     return axios.delete(api + _id).then((res) => {
@@ -40,7 +36,7 @@ export const removeTask = (_id) => {
 export const editTask = (task) => {
   return (dispatch) => {
     dispatch({
-      type: "EDIT_TASK",
+      type: 'EDIT_TASK',
       payload: task,
     });
     return axios.patch(api + task._id, { value: task.newText });
@@ -52,13 +48,9 @@ export const finishTask = (task) => {
     const taskObj = {
       _id: task._id,
       completed: !task.completed,
-      date_completed: new Date().toLocaleString([], {
-        hour12: true,
-        dateStyle: "short",
-        timeStyle: "short",
-      }),
+      date_completed: new Date(),
     };
-    dispatch({ type: "TOGGLE_COMPLETE", payload: taskObj });
+    dispatch({ type: 'TOGGLE_COMPLETE', payload: taskObj });
     return axios.patch(api + `done/${task._id}`, taskObj);
   };
 };

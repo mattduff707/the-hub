@@ -1,8 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import Btn from "../Btn";
+import React from 'react';
+import styled from 'styled-components';
+import Btn from '../Btn';
 
 const TodoForm = ({ handleSubmit, inputVal, handleChange }) => {
+  console.log('render: TodoForm');
   return (
     <Wrapper name="taskForm" onSubmit={handleSubmit}>
       <TextInput

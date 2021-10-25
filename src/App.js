@@ -76,7 +76,7 @@ html {
 
 --hover-confirm-shadow: 0px 0px 4px hsl(120, 95%, 65%);
 --hover-confirm-text-shadow: 0px 0px 8px hsl(120, 95%, 65%);
---hover-confirm-icon-shadow: 0px 0px 2px hsl(120, 95%, 65%);
+--hover-confirm-icon-shadow: 0px 0px 0px hsl(120, 95%, 65%);
 --hover-confirm-border: 2px solid hsl(120, 95%, 75%);
 
 --font-family-main: 'Orbitron', sans-serif;

@@ -1,30 +1,28 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import Heading from "../Heading";
-import TodoForm from "./TodoForm";
-import List from "./List";
-import TodoItem from "./TodoItem";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Heading from '../Heading';
+import TodoForm from './TodoForm';
+import List from './List';
+import TodoItem from './TodoItem';
 
-import { useSelector, useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
-import { actionCreators } from "../../state/actionCreators";
+import { useSelector, useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../../state/actionCreators';
 
-import Loading from "../Loading";
-import TodoNav from "./TodoNav";
+import Loading from '../Loading';
+import TodoNav from './TodoNav';
 
 const TodoList = () => {
+  console.log('render: TodoList');
   const { tasklist, error, loading } = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
-  const { addTask, removeTask, editTask, finishTask } = bindActionCreators(
-    actionCreators,
-    dispatch
-  );
+  const { addTask, removeTask, editTask, finishTask } = bindActionCreators(actionCreators, dispatch);
 
-  const tasklistTag = "tasklist";
-  const donelistTag = "donelist";
+  const tasklistTag = 'tasklist';
+  const donelistTag = 'donelist';
   const doneList = tasklist.filter((task) => task.completed);
   const todoList = tasklist.filter((task) => !task.completed);
-  const [inputVal, setInputVal] = useState("");
+  const [inputVal, setInputVal] = useState('');
   const [activeTag, setActiveTag] = useState(tasklistTag);
 
   const handleChange = (e) => {
@@ -38,7 +36,7 @@ const TodoList = () => {
       return;
     }
     addTask(inputVal);
-    setInputVal("");
+    setInputVal('');
   };
 
   const deleteItem = (_id) => {
@@ -84,19 +82,10 @@ const TodoList = () => {
   return (
     <Wrapper>
       <Heading>Tasks</Heading>
-      <TodoNav
-        activeTag={activeTag}
-        setActiveTag={setActiveTag}
-        tasklistTag={tasklistTag}
-        donelistTag={donelistTag}
-      />
+      <TodoNav activeTag={activeTag} setActiveTag={setActiveTag} tasklistTag={tasklistTag} donelistTag={donelistTag} />
       {activeTag === tasklistTag && (
         <>
-          <TodoForm
-            handleSubmit={handleSubmit}
-            handleChange={handleChange}
-            inputVal={inputVal}
-          />
+          <TodoForm handleSubmit={handleSubmit} handleChange={handleChange} inputVal={inputVal} />
           <List>{createList(todoList)}</List>
         </>
       )}

@@ -1,20 +1,13 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import TodoContent from "./TodoContent";
-import CheckIcon from "../../icons/Check";
-import DeleteIcon from "../../icons/Delete";
-import EditIcon from "../../icons/Edit";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import TodoContent from './TodoContent';
 
-const TodoItem = ({
-  value,
-  date_added,
-  completed,
-  itemId,
-  deleteItem,
-  confirmEdit,
-  completeTask,
-}) => {
-  const [textContent, setTextContent] = useState("");
+import TodoDate from './TodoDate';
+import TodoItemButtons from './TodoItemButtons';
+
+const TodoItem = ({ value, date_added, date_completed, completed, itemId, deleteItem, confirmEdit, completeTask }) => {
+  console.log("render: TodoItem")
+  const [textContent, setTextContent] = useState('');
   const [isEditing, setIsEditing] = useState(false);
 
   const handleDelete = (e) => {
@@ -44,48 +37,22 @@ const TodoItem = ({
           handleChange={(e) => setTextContent(e.target.value)}
           textContent={textContent}
           isEditing={isEditing}
+          date_completed={date_completed}
+          date_added={date_added}
         />
       </Content>
-      <ButtonWrapper>
-        {isEditing ? (
-          <EditDeleteBtn
-            aria-label="cancel edit"
-            isEditing={isEditing}
-            onClick={handleEdit}
-          >
-            <StyledDeleteIcon />
-          </EditDeleteBtn>
-        ) : (
-          <EditBtn aria-label="edit todo" onClick={handleEdit}>
-            <StyledEditIcon />
-          </EditBtn>
-        )}
-
-        <EditConfirmBtn
-          aria-label="confirm edit"
-          isEditing={isEditing}
-          onClick={() => {
-            confirmEdit(itemId, textContent);
-            setIsEditing(false);
-          }}
-        >
-          <StyledCheckIcon />
-        </EditConfirmBtn>
-        <DeleteBtn
-          aria-label="delete todo"
-          isEditing={isEditing}
-          onClick={handleDelete}
-        >
-          <StyledDeleteIcon />
-        </DeleteBtn>
-        <CompleteBtn
-          aria-label="complete todo"
-          onClick={handleComplete}
-          isEditing={isEditing}
-        >
-          <StyledCheckIcon />
-        </CompleteBtn>
-      </ButtonWrapper>
+      <TodoDate date_added={date_added} date_completed={date_completed} />
+      <TodoItemButtons
+        textContent={textContent}
+        confirmEdit={confirmEdit}
+        handleDelete={handleDelete}
+        handleEdit={handleEdit}
+        handleComplete={handleComplete}
+        isEditing={isEditing}
+        setIsEditing={setIsEditing}
+        itemId={itemId}
+        completed={completed}
+      />
     </Wrapper>
   );
 };
@@ -104,85 +71,11 @@ const Wrapper = styled.li`
 `;
 const Content = styled.article`
   text-shadow: var(--shadow-text);
+  color: var(--color-text);
   /* width: 75%; */
   font-size: 18px;
   padding-bottom: 5px;
-`;
-const ButtonWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  border-top: 2px solid var(--highlight-screen);
-  padding-top: 5px;
-`;
-
-const IconButton = styled.button`
-  background: none;
-  border: none;
-  font-size: 26px;
-  color: var(--color-text);
-  text-shadow: var(--shadow-text);
-  padding: 0px 5px;
-  cursor: pointer;
-  /* margin: 0px 5px; */
-  /* border: 2px solid black; */
-  transition: color, filter, transform;
-  transition-duration: 0.5s;
-  transition-timing-function: ease;
-  &:hover {
-    transition: color, filter, transform;
-    transition-duration: 0.3s;
-    transition-timing-function: ease;
-  }
-`;
-
-const EditBtn = styled(IconButton)`
-  &:hover {
-    color: var(--hover-main-text);
-    filter: drop-shadow(var(--hover-main-icon-shadow));
-  }
-`;
-
-const EditConfirmBtn = styled(IconButton)`
-  display: ${(props) => (props.isEditing ? "visible" : "none")};
-  &:hover {
-    color: var(--hover-confirm);
-    filter: drop-shadow(var(--hover-confirm-icon-shadow));
-  }
-`;
-const EditDeleteBtn = styled(IconButton)`
-  display: ${(props) => (props.isEditing ? "visible" : "none")};
-  &:hover {
-    color: var(--hover-danger);
-    filter: drop-shadow(var(--hover-danger-icon-shadow));
-  }
-`;
-const CompleteBtn = styled(IconButton)`
-  display: ${(props) => (props.isEditing ? "none" : "visible")};
-  &:hover {
-    color: var(--hover-confirm);
-    filter: drop-shadow(var(--hover-confirm-icon-shadow));
-  }
-`;
-const DeleteBtn = styled(IconButton)`
-  margin-left: auto;
-  display: ${(props) => (props.isEditing ? "none" : "visible")};
-
-  &:hover {
-    color: var(--hover-danger);
-    filter: drop-shadow(var(--hover-danger-icon-shadow));
-  }
-`;
-const StyledCheckIcon = styled(CheckIcon)`
-  width: 30px;
-  height: 30px;
-`;
-const StyledDeleteIcon = styled(DeleteIcon)`
-  width: 30px;
-  height: 30px;
-`;
-const StyledEditIcon = styled(EditIcon)`
-  width: 30px;
-  height: 30px;
+  border-bottom: 2px solid var(--highlight-screen);
 `;
 
 export default TodoItem;
