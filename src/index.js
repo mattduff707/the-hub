@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { Provider } from 'react-redux';
 import { store } from './state/store';
-import { fetchTodos } from './state/reducers/tasksReducer';
+import { fetchTodos } from './state/action-creators/taskActions';
 
 store.dispatch(fetchTodos);
 

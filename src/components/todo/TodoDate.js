@@ -5,7 +5,6 @@ const formatDate = (date) => {
   return new Date(date).toLocaleString([], { hour12: true, dateStyle: 'short', timeStyle: 'short' });
 };
 const TodoDate = ({ date_completed, date_added }) => {
-  console.log('render: TodoDate');
   return (
     <Wrapper>
       <time dateTime={date_added}>{formatDate(date_added)}</time>

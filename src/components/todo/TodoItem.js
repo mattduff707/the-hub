@@ -1,28 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import TodoContent from './TodoContent';
-
 import TodoDate from './TodoDate';
 import TodoItemButtons from './TodoItemButtons';
 
-const TodoItem = ({ value, date_added, date_completed, completed, itemId, deleteItem, confirmEdit, completeTask }) => {
-  console.log("render: TodoItem")
+const TodoItem = ({ value, date_added, date_completed, completed, itemId, confirmEdit }) => {
   const [textContent, setTextContent] = useState('');
   const [isEditing, setIsEditing] = useState(false);
-
-  const handleDelete = (e) => {
-    e.preventDefault();
-    deleteItem(itemId);
-  };
 
   const handleEdit = (e) => {
     e.preventDefault();
     setIsEditing(() => !isEditing);
     setTextContent(value);
-  };
-  const handleComplete = (e) => {
-    e.preventDefault();
-    completeTask({ _id: itemId, completed: completed });
   };
 
   useEffect(() => {
@@ -45,9 +34,7 @@ const TodoItem = ({ value, date_added, date_completed, completed, itemId, delete
       <TodoItemButtons
         textContent={textContent}
         confirmEdit={confirmEdit}
-        handleDelete={handleDelete}
         handleEdit={handleEdit}
-        handleComplete={handleComplete}
         isEditing={isEditing}
         setIsEditing={setIsEditing}
         itemId={itemId}

@@ -1,5 +1,11 @@
 import axios from 'axios';
 import { api } from '../../constants';
+
+export async function fetchTodos(dispatch) {
+  const tasksResponse = await axios.get(api).then((res) => res.data);
+
+  dispatch({ type: 'INIT_TASKLIST', payload: { tasksResponse } });
+}
 export const addTask = (text) => {
   return (dispatch) => {
     let newTask = {
