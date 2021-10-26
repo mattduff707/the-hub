@@ -4,18 +4,25 @@ import CheckIcon from '../../icons/Check';
 import DeleteIcon from '../../icons/Delete';
 import EditIcon from '../../icons/Edit';
 import CircleArrowIcon from '../../icons/CircleArrow';
-const TodoItemButtons = ({
-  isEditing,
-  handleEdit,
-  confirmEdit,
-  setIsEditing,
-  itemId,
-  textContent,
-  handleDelete,
-  handleComplete,
-  completed,
-}) => {
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../../state/actionCreators';
+const TodoItemButtons = ({ isEditing, handleEdit, setIsEditing, itemId, textContent, completed }) => {
   console.log('render: TodoItemButtons');
+  const dispatch = useDispatch();
+  const { removeTask, editTask, finishTask } = bindActionCreators(actionCreators, dispatch);
+  const handleDelete = (e) => {
+    e.preventDefault();
+    removeTask(itemId);
+  };
+  const handleEditComplete = (e) => {
+    e.preventDefault();
+    editTask({ _id: itemId, newText: textContent });
+    setIsEditing(false);
+  };
+  const handleComplete = (e) => {
+    finishTask({ _id: itemId, completed: completed });
+  };
   return (
     <ButtonWrapper>
       {isEditing ? (
@@ -28,14 +35,7 @@ const TodoItemButtons = ({
         </EditBtn>
       )}
 
-      <EditConfirmBtn
-        aria-label="confirm edit"
-        isEditing={isEditing}
-        onClick={() => {
-          confirmEdit(itemId, textContent);
-          setIsEditing(false);
-        }}
-      >
+      <EditConfirmBtn aria-label="confirm edit" isEditing={isEditing} onClick={handleEditComplete}>
         <CheckIcon />
       </EditConfirmBtn>
       <DeleteBtn aria-label="delete todo" isEditing={isEditing} onClick={handleDelete}>

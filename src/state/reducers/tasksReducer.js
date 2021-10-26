@@ -1,6 +1,3 @@
-import axios from 'axios';
-import { api } from '../../constants';
-
 const reducer = (state = { loading: true, error: false, tasklist: [], donelist: [] }, action) => {
   switch (action.type) {
     case 'INIT_TASKLIST':
@@ -52,11 +49,5 @@ const reducer = (state = { loading: true, error: false, tasklist: [], donelist: 
       return state;
   }
 };
-
-export async function fetchTodos(dispatch) {
-  const tasksResponse = await axios.get(api).then((res) => res.data);
-
-  dispatch({ type: 'INIT_TASKLIST', payload: { tasksResponse } });
-}
 
 export default reducer;
