@@ -1,3 +1,5 @@
+Back-end code can be found [here](https://github.com/mattduff707/the-hub-express)
+
 ## Process I followed
 
 - Sketched a rough design.
@@ -11,7 +13,7 @@
 ## Key Features
 
 - Math game: [Game Setup in root](https://github.com/mattduff707/the-hub/blob/main/src/components/mainScreen/math/Math.js) and [Cursor Control](https://github.com/mattduff707/the-hub/blob/cd56b7c3de75313780e1d600ee9f16314ec8904a/src/components/mainScreen/math/activeGame/Question.js#L35-L61)
-- Task Management: [Code Snippet](https://github.com/mattduff707/the-hub/blob/5ec67eb33884b50714bedb76973f259eec24e746/src/components/todo/TodoList.js#L7-L67)
+- Redux logic for Task management: [Action creators](https://github.com/mattduff707/the-hub/blob/main/src/state/action-creators/taskActions.js) and [Reducers](https://github.com/mattduff707/the-hub/blob/main/src/state/reducers/tasksReducer.js)
 - Bookmark Search Feature: [Code Snippet](https://github.com/mattduff707/the-hub/blob/5ec67eb33884b50714bedb76973f259eec24e746/src/components/bookmarks/Search.js#L4-L35)
 - API Call and data manipulation using a custom hook: [Hook](https://github.com/mattduff707/the-hub/blob/5ec67eb33884b50714bedb76973f259eec24e746/src/services/useFetch.js#L1-L41) and [Data](https://github.com/mattduff707/the-hub/blob/main/src/components/mainScreen/home/APOD.js)
 - Integration tests using React Testing Library [Example Test](https://github.com/mattduff707/the-hub/blob/main/src/components/todo/TodoList.test.js)
@@ -21,17 +23,17 @@
 ## Why I built it this way
 
 - I made this app with increased productivity in mind.
-- Until I am proficient in a back-end language the usage of localStorage as a database is necessary to prevent the loss of tasks between sessions.
+- I am using a Node.js/Express back-end alongside MongoDB to make this a MERN stack application. This has allowed me to expand upon existing features and begin to implement planned features like a snippet library and bug report system.
 - Styled components are my go-to styling solution. Modularity, auto-prefixing, and it allows me to dynamically style with ease due to the nature of css-in-js.
 - I love the look of SPA with only a viewport sized screen. It is always a bit of a headache but it fit this app perfectly. Grid and flexbox always save the day
 - As a personal desktop app, I put minimal consideration into accessibility and responsiveness.
 
 ---
 
-## Potential Changes
+## Still to be done
 
 - Lots of refactoring is necessary still. especially here [Code Snippet](https://github.com/mattduff707/the-hub/blob/5ec67eb33884b50714bedb76973f259eec24e746/src/components/mainScreen/NavButtons.js#L18-L64)
-- Currently in the process of implementing a node/express backend and MongoDB as a database. This will allow me to add my snippets library and bug report system. It also will allow me to expand upon the task management and bookmarking system.
+- Error handling for both the back-end and front-end of the application.
 
 ---
 
