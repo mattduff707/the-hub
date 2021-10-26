@@ -1,15 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import useFetch from "../../../services/useFetch";
-import APOD from "./APOD";
-import Heading from "../../Heading";
-import PageTitle from "../PageTitle";
-import Loading from "../../Loading";
+import React from 'react';
+import styled from 'styled-components';
+import useFetch from '../../../services/useFetch';
+import APOD from './APOD';
+import Heading from '../../Heading';
+import PageTitle from '../PageTitle';
+import Loading from '../../Loading';
 
 const Home = () => {
-  const { data, loading, error } = useFetch(
-    "https://api.nasa.gov/planetary/apod?api_key=kXzpTPi9EJQUUhl0fZVNK2S8owEeuPVogzGowgOR"
-  );
+  const { data, loading, error } = useFetch(process.env.REACT_APP_APOD_URL);
 
   if (error) {
     return (

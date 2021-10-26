@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { api } from '../../constants';
 
 export async function fetchTodos(dispatch) {
-  const tasksResponse = await axios.get(api).then((res) => res.data);
+  const tasksResponse = await axios.get(process.env.REACT_APP_TASKLIST_URL).then((res) => res.data);
 
   dispatch({ type: 'INIT_TASKLIST', payload: { tasksResponse } });
 }
@@ -15,7 +14,7 @@ export const addTask = (text) => {
       date_completed: false,
     };
     return axios
-      .post(api, newTask)
+      .post(process.env.REACT_APP_TASKLIST_URL, newTask)
       .then((res) => {
         newTask._id = res.data;
         return dispatch({
@@ -33,7 +32,7 @@ export const removeTask = (_id) => {
       type: 'REMOVE_TASK',
       payload: _id,
     });
-    return axios.delete(api + _id).then((res) => {
+    return axios.delete(process.env.REACT_APP_TASKLIST_URL + _id).then((res) => {
       console.log(res);
     });
   };
@@ -45,7 +44,7 @@ export const editTask = (task) => {
       type: 'EDIT_TASK',
       payload: task,
     });
-    return axios.patch(api + task._id, { value: task.newText });
+    return axios.patch(process.env.REACT_APP_TASKLIST_URL + task._id, { value: task.newText });
   };
 };
 
@@ -57,6 +56,6 @@ export const finishTask = (task) => {
       date_completed: new Date(),
     };
     dispatch({ type: 'TOGGLE_COMPLETE', payload: taskObj });
-    return axios.patch(api + `done/${task._id}`, taskObj);
+    return axios.patch(process.env.REACT_APP_TASKLIST_URL + `done/${task._id}`, taskObj);
   };
 };
