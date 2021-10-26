@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Btn from '../Btn';
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../../state/actionCreators';
 
-const TodoForm = ({ handleSubmit, inputVal, handleChange }) => {
+const TodoForm = () => {
   console.log('render: TodoForm');
+  const dispatch = useDispatch();
+  const { addTask } = bindActionCreators(actionCreators, dispatch);
+  const [inputVal, setInputVal] = useState('');
+  const handleChange = (e) => {
+    setInputVal(() => e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!inputVal) {
+      return;
+    }
+    addTask(inputVal);
+    setInputVal('');
+  };
+
   return (
     <Wrapper name="taskForm" onSubmit={handleSubmit}>
       <TextInput

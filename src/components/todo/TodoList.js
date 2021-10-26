@@ -16,28 +16,13 @@ const TodoList = () => {
   console.log('render: TodoList');
   const { tasklist, error, loading } = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
-  const { addTask, removeTask, editTask, finishTask } = bindActionCreators(actionCreators, dispatch);
+  const { removeTask, editTask, finishTask } = bindActionCreators(actionCreators, dispatch);
 
   const tasklistTag = 'tasklist';
   const donelistTag = 'donelist';
   const doneList = tasklist.filter((task) => task.completed);
   const todoList = tasklist.filter((task) => !task.completed);
-  const [inputVal, setInputVal] = useState('');
   const [activeTag, setActiveTag] = useState(tasklistTag);
-
-  const handleChange = (e) => {
-    setInputVal(() => e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!inputVal) {
-      return;
-    }
-    addTask(inputVal);
-    setInputVal('');
-  };
 
   const deleteItem = (_id) => {
     removeTask(_id);
@@ -85,7 +70,7 @@ const TodoList = () => {
       <TodoNav activeTag={activeTag} setActiveTag={setActiveTag} tasklistTag={tasklistTag} donelistTag={donelistTag} />
       {activeTag === tasklistTag && (
         <>
-          <TodoForm handleSubmit={handleSubmit} handleChange={handleChange} inputVal={inputVal} />
+          <TodoForm />
           <List>{createList(todoList)}</List>
         </>
       )}
