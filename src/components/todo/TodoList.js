@@ -5,35 +5,19 @@ import TodoForm from './TodoForm';
 import List from './List';
 import TodoItem from './TodoItem';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { actionCreators } from '../../state/actionCreators';
+import { useSelector } from 'react-redux';
 
 import Loading from '../Loading';
 import TodoNav from './TodoNav';
 
 const TodoList = () => {
-  console.log('render: TodoList');
   const { tasklist, error, loading } = useSelector((state) => state.tasks);
-  const dispatch = useDispatch();
-  const { removeTask, editTask, finishTask } = bindActionCreators(actionCreators, dispatch);
 
-  const tasklistTag = 'tasklist';
-  const donelistTag = 'donelist';
+  const todoListTag = 'todoList';
+  const doneListTag = 'doneList';
   const doneList = tasklist.filter((task) => task.completed);
   const todoList = tasklist.filter((task) => !task.completed);
-  const [activeTag, setActiveTag] = useState(tasklistTag);
-
-  const deleteItem = (_id) => {
-    removeTask(_id);
-  };
-
-  const confirmEdit = (_id, newText) => {
-    editTask({ _id, newText });
-  };
-  const completeTask = (task) => {
-    finishTask(task);
-  };
+  const [activeTag, setActiveTag] = useState(todoListTag);
 
   const createList = (taskArr) => {
     return taskArr.map((task, index) => {
@@ -45,9 +29,6 @@ const TodoList = () => {
           date_added={task.date_added}
           date_completed={task.date_completed}
           completed={task.completed}
-          deleteItem={deleteItem}
-          confirmEdit={confirmEdit}
-          completeTask={completeTask}
         />
       );
     });
@@ -67,14 +48,14 @@ const TodoList = () => {
   return (
     <Wrapper>
       <Heading>Tasks</Heading>
-      <TodoNav activeTag={activeTag} setActiveTag={setActiveTag} tasklistTag={tasklistTag} donelistTag={donelistTag} />
-      {activeTag === tasklistTag && (
+      <TodoNav activeTag={activeTag} setActiveTag={setActiveTag} todoListTag={todoListTag} doneListTag={doneListTag} />
+      {activeTag === todoListTag && (
         <>
           <TodoForm />
           <List>{createList(todoList)}</List>
         </>
       )}
-      {activeTag === donelistTag && <List>{createList(doneList)}</List>}
+      {activeTag === doneListTag && <List>{createList(doneList)}</List>}
     </Wrapper>
   );
 };

@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import TodoContent from './TodoContent';
-
 import TodoDate from './TodoDate';
 import TodoItemButtons from './TodoItemButtons';
 
 const TodoItem = ({ value, date_added, date_completed, completed, itemId, confirmEdit }) => {
-  console.log('render: TodoItem');
   const [textContent, setTextContent] = useState('');
   const [isEditing, setIsEditing] = useState(false);
 

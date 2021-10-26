@@ -2,18 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import Btn from '../Btn';
 import ScreenBox from '../ScreenBox';
-const TodoNav = ({ activeTag, setActiveTag, donelistTag, tasklistTag }) => {
-  console.log('render: TodoNav');
+const TodoNav = ({ activeTag, setActiveTag, doneListTag, todoListTag }) => {
   return (
     <Wrapper>
       <NavList>
         <li>
-          <NavBtn isActive={activeTag === tasklistTag} handleClick={() => setActiveTag(tasklistTag)}>
+          <NavBtn isActive={activeTag === todoListTag} handleClick={() => setActiveTag(todoListTag)}>
             To-do
           </NavBtn>
         </li>
         <li>
-          <NavBtn isActive={activeTag === donelistTag} handleClick={() => setActiveTag(donelistTag)}>
+          <NavBtn isActive={activeTag === doneListTag} handleClick={() => setActiveTag(doneListTag)}>
             Done
           </NavBtn>
         </li>

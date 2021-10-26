@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../state/actionCreators';
 
 const TodoForm = () => {
-  console.log('render: TodoForm');
   const dispatch = useDispatch();
   const { addTask } = bindActionCreators(actionCreators, dispatch);
   const [inputVal, setInputVal] = useState('');

@@ -8,7 +8,6 @@ import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../state/actionCreators';
 const TodoItemButtons = ({ isEditing, handleEdit, setIsEditing, itemId, textContent, completed }) => {
-  console.log('render: TodoItemButtons');
   const dispatch = useDispatch();
   const { removeTask, editTask, finishTask } = bindActionCreators(actionCreators, dispatch);
   const handleDelete = (e) => {
