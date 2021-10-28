@@ -23,7 +23,7 @@ const Search = ({ search }) => {
 const Wrapper = styled.form`
   width: 100%;
   display: flex;
-  padding: 0px 10px 10px;
+  margin-bottom: 10px;
 `;
 const TextInput = styled.input`
   width: 100%;

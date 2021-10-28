@@ -55,14 +55,14 @@ html {
 --shadow-text-highlight: 0px 0px 4px hsl(20, 88%, 60%);
 --inset-shadow: inset 2px 2px 4px hsla(180, 2%, 6%, 1);
 
---hover-main: hsla(30, 88%, 60%);
+--hover-main: hsla(30, 100%, 60%);
 --hover-main-bg: hsla(30, 100%, 50%) ;
 --hover-main-shadow: 0px 0px 10px 4px hsl(30, 88%, 60%);
 --hover-main-text: hsl(35, 100%, 55%);
---hover-main-text-shadow: 0px 0px 5px hsl(35, 100%, 55%);
+--hover-main-text-shadow: 0px 0px 5px hsl(35, 100%, 65%);
 --hover-main-text-shadow-offset: 3px 3px 5px hsl(35, 100%, 55%);
 --hover-main-icon: hsl(35, 100%, 55%);
---hover-main-icon-shadow: 0px 0px 2px hsl(35, 100%, 45%);
+--hover-main-icon-shadow: 0px 0px 1px hsl(35, 100%, 25%);
 
 
 --hover-danger: hsl(340, 95%, 65%);

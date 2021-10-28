@@ -23,3 +23,13 @@ export const addBookmark = (bookmarkObj) => {
       .catch((err) => console.log(err));
   };
 };
+export const editBookmark = (bookmarkObj) => {
+  console.log(bookmarkObj);
+  return (dispatch) => {
+    dispatch({
+      type: 'EDIT_BOOKMARK',
+      payload: bookmarkObj,
+    });
+    return axios.patch(process.env.REACT_APP_BOOKMARKS_URL + bookmarkObj._id, bookmarkObj);
+  };
+};

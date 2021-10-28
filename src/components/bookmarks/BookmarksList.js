@@ -16,13 +16,7 @@ const BookmarksList = () => {
 
   const createList = (arr) => {
     return arr.map((item, index) => (
-      <Bookmark
-        key={item.title + index}
-        base_url={item.base_url}
-        search_url={item.search_url}
-        title={item.title}
-        favorite={item.favorite}
-      />
+      <Bookmark key={item.title + index} bookmark={item} setBookmarkEdit={setBookmarkEdit} />
     ));
   };
 
@@ -41,7 +35,14 @@ const BookmarksList = () => {
     <Wrapper>
       <Heading tag={'h2'}>Bookmarks</Heading>
       {bookmarkEdit ? (
-        <BookmarkForm bookmarkEdit={bookmarkEdit} setBookmarkFormState={setBookmarkEdit} />
+        <BookmarkForm
+          title={bookmarkEdit.title}
+          base_url={bookmarkEdit.base_url}
+          search_url={bookmarkEdit.search_url}
+          favorite={bookmarkEdit.favorite}
+          _id={bookmarkEdit._id}
+          setBookmarkFormState={setBookmarkEdit}
+        />
       ) : bookmarkAdd ? (
         <BookmarkForm setBookmarkFormState={setBookmarkAdd} />
       ) : (

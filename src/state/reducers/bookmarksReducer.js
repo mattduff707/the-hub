@@ -15,15 +15,18 @@ const reducer = (state = { loading: true, error: false, bookmarks: [] }, action)
     // case 'REMOVE_TASK':
     //   const filteredList = state.tasklist.filter((task) => task._id !== action.payload);
     //   return { ...state, tasklist: filteredList };
-    // case 'EDIT_TASK':
-    //   const editedList = state.tasklist.map((task) => {
-    //     if (task._id === action.payload._id) {
-    //       task.value = action.payload.newText;
-    //       return task;
-    //     }
-    //     return task;
-    //   });
-    //   return { ...state, tasklist: editedList };
+    case 'EDIT_BOOKMARK':
+      const editedList = state.bookmarks.map((bookmark) => {
+        if (bookmark._id === action.payload._id) {
+          bookmark.title = action.payload.title;
+          bookmark.base_url = action.payload.base_url;
+          bookmark.search_url = action.payload.search_url;
+          bookmark.favorite = action.payload.favorite;
+          return bookmark;
+        }
+        return bookmark;
+      });
+      return { ...state, tasklist: editedList };
     // case 'TOGGLE_COMPLETE':
     //   const editedListComplete = state.tasklist.map((task) => {
     //     if (task._id === action.payload._id) {

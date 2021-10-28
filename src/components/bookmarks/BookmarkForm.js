@@ -15,12 +15,12 @@ const BookmarkForm = ({
   setBookmarkFormState,
 }) => {
   const dispatch = useDispatch();
-  const { addBookmark } = bindActionCreators(bookmarkActionCreators, dispatch);
+  const { addBookmark, editBookmark } = bindActionCreators(bookmarkActionCreators, dispatch);
 
-  const [titleInput, setTitleInput] = useState('');
-  const [baseInput, setBaseInput] = useState('');
-  const [searchInput, setSearchInput] = useState('');
-  const [favoriteInput, setFavoriteInput] = useState(false);
+  const [titleInput, setTitleInput] = useState(title);
+  const [baseInput, setBaseInput] = useState(base_url);
+  const [searchInput, setSearchInput] = useState(search_url);
+  const [favoriteInput, setFavoriteInput] = useState(favorite);
 
   const handleChange = (e, setState) => {
     setState(e.target.value);
@@ -28,8 +28,21 @@ const BookmarkForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addBookmark({ title: titleInput, base_url: baseInput, search_url: searchInput, favorite: favoriteInput });
-    setBookmarkFormState(false);
+
+    const newBookmark = {
+      title: titleInput,
+      base_url: baseInput,
+      search_url: searchInput,
+      favorite: favoriteInput,
+      _id: _id,
+    };
+    if (_id) {
+      editBookmark(newBookmark);
+      setBookmarkFormState(false);
+    } else {
+      addBookmark(newBookmark);
+      setBookmarkFormState(false);
+    }
   };
   const handleCancel = (e) => {
     e.preventDefault();
