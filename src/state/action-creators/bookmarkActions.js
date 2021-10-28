@@ -33,3 +33,14 @@ export const editBookmark = (bookmarkObj) => {
     return axios.patch(process.env.REACT_APP_BOOKMARKS_URL + bookmarkObj._id, bookmarkObj);
   };
 };
+export const removeBookmark = (_id) => {
+  return (dispatch) => {
+    dispatch({
+      type: 'REMOVE_BOOKMARK',
+      payload: _id,
+    });
+    return axios.delete(process.env.REACT_APP_BOOKMARKS_URL + _id).then((res) => {
+      console.log(res);
+    });
+  };
+};

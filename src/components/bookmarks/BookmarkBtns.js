@@ -4,10 +4,14 @@ import IconBtn from '../IconBtn';
 import EditIcon from '../../icons/Edit';
 import DeleteIcon from '../../icons/Delete';
 
-const BookmarkBtns = ({ setBookmarkEdit, bookmark }) => {
+const BookmarkBtns = ({ setBookmarkEdit, bookmark, setIsDelete }) => {
   const handleEdit = (e) => {
     e.preventDefault();
     setBookmarkEdit(bookmark);
+  };
+  const handleDelete = (e) => {
+    e.preventDefault();
+    setIsDelete(true);
   };
 
   return (
@@ -15,7 +19,7 @@ const BookmarkBtns = ({ setBookmarkEdit, bookmark }) => {
       <IconBtn handleClick={handleEdit}>
         <EditIcon />
       </IconBtn>
-      <IconBtn danger>
+      <IconBtn handleClick={handleDelete} danger>
         <DeleteIcon />
       </IconBtn>
     </Wrapper>

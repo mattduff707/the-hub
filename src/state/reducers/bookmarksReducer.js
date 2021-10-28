@@ -12,9 +12,9 @@ const reducer = (state = { loading: true, error: false, bookmarks: [] }, action)
         ...state,
         bookmarks: [...state.bookmarks, action.payload],
       };
-    // case 'REMOVE_TASK':
-    //   const filteredList = state.tasklist.filter((task) => task._id !== action.payload);
-    //   return { ...state, tasklist: filteredList };
+    case 'REMOVE_BOOKMARK':
+      const filteredList = state.bookmarks.filter((bookmark) => bookmark._id !== action.payload);
+      return { ...state, bookmarks: filteredList };
     case 'EDIT_BOOKMARK':
       const editedList = state.bookmarks.map((bookmark) => {
         if (bookmark._id === action.payload._id) {

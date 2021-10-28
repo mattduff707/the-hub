@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 import { bookmarkActionCreators } from '../../state/actionCreators';
 import Btn from '../Btn';
+import Heading from '../Heading';
 import ScreenBox from '../ScreenBox';
 
 const BookmarkForm = ({
@@ -52,6 +53,7 @@ const BookmarkForm = ({
   return (
     <Wrapper>
       <FormWrap tag={'form'}>
+        <StyledHeading>{_id ? 'Edit Bookmark' : 'Add Bookmark'}</StyledHeading>
         <InputWrap>
           <Label htmlFor="title">Name</Label>
           <TextInput
@@ -105,6 +107,17 @@ const FormWrap = styled(ScreenBox)`
   flex-direction: column;
   padding: 10px 10px;
 `;
+const StyledHeading = styled(Heading)`
+  font-size: 1.2rem;
+  border: none;
+  /* background-color: none; */
+  box-shadow: none;
+  border-radius: 0px;
+  border-bottom: 2px solid var(--highlight-screen);
+  align-self: center;
+  margin-bottom: 5px;
+`;
+
 const InputWrap = styled.div`
   display: flex;
   align-items: center;
