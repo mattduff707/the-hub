@@ -1,18 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import Extensions from './Extensions';
 import Search from './Search';
 import CircleArrow from '../../icons/CircleArrow';
 
-const Bookmark = ({ title, baseURL, extensions, search }) => {
+const Bookmark = ({ title, base_url, extensions, search_url }) => {
   return (
     <Wrapper>
-      <BaseAnchor href={baseURL} target="_blank">
+      <BaseAnchor href={base_url} target="_blank">
         <Title>{title}</Title>
         <StyledCircleArrow />
       </BaseAnchor>
-      {search ? <Search extensions={extensions} search={search} /> : <></>}
-      {extensions ? <Extensions extensions={extensions} baseURL={baseURL} /> : <></>}
+      {search_url ? <Search extensions={extensions} search_url={search_url} /> : <></>}
     </Wrapper>
   );
 };
@@ -25,14 +23,14 @@ const Wrapper = styled.article`
   /* padding: 10px 10px 5px 10px; */
   border-radius: 8px;
   box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
-  margin-bottom: 10px;
+  margin: 10px 0px;
 `;
 
 const Anchor = styled.a`
   text-decoration: none;
 `;
 const BaseAnchor = styled(Anchor)`
-  padding: 10px 5px;
+  padding: 10px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -3,14 +3,12 @@ import styled from 'styled-components';
 import ScreenIndent from '../components/ScreenIndent';
 import CoolScreen from '../components/CoolScreen';
 import BookmarksList from '../components/bookmarks/BookmarksList';
-import Heading from '../components/Heading';
 
 const Bookmarks = () => {
   return (
     <Wrapper>
       <ScreenIndent long>
         <StyledScreen sideScreen>
-          <Heading>Bookmarks</Heading>
           <BookmarksList />
         </StyledScreen>
       </ScreenIndent>

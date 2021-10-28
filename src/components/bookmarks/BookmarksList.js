@@ -1,18 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import Loading from '../Loading';
+import Heading from '../Heading';
 import Bookmark from './Bookmark';
-import bookmarksData from '../../data/bookmarksData';
+import List from '../List';
+import Controls from './Controls';
+import BookmarkForm from './BookmarkForm';
 
 const BookmarksList = () => {
+  const { bookmarks, error, loading } = useSelector((state) => state.bookmarks);
+
+  const [bookmarkEdit, setBookmarkEdit] = useState(false);
+  const [bookmarkAdd, setBookmarkAdd] = useState(false);
+
+  const createList = (arr) => {
+    return arr.map((item, index) => (
+      <Bookmark
+        key={item.title + index}
+        base_url={item.base_url}
+        search_url={item.search_url}
+        title={item.title}
+        favorite={item.favorite}
+      />
+    ));
+  };
+
+  if (loading) {
+    return (
+      <LoadWrap>
+        <Loading />
+      </LoadWrap>
+    );
+  }
+  if (error) {
+    return <p>Error!</p>;
+  }
+
   return (
     <Wrapper>
-      {bookmarksData.map((i) => {
-        return (
-          <Bookmark key={i.title} title={i.title} baseURL={i.baseURL} extensions={i.extensions} search={i.search} />
-        );
-      })}
-      {/* <Bookmark baseURL={"#"} extensions={["Arrays", "Objects", "Promises"]} title="MDN Web Docs: JS" />
-      <Bookmark baseURL={"#"} extensions={false} title="W3 Icon Reference" /> */}
+      <Heading tag={'h2'}>Bookmarks</Heading>
+      {bookmarkEdit ? (
+        <BookmarkForm bookmarkEdit={bookmarkEdit} setBookmarkFormState={setBookmarkEdit} />
+      ) : bookmarkAdd ? (
+        <BookmarkForm setBookmarkFormState={setBookmarkAdd} />
+      ) : (
+        <>
+          <Controls setBookmarkAdd={setBookmarkAdd} />
+          <List>{createList(bookmarks)}</List>
+        </>
+      )}
     </Wrapper>
   );
 };
@@ -20,8 +57,16 @@ const BookmarksList = () => {
 const Wrapper = styled.ul`
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
-  padding: 0px 10px;
+  overflow: visible;
 `;
-
+const LoadWrap = styled(Wrapper)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -20px;
+`;
 export default BookmarksList;
