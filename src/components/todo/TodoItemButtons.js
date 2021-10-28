@@ -6,10 +6,10 @@ import EditIcon from '../../icons/Edit';
 import CircleArrowIcon from '../../icons/CircleArrow';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actionCreators } from '../../state/actionCreators';
+import { taskActionCreators } from '../../state/actionCreators';
 const TodoItemButtons = ({ isEditing, handleEdit, setIsEditing, itemId, textContent, completed }) => {
   const dispatch = useDispatch();
-  const { removeTask, editTask, finishTask } = bindActionCreators(actionCreators, dispatch);
+  const { removeTask, editTask, finishTask } = bindActionCreators(taskActionCreators, dispatch);
   const handleDelete = (e) => {
     e.preventDefault();
     removeTask(itemId);

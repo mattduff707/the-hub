@@ -1,4 +1,4 @@
-const reducer = (state = { loading: true, error: false, tasklist: [], donelist: [] }, action) => {
+const reducer = (state = { loading: true, error: false, tasklist: [] }, action) => {
   switch (action.type) {
     case 'INIT_TASKLIST':
       console.log(action.payload);
@@ -6,7 +6,6 @@ const reducer = (state = { loading: true, error: false, tasklist: [], donelist: 
         loading: false,
         error: false,
         tasklist: action.payload.tasksResponse,
-        donelist: action.payload.doneResponse,
       };
     case 'ADD_TASK':
       return {
