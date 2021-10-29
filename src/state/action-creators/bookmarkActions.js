@@ -24,7 +24,6 @@ export const addBookmark = (bookmarkObj) => {
   };
 };
 export const editBookmark = (bookmarkObj) => {
-  console.log(bookmarkObj);
   return (dispatch) => {
     dispatch({
       type: 'EDIT_BOOKMARK',
