@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Btn from '../Btn';
 
-const Search = ({ search }) => {
+const Search = ({ search_url }) => {
   const [searchText, setSearchText] = useState('');
   const handleChange = (e) => {
     setSearchText(() => e.target.value);
   };
 
   const handleSubmit = () => {
-    window.open(search.searchURL + searchText, '_blank');
+    window.open(search_url + searchText, '_blank');
     setSearchText('');
   };
   return (
