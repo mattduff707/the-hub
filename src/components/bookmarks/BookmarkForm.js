@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { bookmarkActionCreators } from '../../state/actionCreators';
 import Btn from '../Btn';
 import Heading from '../Heading';
@@ -22,6 +22,7 @@ const BookmarkForm = ({
   const [baseInput, setBaseInput] = useState(base_url);
   const [searchInput, setSearchInput] = useState(search_url);
   const [favoriteInput, setFavoriteInput] = useState(favorite);
+  const [missingInput, setMissingInput] = useState([]);
 
   const handleChange = (e, setState) => {
     setState(e.target.value);
@@ -29,22 +30,30 @@ const BookmarkForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const newBookmark = {
-      title: titleInput,
-      base_url: baseInput,
-      search_url: searchInput,
-      favorite: favoriteInput,
-      _id: _id,
-    };
-    if (_id) {
-      editBookmark(newBookmark);
-      setBookmarkFormState(false);
+    if (titleInput && baseInput) {
+      const newBookmark = {
+        title: titleInput,
+        base_url: baseInput,
+        search_url: searchInput,
+        favorite: favoriteInput,
+        _id: _id,
+      };
+      if (_id) {
+        editBookmark(newBookmark);
+        setBookmarkFormState(false);
+      } else {
+        addBookmark(newBookmark);
+        setBookmarkFormState(false);
+      }
     } else {
-      addBookmark(newBookmark);
-      setBookmarkFormState(false);
+      !titleInput && !baseInput
+        ? setMissingInput([titleInput, baseInput])
+        : !titleInput
+        ? setMissingInput([titleInput])
+        : setMissingInput([baseInput]);
     }
   };
+
   const handleCancel = (e) => {
     e.preventDefault();
     setBookmarkFormState(false);
@@ -55,8 +64,11 @@ const BookmarkForm = ({
       <FormWrap tag={'form'}>
         <StyledHeading>{_id ? 'Edit Bookmark' : 'Add Bookmark'}</StyledHeading>
         <InputWrap>
-          <Label htmlFor="title">Name</Label>
+          <Label required htmlFor="title">
+            Name
+          </Label>
           <TextInput
+            isMissing={missingInput.includes(titleInput)}
             onChange={(e) => handleChange(e, setTitleInput)}
             value={titleInput}
             type="text"
@@ -65,8 +77,16 @@ const BookmarkForm = ({
           />
         </InputWrap>
         <InputWrap>
-          <Label htmlFor="base">Base URL</Label>
-          <TextInput onChange={(e) => handleChange(e, setBaseInput)} value={baseInput} autoComplete="off" id="base" />
+          <Label required htmlFor="base">
+            Base URL
+          </Label>
+          <TextInput
+            isMissing={missingInput.includes(baseInput)}
+            onChange={(e) => handleChange(e, setBaseInput)}
+            value={baseInput}
+            autoComplete="off"
+            id="base"
+          />
         </InputWrap>
         <InputWrap>
           <Label htmlFor="search">Search URL</Label>
@@ -96,6 +116,12 @@ const BookmarkForm = ({
     </Wrapper>
   );
 };
+
+const requiredStar = css`
+  &:before {
+    content: '*';
+  }
+`;
 
 const Wrapper = styled.div`
   width: 100%;
@@ -134,6 +160,7 @@ const Label = styled.label`
   white-space: nowrap;
   text-align: center;
   font-size: 0.9rem;
+  ${(props) => props.required && requiredStar}
 `;
 const TextInput = styled.input`
   width: 100%;
@@ -146,8 +173,9 @@ const TextInput = styled.input`
   /* letter-spacing: 2px; */
   font-weight: 600;
   outline: none;
-  border: 2px solid var(--highlight-screen);
-  box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
+  border: ${(props) =>
+    props.isMissing ? '2px solid var(--hover-danger-border-color)' : '2px solid var(--highlight-screen)'};
+  box-shadow: ${(props) => (props.isMissing ? 'var(--hover-danger-shadow)' : 'var(--highlight-screen-shadow)')};
   text-shadow: var(--shadow-text);
   letter-spacing: 2px;
   font-size: 0.9rem;
@@ -155,8 +183,8 @@ const TextInput = styled.input`
 const Checkbox = styled.input`
   margin-right: 5px;
   appearance: none;
-  border: 2px solid var(--hover-danger);
-  box-shadow: var(--hover-danger-shadow);
+  border: 2px solid var(--hover-main);
+  box-shadow: var(--hover-main-shadow);
   border-radius: 2px;
   width: 20px;
   height: 20px;

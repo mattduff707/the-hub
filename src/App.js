@@ -57,7 +57,7 @@ html {
 
 --hover-main: hsla(30, 100%, 60%);
 --hover-main-bg: hsla(30, 100%, 50%) ;
---hover-main-shadow: 0px 0px 10px 4px hsl(30, 88%, 60%);
+--hover-main-shadow: 0px 0px 10px 0px hsl(30, 88%, 60%);
 --hover-main-text: hsl(35, 100%, 55%);
 --hover-main-text-shadow: 0px 0px 5px hsl(35, 100%, 65%);
 --hover-main-text-shadow-offset: 3px 3px 5px hsl(35, 100%, 55%);
