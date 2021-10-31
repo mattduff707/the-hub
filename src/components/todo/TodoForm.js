@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import Btn from '../Btn';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actionCreators } from '../../state/actionCreators';
+import { taskActionCreators } from '../../state/actionCreators';
 
 const TodoForm = () => {
   const dispatch = useDispatch();
-  const { addTask } = bindActionCreators(actionCreators, dispatch);
+  const { addTask } = bindActionCreators(taskActionCreators, dispatch);
   const [inputVal, setInputVal] = useState('');
   const handleChange = (e) => {
     setInputVal(() => e.target.value);

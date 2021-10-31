@@ -47,8 +47,8 @@ const OperationsLabel = styled.label`
 const OperationsSetting = styled.input`
   margin-right: 5px;
   appearance: none;
-  border: 2px solid var(--hover-danger);
-  box-shadow: var(--hover-danger-shadow);
+  border: 2px solid var(--hover-main);
+  box-shadow: var(--hover-main-shadow);
   border-radius: 2px;
   width: 20px;
   height: 20px;

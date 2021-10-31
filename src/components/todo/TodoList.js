@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Heading from '../Heading';
 import TodoForm from './TodoForm';
-import List from './List';
+import List from '../List';
 import TodoItem from './TodoItem';
 
 import { useSelector } from 'react-redux';

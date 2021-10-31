@@ -2,29 +2,14 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Btn from '../Btn';
 
-const Search = ({ search }) => {
-  /* 
-    Example data located in bookmarksData.js
-     {
-    title: 'MDN Docs',
-    baseURL: 'https://developer.mozilla.org/en-US/',
-    extensions: [
-      { title: 'JS: Array', url: 'docs/Web/JavaScript/Reference/Global_Objects/Array' },
-      { title: 'JS: Object', url: 'docs/Web/JavaScript/Reference/Global_Objects/Object' },
-      { title: 'JS: Function', url: 'docs/Web/JavaScript/Reference/Global_Objects/Function' },
-      { title: 'JS: async', url: 'docs/Web/JavaScript/Reference/Statements/async_function' },
-    ],
-    search: {
-      searchURL: 'https://developer.mozilla.org/en-US/search?q=',
-    },
-     */
+const Search = ({ search_url }) => {
   const [searchText, setSearchText] = useState('');
   const handleChange = (e) => {
     setSearchText(() => e.target.value);
   };
 
   const handleSubmit = () => {
-    window.open(search.searchURL + searchText, '_blank');
+    window.open(search_url + searchText, '_blank');
     setSearchText('');
   };
   return (
@@ -38,7 +23,7 @@ const Search = ({ search }) => {
 const Wrapper = styled.form`
   width: 100%;
   display: flex;
-  padding: 0px 5px 10px;
+  margin-bottom: 10px;
 `;
 const TextInput = styled.input`
   width: 100%;
