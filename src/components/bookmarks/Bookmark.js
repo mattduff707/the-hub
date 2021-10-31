@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import Search from './Search';
-import CircleArrow from '../../icons/CircleArrow';
-import BookmarkBtns from './BookmarkBtns';
-import IconBtn from '../IconBtn';
-import ScreenBox from '../ScreenBox';
-import DeleteConfirm from './DeleteConfirm';
+import React, { useState } from "react";
+import styled from "styled-components";
+import Search from "./Search";
+import CircleArrow from "../../icons/CircleArrow";
+import BookmarkBtns from "./BookmarkBtns";
+import IconBtn from "../IconBtn";
+import ScreenBox from "../ScreenBox";
+import DeleteConfirm from "./DeleteConfirm";
 
 const Bookmark = ({ bookmark, setBookmarkEdit }) => {
   const [isDelete, setIsDelete] = useState(false);
   if (isDelete) {
     return (
       <Wrapper>
-        <DeleteConfirm _id={bookmark._id} setIsDelete={setIsDelete} title={bookmark.title} />
+        <DeleteConfirm
+          _id={bookmark._id}
+          setIsDelete={setIsDelete}
+          title={bookmark.title}
+        />
       </Wrapper>
     );
   }
@@ -25,7 +29,11 @@ const Bookmark = ({ bookmark, setBookmarkEdit }) => {
         </IconBtn>
       </BaseAnchor>
       {bookmark.search_url && <Search search_url={bookmark.search_url} />}
-      <BookmarkBtns bookmark={bookmark} setBookmarkEdit={setBookmarkEdit} setIsDelete={setIsDelete} />
+      <BookmarkBtns
+        bookmark={bookmark}
+        setBookmarkEdit={setBookmarkEdit}
+        setIsDelete={setIsDelete}
+      />
     </Wrapper>
   );
 };

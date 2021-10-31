@@ -32,7 +32,6 @@ const BookmarksList = () => {
       item.title.toLowerCase().includes(query.toLowerCase())
     );
   };
-  console.log(filterListBySearch(bookmarks, searchText));
 
   if (loading) {
     return (
