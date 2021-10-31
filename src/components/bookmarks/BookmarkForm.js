@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import styled, { css } from 'styled-components';
-import { bookmarkActionCreators } from '../../state/actionCreators';
-import Btn from '../Btn';
-import Heading from '../Heading';
-import ScreenBox from '../ScreenBox';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import styled, { css } from "styled-components";
+import { bookmarkActionCreators } from "../../state/actionCreators";
+import Btn from "../Btn";
+import Heading from "../Heading";
+import ScreenBox from "../ScreenBox";
+import TextInput from "../TextInput";
 
 const BookmarkForm = ({
-  title = '',
-  base_url = '',
-  search_url = '',
+  title = "",
+  base_url = "",
+  search_url = "",
   favorite = false,
   _id = false,
   setBookmarkFormState,
 }) => {
   const dispatch = useDispatch();
-  const { addBookmark, editBookmark } = bindActionCreators(bookmarkActionCreators, dispatch);
+  const { addBookmark, editBookmark } = bindActionCreators(
+    bookmarkActionCreators,
+    dispatch
+  );
 
   const [titleInput, setTitleInput] = useState(title);
   const [baseInput, setBaseInput] = useState(base_url);
@@ -61,13 +65,13 @@ const BookmarkForm = ({
 
   return (
     <Wrapper>
-      <FormWrap tag={'form'}>
-        <StyledHeading>{_id ? 'Edit Bookmark' : 'Add Bookmark'}</StyledHeading>
+      <FormWrap tag={"form"}>
+        <StyledHeading>{_id ? "Edit Bookmark" : "Add Bookmark"}</StyledHeading>
         <InputWrap>
           <Label required htmlFor="title">
             Name
           </Label>
-          <TextInput
+          <StyledTextInput
             isMissing={missingInput.includes(titleInput)}
             onChange={(e) => handleChange(e, setTitleInput)}
             value={titleInput}
@@ -80,7 +84,7 @@ const BookmarkForm = ({
           <Label required htmlFor="base">
             Base URL
           </Label>
-          <TextInput
+          <StyledTextInput
             isMissing={missingInput.includes(baseInput)}
             onChange={(e) => handleChange(e, setBaseInput)}
             value={baseInput}
@@ -90,7 +94,7 @@ const BookmarkForm = ({
         </InputWrap>
         <InputWrap>
           <Label htmlFor="search">Search URL</Label>
-          <TextInput
+          <StyledTextInput
             onChange={(e) => handleChange(e, setSearchInput)}
             value={searchInput}
             autoComplete="off"
@@ -119,7 +123,7 @@ const BookmarkForm = ({
 
 const requiredStar = css`
   &:before {
-    content: '*';
+    content: "*";
   }
 `;
 
@@ -162,23 +166,15 @@ const Label = styled.label`
   font-size: 0.9rem;
   ${(props) => props.required && requiredStar}
 `;
-const TextInput = styled.input`
-  width: 100%;
-  height: 20px;
-  padding: 15px 10px;
-  color: var(--color-text);
-  background-color: var(--color-screen);
-  border-radius: 8px;
-  font-family: var(--font-family-main);
-  /* letter-spacing: 2px; */
-  font-weight: 600;
-  outline: none;
+const StyledTextInput = styled(TextInput)`
   border: ${(props) =>
-    props.isMissing ? '2px solid var(--hover-danger-border-color)' : '2px solid var(--highlight-screen)'};
-  box-shadow: ${(props) => (props.isMissing ? 'var(--hover-danger-shadow)' : 'var(--highlight-screen-shadow)')};
-  text-shadow: var(--shadow-text);
-  letter-spacing: 2px;
-  font-size: 0.9rem;
+    props.isMissing
+      ? "2px solid var(--hover-danger-border-color)"
+      : "2px solid var(--highlight-screen)"};
+  box-shadow: ${(props) =>
+    props.isMissing
+      ? "var(--hover-danger-shadow)"
+      : "var(--highlight-screen-shadow)"};
 `;
 const Checkbox = styled.input`
   margin-right: 5px;
@@ -196,7 +192,7 @@ const Checkbox = styled.input`
     border: var(--hover-confirm-border);
   }
   &:checked:before {
-    content: '';
+    content: "";
     border-right: var(--hover-confirm-border);
     border-bottom: var(--hover-confirm-border);
     height: 70%;
