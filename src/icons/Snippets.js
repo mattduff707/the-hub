@@ -1,5 +1,4 @@
 import React from "react";
-import StyledIcon from "../components/StyledIconHOC";
 
 const Snippets = ({ className }) => {
   return (
@@ -24,4 +23,4 @@ const Snippets = ({ className }) => {
   );
 };
 
-export default StyledIcon(Snippets);
+export default Snippets;

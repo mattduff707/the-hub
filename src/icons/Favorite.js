@@ -1,6 +1,6 @@
-import React from 'react';
-import StyledIcon from '../components/StyledIconHOC';
-import styled from 'styled-components';
+import React from "react";
+
+import styled from "styled-components";
 const Favorite = ({ className, isFavorite }) => {
   return (
     <svg
@@ -25,10 +25,11 @@ const Favorite = ({ className, isFavorite }) => {
 };
 
 const StyledPath = styled.path`
-  fill: ${(props) => (props.isFavorite ? 'var(--hover-confirm)' : 'transparent')};
+  fill: ${(props) =>
+    props.isFavorite ? "var(--hover-confirm)" : "transparent"};
 `;
 const StyledStroke = styled.path`
   fill: var(--color-text);
 `;
 
-export default StyledIcon(Favorite);
+export default Favorite;

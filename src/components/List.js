@@ -10,7 +10,6 @@ const Wrapper = styled.ul`
   list-style: none;
   padding: 10px 10px 40px;
   overflow: auto;
-  border-top: 2px solid var(--highlight-screen);
 `;
 
 export default List;

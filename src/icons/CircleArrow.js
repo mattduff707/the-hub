@@ -1,5 +1,4 @@
-import React from 'react';
-import StyledIcon from '../components/StyledIconHOC';
+import React from "react";
 
 const CircleArrow = ({ className }) => {
   return (
@@ -21,4 +20,4 @@ const CircleArrow = ({ className }) => {
   );
 };
 
-export default StyledIcon(CircleArrow);
+export default CircleArrow;

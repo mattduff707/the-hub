@@ -1,5 +1,4 @@
-import React from 'react';
-import StyledIcon from '../components/StyledIconHOC';
+import React from "react";
 
 const Addition = ({ className }) => {
   return (
@@ -20,4 +19,4 @@ const Addition = ({ className }) => {
   );
 };
 
-export default StyledIcon(Addition);
+export default Addition;

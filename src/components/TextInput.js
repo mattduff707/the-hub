@@ -25,8 +25,8 @@ const StyledInput = styled.input`
   /* letter-spacing: 2px; */
   font-weight: 600;
   outline: none;
-  border: 2px solid var(--highlight-screen);
-  box-shadow: var(--highlight-screen-shadow);
+  border: 2px solid var(--screen-border);
+  /* box-shadow: var(--highlight-screen-shadow); */
   text-shadow: var(--shadow-text);
   letter-spacing: 2px;
   font-size: 0.9rem;

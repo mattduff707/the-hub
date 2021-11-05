@@ -1,20 +1,26 @@
-import React from 'react';
-import styled from 'styled-components';
-import Btn from '../Btn';
-import ScreenBox from '../ScreenBox';
+import React from "react";
+import styled from "styled-components";
+import NavButton from "../NavButton";
+
 const TodoNav = ({ activeTag, setActiveTag, doneListTag, todoListTag }) => {
   return (
     <Wrapper>
       <NavList>
         <li>
-          <NavBtn isActive={activeTag === todoListTag} handleClick={() => setActiveTag(todoListTag)}>
+          <NavButton
+            isActive={activeTag === todoListTag}
+            handleClick={() => setActiveTag(todoListTag)}
+          >
             To-do
-          </NavBtn>
+          </NavButton>
         </li>
         <li>
-          <NavBtn isActive={activeTag === doneListTag} handleClick={() => setActiveTag(doneListTag)}>
+          <NavButton
+            isActive={activeTag === doneListTag}
+            handleClick={() => setActiveTag(doneListTag)}
+          >
             Done
-          </NavBtn>
+          </NavButton>
         </li>
       </NavList>
     </Wrapper>
@@ -22,22 +28,15 @@ const TodoNav = ({ activeTag, setActiveTag, doneListTag, todoListTag }) => {
 };
 const Wrapper = styled.nav`
   width: 100%;
-  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 2px solid var(--screen-border);
 `;
-const NavList = styled(ScreenBox)`
+const NavList = styled.ul`
   display: flex;
   justify-content: center;
   list-style: none;
-  padding: 10px 20px;
-`;
-const NavBtn = styled(Btn)`
-  font-size: 1.2rem;
-  padding: 5px 10px;
-  margin: 0px 10px;
-  color: ${(props) => (props.isActive ? 'var(--hover-confirm)' : 'var(--color-text)')};
 `;
 
 export default TodoNav;

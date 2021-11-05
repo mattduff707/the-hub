@@ -1,9 +1,22 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-const IconBtn = ({ children, className, handleClick, type = 'button', danger, confirm }) => {
+const IconBtn = ({
+  children,
+  className,
+  handleClick,
+  type = "button",
+  danger,
+  confirm,
+}) => {
   return (
-    <Wrapper danger={danger} confirm={confirm} type={type} onClick={handleClick} className={className}>
+    <Wrapper
+      danger={danger}
+      confirm={confirm}
+      type={type}
+      onClick={handleClick}
+      className={className}
+    >
       {children}
     </Wrapper>
   );
@@ -12,7 +25,7 @@ const IconBtn = ({ children, className, handleClick, type = 'button', danger, co
 const Wrapper = styled.button`
   background: none;
   border: none;
-  font-size: 26px;
+  font-size: 30px;
   color: var(--color-text);
   text-shadow: var(--shadow-text);
   cursor: pointer;
@@ -26,13 +39,11 @@ const Wrapper = styled.button`
     transition-duration: 0.3s;
     transition-timing-function: ease;
     color: ${(props) =>
-      props.danger ? 'var(--hover-danger)' : props.confirm ? 'var(--hover-confirm)' : 'var(--hover-main-icon)'};
-    filter: ${(props) =>
       props.danger
-        ? 'drop-shadow(var(--hover-danger-icon-shadow))'
+        ? "var(--hover-danger)"
         : props.confirm
-        ? 'drop-shadow(var(--hover-confirm-icon-shadow))'
-        : 'drop-shadow(var(--hover-main-icon-shadow))'};
+        ? "var(--hover-confirm)"
+        : "var(--hover-main-icon)"};
   }
 `;
 

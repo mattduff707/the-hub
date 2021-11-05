@@ -16,6 +16,7 @@ function App() {
 const GlobalStyle = createGlobalStyle`
 
 html {
+--screen-border: hsl(220, 90%, 64%);
 
 --color-main: hsla(180, 2%, 19%, 1);
 --shadow-main: hsla(180, 2%, 13%, 1);
@@ -65,7 +66,7 @@ html {
 --hover-main-icon-shadow: 0px 0px 4px hsl(35, 100%, 25%);
 
 
---hover-danger: hsl(340, 95%, 65%);
+--hover-danger: hsl(350, 95%, 60%);
 --hover-danger-border-color: hsl(340, 95%, 60%);
 --hover-danger-shadow: 0px 0px 10px 2px hsl(340, 95%, 65%);
 --hover-danger-icon-shadow: 0px 0px 2px hsl(340, 95%, 45%);

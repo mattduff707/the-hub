@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import Btn from '../Btn';
-import { useDispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { taskActionCreators } from '../../state/actionCreators';
+import React, { useState } from "react";
+import styled from "styled-components";
+import Btn from "../Btn";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { taskActionCreators } from "../../state/actionCreators";
 
 const TodoForm = () => {
   const dispatch = useDispatch();
   const { addTask } = bindActionCreators(taskActionCreators, dispatch);
-  const [inputVal, setInputVal] = useState('');
+  const [inputVal, setInputVal] = useState("");
   const handleChange = (e) => {
     setInputVal(() => e.target.value);
   };
@@ -20,7 +20,7 @@ const TodoForm = () => {
       return;
     }
     addTask(inputVal);
-    setInputVal('');
+    setInputVal("");
   };
 
   return (
@@ -43,12 +43,8 @@ const Wrapper = styled.form`
   /* border-top: 2px solid var(--color-screen); */
   /* border-bottom: 2px solid var(--color-screen); */
   background-color: transparent;
-  padding: 0px 10px 15px 10px;
+  padding: 20px 10px 0px;
   display: flex;
-  /* border-bottom: 2px solid var(--highlight-screen); */
-  margin-bottom: 5px;
-
-  /* box-shadow: 0px 0px 10px 0px var(--highlight-alternative-border-light); */
 `;
 
 const TextInput = styled.input`
