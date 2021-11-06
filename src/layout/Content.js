@@ -53,10 +53,11 @@ const ScreenWrapper = styled.div`
     var(--color-alternative),
     var(--highlight-alternative-border-light)
   );
-  border-right: 2px solid var(--screen-border);
+  /* border-right: 2px solid var(--screen-border);
   border-left: 2px solid var(--screen-border);
   border-top: 2px solid var(--screen-border);
-  border-bottom: 2px solid var(--screen-border);
+  border-bottom: 2px solid var(--screen-border); */
+  border: var(--screen-border);
   border-radius: 22px;
   box-shadow: 0px 0px 60px var(--color-alternative);
   display: grid;

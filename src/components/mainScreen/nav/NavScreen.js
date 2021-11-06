@@ -36,7 +36,7 @@ const NavScreen = () => {
           style={{ textDecoration: "none" }}
         >
           <NavButton isActive={homePath === currentPath}>
-            Home
+            <p>Home</p>
             <HomeIcon />
           </NavButton>
         </NavLink>
@@ -47,7 +47,8 @@ const NavScreen = () => {
           style={{ textDecoration: "none" }}
         >
           <NavButton isActive={mathPath === currentPath}>
-            Math
+            <p>Math</p>
+
             <MathIcon />
           </NavButton>
         </NavLink>
@@ -56,7 +57,7 @@ const NavScreen = () => {
           isActive={snippetsPath === currentPath}
           handleClick={handleNav}
         >
-          Snippets
+          <p>Snippets</p>
           <SnippetsIcon />
         </NavButton>
         <NavButton
@@ -64,7 +65,7 @@ const NavScreen = () => {
           isActive={bugsPath === currentPath}
           handleClick={handleNav}
         >
-          Bugs
+          <p>Bugs</p>
           <BugIcon />
         </NavButton>
       </NavList>
@@ -78,7 +79,7 @@ const Wrapper = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid var(--screen-border);
+  border-bottom: var(--screen-border);
 `;
 const NavList = styled.ul`
   padding-top: 20px;
@@ -88,6 +89,7 @@ const NavList = styled.ul`
   list-style: none;
   height: 100%;
   width: 100%;
+  overflow: hidden;
   svg {
     width: 24px;
     height: 24px;

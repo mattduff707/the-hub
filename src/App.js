@@ -16,7 +16,19 @@ function App() {
 const GlobalStyle = createGlobalStyle`
 
 html {
---screen-border: hsl(220, 90%, 64%);
+--screen-border: 4px solid hsl(220, 90%, 64%);
+--screen-border-thin: 2px solid hsl(220, 90%, 64%);
+--screen-color: hsl(220, 50%, 46%);
+
+--highlight: hsl(310, 100%, 50%);
+--highlight-border: 4px solid hsl(310, 100%, 50%);
+--highlight-border-thin: 2px solid hsl(310, 100%, 50%);
+--highlight-bg: hsl(310, 50%, 40%);
+--highlight-shadow: inset 0px 0px 16px var(--highlight);
+/* --highlight-text: hsl(30, 100%, 60%); */
+--highlight-confirm: hsl(120, 100%, 50%);
+
+
 
 --color-main: hsla(180, 2%, 19%, 1);
 --shadow-main: hsla(180, 2%, 13%, 1);
@@ -44,7 +56,7 @@ html {
 --highlight-todo-delete-border-light: hsla(0, 90%, 59%, 0.5);
 --highlight-todo-delete-border-dark: hsla(0, 90%, 39%, 0.5);
 
---color-screen: hsla(220, 50%, 46%);
+/* --color-screen: hsla(220, 50%, 46%); */
 --highlight-screen: hsla(220, 90%, 71%, 0.55);
 --highlight-screen-shadow: 0px 0px 10px 4px hsla(220, 90%, 59%, 0.5);
 

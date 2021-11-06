@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import CoolButton from '../CoolButton';
-import { NavLink } from 'react-router-dom';
-import CoolScreen from '../CoolScreen';
+import React, { useState } from "react";
+import styled from "styled-components";
+import CoolButton from "../CoolButton";
+import { NavLink } from "react-router-dom";
+import CoolScreen from "../CoolScreen";
 
-const homePath = '/';
-const snippetsPath = '/snippets';
-const mathPath = '/math';
-const bugsPath = '/bugs';
+const homePath = "/";
+const snippetsPath = "/snippets";
+const mathPath = "/math";
+const bugsPath = "/bugs";
 const NavButtons = () => {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const handleNav = (e) => {
@@ -20,7 +20,7 @@ const NavButtons = () => {
       <ButtonList>
         <ButtonContainer>
           <CoolLink onClick={handleNav} path={homePath} exact to={homePath}>
-            <CoolButton padding={'28px'}></CoolButton>
+            <CoolButton padding={"28px"}></CoolButton>
             <LinkLabelContainer>
               <LinkScreen>
                 <LinkLabel isActive={homePath === currentPath}>Home</LinkLabel>
@@ -30,17 +30,19 @@ const NavButtons = () => {
         </ButtonContainer>
         <ButtonContainer>
           <CoolLink onClick={handleNav} path={snippetsPath} to={snippetsPath}>
-            <CoolButton padding={'28px'}></CoolButton>
+            <CoolButton padding={"28px"}></CoolButton>
             <LinkLabelContainer>
               <LinkScreen>
-                <LinkLabel isActive={snippetsPath === currentPath}>Snippets</LinkLabel>
+                <LinkLabel isActive={snippetsPath === currentPath}>
+                  Snippets
+                </LinkLabel>
               </LinkScreen>
             </LinkLabelContainer>
           </CoolLink>
         </ButtonContainer>
         <ButtonContainer>
           <CoolLink onClick={handleNav} path={mathPath} to={mathPath}>
-            <CoolButton padding={'28px'}></CoolButton>
+            <CoolButton padding={"28px"}></CoolButton>
             <LinkLabelContainer>
               <LinkScreen>
                 <LinkLabel isActive={mathPath === currentPath}>Math</LinkLabel>
@@ -50,7 +52,7 @@ const NavButtons = () => {
         </ButtonContainer>
         <ButtonContainer>
           <CoolLink onClick={handleNav} path={bugsPath} to={bugsPath}>
-            <CoolButton padding={'28px'}></CoolButton>
+            <CoolButton padding={"28px"}></CoolButton>
             <LinkLabelContainer>
               <LinkScreen>
                 <LinkLabel isActive={bugsPath === currentPath}>Bugs</LinkLabel>
@@ -68,7 +70,7 @@ const Wrapper = styled.nav`
   height: 100%;
   margin: 0px auto;
   display: flex;
-
+  overflow: hidden;
   justify-content: center;
 
   /* flex: 1; */
@@ -77,6 +79,7 @@ const Wrapper = styled.nav`
   /* height: 200px; */
 `;
 const ButtonList = styled.ul`
+  overflow: hidden;
   width: 80%;
   height: 200px;
   padding-top: 10px;
@@ -100,6 +103,7 @@ const ButtonContainer = styled.li`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 `;
 const CoolLink = styled(NavLink)`
   text-decoration: none;
@@ -124,8 +128,10 @@ const LinkScreen = styled(CoolScreen)`
 `;
 const LinkLabel = styled.p`
   font-weight: 600;
-  color: ${(props) => (props.isActive ? 'var(--hover-confirm)' : 'var(--color-text)')};
-  text-shadow: ${(props) => (props.isActive ? 'var(--hover-confirm-shadow)' : 'var(--shadow-text)')};
+  color: ${(props) =>
+    props.isActive ? "var(--hover-confirm)" : "var(--color-text)"};
+  text-shadow: ${(props) =>
+    props.isActive ? "var(--hover-confirm-shadow)" : "var(--shadow-text)"};
   border: 2px solid var(--highlight-screen);
   padding: 5px;
   border-radius: 8px;

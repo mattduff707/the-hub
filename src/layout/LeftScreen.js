@@ -17,8 +17,8 @@ const Wrapper = styled.div`
   /* padding: 0px 0px 30px 40px; */
   /* overflow: auto; */
   overflow: hidden;
-  padding-top: 30px;
-  border-right: 2px solid var(--screen-border);
+  /* padding-top: 30px; */
+  border-right: var(--screen-border);
 `;
 
 export default LeftScreen;

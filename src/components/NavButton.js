@@ -13,35 +13,66 @@ const NavButton = ({ inactive, children, isActive, handleClick, path }) => {
 };
 
 const Wrapper = styled.button`
+  position: relative;
   font-family: var(--font-family-main);
   font-size: 1rem;
   margin: 0px 10px;
   width: 140px;
   color: var(--color-text);
-  padding: 5px 0px;
-  border: 2px solid var(--screen-border);
+  padding: 4px 0px 24px;
+  border: var(--screen-border);
   border-bottom: none;
-  border-radius: 8px 8px 0px 0px;
+  /* transform: translateY(2px); */
+  border-radius: 12px 12px 0px 0px;
   /* box-shadow: var(--highlight-screen-shadow); */
   background: ${(props) =>
-    props.isActive ? "var(--color-screen)" : "transparent"};
+    props.isActive ? "var(--screen-color)" : "transparent"};
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background, border, box-shadow;
+  transition: background, border, transform, box-shadow;
   transition-duration: 0.4s;
   transition-timing-function: ease;
   cursor: pointer;
+  transform: translateY(18px);
 
-  &:hover {
-    background: var(--hover-main-bg);
-    border: 2px solid var(--hover-main);
-    border-bottom: none;
-    box-shadow: var(--hover-main-shadow);
-    transition: background, border, box-shadow;
+  ${(props) => {
+    if (!props.isActive) {
+      return `
+        & > * {
+    transition: border, transform;
     transition-duration: 0.4s;
     transition-timing-function: ease;
+    transform: translateY(0px);
   }
+        `;
+    }
+  }}
+
+  ${(props) => {
+    if (!props.isActive) {
+      return `
+      &:hover {
+    background: var(--highlight-bg);
+    border: var(--highlight-border);
+    box-shadow: var(--highlight-shadow);
+    /* color: var(--highlight-text); */
+    border-bottom: none;
+    transform: ${props.isActive ? "translateY(18px)" : "translateY(12px)"};
+    transition: background, border, transform, box-shadow;
+    transition-duration: 0.4s;
+    transition-timing-function: ease;
+  
+        & > * {
+    transition: border, transform;
+    transition-duration: 0.4s;
+    transition-timing-function: ease;
+    transform: translateY(4px);
+    }
+  }
+      `;
+    }
+  }}
 `;
 const InactiveLink = styled(Wrapper)`
   /* text-shadow: var(--hover-danger-text-shadow);
@@ -49,7 +80,7 @@ const InactiveLink = styled(Wrapper)`
   border-color: var(--hover-danger-border-color); */
   /* box-shadow: var(--hover-danger-shadow); */
   cursor: not-allowed;
-  padding: 5px;
+  padding: 5px 0px 20px;
   &:hover {
     text-shadow: var(--hover-danger-text-shadow);
     background: var(--hover-danger);

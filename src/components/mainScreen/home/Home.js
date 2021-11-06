@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import useFetch from '../../../services/useFetch';
-import APOD from './APOD';
-import Heading from '../../Heading';
-import PageTitle from '../PageTitle';
-import Loading from '../../Loading';
+import React from "react";
+import styled from "styled-components";
+import useFetch from "../../../services/useFetch";
+import APOD from "./APOD";
+import Heading from "../../Heading";
+import PageTitle from "../PageTitle";
+import Loading from "../../Loading";
 
 const Home = () => {
   const { data, loading, error } = useFetch(process.env.REACT_APP_APOD_URL);
@@ -35,7 +35,7 @@ const Wrapper = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  z-index: 20;
   width: 100%;
   min-height: 100%;
   /* border: 2px solid green; */

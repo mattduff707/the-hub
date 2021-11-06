@@ -11,7 +11,7 @@ const TodoNav = ({ activeTag, setActiveTag, doneListTag, todoListTag }) => {
             isActive={activeTag === todoListTag}
             handleClick={() => setActiveTag(todoListTag)}
           >
-            To-do
+            <p>To-do</p>
           </NavButton>
         </li>
         <li>
@@ -19,7 +19,7 @@ const TodoNav = ({ activeTag, setActiveTag, doneListTag, todoListTag }) => {
             isActive={activeTag === doneListTag}
             handleClick={() => setActiveTag(doneListTag)}
           >
-            Done
+            <p>Done</p>
           </NavButton>
         </li>
       </NavList>
@@ -31,12 +31,13 @@ const Wrapper = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid var(--screen-border);
+  border-bottom: var(--screen-border);
 `;
 const NavList = styled.ul`
   display: flex;
   justify-content: center;
   list-style: none;
+  overflow: hidden;
 `;
 
 export default TodoNav;

@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   position: relative;
-  border-bottom: 2px solid var(--screen-border);
+  border-bottom: var(--screen-border);
 `;
 const IconWrap = styled.div`
   position: absolute;

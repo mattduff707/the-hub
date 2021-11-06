@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const TextInput = ({ className, onChange, value, id }) => {
+const TextInput = ({ className, onChange, value, id, placeholder, name }) => {
   return (
     <>
       <StyledInput
@@ -10,24 +10,25 @@ const TextInput = ({ className, onChange, value, id }) => {
         value={value}
         autoComplete="off"
         id={id}
+        placeholder={placeholder}
+        name={name}
       />
     </>
   );
 };
 const StyledInput = styled.input`
   width: 100%;
-  height: 20px;
-  padding: 15px 10px;
+  padding: 0px 10px;
   color: var(--color-text);
-  background-color: var(--color-screen);
+  background-color: var(--screen-color);
   border-radius: 8px;
   font-family: var(--font-family-main);
   /* letter-spacing: 2px; */
   font-weight: 600;
   outline: none;
-  border: 2px solid var(--screen-border);
+  border: var(--screen-border-thin);
   /* box-shadow: var(--highlight-screen-shadow); */
-  text-shadow: var(--shadow-text);
+  /* text-shadow: var(--shadow-text); */
   letter-spacing: 2px;
   font-size: 0.9rem;
 `;

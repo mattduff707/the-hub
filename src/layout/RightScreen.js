@@ -16,8 +16,8 @@ const Wrapper = styled.div`
   /* padding: 0px 40px 30px 0px; */
   /* overflow: auto; */
   overflow: hidden;
-  padding-top: 30px;
-  border-left: 2px solid var(--screen-border);
+  /* padding-top: 30px; */
+  border-left: var(--screen-border);
 `;
 
 export default Bookmarks;
