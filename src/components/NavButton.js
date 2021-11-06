@@ -1,12 +1,30 @@
 import React from "react";
 import styled from "styled-components";
 
-const NavButton = ({ inactive, children, isActive, handleClick, path }) => {
+const NavButton = ({
+  inactive,
+  children,
+  isActive,
+  handleClick,
+  path,
+  className,
+  style,
+}) => {
   if (inactive) {
-    return <InactiveLink path={path}>{children}</InactiveLink>;
+    return (
+      <InactiveLink className={className} style={style} path={path}>
+        {children}
+      </InactiveLink>
+    );
   }
   return (
-    <Wrapper onClick={handleClick} isActive={isActive} path={path}>
+    <Wrapper
+      className={className}
+      style={style}
+      onClick={handleClick}
+      isActive={isActive}
+      path={path}
+    >
       {children}
     </Wrapper>
   );
@@ -16,8 +34,10 @@ const Wrapper = styled.button`
   position: relative;
   font-family: var(--font-family-main);
   font-size: 1rem;
+  font-weight: 600;
   margin: 0px 10px;
   width: 140px;
+  /* height: 56px; */
   color: var(--color-text);
   padding: 4px 0px 24px;
   border: var(--screen-border);
@@ -35,15 +55,17 @@ const Wrapper = styled.button`
   transition-timing-function: ease;
   cursor: pointer;
   transform: translateY(18px);
+  &:hover {
+    border: var(--highlight-border);
+    border-bottom: none;
+  }
 
   ${(props) => {
     if (!props.isActive) {
       return `
         & > * {
-    transition: border, transform;
-    transition-duration: 0.4s;
-    transition-timing-function: ease;
-    transform: translateY(0px);
+    transition: transform 0.4s ease;
+    transform: translateY(1px);
   }
         `;
     }
@@ -59,14 +81,10 @@ const Wrapper = styled.button`
     /* color: var(--highlight-text); */
     border-bottom: none;
     transform: ${props.isActive ? "translateY(18px)" : "translateY(12px)"};
-    transition: background, border, transform, box-shadow;
-    transition-duration: 0.4s;
-    transition-timing-function: ease;
+    transition: var(--highlight-transition), transform 0.4s ease;
   
         & > * {
-    transition: border, transform;
-    transition-duration: 0.4s;
-    transition-timing-function: ease;
+    transition: transform 0.4s ease;
     transform: translateY(4px);
     }
   }
@@ -75,17 +93,16 @@ const Wrapper = styled.button`
   }}
 `;
 const InactiveLink = styled(Wrapper)`
-  /* text-shadow: var(--hover-danger-text-shadow);
-  background: var(--hover-danger);
-  border-color: var(--hover-danger-border-color); */
-  /* box-shadow: var(--hover-danger-shadow); */
   cursor: not-allowed;
-  padding: 5px 0px 20px;
   &:hover {
-    text-shadow: var(--hover-danger-text-shadow);
-    background: var(--hover-danger);
-    border-color: var(--hover-danger-border-color);
-    box-shadow: var(--hover-danger-shadow);
+    /* text-shadow: var(--hover-danger-text-shadow); */
+    box-shadow: var(--danger-shadow);
+    background: var(--danger-bg);
+    border-color: var(--danger);
+    transform: translateY(18px);
+    & > * {
+      transform: translateY(1px);
+    }
   }
 `;
 

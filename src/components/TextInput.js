@@ -20,16 +20,20 @@ const StyledInput = styled.input`
   width: 100%;
   padding: 0px 10px;
   color: var(--color-text);
-  background-color: var(--screen-color);
+  background-color: transparent;
   border-radius: 8px;
   font-family: var(--font-family-main);
   /* letter-spacing: 2px; */
   font-weight: 600;
   outline: none;
   border: var(--screen-border-thin);
-  /* box-shadow: var(--highlight-screen-shadow); */
-  /* text-shadow: var(--shadow-text); */
   letter-spacing: 2px;
   font-size: 0.9rem;
+  transition: var(--highlight-transition);
+  &:focus {
+    background-color: var(--screen-color);
+    border: var(--highlight-border-thin);
+    /* box-shadow: var(--highlight-shadow); */
+  }
 `;
 export default TextInput;

@@ -97,7 +97,7 @@ const BtnWrap = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 10px 0px;
+  padding: 10px 0px 20px;
 `;
 const AddBookmarkBtn = styled(Btn)`
   padding: 5px 10px;

@@ -43,8 +43,9 @@ const Wrapper = styled.form`
   /* border-top: 2px solid var(--color-screen); */
   /* border-bottom: 2px solid var(--color-screen); */
   background-color: transparent;
-  padding: 20px 10px 0px;
+  padding: 20px 10px;
   display: flex;
+  border-bottom: var(--screen-border);
 `;
 
 const Submit = styled(Btn)`

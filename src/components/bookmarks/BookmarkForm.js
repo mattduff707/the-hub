@@ -139,11 +139,12 @@ const FormWrap = styled(ScreenBox)`
 `;
 const StyledHeading = styled(Heading)`
   font-size: 1.2rem;
+  padding-bottom: 2px;
   border: none;
   /* background-color: none; */
   box-shadow: none;
   border-radius: 0px;
-  border-bottom: 2px solid var(--highlight-screen);
+  border-bottom: var(--screen-border-thin);
   align-self: center;
   margin-bottom: 5px;
 `;
@@ -167,6 +168,7 @@ const Label = styled.label`
   ${(props) => props.required && requiredStar}
 `;
 const StyledTextInput = styled(TextInput)`
+  padding: 5px 10px;
   border: ${(props) =>
     props.isMissing
       ? "2px solid var(--hover-danger-border-color)"
@@ -202,7 +204,7 @@ const Checkbox = styled.input`
     left: 0;
     right: 0;
     bottom: 0;
-    top: 0;
+    top: 2px;
     margin: auto;
     transform: rotate(45deg) translateY(-15%) translateX(-20%);
   }

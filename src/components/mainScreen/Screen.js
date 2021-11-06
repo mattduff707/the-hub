@@ -28,6 +28,8 @@ const Screen = () => {
 const Wrapper = styled.section`
   min-height: 100%;
   overflow: auto;
+  position: relative;
+  transform: translateY(0px);
 `;
 
 const Container = styled.div`

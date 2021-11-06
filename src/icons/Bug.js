@@ -1,8 +1,9 @@
 import React from "react";
 
-const Bug = ({ className }) => {
+const Bug = ({ className, style }) => {
   return (
     <svg
+      style={style}
       className={className}
       aria-hidden="true"
       role="img"

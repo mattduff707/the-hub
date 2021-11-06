@@ -68,7 +68,7 @@ const Content = styled.article`
   /* width: 75%; */
   font-size: 18px;
   padding-bottom: 5px;
-  border-bottom: 2px solid var(--highlight-screen);
+  border-bottom: var(--screen-border-thin);
 `;
 
 export default TodoItem;

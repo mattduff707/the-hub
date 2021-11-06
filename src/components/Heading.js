@@ -21,7 +21,7 @@ const StyledHeading = styled.h2`
   border-radius: 0px 0px 12px 12px;
   /* box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light); */
   /* padding: 0px 15px 15px; */
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   padding: 10px 20px;
 `;
 

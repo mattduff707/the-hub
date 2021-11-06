@@ -27,7 +27,7 @@ const Wrapper = styled.button`
   border: none;
   font-size: 30px;
   color: var(--color-text);
-  text-shadow: var(--shadow-text);
+  /* text-shadow: var(--shadow-text); */
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -40,7 +40,7 @@ const Wrapper = styled.button`
     transition-timing-function: ease;
     color: ${(props) =>
       props.danger
-        ? "var(--hover-danger)"
+        ? "var(--danger)"
         : props.confirm
         ? "var(--hover-confirm)"
         : "var(--hover-main-icon)"};

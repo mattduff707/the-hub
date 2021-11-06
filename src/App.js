@@ -18,15 +18,21 @@ const GlobalStyle = createGlobalStyle`
 html {
 --screen-border: 4px solid hsl(220, 90%, 64%);
 --screen-border-thin: 2px solid hsl(220, 90%, 64%);
---screen-color: hsl(220, 50%, 46%);
+--screen-color: hsl(220, 50%, 44%);
 
 --highlight: hsl(310, 100%, 50%);
 --highlight-border: 4px solid hsl(310, 100%, 50%);
 --highlight-border-thin: 2px solid hsl(310, 100%, 50%);
 --highlight-bg: hsl(310, 50%, 40%);
 --highlight-shadow: inset 0px 0px 16px var(--highlight);
-/* --highlight-text: hsl(30, 100%, 60%); */
---highlight-confirm: hsl(120, 100%, 50%);
+--highlight-transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+
+--danger: hsl(340, 100%, 50%);
+--danger-bg: hsl(340, 50%, 50%);
+--danger-shadow: inset 0px 0px 16px var(--danger);
+
+
+/* --highlight-confirm: hsl(120, 100%, 50%); */
 
 
 

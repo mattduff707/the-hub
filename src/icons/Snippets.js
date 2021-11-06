@@ -1,8 +1,9 @@
 import React from "react";
 
-const Snippets = ({ className }) => {
+const Snippets = ({ className, style }) => {
   return (
     <svg
+      style={style}
       className={className}
       aria-hidden="true"
       role="img"

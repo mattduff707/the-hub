@@ -42,6 +42,9 @@ const Wrapper = styled(ScreenBox)`
   width: 100%;
   margin: 10px 0px;
   padding: 10px;
+  &:nth-child(2) {
+    margin-top: 0px;
+  }
 `;
 
 const Anchor = styled.a`

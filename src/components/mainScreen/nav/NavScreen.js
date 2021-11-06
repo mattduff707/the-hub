@@ -82,7 +82,7 @@ const Wrapper = styled.nav`
   border-bottom: var(--screen-border);
 `;
 const NavList = styled.ul`
-  padding-top: 20px;
+  /* padding-top: 0px; */
   display: flex;
   justify-content: center;
   align-items: center;
