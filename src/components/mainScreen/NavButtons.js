@@ -130,8 +130,6 @@ const LinkLabel = styled.p`
   font-weight: 600;
   color: ${(props) =>
     props.isActive ? "var(--hover-confirm)" : "var(--color-text)"};
-  text-shadow: ${(props) =>
-    props.isActive ? "var(--hover-confirm-shadow)" : "var(--shadow-text)"};
   border: 2px solid var(--highlight-screen);
   padding: 5px;
   border-radius: 8px;

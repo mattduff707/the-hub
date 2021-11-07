@@ -11,7 +11,6 @@ const Heading = ({ tag, children, className }) => {
 
 const StyledHeading = styled.h2`
   font-size: 24px;
-  /* text-shadow: var(--shadow-text); */
   font-weight: 600;
   letter-spacing: 2px;
   color: var(--color-text);

@@ -27,23 +27,18 @@ const Wrapper = styled.button`
   border: none;
   font-size: 30px;
   color: var(--color-text);
-  /* text-shadow: var(--shadow-text); */
   cursor: pointer;
   display: flex;
   align-items: center;
-  transition: color, filter;
-  transition-duration: 0.5s;
-  transition-timing-function: ease;
+  transition: color 0.5s ease;
   &:hover {
-    transition: color, filter;
-    transition-duration: 0.3s;
-    transition-timing-function: ease;
+    transition: color 0.3s ease;
     color: ${(props) =>
       props.danger
         ? "var(--danger)"
         : props.confirm
-        ? "var(--hover-confirm)"
-        : "var(--hover-main-icon)"};
+        ? "var(--confirm)"
+        : "var(--highlight)"};
   }
 `;
 

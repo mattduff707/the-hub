@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import Btn from '../Btn';
+import React, { useState } from "react";
+import styled from "styled-components";
+import Btn from "../Btn";
 
 const Search = ({ search_url }) => {
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const handleChange = (e) => {
     setSearchText(() => e.target.value);
   };
 
   const handleSubmit = () => {
-    window.open(search_url + searchText, '_blank');
-    setSearchText('');
+    window.open(search_url + searchText, "_blank");
+    setSearchText("");
   };
   return (
     <Wrapper onSubmit={handleSubmit}>
-      <TextInput value={searchText} onChange={handleChange} autoComplete="off" type="text" name="searchDocs" />
+      <TextInput
+        value={searchText}
+        onChange={handleChange}
+        autoComplete="off"
+        type="text"
+        name="searchDocs"
+      />
       <SubmitBtn type="submit">Search</SubmitBtn>
     </Wrapper>
   );
@@ -39,7 +45,6 @@ const TextInput = styled.input`
   flex: 4;
   border: 2px solid var(--highlight-screen);
   box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
-  text-shadow: var(--shadow-text);
   letter-spacing: 2px;
   font-size: 0.9rem;
 `;

@@ -51,7 +51,6 @@ const SettingsWrapper = styled.div`
   background-color: var(--color-screen);
   border: 2px solid var(--highlight-screen);
   box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
-  text-shadow: var(--shadow-text);
   border-radius: 8px;
   margin-top: 20px;
   display: flex;
@@ -61,7 +60,6 @@ const SettingsWrapper = styled.div`
 `;
 const SettingsTitle = styled.h2`
   font-size: 1.8rem;
-  text-shadow: var(--shadow-text);
   font-weight: 400;
   padding-bottom: 10px;
 `;

@@ -95,7 +95,6 @@ const Wrapper = styled.button`
 const InactiveLink = styled(Wrapper)`
   cursor: not-allowed;
   &:hover {
-    /* text-shadow: var(--hover-danger-text-shadow); */
     box-shadow: var(--danger-shadow);
     background: var(--danger-bg);
     border-color: var(--danger);

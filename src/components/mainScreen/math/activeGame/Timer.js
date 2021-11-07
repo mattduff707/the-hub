@@ -1,6 +1,6 @@
-import React from 'react';
-import Countdown from 'react-countdown';
-import styled from 'styled-components';
+import React from "react";
+import Countdown from "react-countdown";
+import styled from "styled-components";
 
 const renderer = ({ minutes, seconds }) => {
   return (
@@ -26,8 +26,8 @@ const Timer = ({ className, gameLength, endGame }) => {
 };
 
 const StyledTimer = styled.span`
-  color: ${(props) => (props.minutes < 1 ? `var(--hover-danger)` : `var(--hover-main-text)`)};
-  text-shadow: ${(props) => (props.minutes < 1 ? `var(--hover-danger-text-shadow)` : `var(--hover-main-text-shadow)`)};
+  color: ${(props) =>
+    props.minutes < 1 ? `var(--hover-danger)` : `var(--hover-main-text)`};
   padding-left: 5px;
 `;
 

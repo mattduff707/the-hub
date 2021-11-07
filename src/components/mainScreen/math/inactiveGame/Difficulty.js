@@ -1,12 +1,17 @@
-import React from 'react';
-import styled from 'styled-components';
-import { difficultiesArr } from '../generateQuestions';
+import React from "react";
+import styled from "styled-components";
+import { difficultiesArr } from "../generateQuestions";
 
 const Difficulty = ({ gameDifficulty, handleDifficultyChange }) => {
   return (
     <>
       <StyledLabel htmlFor="difficulty">Difficulty:</StyledLabel>
-      <DifficultySetting value={gameDifficulty} onChange={handleDifficultyChange} id="difficulty" name="difficulty">
+      <DifficultySetting
+        value={gameDifficulty}
+        onChange={handleDifficultyChange}
+        id="difficulty"
+        name="difficulty"
+      >
         {difficultiesArr.map((difficultyVal) => {
           return (
             <option key={difficultyVal} value={difficultyVal}>
@@ -29,7 +34,6 @@ const DifficultySetting = styled.select`
   color: var(--color-text);
   font-size: 1rem;
   padding: 5px;
-  text-shadow: inherit;
   text-transform: capitalize;
   & > option {
     background-color: var(--color-screen);

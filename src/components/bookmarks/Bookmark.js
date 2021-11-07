@@ -65,19 +65,17 @@ const BaseAnchor = styled(Anchor)`
 
 const Title = styled.h3`
   font-size: 1.1rem;
-  text-shadow: var(--shadow-text);
   font-weight: 600;
   letter-spacing: 2px;
   color: var(--color-text);
-  transition: color, text-shadow;
+  transition: color;
   transition-duration: 0.3s;
   transition-timing-function: ease;
   ${Anchor}:hover & {
-    transition: color, text-shadow;
+    transition: color;
     transition-duration: 0.3s;
     transition-timing-function: ease;
     color: var(--hover-main);
-    text-shadow: var(--hover-main-text-shadow);
   }
 `;
 

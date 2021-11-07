@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import DownArrow from '../../../icons/DownArrow';
-import UpArrow from '../../../icons/upArrow';
+import React, { useState } from "react";
+import styled from "styled-components";
+import DownArrowIcon from "../../../icons/DownArrow";
+import UpArrowIcon from "../../../icons/upArrow";
+import IconBtn from "../../IconBtn";
+import ScreenBox from "../../ScreenBox";
 
 const APOD = ({ data, loading, error }) => {
   const [isExtended, setIsExtended] = useState(false);
@@ -9,17 +11,20 @@ const APOD = ({ data, loading, error }) => {
     setIsExtended(() => !isExtended);
   };
 
-  const image = 'image';
-  const video = 'video';
+  const image = "image";
+  const video = "video";
   if (data.media_type === image) {
     return (
       <Wrapper>
         <Title>{data.title}</Title>
         <Subtitle>{data.copyright}</Subtitle>
         <Image src={data.url} />
-        <ExtensionBtn onClick={handleClick}>
-          Description{isExtended ? <StyledUpArrow /> : <StyledDownArrow />}
-        </ExtensionBtn>
+        <BtnWrap>
+          <ExtensionBtn handleClick={handleClick}>
+            Description
+            {isExtended ? <StyledUpArrowIcon /> : <StyledDownArrowIcon />}
+          </ExtensionBtn>
+        </BtnWrap>
         <ExtensionWrapper isExtended={isExtended}>
           <Description>{data.explanation}</Description>
         </ExtensionWrapper>
@@ -32,8 +37,9 @@ const APOD = ({ data, loading, error }) => {
         <Title>{data.title}</Title>
         <Subtitle>{data.copyright}</Subtitle>
         <StyledFrame src={data.url}></StyledFrame>
-        <ExtensionBtn onClick={handleClick}>
-          Description{isExtended ? <StyledUpArrow /> : <StyledDownArrow />}
+        <ExtensionBtn handleClick={handleClick}>
+          Description
+          {isExtended ? <StyledUpArrowIcon /> : <StyledDownArrowIcon />}
         </ExtensionBtn>
         <ExtensionWrapper isExtended={isExtended}>
           <Description>{data.explanation}</Description>
@@ -43,14 +49,11 @@ const APOD = ({ data, loading, error }) => {
   }
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled(ScreenBox)`
   width: 100%;
   /* height: 100%; */
   padding: 10px 20px 5px 20px;
   border-radius: 8px;
-  background-color: var(--color-screen);
-  border: 2px solid var(--highlight-screen);
-  box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,7 +61,6 @@ const Wrapper = styled.div`
   /* overflow-y: auto; */
 `;
 const Title = styled.h2`
-  text-shadow: var(--shadow-text);
   letter-spacing: 2px;
   color: var(--color-text);
   padding-bottom: 10px;
@@ -66,7 +68,6 @@ const Title = styled.h2`
   font-size: 24px;
 `;
 const Subtitle = styled.h3`
-  text-shadow: var(--shadow-text);
   letter-spacing: 2px;
   color: var(--color-text);
   padding-bottom: 10px;
@@ -92,7 +93,6 @@ const StyledFrame = styled.iframe`
   box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
 `;
 const Description = styled.div`
-  text-shadow: var(--shadow-text);
   letter-spacing: 2px;
   color: var(--color-text);
   font-family: var(--font-family-main);
@@ -100,71 +100,50 @@ const Description = styled.div`
   /* border: 2px solid black; */
   /* height: 200px; */
 `;
+const BtnWrap = styled.div`
+  width: 100%;
+  color: var(--color-text);
+  display: flex;
+  justify-content: center;
+  padding: 10px 0px 5px;
+`;
 const ExtensionWrapper = styled.div`
   width: 100%;
   height: auto;
-  display: ${(props) => (props.isExtended ? 'flex' : 'none')};
+  display: ${(props) => (props.isExtended ? "flex" : "none")};
   /* border: 2px solid red; */
   padding: 5px 0px 10px;
   /* display: flex; */
   flex-direction: column;
   overflow: hidden;
 `;
-const ExtensionBtn = styled.button`
+const ExtensionBtn = styled(IconBtn)`
   border: none;
   background: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-shadow: var(--shadow-text);
   letter-spacing: 2px;
-  color: var(--color-text);
   font-family: var(--font-family-main);
-  font-size: 16px;
-  transition: color, text-shadow;
+  font-size: 1.2rem;
+  transition: color;
   transition-duration: 0.3s;
   transition-timing-function: ease;
   &:hover {
-    transition: color, text-shadow;
+    transition: color;
     transition-duration: 0.3s;
     transition-timing-function: ease;
     color: var(--hover-main-text);
-    text-shadow: var(--hover-main-text-shadow);
   }
 `;
-const StyledUpArrow = styled(UpArrow)`
-  transition: fill, filter;
-  transition-duration: 0.3s;
-  transition-timing-function: ease;
-  ${ExtensionBtn}:hover & {
-    fill: var(--hover-main-icon);
-    filter: drop-shadow(var(--hover-main-icon-shadow));
-    transition: fill, filter;
-    transition-duration: 0.3s;
-    transition-timing-function: ease;
-  }
+
+const StyledDownArrowIcon = styled(DownArrowIcon)`
+  height: 30px;
+  width: 30px;
 `;
-const StyledDownArrow = styled(DownArrow)`
-  transition: fill, filter;
-  transition-duration: 0.3s;
-  transition-timing-function: ease;
-  ${ExtensionBtn}:hover & {
-    fill: var(--hover-main-icon);
-    filter: drop-shadow(var(--hover-main-icon-shadow));
-    transition: fill, filter;
-    transition-duration: 0.3s;
-    transition-timing-function: ease;
-  }
+const StyledUpArrowIcon = styled(UpArrowIcon)`
+  height: 30px;
+  width: 30px;
 `;
-// const StyledArrowDown = styled(ArrowDown)`
-//   height: 24px;
-//   width: 24px;
-//   filter: drop-shadow(var(--shadow-icon));
-// `;
-// const StyledArrowUp = styled(ArrowUp)`
-//   height: 24px;
-//   width: 24px;
-//   filter: drop-shadow(var(--shadow-icon));
-// `;
 
 export default APOD;

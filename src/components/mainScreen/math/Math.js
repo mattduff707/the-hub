@@ -132,6 +132,5 @@ const Wrapper = styled.section`
   flex-direction: column;
   align-items: center;
   color: var(--color-text);
-  text-shadow: var(--shadow-text);
 `;
 export default Math;

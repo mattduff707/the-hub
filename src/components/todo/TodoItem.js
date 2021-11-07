@@ -63,7 +63,6 @@ const Wrapper = styled(ScreenBox)`
   justify-content: space-between;
 `;
 const Content = styled.article`
-  text-shadow: var(--shadow-text);
   color: var(--color-text);
   /* width: 75%; */
   font-size: 18px;

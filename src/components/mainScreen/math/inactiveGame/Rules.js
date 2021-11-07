@@ -1,15 +1,18 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Rules = ({ isDisabled }) => {
   return (
     <RulesWrapper>
       <RulesTitle>How to play</RulesTitle>
-      <RulesText>Goal: Answer as many basic operations as you can in the time selected.</RulesText>
+      <RulesText>
+        Goal: Answer as many basic operations as you can in the time selected.
+      </RulesText>
       <br />
       <RulesText>
-        Once a question is answered, the correct answer will be highlighted and shown below the operation. The cursor
-        will automatically move to the next question.
+        Once a question is answered, the correct answer will be highlighted and
+        shown below the operation. The cursor will automatically move to the
+        next question.
       </RulesText>
       <RulesText>
         <Highlight isConfirm>Correct</Highlight>
@@ -18,10 +21,14 @@ const Rules = ({ isDisabled }) => {
         <Highlight isDanger>Incorrect</Highlight>
       </RulesText>
       <br />
-      <RulesText>The difficulty setting will determine the operands in each question.</RulesText>
+      <RulesText>
+        The difficulty setting will determine the operands in each question.
+      </RulesText>
       <br />
       <RulesText>
-        <OperationRule isDanger={isDisabled}>You must select at least one operation.</OperationRule>
+        <OperationRule isDanger={isDisabled}>
+          You must select at least one operation.
+        </OperationRule>
       </RulesText>
     </RulesWrapper>
   );
@@ -42,36 +49,32 @@ const RulesWrapper = styled.div`
 `;
 const RulesTitle = styled.h2`
   font-size: 1.8rem;
-  text-shadow: var(--shadow-text);
   font-weight: 400;
   padding-bottom: 10px;
 `;
-const RulesText = styled.p`
-  text-shadow: var(--shadow-text);
-`;
+const RulesText = styled.p``;
 const Highlight = styled.span`
-  transition: color, text-shadow;
+  transition: color;
   transition-duration: 0.2s;
   transition-timing-function: ease;
   color: ${(props) =>
-    props.isDanger ? 'var(--hover-danger)' : props.isConfirm ? 'var(--hover-confirm)' : 'var(--color-text)'};
-  text-shadow: ${(props) =>
     props.isDanger
-      ? 'var(--hover-danger-text-shadow)'
+      ? "var(--hover-danger)"
       : props.isConfirm
-      ? 'var(--hover-confirm-text-shadow)'
-      : 'var(--color-text)'};
+      ? "var(--hover-confirm)"
+      : "var(--color-text)"};
 `;
 const OperationRule = styled(Highlight)`
   display: flex;
   flex-direction: column;
   &:after {
-    content: '';
+    content: "";
     margin-top: 4px;
-    width: ${(props) => (props.isDanger ? '100%' : '0px')};
+    width: ${(props) => (props.isDanger ? "100%" : "0px")};
     height: 2px;
     background-color: var(--hover-danger);
-    box-shadow: ${(props) => (props.isDanger ? 'var(--hover-danger-shadow)' : 'none')};
+    box-shadow: ${(props) =>
+      props.isDanger ? "var(--hover-danger-shadow)" : "none"};
     transition: width;
     transition-duration: 0.2s;
     transition-timing-function: ease;

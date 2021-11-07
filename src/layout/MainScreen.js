@@ -6,22 +6,21 @@ import NavScreen from "../components/mainScreen/nav/NavScreen";
 const MainScreen = () => {
   return (
     <Wrapper>
-      <NavScreen style={{ flex: "1" }} />
-      <Screen style={{ flex: "5" }} />
+      <NavScreen style={{ gridArea: "nav" }} />
+      <Screen style={{ gridArea: "content" }} />
     </Wrapper>
   );
 };
 const Wrapper = styled.div`
   /* border: 4px solid green; */
-  display: flex;
-  flex-direction: column;
+  display: grid;
   height: 100%;
   width: 100%;
-  /* grid-template-columns: 1fr;
-  grid-template-rows: 5fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 60px 5fr;
   grid-template-areas:
-    'screen'
-    'buttons'; */
+    "nav"
+    "content";
   /* max-height: 100%; */
   overflow-y: hidden;
 `;

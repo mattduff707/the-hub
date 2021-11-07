@@ -158,7 +158,6 @@ const InputWrap = styled.div`
 `;
 const Label = styled.label`
   color: var(--color-text);
-  text-shadow: var(--shadow-text);
   font-weight: 600;
   letter-spacing: 2px;
   margin-right: 5px;

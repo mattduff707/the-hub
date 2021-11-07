@@ -20,10 +20,8 @@ const StyledButton = styled.button`
   font-weight: 600;
   transition: var(--highlight-transition);
   &:hover {
-    /* text-shadow: var(--hover-main-shadow); */
     border-color: var(--highlight);
     background-color: var(--highlight-bg);
-    /* box-shadow: 0px 0px 10px 1px var(--hover-main); */
     box-shadow: var(--highlight-shadow);
     transition: var(--highlight-transition);
   }

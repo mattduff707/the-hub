@@ -1,9 +1,15 @@
-import React from 'react';
-import styled from 'styled-components';
-import Btn from '../../../Btn';
-import Score from './Score';
+import React from "react";
+import styled from "styled-components";
+import Btn from "../../../Btn";
+import Score from "./Score";
 
-const CompletedGame = ({ correctQuestions, incorrectQuestions, gameOperations, handleGameStart, exitGame }) => {
+const CompletedGame = ({
+  correctQuestions,
+  incorrectQuestions,
+  gameOperations,
+  handleGameStart,
+  exitGame,
+}) => {
   const totalArr = [...correctQuestions, ...incorrectQuestions];
 
   const getOperationTotal = (arr, operation) => {
@@ -15,7 +21,11 @@ const CompletedGame = ({ correctQuestions, incorrectQuestions, gameOperations, h
     <Wrapper>
       <Title>Game Over</Title>
       <Subtitle>Score</Subtitle>
-      <Score valOne={correctQuestions.length} valTwo={totalArr.length} operation="Total" />
+      <Score
+        valOne={correctQuestions.length}
+        valTwo={totalArr.length}
+        operation="Total"
+      />
       {gameOperations.map((operationStr) => {
         return (
           <Score
@@ -49,7 +59,6 @@ const Wrapper = styled.div`
 const Title = styled.h1`
   font-size: 3rem;
   color: var(--hover-danger);
-  text-shadow: var(--hover-danger-text-shadow);
 `;
 const Subtitle = styled.h2`
   font-size: 2rem;

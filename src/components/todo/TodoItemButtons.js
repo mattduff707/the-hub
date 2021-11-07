@@ -1,15 +1,26 @@
-import React from 'react';
-import styled from 'styled-components';
-import CheckIcon from '../../icons/Check';
-import DeleteIcon from '../../icons/Delete';
-import EditIcon from '../../icons/Edit';
-import CircleArrowIcon from '../../icons/CircleArrow';
-import { useDispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { taskActionCreators } from '../../state/actionCreators';
-const TodoItemButtons = ({ isEditing, handleEdit, setIsEditing, itemId, textContent, completed }) => {
+import React from "react";
+import styled from "styled-components";
+import CheckIcon from "../../icons/Check";
+import DeleteIcon from "../../icons/Delete";
+import EditIcon from "../../icons/Edit";
+import CircleArrowIcon from "../../icons/CircleArrow";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { taskActionCreators } from "../../state/actionCreators";
+import IconBtn from "../IconBtn";
+const TodoItemButtons = ({
+  isEditing,
+  handleEdit,
+  setIsEditing,
+  itemId,
+  textContent,
+  completed,
+}) => {
   const dispatch = useDispatch();
-  const { removeTask, editTask, finishTask } = bindActionCreators(taskActionCreators, dispatch);
+  const { removeTask, editTask, finishTask } = bindActionCreators(
+    taskActionCreators,
+    dispatch
+  );
   const handleDelete = (e) => {
     e.preventDefault();
     removeTask(itemId);
@@ -25,23 +36,43 @@ const TodoItemButtons = ({ isEditing, handleEdit, setIsEditing, itemId, textCont
   return (
     <ButtonWrapper>
       {isEditing ? (
-        <EditDeleteBtn aria-label="cancel edit" isEditing={isEditing} onClick={handleEdit}>
+        <EditDeleteBtn
+          danger
+          aria-label="cancel edit"
+          isEditing={isEditing}
+          handleClick={handleEdit}
+        >
           <DeleteIcon />
         </EditDeleteBtn>
       ) : (
-        <EditBtn aria-label="edit todo" onClick={handleEdit}>
+        <IconBtn aria-label="edit todo" handleClick={handleEdit}>
           <EditIcon />
-        </EditBtn>
+        </IconBtn>
       )}
 
-      <EditConfirmBtn aria-label="confirm edit" isEditing={isEditing} onClick={handleEditComplete}>
+      <EditConfirmBtn
+        aria-label="confirm edit"
+        isEditing={isEditing}
+        handleClick={handleEditComplete}
+        confirm
+      >
         <CheckIcon />
       </EditConfirmBtn>
-      <DeleteBtn aria-label="delete todo" isEditing={isEditing} onClick={handleDelete}>
+      <DeleteBtn
+        aria-label="delete todo"
+        isEditing={isEditing}
+        handleClick={handleDelete}
+        danger
+      >
         <DeleteIcon />
       </DeleteBtn>
 
-      <CompleteBtn aria-label="complete todo" onClick={handleComplete} isEditing={isEditing}>
+      <CompleteBtn
+        aria-label="complete todo"
+        handleClick={handleComplete}
+        isEditing={isEditing}
+        confirm
+      >
         {completed ? <FlippedArrow /> : <CheckIcon />}
       </CompleteBtn>
     </ButtonWrapper>
@@ -51,69 +82,23 @@ const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
 
-  padding-top: 5px;
+  padding: 5px 0px;
 `;
 
-const IconButton = styled.button`
-  background: none;
-  border: none;
-  font-size: 26px;
-  color: var(--color-text);
-  text-shadow: var(--shadow-text);
-  padding: 0px 5px;
-  cursor: pointer;
-  /* margin: 0px 5px; */
-  /* border: 2px solid black; */
-  transition: color, filter, transform;
-  transition-duration: 0.5s;
-  transition-timing-function: ease;
-  &:hover {
-    transition: color, filter, transform;
-    transition-duration: 0.3s;
-    transition-timing-function: ease;
-  }
-  & > * {
-    width: 30px;
-    height: 30px;
-  }
+const EditConfirmBtn = styled(IconBtn)`
+  display: ${(props) => (props.isEditing ? "visible" : "none")};
 `;
-
-const EditBtn = styled(IconButton)`
-  &:hover {
-    color: var(--hover-main-text);
-    filter: drop-shadow(var(--hover-main-icon-shadow));
-  }
+const EditDeleteBtn = styled(IconBtn)`
+  display: ${(props) => (props.isEditing ? "visible" : "none")};
+  margin-right: 5px;
 `;
-
-const EditConfirmBtn = styled(IconButton)`
-  display: ${(props) => (props.isEditing ? 'visible' : 'none')};
-  &:hover {
-    color: var(--hover-confirm);
-    filter: drop-shadow(var(--hover-confirm-icon-shadow));
-  }
+const CompleteBtn = styled(IconBtn)`
+  display: ${(props) => (props.isEditing ? "none" : "visible")};
+  margin-left: 5px;
 `;
-const EditDeleteBtn = styled(IconButton)`
-  display: ${(props) => (props.isEditing ? 'visible' : 'none')};
-  &:hover {
-    color: var(--hover-danger);
-    filter: drop-shadow(var(--hover-danger-icon-shadow));
-  }
-`;
-const CompleteBtn = styled(IconButton)`
-  display: ${(props) => (props.isEditing ? 'none' : 'visible')};
-  &:hover {
-    color: var(--hover-confirm);
-    filter: drop-shadow(var(--hover-confirm-icon-shadow));
-  }
-`;
-const DeleteBtn = styled(IconButton)`
+const DeleteBtn = styled(IconBtn)`
   margin-left: auto;
-  display: ${(props) => (props.isEditing ? 'none' : 'visible')};
-
-  &:hover {
-    color: var(--hover-danger);
-    filter: drop-shadow(var(--hover-danger-icon-shadow));
-  }
+  display: ${(props) => (props.isEditing ? "none" : "visible")};
 `;
 const FlippedArrow = styled(CircleArrowIcon)`
   transform: rotate(180deg);
