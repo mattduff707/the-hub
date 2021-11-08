@@ -1,33 +1,41 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const CircleProjector = () => {
+const CircleProjector = ({ className }) => {
   return (
-    <Circle>
+    <Circle className={className}>
       <Light />
     </Circle>
   );
 };
 
 const Circle = styled.div`
+  --projector-border-dark: hsl(0, 0%, 30%);
+  --projector-border-light: hsl(0, 0%, 40%);
+  --projector-background: hsl(0, 0%, 50%);
   position: absolute;
 
   border-radius: 50%;
-  border-right: 6px solid var(--highlight-main-border-dark);
-  border-bottom: 6px solid var(--highlight-main-border-dark);
-  border-top: 4px solid var(--highlight-main-border-light);
-  border-left: 4px solid var(--highlight-main-border-light);
-  padding: 5px;
-  background-color: var(--highlight-main);
-  box-shadow: 0px 0px 5px 1px var(--shadow-main);
+  padding: 8px;
+  background-color: var(--projector-background);
+  border: 8px solid hsl(0, 0%, 30%);
+  border-top: 6px solid var(--projector-border-light);
+  border-left: 6px solid var(--projector-border-light);
+  box-shadow: 0px 0px 4px black;
+  @media (max-width: 1440px) {
+    padding: 6px;
+  }
+  z-index: 20;
 `;
 const Light = styled.div`
   border-radius: 50%;
-  border: 2px solid var(--alternative-);
-  background: var(--highlight-alternative);
-  border: 2px solid var(--highlight-alternative-border-light);
-  padding: 10px;
-  box-shadow: 0px 0px 20px hsla(220, 90%, 56%, 1);
+  border: var(--screen-border-thin);
+  background-color: var(--screen-color);
+  padding: 12px;
+  box-shadow: 0px 0px 12px 6px var(--screen-color);
+  @media (max-width: 1440px) {
+    padding: 10px;
+  }
 `;
 
 export default CircleProjector;

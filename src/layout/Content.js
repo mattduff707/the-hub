@@ -4,11 +4,13 @@ import LeftScreen from './LeftScreen';
 import MainScreen from './MainScreen';
 import RightScreen from './RightScreen';
 import gridBg from '../images/gridBg.png';
+import Projectors from '../components/Projectors';
 
 const Content = () => {
   return (
     <Wrapper>
       <BorderWrapper>
+        <Projectors />
         <ScreenWrapper>
           <LeftScreen style={{ gridArea: 'left' }} />
           <MainScreen style={{ gridArea: 'middle' }} />

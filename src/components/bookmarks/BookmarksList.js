@@ -1,36 +1,30 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import styled from "styled-components";
-import Loading from "../Loading";
-import Heading from "../Heading";
-import Bookmark from "./Bookmark";
-import List from "../List";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import styled from 'styled-components';
+import Loading from '../Loading';
+import Heading from '../Heading';
+import Bookmark from './Bookmark';
+import List from '../List';
 
-import BookmarkForm from "./BookmarkForm";
-import BookmarkSearch from "./BookmarkSearch";
-import Btn from "../Btn";
+import BookmarkForm from './BookmarkForm';
+import BookmarkQuery from './BookmarkQuery';
+import Btn from '../Btn';
 
 const BookmarksList = () => {
   const { bookmarks, error, loading } = useSelector((state) => state.bookmarks);
 
   const [bookmarkEdit, setBookmarkEdit] = useState(false);
   const [bookmarkAdd, setBookmarkAdd] = useState(false);
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState('');
 
   const createList = (arr) => {
     return arr.map((item, index) => (
-      <Bookmark
-        key={item.title + index}
-        bookmark={item}
-        setBookmarkEdit={setBookmarkEdit}
-      />
+      <Bookmark key={item.title + index} bookmark={item} setBookmarkEdit={setBookmarkEdit} />
     ));
   };
 
   const filterListBySearch = (arr, query) => {
-    return arr.filter((item) =>
-      item.title.toLowerCase().includes(query.toLowerCase())
-    );
+    return arr.filter((item) => item.title.toLowerCase().includes(query.toLowerCase()));
   };
 
   if (loading) {
@@ -46,7 +40,7 @@ const BookmarksList = () => {
 
   return (
     <Wrapper>
-      <Heading tag={"h2"}>Bookmarks</Heading>
+      <Heading tag={'h2'}>Bookmarks</Heading>
       {bookmarkEdit ? (
         <BookmarkForm
           title={bookmarkEdit.title}
@@ -60,15 +54,10 @@ const BookmarksList = () => {
         <BookmarkForm setBookmarkFormState={setBookmarkAdd} />
       ) : (
         <>
-          <BookmarkSearch
-            searchText={searchText}
-            setSearchText={setSearchText}
-          />
+          <BookmarkQuery searchText={searchText} setSearchText={setSearchText} />
           <List>
             <BtnWrap>
-              <AddBookmarkBtn handleClick={() => setBookmarkAdd(true)}>
-                New Bookmark
-              </AddBookmarkBtn>
+              <AddBookmarkBtn handleClick={() => setBookmarkAdd(true)}>New Bookmark</AddBookmarkBtn>
             </BtnWrap>
             {createList(filterListBySearch(bookmarks, searchText))}
           </List>

@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import TextInput from "../TextInput";
-import SearchIcon from "../../icons/Search";
+import React from 'react';
+import styled from 'styled-components';
+import TextInput from '../TextInput';
+import SearchIcon from '../../icons/Search';
 
-const BookmarkSearch = ({ searchText, setSearchText }) => {
+const BookmarkQuery = ({ searchText, setSearchText }) => {
   const handleChange = (e) => {
     e.preventDefault();
     setSearchText(e.target.value);
@@ -32,8 +32,7 @@ const IconWrap = styled.div`
   top: 30px;
 `;
 const StyledSearchIcon = styled(SearchIcon)`
-  color: ${(props) =>
-    props.isActive ? "var(--highlight)" : "var(--color-text)"};
+  color: ${(props) => (props.isActive ? 'var(--highlight)' : 'var(--color-text)')};
 
   width: 16px;
   height: 16px;
@@ -43,4 +42,4 @@ const StyledTextInput = styled(TextInput)`
   height: 36px;
 `;
 
-export default BookmarkSearch;
+export default BookmarkQuery;
