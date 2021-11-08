@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Btn from '../../../Btn';
+import ScreenBox from '../../../ScreenBox';
 import { MemoizedTimer } from './Timer';
 
 const StatusBar = ({ gameLength, correctQuestions, incorrectQuestions, endGame }) => {
@@ -17,18 +18,16 @@ const StatusBar = ({ gameLength, correctQuestions, incorrectQuestions, endGame }
   );
 };
 
-const Wrapper = styled.div`
-  border: 2px solid red;
+const Wrapper = styled(ScreenBox)`
+  border-radius: 0px;
+  border: none;
+  border-bottom: var(--screen-border);
   position: sticky;
   top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background-color: var(--color-screen);
-  border: 2px solid var(--highlight-screen);
-  border-radius: 8px;
-  box-shadow: var(--highlight-screen-shadow);
   z-index: 20;
   width: 100%;
 `;

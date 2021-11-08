@@ -1,27 +1,24 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
-import styled, { css } from "styled-components";
-import { bookmarkActionCreators } from "../../state/actionCreators";
-import Btn from "../Btn";
-import Heading from "../Heading";
-import ScreenBox from "../ScreenBox";
-import TextInput from "../TextInput";
-import Checkbox from "../Checkbox";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import styled, { css } from 'styled-components';
+import { bookmarkActionCreators } from '../../state/actionCreators';
+import Btn from '../Btn';
+import Heading from '../Heading';
+import ScreenBox from '../ScreenBox';
+import TextInput from '../TextInput';
+import Checkbox from '../Checkbox';
 
 const BookmarkForm = ({
-  title = "",
-  base_url = "",
-  search_url = "",
+  title = '',
+  base_url = '',
+  search_url = '',
   favorite = false,
   _id = false,
   setBookmarkFormState,
 }) => {
   const dispatch = useDispatch();
-  const { addBookmark, editBookmark } = bindActionCreators(
-    bookmarkActionCreators,
-    dispatch
-  );
+  const { addBookmark, editBookmark } = bindActionCreators(bookmarkActionCreators, dispatch);
 
   const [titleInput, setTitleInput] = useState(title);
   const [baseInput, setBaseInput] = useState(base_url);
@@ -66,8 +63,8 @@ const BookmarkForm = ({
 
   return (
     <Wrapper>
-      <FormWrap tag={"form"}>
-        <StyledHeading>{_id ? "Edit Bookmark" : "Add Bookmark"}</StyledHeading>
+      <FormWrap tag={'form'}>
+        <StyledHeading>{_id ? 'Edit Bookmark' : 'Add Bookmark'}</StyledHeading>
         <InputWrap>
           <Label required htmlFor="title">
             Name
@@ -79,6 +76,7 @@ const BookmarkForm = ({
             type="text"
             autoComplete="off"
             id="title"
+            placeholder={missingInput.includes(titleInput) && 'Required!'}
           />
         </InputWrap>
         <InputWrap>
@@ -91,6 +89,7 @@ const BookmarkForm = ({
             value={baseInput}
             autoComplete="off"
             id="base"
+            placeholder={missingInput.includes(titleInput) && 'Required!'}
           />
         </InputWrap>
         <InputWrap>
@@ -124,7 +123,7 @@ const BookmarkForm = ({
 
 const requiredStar = css`
   &:before {
-    content: "*";
+    content: '*';
   }
 `;
 
@@ -169,15 +168,15 @@ const Label = styled.label`
 `;
 const StyledTextInput = styled(TextInput)`
   padding: 5px 10px;
-  border: ${(props) => props.isMissing && "2px solid var(--danger)"};
+  border: ${(props) => props.isMissing && '2px solid var(--danger)'};
 
-  box-shadow: ${(props) => props.isMissing && "var(--danger-shadow)"};
-  background: ${(props) => props.isMissing && "var(--danger-bg)"};
+  box-shadow: ${(props) => props.isMissing && 'var(--danger-shadow)'};
+  background: ${(props) => props.isMissing && 'var(--danger-bg)'};
   &:focus {
-    /* border: ${(props) => props.isMissing && "2px solid var(--danger)"}; */
+    /* border: ${(props) => props.isMissing && '2px solid var(--danger)'}; */
 
-    box-shadow: ${(props) => props.isMissing && "none"};
-    background: ${(props) => props.isMissing && "var(--screen-color-bright)"};
+    box-shadow: ${(props) => props.isMissing && 'none'};
+    background: ${(props) => props.isMissing && 'var(--screen-color-bright)'};
   }
 `;
 // const Checkbox = styled.input`

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import DownArrowIcon from "../../../icons/DownArrow";
-import UpArrowIcon from "../../../icons/upArrow";
-import IconBtn from "../../IconBtn";
-import ScreenBox from "../../ScreenBox";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import DownArrowIcon from '../../../icons/DownArrow';
+import UpArrowIcon from '../../../icons/upArrow';
+import IconBtn from '../../IconBtn';
+import ScreenBox from '../../ScreenBox';
 
 const APOD = ({ data, loading, error }) => {
   const [isExtended, setIsExtended] = useState(false);
@@ -11,8 +11,8 @@ const APOD = ({ data, loading, error }) => {
     setIsExtended(() => !isExtended);
   };
 
-  const image = "image";
-  const video = "video";
+  const image = 'image';
+  const video = 'video';
   if (data.media_type === image) {
     return (
       <Wrapper>
@@ -89,7 +89,7 @@ const StyledFrame = styled.iframe`
   height: 500px;
   display: block;
   border-radius: 8px;
-  border: 2px solid var(--highlight-screen);
+  border: var(--screen-border);
   box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
 `;
 const Description = styled.div`
@@ -110,7 +110,7 @@ const BtnWrap = styled.div`
 const ExtensionWrapper = styled.div`
   width: 100%;
   height: auto;
-  display: ${(props) => (props.isExtended ? "flex" : "none")};
+  display: ${(props) => (props.isExtended ? 'flex' : 'none')};
   /* border: 2px solid red; */
   padding: 5px 0px 10px;
   /* display: flex; */
@@ -133,7 +133,7 @@ const ExtensionBtn = styled(IconBtn)`
     transition: color;
     transition-duration: 0.3s;
     transition-timing-function: ease;
-    color: var(--hover-main-text);
+    color: var(--highlight);
   }
 `;
 

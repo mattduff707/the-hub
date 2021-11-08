@@ -1,13 +1,13 @@
-import styled, { createGlobalStyle } from "styled-components";
-import Content from "./layout/Content";
-import { BrowserRouter as Router } from "react-router-dom";
+import styled, { createGlobalStyle } from 'styled-components';
+import Content from './layout/Content';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
   return (
     <Router>
       <GlobalStyle />
       <MainContainer>
-        <Content style={{ gridArea: "content" }} />
+        <Content style={{ gridArea: 'content' }} />
       </MainContainer>
     </Router>
   );
@@ -18,11 +18,12 @@ const GlobalStyle = createGlobalStyle`
 html {
 
   --font-family-main: 'Orbitron', sans-serif;
-  --color-text: hsla(38, 58%, 94%, 1);
+  --color-text: hsl(38, 58%, 94% );
+  --color-text-placeholder: hsla(38, 58%, 94%, 0.7 );
 
 --screen-border: 4px solid hsl(220, 90%, 64%);
 --screen-border-thin: 2px solid hsl(220, 90%, 64%);
---screen-color: hsl(220, 50%, 44%);
+--screen-color: hsl(220, 55%, 44%);
 --screen-color-bright: hsl(220, 80%, 54%);
 
 --highlight: hsl(25, 100%, 60%);
@@ -32,7 +33,7 @@ html {
 --highlight-shadow: inset 0px 0px 16px var(--highlight);
 --highlight-transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 
---danger: hsl(340, 90%, 55%);
+--danger: hsl(340, 80%, 55%);
 --danger-bg: hsl(340, 50%, 50%);
 --danger-shadow: inset 0px 0px 16px var(--danger);
 --danger-border: 4px solid var(--danger);
@@ -121,13 +122,9 @@ html {
   }
   body {
     font-family: var(--font-family-main);
-    /* height: 100%; */
-    /* border: 2px solid red; */
+
   }
-  html {
-  /* max-height: 100%; */
-  /* border: 2px solid red; */
-}
+
 
 `;
 
@@ -139,7 +136,7 @@ const MainContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  grid-template-areas: "content";
+  grid-template-areas: 'content';
   /* overflow: hidden; */
 `;
 

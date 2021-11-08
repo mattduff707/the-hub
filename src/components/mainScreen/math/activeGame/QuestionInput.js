@@ -1,17 +1,18 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import TextInput from '../../../TextInput';
 
 const QuestionInput = ({ isCorrect, isAnswered, inputVal, setInputVal }) => {
   /*Input Conditions*/
   const isNumber = (val) => {
     return !isNaN(parseFloat(val)) && !isNaN(val - 0);
   };
-  const isEmptyStr = (val) => val === "";
+  const isEmptyStr = (val) => val === '';
   const isNotSpace = (val) => {
     const str = val.toString();
-    return !str.includes(" ");
+    return !str.includes(' ');
   };
   const isNegativeSymbol = (val) => {
-    return val === "-" && val.length === 1;
+    return val === '-' && val.length === 1;
   };
   const isLength = (val) => {
     const maxValLength = 6;
@@ -29,37 +30,21 @@ const QuestionInput = ({ isCorrect, isAnswered, inputVal, setInputVal }) => {
 
   const handleChange = (e) => {
     const inputVal = e.target.value;
-    if (
-      isValid(
-        inputVal,
-        [isNotSpace, isLength],
-        [isEmptyStr, isNumber, isNegativeSymbol]
-      )
-    ) {
+    if (isValid(inputVal, [isNotSpace, isLength], [isEmptyStr, isNumber, isNegativeSymbol])) {
       setInputVal(inputVal);
     }
   };
 
   return !isAnswered ? (
-    <AnswerInput
-      autoComplete="off"
-      name="answer"
-      type="text"
-      value={inputVal}
-      onChange={handleChange}
-    />
+    <AnswerInput autoComplete="off" name="answer" type="text" value={inputVal} onChange={handleChange} />
   ) : (
     <StyledAnswer isCorrect={isCorrect}>{inputVal}</StyledAnswer>
   );
 };
 
-const AnswerInput = styled.input`
+const AnswerInput = styled(TextInput)`
   font-size: inherit;
   font-family: inherit;
-  background-color: var(--color-screen);
-  border: 2px solid var(--highlight-screen);
-  box-shadow: var(--highlight-screen-shadow);
-  border-radius: 8px;
   width: 100px;
   padding: 5px;
   margin: 0;
@@ -72,8 +57,7 @@ const AnswerInput = styled.input`
   }
 `;
 const StyledAnswer = styled.span`
-  color: ${(props) =>
-    props.isCorrect ? "var(--hover-confirm)" : `var(--hover-danger)`};
+  color: ${(props) => (props.isCorrect ? 'var(--hover-confirm)' : `var(--hover-danger)`)};
 `;
 
 export default QuestionInput;

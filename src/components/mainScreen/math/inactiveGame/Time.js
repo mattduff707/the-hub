@@ -26,13 +26,18 @@ const StyledLabel = styled.label`
   padding-right: 5px;
 `;
 const TimeSetting = styled.select`
-  background: var(--color-screen);
-  border: 2px solid var(--highlight-screen);
+  background: var(--screen-color);
+  border: var(--screen-border-thin);
   border-radius: 8px;
-  box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
   color: var(--color-text);
   font-size: 1rem;
   padding: 5px;
+  outline: none;
+  transition: var(--highlight-transition);
+  &:focus {
+    border: var(--highlight-border-thin);
+    background: var(--screen-color-bright);
+  }
 `;
 
 export default Time;

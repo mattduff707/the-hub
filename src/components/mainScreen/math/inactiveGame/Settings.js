@@ -1,9 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import Btn from "../../../Btn";
-import Operations from "./Operations";
-import Time from "./Time";
-import Difficulty from "./Difficulty";
+import React from 'react';
+import styled from 'styled-components';
+import Btn from '../../../Btn';
+import Operations from './Operations';
+import Time from './Time';
+import Difficulty from './Difficulty';
+import ScreenBox from '../../../ScreenBox';
 
 const Settings = ({
   handleGameStart,
@@ -19,22 +20,13 @@ const Settings = ({
       <SettingsTitle>Settings</SettingsTitle>
       <SettingsForm aria-label="Settings form" onSubmit={handleGameStart}>
         <SettingContainer>
-          <Time
-            gameLength={gameLength}
-            handleLengthChange={handleLengthChange}
-          />
+          <Time gameLength={gameLength} handleLengthChange={handleLengthChange} />
         </SettingContainer>
         <SettingContainer>
-          <Operations
-            gameOperations={gameOperations}
-            handleOperationsChange={handleOperationsChange}
-          />
+          <Operations gameOperations={gameOperations} handleOperationsChange={handleOperationsChange} />
         </SettingContainer>
         <SettingContainer>
-          <Difficulty
-            gameDifficulty={gameDifficulty}
-            handleDifficultyChange={handleDifficultyChange}
-          />
+          <Difficulty gameDifficulty={gameDifficulty} handleDifficultyChange={handleDifficultyChange} />
         </SettingContainer>
         <BtnWrapper>
           <StartBtn isPlayable={gameOperations.length > 0} type="submit">
@@ -45,18 +37,13 @@ const Settings = ({
     </SettingsWrapper>
   );
 };
-const SettingsWrapper = styled.div`
-  letter-spacing: 2px;
-  color: var(--color-text);
-  background-color: var(--color-screen);
-  border: 2px solid var(--highlight-screen);
-  box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
-  border-radius: 8px;
+const SettingsWrapper = styled(ScreenBox)`
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px 30px;
+  letter-spacing: 2px;
 `;
 const SettingsTitle = styled.h2`
   font-size: 1.8rem;
@@ -82,16 +69,14 @@ const BtnWrapper = styled.div`
 const StartBtn = styled(Btn)`
   padding: 5px 10px;
   font-size: 1.2rem;
-  background-color: ${(props) => !props.isPlayable && `var(--hover-danger)`};
-  box-shadow: ${(props) => !props.isPlayable && `var(--hover-danger-shadow)`};
-  border-color: ${(props) =>
-    !props.isPlayable && `var(--hover-danger-border-color)`};
+  background-color: ${(props) => !props.isPlayable && `var(--danger-bg)`};
+  box-shadow: ${(props) => !props.isPlayable && `var(--danger-shadow)`};
+  border: ${(props) => !props.isPlayable && `var(--danger-border-thin)`};
   cursor: ${(props) => !props.isPlayable && `not-allowed`};
   &:hover {
-    background-color: ${(props) => !props.isPlayable && `var(--hover-danger)`};
-    box-shadow: ${(props) => !props.isPlayable && `var(--hover-danger-shadow)`};
-    border-color: ${(props) =>
-      !props.isPlayable && `var(--hover-danger-border-color)`};
+    background-color: ${(props) => !props.isPlayable && `var(--danger-bg)`};
+    box-shadow: ${(props) => !props.isPlayable && `var(--danger-shadow)`};
+    border: ${(props) => !props.isPlayable && `var(--danger-border-thin)`};
   }
 `;
 

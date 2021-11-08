@@ -1,15 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import Btn from "../../../Btn";
-import Score from "./Score";
+import React from 'react';
+import styled from 'styled-components';
+import Btn from '../../../Btn';
+import ScreenBox from '../../../ScreenBox';
+import Score from './Score';
 
-const CompletedGame = ({
-  correctQuestions,
-  incorrectQuestions,
-  gameOperations,
-  handleGameStart,
-  exitGame,
-}) => {
+const CompletedGame = ({ correctQuestions, incorrectQuestions, gameOperations, handleGameStart, exitGame }) => {
   const totalArr = [...correctQuestions, ...incorrectQuestions];
 
   const getOperationTotal = (arr, operation) => {
@@ -21,11 +16,7 @@ const CompletedGame = ({
     <Wrapper>
       <Title>Game Over</Title>
       <Subtitle>Score</Subtitle>
-      <Score
-        valOne={correctQuestions.length}
-        valTwo={totalArr.length}
-        operation="Total"
-      />
+      <Score valOne={correctQuestions.length} valTwo={totalArr.length} operation="Total" />
       {gameOperations.map((operationStr) => {
         return (
           <Score
@@ -44,11 +35,7 @@ const CompletedGame = ({
   );
 };
 
-const Wrapper = styled.div`
-  background-color: var(--color-screen);
-  border: 2px solid var(--highlight-screen);
-  box-shadow: var(--highlight-screen-shadow);
-  border-radius: 8px;
+const Wrapper = styled(ScreenBox)`
   min-width: 600px;
   display: flex;
   flex-direction: column;
@@ -58,7 +45,7 @@ const Wrapper = styled.div`
 `;
 const Title = styled.h1`
   font-size: 3rem;
-  color: var(--hover-danger);
+  color: var(--danger);
 `;
 const Subtitle = styled.h2`
   font-size: 2rem;

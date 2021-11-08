@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const TextInput = ({ className, onChange, value, id, placeholder, name }) => {
   return (
@@ -34,6 +34,9 @@ const StyledInput = styled.input`
     background-color: var(--screen-color-bright);
     border: var(--highlight-border-thin);
     /* box-shadow: var(--highlight-shadow); */
+  }
+  &::placeholder {
+    color: var(--color-text-placeholder);
   }
 `;
 export default TextInput;

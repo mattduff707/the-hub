@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const CircleProjector = () => {
   return (
@@ -11,7 +11,7 @@ const CircleProjector = () => {
 
 const Circle = styled.div`
   position: absolute;
-  bottom: -25px;
+
   border-radius: 50%;
   border-right: 6px solid var(--highlight-main-border-dark);
   border-bottom: 6px solid var(--highlight-main-border-dark);

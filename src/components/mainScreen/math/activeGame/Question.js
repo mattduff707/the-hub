@@ -1,22 +1,15 @@
-import { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
-import OperationIcon from "./OperationIcon";
-import EqualsIcon from "../../../../icons/Equals";
-import QuestionInput from "./QuestionInput";
-import Btn from "../../../Btn";
+import { useState, useEffect, useRef } from 'react';
+import styled from 'styled-components';
+import OperationIcon from './OperationIcon';
+import EqualsIcon from '../../../../icons/Equals';
+import QuestionInput from './QuestionInput';
+import Btn from '../../../Btn';
 
-const Question = ({
-  valOne,
-  valTwo,
-  operation,
-  question,
-  handleIsCorrect,
-  index,
-}) => {
+const Question = ({ valOne, valTwo, operation, question, handleIsCorrect, index }) => {
   const [correctAnswer, setCorrectAnswer] = useState();
   const [isAnswered, setIsAnswered] = useState(false);
   const [isCorrect, setisCorrect] = useState();
-  const [inputVal, setInputVal] = useState("");
+  const [inputVal, setInputVal] = useState('');
 
   const currentQuestionRef = useRef(null);
 
@@ -32,9 +25,9 @@ const Question = ({
 
   useEffect(() => {
     setCorrectAnswer(() => {
-      if (operation === "addition") {
+      if (operation === 'addition') {
         return getAddition(parseInt(valOne), parseInt(valTwo));
-      } else if (operation === "subtraction") {
+      } else if (operation === 'subtraction') {
         return getSubtraction(parseInt(valOne), parseInt(valTwo));
       } else {
         return getMultiplication(parseInt(valOne), parseInt(valTwo));
@@ -49,13 +42,8 @@ const Question = ({
   // Check for upcoming questions, If an upcoming question is unanswered, move the cursor into that questions input
   const changeFocus = (currentIndex, ref) => {
     const allQuestionsArr = [...ref.current.parentElement.children];
-    const nextQuestionsArr = allQuestionsArr.slice(
-      currentIndex + 1,
-      allQuestionsArr.length - 1
-    );
-    const nextAvailableQuestion = nextQuestionsArr.find(
-      (element) => element.dataset.isunanswered === "true"
-    );
+    const nextQuestionsArr = allQuestionsArr.slice(currentIndex + 1, allQuestionsArr.length - 1);
+    const nextAvailableQuestion = nextQuestionsArr.find((element) => element.dataset.isunanswered === 'true');
     if (nextAvailableQuestion) {
       nextAvailableQuestion.answer.focus();
     }
@@ -72,20 +60,10 @@ const Question = ({
   };
 
   return (
-    <Wrapper
-      onSubmit={handleSubmit}
-      ref={currentQuestionRef}
-      data-isunanswered={!isAnswered}
-    >
+    <Wrapper onSubmit={handleSubmit} ref={currentQuestionRef} data-isunanswered={!isAnswered}>
       <Container>
-        {valOne} <OperationIcon operation={operation} /> {valTwo}{" "}
-        <StyledEqualsIcon />{" "}
-        <QuestionInput
-          isCorrect={isCorrect}
-          isAnswered={isAnswered}
-          setInputVal={setInputVal}
-          inputVal={inputVal}
-        />
+        {valOne} <OperationIcon operation={operation} /> {valTwo} <StyledEqualsIcon />{' '}
+        <QuestionInput isCorrect={isCorrect} isAnswered={isAnswered} setInputVal={setInputVal} inputVal={inputVal} />
       </Container>
       {!isAnswered ? (
         <SubmitBtn type="submit">Submit</SubmitBtn>
@@ -98,9 +76,8 @@ const Question = ({
 
 const Wrapper = styled.form`
   font-size: 1.2rem;
-  background-color: var(--color-screen);
-  border: 2px solid var(--highlight-screen);
-  box-shadow: var(--highlight-screen-shadow);
+  background-color: var(--screen-color);
+  border: var(--screen-border-thin);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -124,8 +101,8 @@ const Container = styled.div`
   margin-bottom: 10px;
 `;
 const StyledAnswer = styled.span`
-  color: ${(props) =>
-    props.isCorrect ? "var(--hover-confirm)" : `var(--hover-danger)`};
+  color: ${(props) => (props.isCorrect ? 'var(--confirm)' : `var(--danger)`)};
+  font-weight: 600;
 `;
 const SubmitBtn = styled(Btn)`
   padding: 5px 10px;
