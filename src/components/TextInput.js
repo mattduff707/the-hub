@@ -20,7 +20,7 @@ const StyledInput = styled.input`
   width: 100%;
   padding: 0px 10px;
   color: var(--color-text);
-  background-color: transparent;
+  background-color: var(--screen-color);
   border-radius: 8px;
   font-family: var(--font-family-main);
   /* letter-spacing: 2px; */
@@ -31,7 +31,7 @@ const StyledInput = styled.input`
   font-size: 0.9rem;
   transition: var(--highlight-transition);
   &:focus {
-    background-color: var(--screen-color);
+    background-color: var(--screen-color-bright);
     border: var(--highlight-border-thin);
     /* box-shadow: var(--highlight-shadow); */
   }

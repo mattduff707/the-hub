@@ -7,6 +7,7 @@ import Btn from "../Btn";
 import Heading from "../Heading";
 import ScreenBox from "../ScreenBox";
 import TextInput from "../TextInput";
+import Checkbox from "../Checkbox";
 
 const BookmarkForm = ({
   title = "",
@@ -168,46 +169,48 @@ const Label = styled.label`
 `;
 const StyledTextInput = styled(TextInput)`
   padding: 5px 10px;
-  border: ${(props) =>
-    props.isMissing
-      ? "2px solid var(--hover-danger-border-color)"
-      : "2px solid var(--highlight-screen)"};
-  box-shadow: ${(props) =>
-    props.isMissing
-      ? "var(--hover-danger-shadow)"
-      : "var(--highlight-screen-shadow)"};
-`;
-const Checkbox = styled.input`
-  margin-right: 5px;
-  appearance: none;
-  border: 2px solid var(--hover-main);
-  box-shadow: var(--hover-main-shadow);
-  border-radius: 2px;
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  position: relative;
-  &:checked {
-    /* background: var(--hover-confirm); */
-    box-shadow: var(--hover-confirm-shadow);
-    border: var(--hover-confirm-border);
-  }
-  &:checked:before {
-    content: "";
-    border-right: var(--hover-confirm-border);
-    border-bottom: var(--hover-confirm-border);
-    height: 70%;
-    width: 40%;
-    overflow: hidden;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 2px;
-    margin: auto;
-    transform: rotate(45deg) translateY(-15%) translateX(-20%);
+  border: ${(props) => props.isMissing && "2px solid var(--danger)"};
+
+  box-shadow: ${(props) => props.isMissing && "var(--danger-shadow)"};
+  background: ${(props) => props.isMissing && "var(--danger-bg)"};
+  &:focus {
+    /* border: ${(props) => props.isMissing && "2px solid var(--danger)"}; */
+
+    box-shadow: ${(props) => props.isMissing && "none"};
+    background: ${(props) => props.isMissing && "var(--screen-color-bright)"};
   }
 `;
+// const Checkbox = styled.input`
+//   margin-right: 5px;
+//   appearance: none;
+//   border: 2px solid var(--hover-main);
+//   box-shadow: var(--hover-main-shadow);
+//   border-radius: 2px;
+//   width: 20px;
+//   height: 20px;
+//   display: inline-block;
+//   position: relative;
+//   &:checked {
+//     /* background: var(--hover-confirm); */
+//     box-shadow: var(--hover-confirm-shadow);
+//     border: var(--hover-confirm-border);
+//   }
+//   &:checked:before {
+//     content: "";
+//     border-right: var(--hover-confirm-border);
+//     border-bottom: var(--hover-confirm-border);
+//     height: 70%;
+//     width: 40%;
+//     overflow: hidden;
+//     position: absolute;
+//     left: 0;
+//     right: 0;
+//     bottom: 0;
+//     top: 2px;
+//     margin: auto;
+//     transform: rotate(45deg) translateY(-15%) translateX(-20%);
+//   }
+// `;
 const StyledBtn = styled(Btn)`
   padding: 5px 10px;
   font-size: 1rem;

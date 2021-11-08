@@ -32,7 +32,8 @@ const IconWrap = styled.div`
   top: 30px;
 `;
 const StyledSearchIcon = styled(SearchIcon)`
-  color: var(--color-text);
+  color: ${(props) =>
+    props.isActive ? "var(--highlight)" : "var(--color-text)"};
 
   width: 16px;
   height: 16px;

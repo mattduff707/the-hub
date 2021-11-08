@@ -16,9 +16,14 @@ function App() {
 const GlobalStyle = createGlobalStyle`
 
 html {
+
+  --font-family-main: 'Orbitron', sans-serif;
+  --color-text: hsla(38, 58%, 94%, 1);
+
 --screen-border: 4px solid hsl(220, 90%, 64%);
 --screen-border-thin: 2px solid hsl(220, 90%, 64%);
 --screen-color: hsl(220, 50%, 44%);
+--screen-color-bright: hsl(220, 80%, 54%);
 
 --highlight: hsl(25, 100%, 60%);
 --highlight-border: 4px solid var(--highlight);
@@ -30,14 +35,15 @@ html {
 --danger: hsl(340, 90%, 55%);
 --danger-bg: hsl(340, 50%, 50%);
 --danger-shadow: inset 0px 0px 16px var(--danger);
+--danger-border: 4px solid var(--danger);
+--danger-border-thin: 2px solid var(--danger);
 
 --confirm: hsl(110, 100%, 55%);
+--confirm-border: 4px solid var(--confirm);
+--confirm-border-thin: 2px solid var(--confirm);
 
 
-/* --highlight-confirm: hsl(120, 100%, 50%); */
-
-
-
+/* 
 --color-main: hsla(180, 2%, 19%, 1);
 --shadow-main: hsla(180, 2%, 13%, 1);
 --shadow-main-border-dark: hsla(180, 2%, 10%, 1);
@@ -64,12 +70,12 @@ html {
 --highlight-todo-delete-border-light: hsla(0, 90%, 59%, 0.5);
 --highlight-todo-delete-border-dark: hsla(0, 90%, 39%, 0.5);
 
-/* --color-screen: hsla(220, 50%, 46%); */
---highlight-screen: hsla(220, 90%, 71%, 0.55);
+ --color-screen: hsla(220, 50%, 46%);
+ --highlight-screen: hsla(220, 90%, 71%, 0.55);
 --highlight-screen-shadow: 0px 0px 10px 4px hsla(220, 90%, 59%, 0.5);
 
 
---color-text: hsla(38, 58%, 94%, 1);
+
 --shadow-text: 0px 0px 4px hsl(38, 58%, 94%);
 --shadow-icon: 0px 0px 3px hsl(38, 58%, 94%);
 --color-text-highlight: hsla(20, 88%, 60%, 1);
@@ -101,7 +107,7 @@ html {
 --hover-confirm-icon-shadow: 0px 0px 4px hsl(120, 95%, 65%);
 --hover-confirm-border: 2px solid hsl(120, 95%, 75%);
 
---font-family-main: 'Orbitron', sans-serif;
+  */
 
 
 }

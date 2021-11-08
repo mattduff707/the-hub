@@ -27,12 +27,16 @@ const EditContent = styled.textarea`
   border: none;
   border-radius: 8px;
   font-family: var(--font-family-main);
-  border: 2px solid var(--highlight-screen);
-  box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
+  border: var(--screen-border-thin);
   background-color: var(--color-screen);
   outline: none;
   padding: 5px 10px;
   font-size: 16px;
+  transition: var(--highlight-transition);
+  &:focus {
+    background: var(--screen-color-bright);
+    border: var(--highlight-border-thin);
+  }
 `;
 
 export default TodoContent;

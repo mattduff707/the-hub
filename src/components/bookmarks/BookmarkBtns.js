@@ -1,12 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
-import IconBtn from '../IconBtn';
-import EditIcon from '../../icons/Edit';
-import DeleteIcon from '../../icons/Delete';
-import FavoriteIcon from '../../icons/Favorite';
-import { useDispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { bookmarkActionCreators } from '../../state/actionCreators';
+import React from "react";
+import styled from "styled-components";
+import IconBtn from "../IconBtn";
+import EditIcon from "../../icons/Edit";
+import DeleteIcon from "../../icons/Delete";
+import FavoriteIcon from "../../icons/Favorite";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { bookmarkActionCreators } from "../../state/actionCreators";
 
 const BookmarkBtns = ({ setBookmarkEdit, bookmark, setIsDelete }) => {
   const dispatch = useDispatch();
