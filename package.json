@@ -12,10 +12,12 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.23.0",
     "jest-fetch-mock": "^3.0.3",
+    "prismjs": "^1.25.0",
     "react": "^17.0.2",
     "react-countdown": "^2.3.2",
     "react-dom": "^17.0.2",
     "react-lottie": "^1.2.3",
+    "react-markdown": "^7.1.0",
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
@@ -50,6 +52,7 @@
   },
   "devDependencies": {
     "@testing-library/dom": "^8.7.2",
+    "babel-plugin-prismjs": "^2.1.0",
     "redux-devtools-extension": "^2.13.9"
   }
 }

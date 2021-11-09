@@ -1,16 +1,20 @@
-import useFetch from '../../../services/useFetch';
-import { Switch, Route } from 'react-router';
-import { NavLink } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import useFetch from "../../../services/useFetch";
+import { Switch, Route } from "react-router";
+import { NavLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import Prism from "prismjs";
+import "../../../prism/prism.css";
 
 const Snippets = () => {
-  const api = 'https://fierce-falls-10148.herokuapp.com/api/snippets';
+  const [snippets, setSnippets] = useState("");
 
-  const [snippets, setSnippets] = useState([]);
-
-  const { data, loading, error } = useFetch(api);
-
+  const { data, loading, error } = useFetch(process.env.REACT_APP_SNIPPETS_URL);
+  console.log(data, loading, error);
+  useEffect(() => {
+    setTimeout(() => Prism.highlightAll(), 0);
+  });
   useEffect(() => {
     setSnippets(() => data);
   }, [data]);
@@ -24,7 +28,7 @@ const Snippets = () => {
 
   return (
     <div>
-      <nav>
+      {/* <nav>
         {snippets.map((e, index) => {
           return (
             <NavLink key={index} to={`/snippets/${e.name}`}>
@@ -41,7 +45,8 @@ const Snippets = () => {
             </Route>
           );
         })}
-      </Switch>
+      </Switch> */}
+      <ReactMarkdown children={snippets} />
     </div>
   );
 };
