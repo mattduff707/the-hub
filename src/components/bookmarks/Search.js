@@ -1,20 +1,27 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import Btn from '../Btn';
+import React, { useState } from "react";
+import styled from "styled-components";
+import Btn from "../Btn";
+import TextInput from "../TextInput";
 
 const Search = ({ search_url }) => {
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const handleChange = (e) => {
     setSearchText(() => e.target.value);
   };
 
   const handleSubmit = () => {
-    window.open(search_url + searchText, '_blank');
-    setSearchText('');
+    window.open(search_url + searchText, "_blank");
+    setSearchText("");
   };
   return (
     <Wrapper onSubmit={handleSubmit}>
-      <TextInput value={searchText} onChange={handleChange} autoComplete="off" type="text" name="searchDocs" />
+      <StyledTextInput
+        value={searchText}
+        onChange={handleChange}
+        autoComplete="off"
+        type="text"
+        name="searchDocs"
+      />
       <SubmitBtn type="submit">Search</SubmitBtn>
     </Wrapper>
   );
@@ -25,21 +32,21 @@ const Wrapper = styled.form`
   display: flex;
   margin-bottom: 10px;
 `;
-const TextInput = styled.input`
+const StyledTextInput = styled(TextInput)`
   width: 100%;
   height: 20px;
   padding: 15px 10px;
-  color: var(--color-text);
+
+  /* color: var(--color-text);
   background-color: var(--color-screen);
   border-radius: 8px;
-  font-family: var(--font-family-main);
+  font-family: var(--font-family-main); */
   /* letter-spacing: 2px; */
   font-weight: 600;
   outline: none;
   flex: 4;
-  border: 2px solid var(--highlight-screen);
-  box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
-  text-shadow: var(--shadow-text);
+  /* border: 2px solid var(--highlight-screen); */
+  /* box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light); */
   letter-spacing: 2px;
   font-size: 0.9rem;
 `;

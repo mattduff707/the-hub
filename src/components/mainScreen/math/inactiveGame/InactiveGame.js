@@ -14,7 +14,7 @@ const InactiveGame = ({
 }) => {
   return (
     <>
-      <PageTitle>Math Blitz</PageTitle>
+      <PageTitle style={{ marginTop: '20px' }}>Math Blitz</PageTitle>
       <Rules isDisabled={gameOperations.length < 1} />
       <Settings
         handleGameStart={handleGameStart}

@@ -1,5 +1,4 @@
-import React from 'react';
-import StyledIcon from '../components/StyledIconHOC';
+import React from "react";
 
 const Subtraction = ({ className }) => {
   return (
@@ -13,10 +12,15 @@ const Subtraction = ({ className }) => {
       viewBox="0 0 24 24"
     >
       <g fill="none">
-        <path d="M20 12H4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path
+          d="M20 12H4"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
       </g>
     </svg>
   );
 };
 
-export default StyledIcon(Subtraction);
+export default Subtraction;

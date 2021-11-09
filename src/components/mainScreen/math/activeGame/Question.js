@@ -76,9 +76,8 @@ const Question = ({ valOne, valTwo, operation, question, handleIsCorrect, index 
 
 const Wrapper = styled.form`
   font-size: 1.2rem;
-  background-color: var(--color-screen);
-  border: 2px solid var(--highlight-screen);
-  box-shadow: var(--highlight-screen-shadow);
+  background-color: var(--screen-color);
+  border: var(--screen-border-thin);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -102,8 +101,8 @@ const Container = styled.div`
   margin-bottom: 10px;
 `;
 const StyledAnswer = styled.span`
-  color: ${(props) => (props.isCorrect ? 'var(--hover-confirm)' : `var(--hover-danger)`)};
-  text-shadow: ${(props) => (props.isCorrect ? 'var(--hover-confirm-text-shadow)' : `var(--hover-danger-text-shadow)`)};
+  color: ${(props) => (props.isCorrect ? 'var(--confirm)' : `var(--danger)`)};
+  font-weight: 600;
 `;
 const SubmitBtn = styled(Btn)`
   padding: 5px 10px;

@@ -1,14 +1,17 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import styled from 'styled-components';
-import { bookmarkActionCreators } from '../../state/actionCreators';
-import Btn from '../Btn';
-import Heading from '../Heading';
+import React from "react";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import styled from "styled-components";
+import { bookmarkActionCreators } from "../../state/actionCreators";
+import Btn from "../Btn";
+import Heading from "../Heading";
 
 const DeleteConfirm = ({ title, setIsDelete, _id }) => {
   const dispatch = useDispatch();
-  const { removeBookmark } = bindActionCreators(bookmarkActionCreators, dispatch);
+  const { removeBookmark } = bindActionCreators(
+    bookmarkActionCreators,
+    dispatch
+  );
   const handleDelete = (e) => {
     e.preventDefault();
     removeBookmark(_id);
@@ -51,8 +54,7 @@ const StyledBtn = styled(Btn)`
 `;
 
 const Highlight = styled.span`
-  color: var(--hover-main);
-  text-shadow: var(--hover-main-text-shadow);
+  color: var(--highlight);
 `;
 
 export default DeleteConfirm;

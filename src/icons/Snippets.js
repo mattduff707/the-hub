@@ -1,9 +1,9 @@
 import React from "react";
-import StyledIcon from "../components/StyledIconHOC";
 
-const Snippets = ({ className }) => {
+const Snippets = ({ className, style }) => {
   return (
     <svg
+      style={style}
       className={className}
       aria-hidden="true"
       role="img"
@@ -24,4 +24,4 @@ const Snippets = ({ className }) => {
   );
 };
 
-export default StyledIcon(Snippets);
+export default Snippets;

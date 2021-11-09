@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import TextInput from '../../../TextInput';
 
 const QuestionInput = ({ isCorrect, isAnswered, inputVal, setInputVal }) => {
   /*Input Conditions*/
@@ -41,18 +42,13 @@ const QuestionInput = ({ isCorrect, isAnswered, inputVal, setInputVal }) => {
   );
 };
 
-const AnswerInput = styled.input`
+const AnswerInput = styled(TextInput)`
   font-size: inherit;
   font-family: inherit;
-  background-color: var(--color-screen);
-  border: 2px solid var(--highlight-screen);
-  box-shadow: var(--highlight-screen-shadow);
-  border-radius: 8px;
   width: 100px;
   padding: 5px;
   margin: 0;
   color: var(--color-text);
-  text-shadow: var(--shadow-text);
   -moz-appearance: none;
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
@@ -62,7 +58,6 @@ const AnswerInput = styled.input`
 `;
 const StyledAnswer = styled.span`
   color: ${(props) => (props.isCorrect ? 'var(--hover-confirm)' : `var(--hover-danger)`)};
-  text-shadow: ${(props) => (props.isCorrect ? 'var(--hover-confirm-text-shadow)' : `var(--hover-danger-text-shadow)`)};
 `;
 
 export default QuestionInput;

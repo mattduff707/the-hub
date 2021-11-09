@@ -2,9 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import useFetch from '../../../services/useFetch';
 import APOD from './APOD';
-import Heading from '../../Heading';
-import PageTitle from '../PageTitle';
 import Loading from '../../Loading';
+import Error from '../../Error';
 
 const Home = () => {
   const { data, loading, error } = useFetch(process.env.REACT_APP_APOD_URL);
@@ -19,7 +18,6 @@ const Home = () => {
   if (data) {
     return (
       <Wrapper>
-        <Title>Welcome, Matthew!</Title>
         <APOD data={data} loading={loading} error={error} />
       </Wrapper>
     );
@@ -31,26 +29,20 @@ const Home = () => {
   );
 };
 
-const Wrapper = styled.article`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  z-index: 20;
   width: 100%;
   min-height: 100%;
+  padding: 20px;
+  /* overflow: auto; */
   /* border: 2px solid green; */
 `;
 const AlertWrapper = styled(Wrapper)`
   justify-content: center;
   min-height: 100%;
-`;
-
-const Title = styled(PageTitle)`
-  margin-bottom: 40px;
-`;
-const Error = styled(Heading)`
-  color: var(--hover-danger);
-  text-shadow: var(--hover-danger-text-shadow);
 `;
 
 export default Home;

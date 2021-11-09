@@ -1,5 +1,4 @@
-import React from 'react';
-import StyledIcon from '../components/StyledIconHOC';
+import React from "react";
 
 const Addition = ({ className }) => {
   return (
@@ -13,10 +12,15 @@ const Addition = ({ className }) => {
       viewBox="0 0 24 24"
     >
       <g fill="none">
-        <path d="M12 20v-8m0 0V4m0 8h8m-8 0H4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path
+          d="M12 20v-8m0 0V4m0 8h8m-8 0H4"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
       </g>
     </svg>
   );
 };
 
-export default StyledIcon(Addition);
+export default Addition;

@@ -1,5 +1,4 @@
 import React from "react";
-import StyledIcon from "../components/StyledIconHOC";
 
 const Search = ({ className }) => {
   return (
@@ -20,4 +19,4 @@ const Search = ({ className }) => {
   );
 };
 
-export default StyledIcon(Search);
+export default Search;

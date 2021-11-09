@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ScreenBox from '../../../ScreenBox';
 
 const Rules = ({ isDisabled }) => {
   return (
@@ -26,13 +27,8 @@ const Rules = ({ isDisabled }) => {
     </RulesWrapper>
   );
 };
-const RulesWrapper = styled.div`
+const RulesWrapper = styled(ScreenBox)`
   letter-spacing: 2px;
-  color: var(--color-text);
-  background-color: var(--color-screen);
-  border: 2px solid var(--highlight-screen);
-  box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
-  border-radius: 8px;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -42,36 +38,25 @@ const RulesWrapper = styled.div`
 `;
 const RulesTitle = styled.h2`
   font-size: 1.8rem;
-  text-shadow: var(--shadow-text);
   font-weight: 400;
   padding-bottom: 10px;
 `;
-const RulesText = styled.p`
-  text-shadow: var(--shadow-text);
-`;
+const RulesText = styled.p``;
 const Highlight = styled.span`
-  transition: color, text-shadow;
-  transition-duration: 0.2s;
-  transition-timing-function: ease;
-  color: ${(props) =>
-    props.isDanger ? 'var(--hover-danger)' : props.isConfirm ? 'var(--hover-confirm)' : 'var(--color-text)'};
-  text-shadow: ${(props) =>
-    props.isDanger
-      ? 'var(--hover-danger-text-shadow)'
-      : props.isConfirm
-      ? 'var(--hover-confirm-text-shadow)'
-      : 'var(--color-text)'};
+  transition: color 0.2s ease;
+  font-weight: 600;
+  color: ${(props) => (props.isDanger ? 'var(--danger)' : props.isConfirm ? 'var(--confirm)' : 'var(--color-text)')};
 `;
 const OperationRule = styled(Highlight)`
   display: flex;
   flex-direction: column;
+  color: var(--color-text);
   &:after {
     content: '';
     margin-top: 4px;
     width: ${(props) => (props.isDanger ? '100%' : '0px')};
     height: 2px;
-    background-color: var(--hover-danger);
-    box-shadow: ${(props) => (props.isDanger ? 'var(--hover-danger-shadow)' : 'none')};
+    background-color: var(--danger);
     transition: width;
     transition-duration: 0.2s;
     transition-timing-function: ease;

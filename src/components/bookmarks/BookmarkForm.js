@@ -1,26 +1,24 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
-import styled, { css } from "styled-components";
-import { bookmarkActionCreators } from "../../state/actionCreators";
-import Btn from "../Btn";
-import Heading from "../Heading";
-import ScreenBox from "../ScreenBox";
-import TextInput from "../TextInput";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import styled, { css } from 'styled-components';
+import { bookmarkActionCreators } from '../../state/actionCreators';
+import Btn from '../Btn';
+import Heading from '../Heading';
+import ScreenBox from '../ScreenBox';
+import TextInput from '../TextInput';
+import Checkbox from '../Checkbox';
 
 const BookmarkForm = ({
-  title = "",
-  base_url = "",
-  search_url = "",
+  title = '',
+  base_url = '',
+  search_url = '',
   favorite = false,
   _id = false,
   setBookmarkFormState,
 }) => {
   const dispatch = useDispatch();
-  const { addBookmark, editBookmark } = bindActionCreators(
-    bookmarkActionCreators,
-    dispatch
-  );
+  const { addBookmark, editBookmark } = bindActionCreators(bookmarkActionCreators, dispatch);
 
   const [titleInput, setTitleInput] = useState(title);
   const [baseInput, setBaseInput] = useState(base_url);
@@ -65,8 +63,8 @@ const BookmarkForm = ({
 
   return (
     <Wrapper>
-      <FormWrap tag={"form"}>
-        <StyledHeading>{_id ? "Edit Bookmark" : "Add Bookmark"}</StyledHeading>
+      <FormWrap tag={'form'}>
+        <StyledHeading>{_id ? 'Edit Bookmark' : 'Add Bookmark'}</StyledHeading>
         <InputWrap>
           <Label required htmlFor="title">
             Name
@@ -78,6 +76,7 @@ const BookmarkForm = ({
             type="text"
             autoComplete="off"
             id="title"
+            placeholder={missingInput.includes(titleInput) && 'Required!'}
           />
         </InputWrap>
         <InputWrap>
@@ -90,6 +89,7 @@ const BookmarkForm = ({
             value={baseInput}
             autoComplete="off"
             id="base"
+            placeholder={missingInput.includes(titleInput) && 'Required!'}
           />
         </InputWrap>
         <InputWrap>
@@ -123,7 +123,7 @@ const BookmarkForm = ({
 
 const requiredStar = css`
   &:before {
-    content: "*";
+    content: '*';
   }
 `;
 
@@ -139,11 +139,12 @@ const FormWrap = styled(ScreenBox)`
 `;
 const StyledHeading = styled(Heading)`
   font-size: 1.2rem;
+  padding-bottom: 2px;
   border: none;
   /* background-color: none; */
   box-shadow: none;
   border-radius: 0px;
-  border-bottom: 2px solid var(--highlight-screen);
+  border-bottom: var(--screen-border-thin);
   align-self: center;
   margin-bottom: 5px;
 `;
@@ -157,7 +158,6 @@ const InputWrap = styled.div`
 `;
 const Label = styled.label`
   color: var(--color-text);
-  text-shadow: var(--shadow-text);
   font-weight: 600;
   letter-spacing: 2px;
   margin-right: 5px;
@@ -167,46 +167,49 @@ const Label = styled.label`
   ${(props) => props.required && requiredStar}
 `;
 const StyledTextInput = styled(TextInput)`
-  border: ${(props) =>
-    props.isMissing
-      ? "2px solid var(--hover-danger-border-color)"
-      : "2px solid var(--highlight-screen)"};
-  box-shadow: ${(props) =>
-    props.isMissing
-      ? "var(--hover-danger-shadow)"
-      : "var(--highlight-screen-shadow)"};
-`;
-const Checkbox = styled.input`
-  margin-right: 5px;
-  appearance: none;
-  border: 2px solid var(--hover-main);
-  box-shadow: var(--hover-main-shadow);
-  border-radius: 2px;
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  position: relative;
-  &:checked {
-    /* background: var(--hover-confirm); */
-    box-shadow: var(--hover-confirm-shadow);
-    border: var(--hover-confirm-border);
-  }
-  &:checked:before {
-    content: "";
-    border-right: var(--hover-confirm-border);
-    border-bottom: var(--hover-confirm-border);
-    height: 70%;
-    width: 40%;
-    overflow: hidden;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    margin: auto;
-    transform: rotate(45deg) translateY(-15%) translateX(-20%);
+  padding: 5px 10px;
+  border: ${(props) => props.isMissing && '2px solid var(--danger)'};
+
+  box-shadow: ${(props) => props.isMissing && 'var(--danger-shadow)'};
+  background: ${(props) => props.isMissing && 'var(--danger-bg)'};
+  &:focus {
+    /* border: ${(props) => props.isMissing && '2px solid var(--danger)'}; */
+
+    box-shadow: ${(props) => props.isMissing && 'none'};
+    background: ${(props) => props.isMissing && 'var(--screen-color-bright)'};
   }
 `;
+// const Checkbox = styled.input`
+//   margin-right: 5px;
+//   appearance: none;
+//   border: 2px solid var(--hover-main);
+//   box-shadow: var(--hover-main-shadow);
+//   border-radius: 2px;
+//   width: 20px;
+//   height: 20px;
+//   display: inline-block;
+//   position: relative;
+//   &:checked {
+//     /* background: var(--hover-confirm); */
+//     box-shadow: var(--hover-confirm-shadow);
+//     border: var(--hover-confirm-border);
+//   }
+//   &:checked:before {
+//     content: "";
+//     border-right: var(--hover-confirm-border);
+//     border-bottom: var(--hover-confirm-border);
+//     height: 70%;
+//     width: 40%;
+//     overflow: hidden;
+//     position: absolute;
+//     left: 0;
+//     right: 0;
+//     bottom: 0;
+//     top: 2px;
+//     margin: auto;
+//     transform: rotate(45deg) translateY(-15%) translateX(-20%);
+//   }
+// `;
 const StyledBtn = styled(Btn)`
   padding: 5px 10px;
   font-size: 1rem;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Btn from '../../../Btn';
+import ScreenBox from '../../../ScreenBox';
 import Score from './Score';
 
 const CompletedGame = ({ correctQuestions, incorrectQuestions, gameOperations, handleGameStart, exitGame }) => {
@@ -34,11 +35,7 @@ const CompletedGame = ({ correctQuestions, incorrectQuestions, gameOperations, h
   );
 };
 
-const Wrapper = styled.div`
-  background-color: var(--color-screen);
-  border: 2px solid var(--highlight-screen);
-  box-shadow: var(--highlight-screen-shadow);
-  border-radius: 8px;
+const Wrapper = styled(ScreenBox)`
   min-width: 600px;
   display: flex;
   flex-direction: column;
@@ -48,8 +45,7 @@ const Wrapper = styled.div`
 `;
 const Title = styled.h1`
   font-size: 3rem;
-  color: var(--hover-danger);
-  text-shadow: var(--hover-danger-text-shadow);
+  color: var(--danger);
 `;
 const Subtitle = styled.h2`
   font-size: 2rem;

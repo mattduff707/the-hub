@@ -1,5 +1,4 @@
-import React from 'react';
-import StyledIcon from '../components/StyledIconHOC';
+import React from "react";
 
 const Math = ({ className }) => {
   return (
@@ -7,8 +6,8 @@ const Math = ({ className }) => {
       className={className}
       aria-hidden="true"
       role="img"
-      width="1em"
-      height="1em"
+      width="16px"
+      height="16px"
       preserveAspectRatio="xMidYMid meet"
       viewBox="0 0 256 256"
     >
@@ -20,4 +19,4 @@ const Math = ({ className }) => {
   );
 };
 
-export default StyledIcon(Math);
+export default Math;

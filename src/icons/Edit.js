@@ -1,5 +1,4 @@
-import React from 'react';
-import StyledIcon from '../components/StyledIconHOC';
+import React from "react";
 
 const Edit = ({ className }) => {
   return (
@@ -32,4 +31,4 @@ const Edit = ({ className }) => {
   );
 };
 
-export default StyledIcon(Edit);
+export default Edit;

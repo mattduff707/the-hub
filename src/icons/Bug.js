@@ -1,14 +1,14 @@
 import React from "react";
-import StyledIcon from "../components/StyledIconHOC";
 
-const Bug = ({ className }) => {
+const Bug = ({ className, style }) => {
   return (
     <svg
+      style={style}
       className={className}
       aria-hidden="true"
       role="img"
-      width="1em"
-      height="1em"
+      width="16px"
+      height="16px"
       preserveAspectRatio="xMidYMid meet"
       viewBox="0 0 24 24"
     >
@@ -22,4 +22,4 @@ const Bug = ({ className }) => {
   );
 };
 
-export default StyledIcon(Bug);
+export default Bug;

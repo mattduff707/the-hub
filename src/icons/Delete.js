@@ -1,5 +1,4 @@
-import React from 'react';
-import StyledIcon from '../components/StyledIconHOC';
+import React from "react";
 
 const Delete = ({ className }) => {
   return (
@@ -13,11 +12,16 @@ const Delete = ({ className }) => {
       viewBox="0 0 24 24"
     >
       <g fill="none">
-        <path d="M15 15L9 9m6 0l-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path
+          d="M15 15L9 9m6 0l-6 6"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
         <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
       </g>
     </svg>
   );
 };
 
-export default StyledIcon(Delete);
+export default Delete;

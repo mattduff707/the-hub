@@ -6,8 +6,8 @@ import NavScreen from '../components/mainScreen/nav/NavScreen';
 const MainScreen = () => {
   return (
     <Wrapper>
-      <Screen style={{ gridArea: 'screen' }} />
-      <NavScreen style={{ gridArea: 'buttons' }} />
+      <NavScreen style={{ gridArea: 'nav' }} />
+      <Screen style={{ gridArea: 'content' }} />
     </Wrapper>
   );
 };
@@ -17,12 +17,13 @@ const Wrapper = styled.div`
   height: 100%;
   width: 100%;
   grid-template-columns: 1fr;
-  grid-template-rows: 5fr 1fr;
+  grid-template-rows: 60px 5fr;
   grid-template-areas:
-    'screen'
-    'buttons';
+    'nav'
+    'content';
   /* max-height: 100%; */
   overflow-y: hidden;
+  /* position: relative; */
 `;
 
 export default MainScreen;

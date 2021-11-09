@@ -1,5 +1,4 @@
-import React from 'react';
-import StyledIcon from '../components/StyledIconHOC';
+import React from "react";
 
 const Check = ({ className }) => {
   return (
@@ -13,11 +12,17 @@ const Check = ({ className }) => {
       viewBox="0 0 24 24"
     >
       <g fill="none">
-        <path d="M8 12.5l3 3l5-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path
+          d="M8 12.5l3 3l5-6"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
         <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
       </g>
     </svg>
   );
 };
 
-export default StyledIcon(Check);
+export default Check;

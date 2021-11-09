@@ -26,8 +26,7 @@ const Timer = ({ className, gameLength, endGame }) => {
 };
 
 const StyledTimer = styled.span`
-  color: ${(props) => (props.minutes < 1 ? `var(--hover-danger)` : `var(--hover-main-text)`)};
-  text-shadow: ${(props) => (props.minutes < 1 ? `var(--hover-danger-text-shadow)` : `var(--hover-main-text-shadow)`)};
+  color: ${(props) => (props.minutes < 1 ? `var(--danger)` : `var(--highlight)`)};
   padding-left: 5px;
 `;
 
