@@ -80,7 +80,7 @@ const Image = styled.img`
   height: auto;
   display: block;
   border-radius: 8px;
-  border: 2px solid var(--highlight-screen);
+  border: var(--screen-border-thin);
   box-shadow: 0px 0px 10px 4px var(--highlight-alternative-border-light);
 `;
 const StyledFrame = styled.iframe`
