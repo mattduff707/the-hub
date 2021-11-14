@@ -1,56 +1,49 @@
-import useFetch from "../../../services/useFetch";
-import { Switch, Route } from "react-router";
-import { NavLink } from "react-router-dom";
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { Pre, Line, LineNo, LineContent } from "./styles";
-import Highlight, { defaultProps } from "prism-react-renderer";
-import theme from "prism-react-renderer/themes/okaidia";
-import Btn from "../../Btn";
-import axios from "axios";
+// import useFetch from "../../../services/useFetch";
+import { Switch, Route, useRouteMatch } from "react-router";
+// import { NavLink } from "react-router-dom";
+import React from "react";
+import styled from "styled-components";
+import SideNav from "./SideNav";
+import { useSelector } from "react-redux";
+import Loading from "../../Loading";
+import Error from "../../Error";
+import Snippet from "./Snippet";
+// import { useState } from "react";
+// import { Pre, Line, LineNo, LineContent } from "./styles";
+// import Highlight, { defaultProps } from "prism-react-renderer";
+// import theme from "prism-react-renderer/themes/okaidia";
 
 const Snippets = () => {
-  const [snippets, setSnippets] = useState([]);
-  const [input, setInput] = useState(``);
-  const sliceString = (str) => {
-    const newStr = str
-      .trim()
-      .slice(3, str.length - 5)
-      .trim();
-    return newStr;
-  };
+  const state = useSelector((state) => state.snippets);
+  console.log(state);
 
-  const { data, loading, error } = useFetch(process.env.REACT_APP_SNIPPETS_URL);
-  console.log(data, loading, error);
-  // useEffect(() => {
-  //   setTimeout(() => Prism.highlightAll(), 0);
-  // });
-  useEffect(() => {
-    setSnippets(() => data);
-  }, [data]);
+  const { url } = useRouteMatch();
 
-  if (loading) {
-    return <h2>Loading...</h2>;
+  if (state.loading) {
+    return <Loading />;
   }
-  if (error) {
-    return <h2>Error!!!</h2>;
+
+  if (state.error) {
+    return <Error />;
   }
 
   return (
-    <div>
-      <textarea onChange={(e) => setInput(e.target.value)} />
-      <Btn
-        handleClick={() =>
-          axios
-            .post(process.env.REACT_APP_SNIPPETS_URL, {
-              snippet: input,
-            })
-            .then((res) => console.log(res))
-        }
-      >
-        Test
-      </Btn>
-      {snippets.map((snippet) => (
+    <Wrapper>
+      <SideNav snippets={state.snippets} url={url} />
+      <div>
+        <Switch>
+          {state.snippets.map((snippet) => (
+            <Route path={`${url}${snippet.path}`}>
+              <Snippet
+                value={snippet.value}
+                category={snippet.category}
+                title={snippet.title}
+              />
+            </Route>
+          ))}
+        </Switch>
+      </div>
+      {/* {snippets.map((snippet) => (
         <Highlight
           {...defaultProps}
           theme={theme}
@@ -72,9 +65,17 @@ const Snippets = () => {
             </Pre>
           )}
         </Highlight>
-      ))}
-    </div>
+      ))} */}
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: 1fr;
+`;
 
 export default Snippets;
