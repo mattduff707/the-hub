@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import NavButton from '../../NavButton';
-import SnippetsIcon from '../../../icons/Snippets';
-import BugIcon from '../../../icons/Bug';
-import HomeIcon from '../../../icons/Home';
-import MathIcon from '../../../icons/Math';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import NavButton from "../../NavButton";
+import SnippetsIcon from "../../../icons/Snippets";
+import BugIcon from "../../../icons/Bug";
+import HomeIcon from "../../../icons/Home";
+import MathIcon from "../../../icons/Math";
+import { NavLink } from "react-router-dom";
 
-const homePath = '/';
-const snippetsPath = '/snippets';
-const mathPath = '/math';
-const bugsPath = '/bugs';
+const homePath = "/";
+const snippetsPath = "/snippets";
+const snippetsPathRegex = /\/snippets/;
+const mathPath = "/math";
+const bugsPath = "/bugs";
 console.log(<NavButton>Paragraph</NavButton>);
 const NavScreen = () => {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -41,12 +42,16 @@ const NavScreen = () => {
           </NavButton>
         </NavLink>
         <NavLink to={snippetsPath} path={snippetsPath} onClick={handleNav}>
-          <NavButton isActive={snippetsPath === currentPath}>
+          <NavButton isActive={snippetsPathRegex.test(currentPath)}>
             <p>Snippets</p>
             <SnippetsIcon />
           </NavButton>
         </NavLink>
-        <NavButton inactive isActive={bugsPath === currentPath} handleClick={handleNav}>
+        <NavButton
+          inactive
+          isActive={bugsPath === currentPath}
+          handleClick={handleNav}
+        >
           <p>Bugs</p>
           <BugIcon />
         </NavButton>

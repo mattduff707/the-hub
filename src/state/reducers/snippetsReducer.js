@@ -3,11 +3,11 @@ const reducer = (
   action
 ) => {
   if (action.type === "INIT_SNIPPETS") {
-    console.log("hit");
     return {
       loading: false,
       error: false,
       snippets: action.payload.snippetsResponse,
+      categories: action.payload.categoriesResponse,
     };
   }
   return state;

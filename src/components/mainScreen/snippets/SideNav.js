@@ -1,13 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import CategoryList from "./CategoryList";
 
-const SideNav = ({ snippets, url }) => {
+const SideNav = ({ snippets, categories }) => {
   return (
     <Wrapper>
-      {snippets.map((snippet) => (
-        <NavLink to={url + snippet.path}>{snippet.title}</NavLink>
-      ))}
+      <CategoryList snippets={snippets} categories={categories} />
     </Wrapper>
   );
 };
@@ -15,6 +13,7 @@ const SideNav = ({ snippets, url }) => {
 const Wrapper = styled.nav`
   display: flex;
   flex-direction: column;
+  border-right: var(--screen-border);
   & > a {
     color: red;
   }

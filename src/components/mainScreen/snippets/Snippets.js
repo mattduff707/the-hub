@@ -29,7 +29,11 @@ const Snippets = () => {
 
   return (
     <Wrapper>
-      <SideNav snippets={state.snippets} url={url} />
+      <SideNav
+        snippets={state.snippets}
+        categories={state.categories}
+        url={url}
+      />
       <div>
         <Switch>
           {state.snippets.map((snippet) => (
@@ -74,7 +78,7 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 220px 1fr;
   grid-template-rows: 1fr;
 `;
 

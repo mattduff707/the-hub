@@ -1,13 +1,13 @@
-import styled, { createGlobalStyle } from 'styled-components';
-import Content from './layout/Content';
-import { BrowserRouter as Router } from 'react-router-dom';
+import styled, { createGlobalStyle } from "styled-components";
+import Content from "./layout/Content";
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (
     <Router>
       <GlobalStyle />
       <MainContainer>
-        <Content style={{ gridArea: 'content' }} />
+        <Content style={{ gridArea: "content" }} />
       </MainContainer>
     </Router>
   );
@@ -17,9 +17,9 @@ const GlobalStyle = createGlobalStyle`
 
 html {
 
-  --font-family-main: 'Orbitron', sans-serif;
-  --color-text: hsl(38, 58%, 94% );
-  --color-text-placeholder: hsla(38, 58%, 94%, 0.7 );
+--font-family-main: 'Orbitron', sans-serif;
+--color-text: hsl(38, 58%, 94% );
+--color-text-placeholder: hsla(38, 58%, 94%, 0.7 );
 
 --screen-border: 4px solid hsl(220, 90%, 64%);
 --screen-border-thin: 2px solid hsl(220, 90%, 64%);
@@ -70,7 +70,7 @@ const MainContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  grid-template-areas: 'content';
+  grid-template-areas: "content";
   /* overflow: hidden; */
 `;
 
