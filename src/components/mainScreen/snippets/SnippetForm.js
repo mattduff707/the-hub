@@ -7,15 +7,28 @@ import CodeInput from "./CodeInput";
 const SnippetForm = () => {
   const [titleInput, setTitleInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
-  const [codeSnippets, setCodeSnippets] = useState([{ value: "", lang: "" }]);
+  const [codeSnippets, setCodeSnippets] = useState([
+    { value: "", lang: "", id: 0 },
+  ]);
+
   const handleTitleInput = (e) => {
     e.preventDefault();
     setTitleInput(e.target.value);
   };
+
   const handleDescriptionInput = (e) => {
     e.preventDefault();
     setDescriptionInput(e.target.value);
   };
+
+  const handleAddCode = (e) => {
+    e.preventDefault();
+    setCodeSnippets(() => [
+      ...codeSnippets,
+      { value: "", lang: "", id: codeSnippets.length },
+    ]);
+  };
+
   return (
     <Wrapper>
       <FormTitle>New Snippet</FormTitle>
@@ -36,7 +49,7 @@ const SnippetForm = () => {
           setCodeSnippets={setCodeSnippets}
         />
       ))}
-      <CodeBtn>Add Code</CodeBtn>
+      <CodeBtn handleClick={handleAddCode}>Add Code</CodeBtn>
     </Wrapper>
   );
 };
