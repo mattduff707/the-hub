@@ -58,6 +58,7 @@ const Wrapper = styled.button`
   &:hover {
     border: var(--highlight-border);
     border-bottom: none;
+    background-color: var(--screen-color-bright);
   }
 
   ${(props) => {

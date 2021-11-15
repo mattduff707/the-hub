@@ -1,6 +1,4 @@
-// import useFetch from "../../../services/useFetch";
 import { Switch, Route, useRouteMatch } from "react-router";
-// import { NavLink } from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
 import SideNav from "./SideNav";
@@ -8,10 +6,7 @@ import { useSelector } from "react-redux";
 import Loading from "../../Loading";
 import Error from "../../Error";
 import Snippet from "./Snippet";
-// import { useState } from "react";
-// import { Pre, Line, LineNo, LineContent } from "./styles";
-// import Highlight, { defaultProps } from "prism-react-renderer";
-// import theme from "prism-react-renderer/themes/okaidia";
+import SnippetForm from "./SnippetForm";
 
 const Snippets = () => {
   const state = useSelector((state) => state.snippets);
@@ -36,6 +31,9 @@ const Snippets = () => {
       />
       <div>
         <Switch>
+          <Route exact path={url}>
+            <SnippetForm />
+          </Route>
           {state.snippets.map((snippet) => (
             <Route path={`${url}${snippet.path}`}>
               <Snippet
