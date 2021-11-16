@@ -34,7 +34,7 @@ const SnippetForm = () => {
       <FormTitle>New Snippet</FormTitle>
       <Label>
         Title:
-        <TextInput onChange={handleTitleInput} />
+        <TextInput onChange={handleTitleInput} value={titleInput} />
       </Label>
       <Label>
         Description:
@@ -61,6 +61,7 @@ const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0px 10px 20px;
 `;
 const FormTitle = styled.h2`
   text-align: center;
