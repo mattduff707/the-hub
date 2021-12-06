@@ -2,18 +2,26 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Btn from "../../Btn";
 import TextInput from "../../TextInput";
+import CategoryInput from "./CategoryInput";
 import CodeInput from "./CodeInput";
 
 const SnippetForm = () => {
   const [titleInput, setTitleInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
+  const [categoryInput, setCategoryInput] = useState("");
+  // const [newCategory, setNewCategory] = useState("");
   const [codeSnippets, setCodeSnippets] = useState([
-    { value: "", lang: "", id: 0 },
+    { value: "", lang: "css" },
   ]);
 
   const handleTitleInput = (e) => {
     e.preventDefault();
     setTitleInput(e.target.value);
+  };
+
+  const handleCategoryInput = (e) => {
+    e.preventDefault();
+    setCategoryInput(e.target.value);
   };
 
   const handleDescriptionInput = (e) => {
@@ -37,6 +45,13 @@ const SnippetForm = () => {
         <TextInput onChange={handleTitleInput} value={titleInput} />
       </Label>
       <Label>
+        Category:
+        <CategoryInput
+          categoryInput={categoryInput}
+          setCategoryInput={setCategoryInput}
+        />
+      </Label>
+      <Label>
         Description:
         <TextArea onChange={handleDescriptionInput} value={descriptionInput} />
       </Label>
@@ -50,6 +65,7 @@ const SnippetForm = () => {
         />
       ))}
       <CodeBtn handleClick={handleAddCode}>Add Code</CodeBtn>
+      <SubmitBtn type="submit">Submit</SubmitBtn>
     </Wrapper>
   );
 };
@@ -60,12 +76,13 @@ const Wrapper = styled.form`
   color: var(--color-text);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   padding: 0px 10px 20px;
 `;
 const FormTitle = styled.h2`
   text-align: center;
-  padding: 10px 0px;
+  padding: 10px 0px 20px;
+  align-self: center;
 `;
 const Label = styled.label`
   /* max-width: 300px; */
@@ -74,14 +91,14 @@ const Label = styled.label`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  & > input {
+  & > * {
     margin-left: 5px;
     padding: 5px;
   }
 `;
 const TextArea = styled.textarea`
   color: var(--color-text);
-  width: 400px;
+  min-width: 600px;
   font-size: 1rem;
   margin-left: 5px;
   background-color: var(--screen-color);
@@ -95,6 +112,13 @@ const TextArea = styled.textarea`
 `;
 const CodeBtn = styled(Btn)`
   padding: 5px 10px;
+  align-self: center;
+`;
+const SubmitBtn = styled(Btn)`
+  font-size: 1.4rem;
+  padding: 10px 20px;
+  margin-top: 20px;
+  align-self: center;
 `;
 
 export default SnippetForm;

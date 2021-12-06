@@ -7,8 +7,8 @@ const CategoryList = ({ categories, snippets }) => {
     <Wrapper>
       {categories.map((cat) => (
         <Category
-          name={cat.category}
-          snippets={snippets.filter((snip) => snip.category === cat.category)}
+          name={cat}
+          snippets={snippets.filter((snip) => snip.category === cat)}
         />
       ))}
     </Wrapper>

@@ -4,12 +4,14 @@ export async function fetchSnippets(dispatch) {
   const snippetsResponse = await axios
     .get(process.env.REACT_APP_SNIPPETS_URL)
     .then((res) => res.data);
-  const categoriesResponse = await axios
-    .get(process.env.REACT_APP_SNIPPETS_URL + "categories")
-    .then((res) => res.data);
+  const categoriesArr = snippetsResponse.map((snippetObj) => {
+    return snippetObj.category;
+  });
+  const uniqueCategoriesArr = [...new Set(categoriesArr)];
 
   dispatch({
     type: "INIT_SNIPPETS",
-    payload: { snippetsResponse, categoriesResponse },
+    payload: { snippetsResponse, categories: uniqueCategoriesArr },
   });
+  // dispatch({ type: "INIT_CATEGORIES", payload: {} });
 }

@@ -7,7 +7,7 @@ const reducer = (
       loading: false,
       error: false,
       snippets: action.payload.snippetsResponse,
-      categories: action.payload.categoriesResponse,
+      categories: action.payload.categories,
     };
   }
   return state;

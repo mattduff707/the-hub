@@ -21,8 +21,8 @@ const CodeInput = ({ id, lang, value, setCodeSnippets, codeSnippets }) => {
 
   const handleCodeChange = (code) => {
     setCodeSnippets(() =>
-      codeSnippets.map((snip) => {
-        if (snip.id === id) {
+      codeSnippets.map((snip, index) => {
+        if (index === id) {
           return { ...snip, value: code };
         }
         return snip;
@@ -32,12 +32,12 @@ const CodeInput = ({ id, lang, value, setCodeSnippets, codeSnippets }) => {
 
   const handleRemove = () => {
     if (codeSnippets.length > 1) {
-      setCodeSnippets(() => codeSnippets.filter((snip) => id !== snip.id));
+      setCodeSnippets(() => codeSnippets.filter((snip, index) => id !== index));
     }
   };
 
   const highlight = (code) => (
-    <Highlight {...defaultProps} theme={theme} code={code} language="jsx">
+    <Highlight {...defaultProps} theme={theme} code={code} language={lang}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <>
           {tokens.map((line, i) => (
@@ -71,7 +71,7 @@ const CodeInput = ({ id, lang, value, setCodeSnippets, codeSnippets }) => {
           <option value="jsx">React</option>
         </select>
         <SnipTitle>Code Snippet {id + 1}</SnipTitle>
-        {id > 0 && (
+        {codeSnippets.length > 1 && (
           <IconBtn handleClick={handleRemove} danger>
             <DeleteIcon />
           </IconBtn>
