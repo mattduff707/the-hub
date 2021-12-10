@@ -13,5 +13,22 @@ export async function fetchSnippets(dispatch) {
     type: "INIT_SNIPPETS",
     payload: { snippetsResponse, categories: uniqueCategoriesArr },
   });
-  // dispatch({ type: "INIT_CATEGORIES", payload: {} });
 }
+
+export const addSnippet = (snippet) => {
+  return (dispatch) => {
+    return axios
+      .post(process.env.REACT_APP_SNIPPETS_URL, snippet)
+      .then((res) => {
+        const snippetWithId = {
+          title: snippet.title,
+          category: snippet.category,
+          description: snippet.description,
+          snippetsArr: snippet.snippetsArr,
+          _id: res.data,
+        };
+        return dispatch({ type: "ADD_SNIPPET", payload: snippetWithId });
+      })
+      .catch((err) => console.log(err));
+  };
+};

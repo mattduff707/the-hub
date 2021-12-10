@@ -1,27 +1,27 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
 import styled from "styled-components";
 import Btn from "../../Btn";
 import TextInput from "../../TextInput";
 import CategoryInput from "./CategoryInput";
 import CodeInput from "./CodeInput";
+import { snippetActionCreators } from "../../../state/actionCreators";
 
 const SnippetForm = () => {
   const [titleInput, setTitleInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
   const [categoryInput, setCategoryInput] = useState("");
-  // const [newCategory, setNewCategory] = useState("");
   const [codeSnippets, setCodeSnippets] = useState([
     { value: "", lang: "css" },
   ]);
 
+  const dispatch = useDispatch();
+  const { addSnippet } = bindActionCreators(snippetActionCreators, dispatch);
+
   const handleTitleInput = (e) => {
     e.preventDefault();
     setTitleInput(e.target.value);
-  };
-
-  const handleCategoryInput = (e) => {
-    e.preventDefault();
-    setCategoryInput(e.target.value);
   };
 
   const handleDescriptionInput = (e) => {
@@ -37,8 +37,18 @@ const SnippetForm = () => {
     ]);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addSnippet({
+      title: titleInput,
+      category: categoryInput,
+      description: descriptionInput,
+      snippets: codeSnippets,
+    });
+  };
+
   return (
-    <Wrapper>
+    <Wrapper name="snippetForm" onSubmit={handleSubmit}>
       <FormTitle>New Snippet</FormTitle>
       <Label>
         Title:

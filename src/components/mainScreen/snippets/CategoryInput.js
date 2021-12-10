@@ -22,7 +22,7 @@ const CategoryInput = ({ setCategoryInput, categoryInput }) => {
 
   return (
     <Wrapper>
-      {isAdd ? (
+      {isAdd || state.length === 0 ? (
         <>
           <TextInput
             placeholder="New Category"
@@ -36,7 +36,7 @@ const CategoryInput = ({ setCategoryInput, categoryInput }) => {
       ) : (
         <>
           <select onChange={handleCategoryInput} value={categoryInput}>
-            <option hidden selected value></option>
+            <option hidden defaultValue value></option>
             {state.map((cat) => (
               <option value={cat}>{cat}</option>
             ))}
