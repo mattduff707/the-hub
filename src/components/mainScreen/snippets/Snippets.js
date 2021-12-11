@@ -37,7 +37,7 @@ const Snippets = () => {
           {state.snippets.map((snippet) => (
             <Route path={`${url}${snippet.path}`}>
               <Snippet
-                value={snippet.value}
+                codeArr={snippet.codeArr}
                 category={snippet.category}
                 title={snippet.title}
               />

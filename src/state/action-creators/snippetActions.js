@@ -24,8 +24,9 @@ export const addSnippet = (snippet) => {
           title: snippet.title,
           category: snippet.category,
           description: snippet.description,
-          snippetsArr: snippet.snippetsArr,
+          codeArr: snippet.codeArr,
           _id: res.data,
+          path: snippet.path,
         };
         return dispatch({ type: "ADD_SNIPPET", payload: snippetWithId });
       })

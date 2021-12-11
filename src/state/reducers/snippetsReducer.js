@@ -2,6 +2,7 @@ const reducer = (
   state = { loading: true, error: false, snippets: [], categories: [] },
   action
 ) => {
+  debugger;
   if (action.type === "INIT_SNIPPETS") {
     return {
       loading: false,

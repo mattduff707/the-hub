@@ -2,12 +2,15 @@ import React from "react";
 import theme from "prism-react-renderer/themes/okaidia";
 import Code from "./Code";
 
-const Snippet = ({ value, title, category, codeArr }) => {
+const Snippet = ({ title, category, codeArr }) => {
+  debugger;
   return (
     <div>
       <h1>{title}</h1>
       <h2>{category}</h2>
-      <Code code={value} language={"jsx"} theme={theme} />
+      {codeArr.map((snippet) => (
+        <Code code={snippet.value} language={snippet.lang} theme={theme} />
+      ))}
     </div>
   );
 };

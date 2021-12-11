@@ -39,11 +39,13 @@ const SnippetForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const path = `/${titleInput.split(" ").join("-")}`;
     addSnippet({
       title: titleInput,
       category: categoryInput,
       description: descriptionInput,
-      snippets: codeSnippets,
+      codeArr: codeSnippets,
+      path: path,
     });
   };
 
