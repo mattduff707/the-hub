@@ -33,3 +33,12 @@ export const addSnippet = (snippet) => {
       .catch((err) => console.log(err));
   };
 };
+
+export const removeSnippet = (snippet_id) => {
+  return (dispatch) => {
+    dispatch({ type: "REMOVE_SNIPPET", payload: snippet_id });
+    return axios
+      .delete(process.env.REACT_APP_SNIPPETS_URL + snippet_id)
+      .then((res) => console.log(res));
+  };
+};

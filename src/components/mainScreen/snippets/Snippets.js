@@ -40,6 +40,7 @@ const Snippets = () => {
                 codeArr={snippet.codeArr}
                 category={snippet.category}
                 title={snippet.title}
+                _id={snippet._id}
               />
             </Route>
           ))}

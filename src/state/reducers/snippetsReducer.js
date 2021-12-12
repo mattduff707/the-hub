@@ -2,7 +2,6 @@ const reducer = (
   state = { loading: true, error: false, snippets: [], categories: [] },
   action
 ) => {
-  debugger;
   if (action.type === "INIT_SNIPPETS") {
     return {
       loading: false,
@@ -20,6 +19,15 @@ const reducer = (
       snippets: [...state.snippets, action.payload],
       categories: [...state.categories, action.payload.category],
     };
+  }
+  if (action.type === "REMOVE_SNIPPET") {
+    const stateWithSnippetRemoved = state.snippets.filter(
+      (snippet) => snippet._id !== action.payload
+    );
+    console.log(stateWithSnippetRemoved);
+    return { ...state, snippets: stateWithSnippetRemoved };
+  }
+  if (action.type === "REMOVE_CATEGORY") {
   }
   return state;
 };
