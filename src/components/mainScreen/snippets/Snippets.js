@@ -10,7 +10,6 @@ import SnippetForm from "./SnippetForm";
 
 const Snippets = () => {
   const state = useSelector((state) => state.snippets);
-  console.log(state);
 
   const { url } = useRouteMatch();
 
@@ -35,40 +34,18 @@ const Snippets = () => {
             <SnippetForm />
           </Route>
           {state.snippets.map((snippet) => (
-            <Route path={`${url}${snippet.path}`}>
+            <Route key={Math.random()} path={`${url}${snippet.path}`}>
               <Snippet
                 codeArr={snippet.codeArr}
                 category={snippet.category}
                 title={snippet.title}
                 _id={snippet._id}
+                state={state}
               />
             </Route>
           ))}
         </Switch>
       </div>
-      {/* {snippets.map((snippet) => (
-        <Highlight
-          {...defaultProps}
-          theme={theme}
-          code={snippet.value}
-          language="jsx"
-        >
-          {({ className, style, tokens, getLineProps, getTokenProps }) => (
-            <Pre className={className} style={style}>
-              {tokens.map((line, i) => (
-                <Line key={i} {...getLineProps({ line, key: i })}>
-                  <LineNo>{i + 1}</LineNo>
-                  <LineContent>
-                    {line.map((token, key) => (
-                      <span key={key} {...getTokenProps({ token, key })} />
-                    ))}
-                  </LineContent>
-                </Line>
-              ))}
-            </Pre>
-          )}
-        </Highlight>
-      ))} */}
     </Wrapper>
   );
 };

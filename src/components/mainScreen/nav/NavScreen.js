@@ -12,7 +12,6 @@ const snippetsPath = "/snippets";
 const snippetsPathRegex = /\/snippets/;
 const mathPath = "/math";
 const bugsPath = "/bugs";
-console.log(<NavButton>Paragraph</NavButton>);
 const NavScreen = () => {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const handleNav = (e) => {

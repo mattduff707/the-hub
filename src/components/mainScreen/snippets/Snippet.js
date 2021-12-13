@@ -6,7 +6,8 @@ import { bindActionCreators } from "redux";
 import { snippetActionCreators } from "../../../state/actionCreators";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-const Snippet = ({ title, category, codeArr, _id }) => {
+
+const Snippet = ({ title, category, codeArr, _id, state }) => {
   const history = useHistory();
 
   const dispatch = useDispatch();
@@ -23,7 +24,12 @@ const Snippet = ({ title, category, codeArr, _id }) => {
       <h1>{title}</h1>
       <h2>{category}</h2>
       {codeArr.map((snippet) => (
-        <Code code={snippet.value} language={snippet.lang} theme={theme} />
+        <Code
+          key={Math.random()}
+          code={snippet.value}
+          language={snippet.lang}
+          theme={theme}
+        />
       ))}
       <Btn handleClick={handleDelete}>Delete</Btn>
     </div>

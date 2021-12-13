@@ -10,7 +10,11 @@ const Category = ({ name, snippets }) => {
       <CategoryTitle>{name}</CategoryTitle>
       <SnippetsList>
         {snippets.map((snip) => (
-          <SnippetLink title={snip.title} path={url + snip.path} />
+          <SnippetLink
+            key={snip.title + Math.random()}
+            title={snip.title}
+            path={url + snip.path}
+          />
         ))}
       </SnippetsList>
     </Wrapper>

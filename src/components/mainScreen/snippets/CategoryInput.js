@@ -38,7 +38,9 @@ const CategoryInput = ({ setCategoryInput, categoryInput }) => {
           <select onChange={handleCategoryInput} value={categoryInput}>
             <option hidden defaultValue value></option>
             {state.map((cat) => (
-              <option value={cat}>{cat}</option>
+              <option key={cat + Math.random()} value={cat}>
+                {cat}
+              </option>
             ))}
           </select>
           <StyledIconBtn handleClick={handleAdd}>

@@ -7,6 +7,7 @@ const CategoryList = ({ categories, snippets }) => {
     <Wrapper>
       {categories.map((cat) => (
         <Category
+          key={Math.random()}
           name={cat}
           snippets={snippets.filter((snip) => snip.category === cat)}
         />

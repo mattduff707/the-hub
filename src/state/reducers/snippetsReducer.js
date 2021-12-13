@@ -24,7 +24,6 @@ const reducer = (
     const stateWithSnippetRemoved = state.snippets.filter(
       (snippet) => snippet._id !== action.payload
     );
-    console.log(stateWithSnippetRemoved);
     return { ...state, snippets: stateWithSnippetRemoved };
   }
   if (action.type === "REMOVE_CATEGORY") {
