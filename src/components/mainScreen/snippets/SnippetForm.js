@@ -9,12 +9,19 @@ import CodeInput from "./CodeInput";
 import { snippetActionCreators } from "../../../state/actionCreators";
 
 const SnippetForm = () => {
+  const defaultCodeSnippetsState = [{ value: "", lang: "css" }];
+
   const [titleInput, setTitleInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
   const [categoryInput, setCategoryInput] = useState("");
-  const [codeSnippets, setCodeSnippets] = useState([
-    { value: "", lang: "css" },
-  ]);
+  const [codeSnippets, setCodeSnippets] = useState(defaultCodeSnippetsState);
+
+  const resetAllInputStates = () => {
+    setTitleInput("");
+    setDescriptionInput("");
+    setCategoryInput("");
+    setCodeSnippets(defaultCodeSnippetsState);
+  };
 
   const dispatch = useDispatch();
   const { addSnippet } = bindActionCreators(snippetActionCreators, dispatch);
@@ -47,6 +54,7 @@ const SnippetForm = () => {
       codeArr: codeSnippets,
       path: path,
     });
+    resetAllInputStates();
   };
 
   return (
