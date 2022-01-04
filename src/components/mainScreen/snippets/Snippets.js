@@ -40,7 +40,8 @@ const Snippets = () => {
                 category={snippet.category}
                 title={snippet.title}
                 _id={snippet._id}
-                state={state}
+                description={snippet.description}
+                // state={state}
               />
             </Route>
           ))}

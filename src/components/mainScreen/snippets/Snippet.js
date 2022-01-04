@@ -6,8 +6,9 @@ import { bindActionCreators } from "redux";
 import { snippetActionCreators } from "../../../state/actionCreators";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
 
-const Snippet = ({ title, category, codeArr, _id, state }) => {
+const Snippet = ({ title, category, codeArr, _id, description }) => {
   const history = useHistory();
 
   const dispatch = useDispatch();
@@ -20,9 +21,10 @@ const Snippet = ({ title, category, codeArr, _id, state }) => {
   };
 
   return (
-    <div>
-      <h1>{title}</h1>
-      <h2>{category}</h2>
+    <Wrapper>
+      <Title>{title}</Title>
+      <Category>{category}</Category>
+      <Description>{description}</Description>
       {codeArr.map((snippet) => (
         <Code
           key={Math.random()}
@@ -32,8 +34,19 @@ const Snippet = ({ title, category, codeArr, _id, state }) => {
         />
       ))}
       <Btn handleClick={handleDelete}>Delete</Btn>
-    </div>
+    </Wrapper>
   );
 };
-
+const Wrapper = styled.div`
+  color: var(--color-text);
+`;
+const Title = styled.h1`
+  font-size: 2rem;
+`;
+const Category = styled.h2`
+  font-size: 1.5rem;
+`;
+const Description = styled.p`
+  font-size: 1rem;
+`;
 export default Snippet;

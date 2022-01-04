@@ -9,7 +9,6 @@ function App() {
       <MainContainer>
         <Content style={{ gridArea: "content" }} />
       </MainContainer>
- <div></div>
     </Router>
   );
 }

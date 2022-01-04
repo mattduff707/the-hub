@@ -78,6 +78,7 @@ const SnippetForm = () => {
       {codeSnippets.map((snip, index) => (
         <CodeInput
           id={index}
+          key={index + snip.value}
           value={snip.value}
           lang={snip.lang}
           codeSnippets={codeSnippets}
