@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import NavButton from "../../NavButton";
 import SnippetsIcon from "../../../icons/Snippets";
-import BugIcon from "../../../icons/Bug";
+import FlashIcon from "../../../icons/Flash";
 import HomeIcon from "../../../icons/Home";
 import MathIcon from "../../../icons/Math";
 import { NavLink } from "react-router-dom";
@@ -11,7 +11,7 @@ const homePath = "/";
 const snippetsPath = "/snippets";
 const snippetsPathRegex = /\/snippets/;
 const mathPath = "/math";
-const bugsPath = "/bugs";
+const flashPath = "/flash";
 const NavScreen = () => {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const handleNav = (e) => {
@@ -46,14 +46,12 @@ const NavScreen = () => {
             <SnippetsIcon />
           </NavButton>
         </NavLink>
-        <NavButton
-          inactive
-          isActive={bugsPath === currentPath}
-          handleClick={handleNav}
-        >
-          <p>Bugs</p>
-          <BugIcon />
-        </NavButton>
+        <NavLink to={flashPath} path={flashPath} onClick={handleNav}>
+          <NavButton isActive={flashPath === currentPath}>
+            <p>Flash</p>
+            <FlashIcon />
+          </NavButton>
+        </NavLink>
       </NavList>
     </Wrapper>
   );

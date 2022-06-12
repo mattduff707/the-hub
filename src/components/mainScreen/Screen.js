@@ -1,9 +1,10 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import styled from 'styled-components';
-import Home from './home/Home';
-import Snippets from './snippets/Snippets';
-import Math from './math/Math';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import styled from "styled-components";
+import Home from "./home/Home";
+import Snippets from "./snippets/Snippets";
+import Math from "./math/Math";
+import Flash from "./flash/Flash";
 
 const Screen = () => {
   return (
@@ -17,6 +18,9 @@ const Screen = () => {
         </Route>
         <Route path="/math">
           <Math />
+        </Route>
+        <Route path="/flash">
+          <Flash />
         </Route>
       </Switch>
     </Wrapper>
